@@ -1,0 +1,41 @@
+# ------------------------------------------------------------------------------
+# ~/_data/apps/gallery_customizer.yml
+# User settings for J1 Gallery Customizer
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description (used for J1 CC only)
+#
+description:
+
+  title:                                Gallery Customizer
+  scope:                                User settings
+  location:                             _data/apps/gallery_customizer.yml
+
+# ------------------------------------------------------------------------------
+# User configuration settings
+#
+settings:
+
+  enabled:                              true
+  title:                                Mega Cities
+
+  gallery_settings:
+    rowHeight:                          150
+    margins:                            1
+    border:                             0
+    captions:                           true
+    randomize:                          false
+    justifyLastRow:                     false
+    hideLastRow:                        false
+
+# ------------------------------------------------------------------------------
+# END config

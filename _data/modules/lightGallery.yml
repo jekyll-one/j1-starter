@@ -1,0 +1,38 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/light_gallery.yml
+# User configuration settings for J1 LightGallery (lg)
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                Light Gallery
+  scope:                                User settings
+  location:                             _data/apps/light_gallery.yml
+
+# ------------------------------------------------------------------------------
+# User configuration settings
+#
+settings:
+
+  # ----------------------------------------------------------------------------
+  # LightGallery options
+  # ----------------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------------
+  # behavior and appearance
+  #
+  fullScreen:
+    enabled:                            true
+
+# ------------------------------------------------------------------------------
+# END config

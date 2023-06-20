@@ -1,0 +1,225 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/fab.yml
+# User Configuration of the FAB Module (Floating Action Button)
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+#
+# ------------------------------------------------------------------------------
+# NOTE:
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                Floating Action Button
+  scope:                                User settings
+  location:                             _data/modules/fab.yml
+
+# ------------------------------------------------------------------------------
+# User settings
+#
+settings:
+  enabled:                              true
+
+  # ----------------------------------------------------------------------------
+  # FAB options
+  # ----------------------------------------------------------------------------
+  menu_options:
+    hoverEnabled:                       true
+
+  # ----------------------------------------------------------------------------
+  # FAB settings
+  # ----------------------------------------------------------------------------
+  menus:
+
+    # --------------------------------------------------------------------------
+    # FAB for scrolling to the page top position (default)
+    #
+    - name:                             Scroll to top
+      enabled:                          true
+      id:                               default
+      icon:                             chevron-double-up
+      icon_family:                      MDI
+      icon_color:                       md-gray-900
+      icon_hover:                       chevron-double-up
+      color:                            primary
+
+      # ------------------------------------------------------------------------
+      # MENU items
+      #
+      items:
+        - item:
+          enabled:                      true
+          event_handler:                scroll_to_top
+
+    # --------------------------------------------------------------------------
+    # FAB for scrolling to the page top position (default)
+    #
+    - name:                             Top and Reload
+      enabled:                          true
+      id:                               top-reload
+      icon:                             plus
+      icon_family:                      MDI
+      icon_color:                       md-gray-900
+      icon_hover:                       chevron-up
+      color:                            primary
+
+      # ------------------------------------------------------------------------
+      # MENU items
+      #
+      items:
+        - item:                         To Top
+          enabled:                      true
+          id:                           fam_scroll_to_top
+          color:                        md-green
+          event_handler:                scroll_to_top
+          icon:                         chevron-double-up
+          icon_properties:
+
+        - item:                         Reload Page
+          enabled:                      true
+          id:                           fam_reload_page
+          color:                        md-red
+          event_handler:                reload_page
+          icon:                         reload
+          icon_properties:
+
+    # --------------------------------------------------------------------------
+    # FAB to open sidebar-based (Mmenu Drawer) table of contents (toccer)
+    #
+    - name:                             Open TOC
+      enabled:                          true
+      id:                               open_toc
+      icon:                             plus
+      icon_family:                      MDI
+      icon_color:                       md-gray-900
+      icon_hover:                       chevron-up
+      color:                            primary
+
+      # ------------------------------------------------------------------------
+      # MENU items
+      #
+      items:
+        - item:                         To Top
+          enabled:                      true
+          id:                           fam_scroll_to_top
+          color:                        md-green
+          event_handler:                scroll_to_top
+          icon:                         chevron-double-up
+          icon_properties:
+
+        - item:                         Table of Contents
+          enabled:                      true
+          id:                           open_mmenu_toc
+          color:                        md-green
+          event_handler:                open_mmenu_toc
+          icon:                         wrap
+          icon_properties:
+
+    # --------------------------------------------------------------------------
+    # FAB to open sidebar-based (Mmenu Drawer) table of contents (toccer)
+    #
+    - name:                             Open TOC Reload
+      enabled:                          true
+      id:                               open_toc_reload
+      icon:                             plus
+      icon_family:                      MDI
+      icon_color:                       md-gray-900
+      icon_hover:                       chevron-up
+      color:                            primary
+
+      # ------------------------------------------------------------------------
+      # MENU items
+      #
+      items:
+        - item:                         To Top
+          enabled:                      true
+          id:                           fam_scroll_to_top
+          color:                        md-green
+          event_handler:                scroll_to_top
+          icon:                         chevron-double-up
+          icon_properties:
+
+        - item:                         Reload Page
+          enabled:                      true
+          id:                           fam_reload_page
+          color:                        md-red
+          event_handler:                reload_page
+          icon:                         reload
+          icon_properties:
+
+        - item:                         Table of Contents
+          enabled:                      true
+          id:                           open_mmenu_toc
+          color:                        md-green
+          event_handler:                open_mmenu_toc
+          icon:                         wrap
+          icon_properties:
+
+    # --------------------------------------------------------------------------
+    # FAB for in-page navigation
+    #
+    - name:                             page control
+      enabled:                          true
+      id:                               page_ctrl
+      icon:                             plus
+      icon_family:                      MDI
+      icon_color:                       md-gray-900
+      icon_hover:                       chevron-up
+      color:                            primary
+
+      # ------------------------------------------------------------------------
+      # MENU items
+      #
+      items:
+
+        - item:                         To Top
+          enabled:                      true
+          id:                           fam_scroll_to_top
+          color:                        md-green
+          event_handler:                scroll_to_top
+          icon:                         chevron-double-up
+          icon_properties:
+
+        - item:                         Previous Section
+          enabled:                      true
+          id:                           fam_previous_section
+          color:                        md-green
+          event_handler:                scroll_previous_section
+          icon:                         step-backward
+          icon_properties:              mdi-rotate-90
+
+        - item:                         Next Section
+          enabled:                      true
+          id:                           fam_next_section
+          color:                        md-green
+          event_handler:                scroll_next_section
+          icon:                         step-forward
+          icon_properties:              mdi-rotate-90
+
+        - item:                         Reload Page
+          enabled:                      true
+          id:                           fam_reload_page
+          color:                        md-red
+          event_handler:                reload_page
+          icon:                         reload
+          icon_properties:
+
+        - item:                         Table of Contents
+          enabled:                      true
+          id:                           open_mmenu_toc
+          color:                        md-green
+          event_handler:                open_mmenu_toc
+          icon:                         wrap
+          icon_properties:
+
+# ------------------------------------------------------------------------------
+# END config

@@ -1,0 +1,113 @@
+---
+title:                                  Where to go
+tagline:                                Fasten Your Way
+date:                                   2022-11-03 00:00:00 +100
+description: >
+                                        Welcome to the info pages of J1 Theme. A good decision
+                                        to get on that page first. Certainly, there is no better
+                                        place to learn what J1 Theme can do and what pages are
+                                        available to experience more.
+keywords: >
+                                        Jekyll, Theme, JekyllOne, Info, Introduction, Rocketstart,
+                                        Roundtrip,
+
+categories:                             [ Info ]
+tags:                                   [ Introduction ]
+
+image:
+  path:                                 /assets/images/modules/attics/1920x1280/alexander-redl.jpg
+  width:                                1920
+  height:                               1280
+  alt:                                  Photo by Alexander Redl on Unsplash
+
+fab_menu_id:                            default
+regenerate:                             false
+permalink:                              /pages/public/learn/where_to_go/
+
+resources:                              [ animate ]
+resource_options:
+  - attic:
+      slides:
+        - url:                          /assets/images/modules/attics/1920x1280/alexander-redl.jpg
+          alt:                          Photo by Alexander Redl on Unsplash
+          badge:
+            type:                       unsplash
+            author:                     Alexander Redl
+            href:                       https://unsplash.com/@alexanderredl
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+
+// Set (local) page attributes here
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
+:url-j1--cheatsheet-template:           /pages/public/learn/cheatsheet/j1/
+:url-j1--jekyll-collections:            /pages/public/learn/bookshelf/jekyll_collections/
+:url-j1--tutorial-j1-in-a-day:          https://jekyll.one/pages/public/learn/kickstart/web_in_a_day/meet_and_greet/
+:url-j1--tutorial-learning-seo:         https://jekyll.one/pages/public/learn/kickstart/learning_seo/what_seo_is
+
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="global" %}
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[role="dropcap"]
+Welcome to the learning pages of the J1 Theme. A good decision to get on that
+page first. Certainly, there is no better place to start learning what J1 Theme
+can do and what pages are available to experience more.
+
+// Include sub-documents (if any) (if any)
+// -----------------------------------------------------------------------------
+The crucial first step in finding your way to Jekyll is done. Congratulations.
+The *Learn* section contains all you need to expirience what Jekyll and J1
+can do for your new website, for your new static web. You are welcome to spend
+some time diving into the techniques of creating modern static webs.
+
+
+Roundtrip::
+In this section, you’ll find a tour to show some of the main features of
+the J1 theme. This trip covers how image data can be managed using
+J1, some background of the Theme's typography, discuss extensions, and
+what J1 can do in general. The roundtrip is a visual tour, no technical
+stuff, nothing academic. See what you will get as an overview of some of
+the top features of J1.
+
+If you're interested what J1 Theme can do, continue by walking through the
+roundtrip examples by starting an inspiring tour
+link:{url-j1-roundtrip--present-images}[from here].
+
+Cheatsheet::
+Cheat sheets are concise reference guides or summaries that provide quick
+and handy information about a topic or subject. They help you to remember
+key concepts, formulas, commands, or other essential details without
+consulting extensive documentation or resources. Find convenient quick
+references for _YAML_, _Git_ and more. For example using the `j1` command
+to manage a project for J1 Template, go for the cheatsheet
+link:{url-j1--cheatsheet-template}[J1 Template, {browser-window--new}].
+
+Collections::
+Collections are Jekyll’s most powerful and simultaneously least understood
+feature of the generator. Collections add another possibility, or use-case,
+outside of Jekyll’s post- and page-publishing functionality. Learn more
+about collections for more powerful static websites. To learn more what
+collections are, check
+link:{url-j1--jekyll-collections}[Jekyll Collections, {browser-window--new}].
+
+Tutorials::
+To become more familiar with using J1, go to the tutorial section. Have
+fun experiencing what Jekyll and J1 can do. A good starting point for using
+J1 Template is
+link:{url-j1--tutorial-j1-in-a-day}[Jekll in a Day, {browser-window--new}].
+
+Optimizing a website for search engines (SEO) is important for success.
+Read more about SEO and how to implement working strategies for a Jekyll-based
+websites at link:{url-j1--tutorial-learning-seo}[Learning SEO, {browser-window--new}].

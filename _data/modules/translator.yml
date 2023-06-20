@@ -1,0 +1,37 @@
+# ------------------------------------------------------------------------------
+#  ~/_data/modules/translator.yml
+#  User configuration ssettings for J1 Translator module
+#
+#  Product/Info:
+#  https://jekyll.one
+#
+#  Copyright (C) 2023 Juergen Adams
+#
+#  J1 Theme is licensed under the MIT License.
+#  See: https://github.com/jekyll-one/J1 Theme/blob/master/LICENSE
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                J1 Translator
+  scope:                                User settings
+  location:                             _data/modules/translator.yml
+
+# ------------------------------------------------------------------------------
+# User configuration settings
+#
+settings:
+  enabled:                              true
+
+  # ----------------------------------------------------------------------------
+  # Translator options
+  # ----------------------------------------------------------------------------
+  translatorName:                       google
+  contentLanguage:                      en                                      # [auto|any supported language], auto: language set by site config
+  dialogLanguage:                       auto                                    # [auto|en|de], auto: language set by site config
+  translationLanguage:                  de                                      # any supported language
+
+# ------------------------------------------------------------------------------
+# END config

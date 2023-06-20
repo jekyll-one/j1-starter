@@ -1,0 +1,252 @@
+# ------------------------------------------------------------------------------
+#  ~/_data/blocks/banner.yml
+#  User configuration settings for BANNERS
+#
+#  Product/Info:
+#  https://jekyll.one
+#
+#  Copyright (C) 2023 Juergen Adams
+#
+#  J1 Theme is licensed under the MIT License.
+#  See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+#
+# ------------------------------------------------------------------------------
+# NOTE: All banner id's has to be prefixed by 'banner_'
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+
+  title:                                Banner
+  scope:                                User settings
+  location:                             _data/blocks/banner.yml
+
+# ------------------------------------------------------------------------------
+# SETTINGS
+#
+settings:
+
+  # ----------------------------------------------------------------------------
+  # DIVIDER banner
+  #
+  #   Place a (dotted) line as a simple divider.
+  #
+  # ----------------------------------------------------------------------------
+  #
+  divider:
+    # --------------------------------------------------------------------------
+    # DIVIDER properties
+    #
+    - name:                             Divider Banner 1
+      banner:
+        enabled:                        true
+
+        id:                             banner_divider_1
+        comment:                        Divider Banner 1
+        type:                           divider
+
+    - name:                             Divider Banner 2
+      banner:
+        enabled:                        true
+
+        id:                             banner_divider_2
+        comment:                        Divider Banner 2
+        type:                           divider
+
+
+  # ----------------------------------------------------------------------------
+  # TEASER banner
+  #
+  #   Simple intro element for a page to give an overview on the contents
+  #   provided. Find the configuration with
+  #
+  # ----------------------------------------------------------------------------
+  #
+  teaser:
+    # --------------------------------------------------------------------------
+    # HOME Teaser Banner
+    #
+    - name:                             Home Teaser Banner
+      banner:
+        enabled:                        true
+
+        id:                             banner_home_teaser
+        comment:                        Top teaser shown on home page
+        type:                           teaser
+        badges:                         false
+        icon_family:                    MDI
+        properties:                     mb-5
+
+        wave:
+          top:
+            enabled:                    false
+            height:                     3                                       # [1 .. 9]
+            style:                      wave-1                                  # default
+            color:                      "#DCDCDC"
+            background_color:           "#F5F5F5"
+            transform:                  false                                   # false or rotate|flip-x|flip-y and combinations
+          bottom:
+            enabled:                    false
+            height:                     3
+            style:                      wave-4
+            color:                      "#DCDCDC"
+            background_color:           "#F5F5F5"
+            transform:                  rotate
+
+        cards:
+
+          - name:                       Teaser Content
+            card:
+              enabled:                  true
+              width:                    12
+              type:                     text
+              position:                 left                                    # left | center
+              title:                    J1
+              tagline:                  <b>modern static websites</b>
+              translate_description:    notranslate                             # translate|notranslate
+              description_properties:   mt-3 mb-3
+              description: >
+                                        <p class="dropcap">
+                                          The Starter Theme of JekyllOne is a full-featured template for Jekyll to
+                                          create modern dynamic websites. The template system gives hobbyists
+                                          and professionals a clean implementation for starting new projects.
+                                          JekyllOne is open source, and the modules packed are also free
+                                          to use. No license issues for private or professional purposes.
+                                        </p>
+                                        <p>
+                                          J1 Starter Theme is designed to be lightweight and easily customizable.
+                                          It comes with a basic structure and styling out of the box so that you
+                                          can create a website quickly and easily, without having to worry about
+                                          the code. It features a modern, minimalist design with a focus on usability
+                                          and accessibility. Additionally, it comes with built-in support for search
+                                          engine optimization (SEO) and social media integration, making it easy to
+                                          get your site off the ground and running.
+                                        </p>
+                                        <p class="tagline">
+                                          <b>Explore what's possible if you go for modern static websites.</b>
+                                        </p>
+              buttons:
+
+                - name:                 Roundtrip
+                  button:
+                    enabled:            true
+                    id:                 roundtrip
+                    translate:          notranslate                             # translate|notranslate
+                    title:              Roundtrip
+                    tagline:            learn top features
+                    class:              btn btn-raised btn-xl btn-primary text-uppercase text-left mr-2 mb-2
+                    style:              "min-width: 270px"
+                    icon:               briefcase-search-outline
+                    icon_color:
+                    icon_size:          3x
+                    href:               /pages/public/learn/roundtrip/present_images/
+                    target:
+
+                - name:                 Rocketstart
+                  button:
+                    enabled:            true
+                    id:                 rocketstart
+                    translate:          notranslate                             # translate|notranslate
+                    title:              Rocketstart
+                    tagline:            finished in minutes
+                    class:              btn btn-raised btn-xl btn-primary text-uppercase text-left mr-2 mb-2
+                    style:              "min-width: 270px"
+                    icon:               rocket-launch
+                    icon_color:
+                    icon_size:          3x
+                    href:               https://jekyll.one/pages/public/learn/rocketstart/
+                    target:             blank
+
+                - name:                 Download
+                  button:
+                    enabled:            true
+                    id:                 download
+                    translate:          notranslate                             # translate|notranslate
+                    title:              Download
+                    tagline:            get on rubygems
+                    class:              btn btn-raised btn-xl btn-primary text-uppercase text-left mr-2 mb-2
+                    style:              "min-width: 270px"
+                    icon:               briefcase-download-outline
+                    icon_color:
+                    icon_size:          3x
+                    href:               https://rubygems.org/gems/j1-template
+                    target:             blank
+
+  # ----------------------------------------------------------------------------
+  # PARALLAX banner
+  #
+  #   Places an image (full width) with a parallax effect. Additionally,
+  #   a quotation text is configurable and placed centered on top of
+  #   the image.
+  #
+  # ----------------------------------------------------------------------------
+  #
+  parallax:
+    # --------------------------------------------------------------------------
+    # home_parallax_banner
+    #
+    - name:                             Home Parallax Banner
+      banner:
+        enabled:                        true
+
+        id:                             banner_home_parallax
+        comment:                        Main parallax banner shown on home page
+        type:                           parallax
+        properties:
+
+        cards:
+
+          - name:                       Quote settings
+            card:
+              enabled:                  true
+              type:                     quote
+#             cite:                     J1 Team
+              cite_text_size:           300%
+              cite_text_quotes:         false
+              cite_text: >
+                                        <strong>
+                                          <span class="text-primary">Making is</span>
+                                          <span class="text-light">like Wanting, <br> but even</span>
+                                          <span class="text-primary">Better</span>
+                                        </strong>
+
+              text_color:               "#E0E0E0"
+              gridify:                  true
+              size_y:                   450
+              darken:                   6
+              background_image:         /assets/images/modules/attics/ideas-start-here-1920x1280-bw.jpg
+
+
+  # ----------------------------------------------------------------------------
+  # IMAGE banner
+  #
+  #   Place an image (full width).
+  #
+  # ----------------------------------------------------------------------------
+  #
+  image:
+    # --------------------------------------------------------------------------
+    # home_image_banner
+    #
+    - name:                             Home Image Banner
+      banner:
+        enabled:                        true
+
+        id:                             banner_home_image
+        comment:                        Image banner shown on home page
+        type:                           image
+        properties:                     mt-6 mb-6
+
+        image:
+          gridify:                      false
+          height:                       450
+          justify:                      true
+          brightness:                   80
+          opacity:                      false
+          picture:                      /assets/images/modules/attics/ideas-start-here-1920x1280-bw.jpg
+
+# ------------------------------------------------------------------------------
+# END config

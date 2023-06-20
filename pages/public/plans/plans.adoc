@@ -1,0 +1,108 @@
+---
+title:                                  J1 Starter
+tagline:                                Plan Details
+date:                                   2020-11-03 00:00:00
+description: >
+                                        Service plans give customers a clear understanding of what services
+                                        they will receive, how they will be provided, and what they will cost. Service
+                                        plans help ensure that the service provider and the customer are on the same
+                                        page and can work together effectively.
+
+categories:                             [ Info ]
+tags:                                   [ Plan, Template ]
+
+robots:
+  index:                                false
+  follow:                               false
+
+image:
+  path:                                 /assets/images/modules/attics/1920x1280/kira-auf-der-heide.jpg
+  width:                                1920
+  height:                               1280
+  alt:                                  Plan Details
+
+exclude_from_search:                    true
+regenerate:                             false
+permalink:                              /pages/public/plans/plan_details/
+
+resources:                              [ animate, clipboard, lightbox, rouge ]
+resource_options:
+  - attic:
+      slides:
+        - url:                          /assets/images/modules/attics/1920x1280/kira-auf-der-heide.jpg
+          alt:                          Photo by Kira auf der Heide on Unsplash
+          badge:
+            type:                       unsplash
+            author:                     Kira auf der Heide
+            href:                       https://unsplash.com/@kadh
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+
+// Set (local) page attributes here
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="global" %}
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Include sub-documents (if any)
+// -----------------------------------------------------------------------------
+== Plans
+
+Service plans are typically contracts or agreements between a service provider
+and a customer, outlining the terms and conditions of a particular service or
+set of services that will be provided.
+
+Service plans may include details such as the scope of the service, the level
+of support provided, the duration of the contract, the payment terms, and any
+additional fees or charges. Some service plans may also include warranties or
+guarantees, outlining what the customer can expect regarding quality or
+reliability.
+
+Overall, service plans give customers a clear understanding of what services
+they will receive, how they will be provided, and what they will cost. Service
+plans help ensure that the service provider and the customer are on the same
+page and can work together effectively.
+
+=== Starter
+
+lorem:sentences[5]
+
+=== Base
+
+lorem:sentences[5]
+
+=== Developer
+
+lorem:sentences[5]
+
+=== Expert
+
+lorem:sentences[5]
+
+
+== Modules
+
+lorem:sentences[5]
+
+lorem:sentences[3]
+
+=== Base
+
+lorem:sentences[5]
+
+=== Extended
+
+lorem:sentences[5]

@@ -1,0 +1,76 @@
+# ------------------------------------------------------------------------------
+#  ~/_data/modules/defaults/lunr.yml
+#  Default configuration settings for J1 Lunr (search) module
+#
+#  Product/Info:
+#  https://jekyll.one
+#
+#  Copyright (C) 2023 Juergen Adams
+#
+#  J1 Theme is licensed under the MIT License.
+#  See: https://github.com/jekyll-one/J1 Theme/blob/master/LICENSE
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                J1 Lunr
+  scope:                                Default settings
+  location:                             _data/modules/defaults/lunr.yml
+
+# ------------------------------------------------------------------------------
+# Default settings
+#
+defaults:
+  enabled:                              false
+
+  placement:                            navbar
+  target:                               _blank
+  rebuild:                              false
+  full_index:                           true
+  stopwords:                            /assets/themes/j1/modules/lunr/stopwords/en.txt
+  stopwords_locale:                     en
+  strip_index_html:                     false
+  min_length:                           3
+  date_format:                          mmm dd, yyyy
+
+  module_dir:                           /assets/themes/j1/modules/lunr/js
+  index_dir:                            /assets/data
+  index_name:                           lunr-index.json
+  index_file:                           /assets/data/lunr-index.json
+
+  search_input:                         '#search-query'                         # '#jss-input'
+  results:                              '#search-results'                       # selector for containing search results element
+  template:                             '#search-results-template'              # selector for Mustache.js template
+
+  # message attached in front of results (can be empty)
+  #
+  titleMsg:                                                                     # '<h3 class="ml-5 mb-2">Search results<h3>'
+  # message shown, if search returns no results (can be empty)
+  #
+  emptyMsg:                                                                     # '<p style="margin-left: 3.5rem">No matches.</p>'
+
+
+  # ----------------------------------------------------------------------------
+  # TopSearch
+  #
+  topsearch:
+    enabled:                            false
+
+    container_id:                       search_modal
+    type:                               quicksearch                             # quicksearch | elasticsearch
+    icon_family:                        MDI
+    icon_color:                         "#FFFFFF"                               # md-white
+    icon_size:                          mdi-2x
+    search_icon:                        magnify
+    close_icon:                         close
+    clear_icon:                         format-clear
+    input_color:                        rgba(0, 0, 0, 0.7)                      # rgba-darken-700
+    background_color:                   transparent                               # md-grey-50
+    placeholder:                        Your search expression
+    search_heading_lead:                ""
+    result_heading_lead:                ""
+
+# ------------------------------------------------------------------------------
+# END config

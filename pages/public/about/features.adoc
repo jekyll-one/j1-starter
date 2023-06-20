@@ -1,0 +1,126 @@
+---
+title:                                  Starter
+tagline:                                Learn The Features
+date:                                   2022-12-31 00:00:00
+description: >
+                                        JekyllOne Theme is a website template for the static
+                                        site generator Jekyll. The Theme is free to use and
+                                        can be downloaded at RubyGems as a Ruby Gem. The
+                                        Theme supports a wide range of websites, from a personal
+                                        website, a blog web, a documentation site to classic
+                                        company webs.
+
+keywords: >
+                                        Jekyll, Theme, JekyllOne, J1, Theme, Features
+
+categories:                             [ About ]
+tags:                                   [ J1, Features ]
+
+image:
+  path:                                 /assets/images/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+  width:                                1920
+  height:                               1280
+  alt:                                  J1 Starter Mockup
+
+regenerate:                             false
+permalink:                              /pages/public/about/features/
+
+resources:                              [ animate, lightbox ]
+resource_options:
+  - attic:
+      slides:
+        - url:                          /assets/images/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+          alt:                          J1 Starter Mockup
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+
+// Set (local) page attributes here
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
+:badges-enabled:                        false
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="global" %}
+
+ifeval::[{badges-enabled} == true]
+[role="mb-5"]
+{badge-j1--version-latest} {badge-j1--downloads}
+endif::[]
+
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[role="dropcap"]
+JekyllOne Theme is a website template for the static site generator Jekyll.
+The Theme is free to use and can be downloaded at
+link:{url-j1--download}[RubyGems, {browser-window--new}] as a Ruby Gem.
+The Theme supports a wide range of websites, from a personal website,
+a blog web, a documentation site to classic company webs.
+
+Read what people and companies have contributed to making a project like J1
+Theme real.
+
+// Include sub-documents (if any)
+// -----------------------------------------------------------------------------
+== General Features
+
+* _Windows_, _Linux_ and _MacOS_ supported
+* _Jekyll_ v4.3 Support
+* _Ruby_ v3 Support
+* Asciidoc and Markdown Support
+* _Asciidoctor_ plugins included
+* _Bootstrap_ V5 Support
+* Responsive Design
+* Material Design
+* Responsive Text
+* Responsive HTML Tables
+* Compressed HTML, CSS and Javascript Support
+* Bootstrap Themes from _Bootswatch_ supported
+* Icon Font Support for _MDI_, _FA_, _Iconify_ and _Twitter Emojis_
+* Themeable source code highlighting (_Rouge_)
+* SEO Support
+* Desktop and Mobile Web Navigation ready
+* Fully configurable, no programming needed
+* Near 100/100/100 _Google Lighthouse_ Scores
+
+== Modules and Extensions
+
+* _Bootstrap_ extensions included
+* _Asciidoctor_ extensions included
+* Infinite Scoll Support
+* Animate on Scroll Support
+* Smooth-Scoll Support
+* Full-text Search Engine (Lunr) included
+* Master Header Module included
+* Cookie Consent Module (GDPR compatible OptIn/Out) included
+* Clipboard Module included
+* Floating Action Buttons (FABs) included
+* Navigation Modules included
+* Desktop Web Navigation included
+* Mobile Web Navigation included
+* Blog Post Navigation included
+* Lightbox Modules included
+* Gallery Module included
+* Carousel Module included
+* Slider Module included
+* Video Player Modules included
+
+== Addons and Integrations
+
+* *Starter Web* including featured Example Content
+* *Royalty free* Images included
+* Comment Provider Support for _Disqus_ and _Hyvor_
+* _Jupyter Notebook_ Support
+* _Github Sponsors_ Support
+* _Google_ Translation Support
+* _Google Analytics_ Support (includes OptIn/OptOut support)
+* Deploy on _Github Pages_, _Netlify_ and _Heroku_ ready

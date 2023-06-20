@@ -1,0 +1,210 @@
+# ------------------------------------------------------------------------------
+# ~/_data/layouts/default.yml
+# Configuration data to specify the DEFAULT Layout of ALL content pages
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+#
+# ------------------------------------------------------------------------------
+# NOTE:
+#   By J1 Theme, "Liquid Procedures" are being used intensively. To load
+#   HTML data for a layout, the loader procedure places the data based this
+#   YAML data file into the REGION specified with a LANE.
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Layout configuration settings
+
+#   lanes|lane
+#   ----------------------------------------------------------------------------
+#   Set LANE specific configuration parameters for a page LAYOUT. The
+#   LANES array contains multiple (lane) hashes that describes the type
+#   of the component that is loaded into a lane and their specific
+#   (placement) parameters.
+#
+#   region
+#   ----------------------------------------------------------------------------
+#   J1 Themes defines, based on the general structure of a HTML page
+#   (head|body), more specific REGIONS based on HTML5 semantic elements
+#   to place HTML data:
+#
+#   head              <head> section. Contains (site-wide) meta data and
+#                     all CSS and JS files are to be loaded for a page.
+#   body-navigation   <body> NAV section. Contains the main navigation bar.
+#                     Placed a the BEGINNING of the <body> section.
+#   body-header       <body> HEADER section. Contains the page banner (header).
+#                     Placed AFTER the page navigation but BEFORE the main
+#                     content (body-main) of a page.
+#   body-main         <body> MAIN section. J1 Theme puts a <main> container
+#                     element in the <body> section to place the (main) content.
+#                     All content related elements are loaded into the region
+#                     'body-main'. Content may components like boxes, panels,
+#                     quotes etc. and the document content like sections and
+#                     articles.
+#   body-footer       <body> FOOTER section. J1 Theme puts a <footer> element
+#                     at the end of the <BODY> section. The body-footer region
+#                     contains all elements that should be loaded at the end
+#                     of a page; typically the page footer.
+#
+#   values:           head|body-navigation|body-header|body-main|body-footer
+#   default:          no defaults
+#
+#   type
+#   ----------------------------------------------------------------------------
+#   The (HTML) content of a lane can be included (from an include file) or
+#   loaded asychronously from a HTML data file by AJAX (get|load) calls.
+#   J1 Theme is using jQuery as an interface to AJAX calls.
+#
+#   values:           include|load
+#   default:          no defaults
+#
+#   source
+#   ----------------------------------------------------------------------------
+#   The parameter source defines a (site root relativ) path to the data
+#   source to be included or loaded.
+#
+#   values:           string (path)
+#   default:          no defaults
+#
+#   file
+#   ----------------------------------------------------------------------------
+#   Defines the data file to be included or loaded.
+#
+#   values:           string
+#   default:          no defaults
+#
+#   id
+#   ----------------------------------------------------------------------------
+#   Used for AJAX load calls (see parameter type). The id is used twice. First,
+#   id references a HTML fragment as part of the (HTML) data file (see parameter
+#   data below). Second, the id is used to identify the placeholder (div)
+#   element where the AJAX call puts the data on.
+#
+#   values:           string
+#   default:          no defaults
+#
+#   class
+#   ----------------------------------------------------------------------------
+#   Additional CSS classes that are put on the placeholder (div) element.
+#   Can be used for type 'load', only.
+#
+#   values:           string (CSS class name)
+#   default:          no defaults
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# DEFAULT layout configuration
+#
+lanes:
+
+  # ----------------------------------------------------------------------------
+  # HEAD region (head)
+  #   The head region contains the metadata for a page and all CSS and
+  #   JS resources are required. The contents are configured ether by the
+  #   Jekyll configuration (_config.yml) or for modules by the resources
+  #   configuration (resources.yml).
+  #
+  # ============================================================================
+
+  # METADATA loader
+  #
+  - lane:
+      enabled:                          true
+      region:                           head
+      type:                             sync
+      base:                             _includes/themes/j1
+      path:                             layouts
+      file:                             layout_metadata_generator.html
+
+  # ----------------------------------------------------------------------------
+  # RESOURCE loader
+  #
+  - lane:
+      enabled:                          true
+      region:                           head
+      type:                             sync
+      base:                             _includes/themes/j1
+      path:                             layouts
+      file:                             layout_resource_generator.html
+
+
+  # ----------------------------------------------------------------------------
+  # NAVIGATION region (body-navigation)
+  #   The navigation region contains the NAV module that generates e.g., the
+  #   menu bar or the quick links section.
+  #
+  # ============================================================================
+
+  # ----------------------------------------------------------------------------
+  # NAV Module loader
+  #
+  - lane:
+      enabled:                          true
+      region:                           body-navigation
+      type:                             sync
+      base:                             _includes/themes/j1
+      path:                             modules/navigator
+      file:                             generator.html
+
+
+  # ----------------------------------------------------------------------------
+  # FOOTER region (body-footer)
+  #   The footer region contains visible data (the page footer) and NOT
+  #   visible data to place all initializers for the JS componets specified.
+  #
+  # ============================================================================
+
+  # ----------------------------------------------------------------------------
+  # SEARCH Module loader
+  #
+  - lane:
+      enabled:                          true
+      region:                           body-navigation
+      type:                             sync
+      base:                             _includes/themes/j1
+      path:                             modules/searcher
+      file:                             generator.html
+
+  # ----------------------------------------------------------------------------
+  # EXCEPTION container
+  # The exception container is used to place additional information
+  # if processing of a component (e.g. a panel) has failed.
+  #
+  - lane:
+      enabled:                          true
+      id:                               exception_container
+      region:                           body-footer
+      type:                             async
+      class:                            container-fluid no-padding
+
+  # ----------------------------------------------------------------------------
+  # FOOTER container
+  # The page footer displayed on all pages
+  #
+  - lane:
+      enabled:                          true
+      id:                               footer_uno
+      region:                           body-footer
+      type:                             async
+      class:
+
+  # ----------------------------------------------------------------------------
+  # MODULE container
+  # Generate all initializers for the JS components specified for a page.
+  #
+  - lane:
+      enabled:                          true
+      region:                           body-footer
+      type:                             sync
+      base:                             _includes/themes/j1
+      path:                             layouts
+      file:                             layout_module_generator.html
+
+# ------------------------------------------------------------------------------
+# END config

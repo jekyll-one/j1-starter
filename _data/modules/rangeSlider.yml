@@ -1,0 +1,177 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/rangeSlider.yml
+# User Configuration of the Range Slider Module
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+#
+# ------------------------------------------------------------------------------
+# NOTE:
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                Range Slider Module
+  scope:                                User settings
+  location:                             _data/modules/rangeSlider.yml
+
+# ------------------------------------------------------------------------------
+# User settings
+#
+settings:
+  enabled:                              true
+
+  # ----------------------------------------------------------------------------
+  # Slider options
+  # ----------------------------------------------------------------------------
+  options:
+    orientation:                        horizontal
+
+  # ----------------------------------------------------------------------------
+  # Slider configurations
+  # ----------------------------------------------------------------------------
+  sliders:
+
+    # --------------------------------------------------------------------------
+    # example slider
+    #
+    - slider:
+        enabled:                        true
+        id:                             example_slider_asciidoc
+
+        options:
+          title:                        "Title of the Example Slider"
+          label:                        "Example Slider (Asciidoc), range: [5,50], start at: 25, step: 5"
+          start:                        25
+          step:                         5
+          connect:                      true
+          range:
+            min:                        5
+            max:                        50
+          format:
+            decimals:                   0
+
+    # --------------------------------------------------------------------------
+    # example slider (controled)
+    #
+    - slider:
+        enabled:                        true
+        id:                             example_slider_html
+
+        options:
+          title:                        "Title of the Example Slider (controlled)"
+          label:                        "Example Slider (HTML), range: [5,50], start at: 25, step: 5"
+          start:                        25
+          step:                         5
+          connect:                      true
+          range:
+            min:                        5
+            max:                        50
+          format:
+            decimals:                   0
+
+    # --------------------------------------------------------------------------
+    # example slider 1
+    #
+    - slider:
+        enabled:                        true
+        id:                             example_slider_1
+
+        options:
+          title:                        ""
+          label:                        "Slider 1, range: [0,100], start at: 20"
+          start:                        20
+          connect:                      true
+          step:                         1
+          range:
+            min:                        0
+            max:                        100
+          format:
+            decimals:                   0
+
+    # --------------------------------------------------------------------------
+    # example slider 2
+    #
+    - slider:
+        enabled:                        true
+        id:                             example_slider_2
+
+        options:
+          title:                        ""
+          label:                        "Slider 2, range: [0,200], start at: 80"
+          start:                        80
+          connect:                      true
+          step:                         1
+          range:
+            min:                        0
+            max:                        200
+          format:
+            decimals:                   0
+
+    # --------------------------------------------------------------------------
+    # jgSlider rowHeigth (galleryCustomizer)
+    #
+    - slider:
+        enabled:                        true
+        id:                             jgSlider_row_heigth
+
+        options:
+          title:                        ""
+          label:                        Image Row Height [px]
+          start:                        150
+          connect:                      true
+          step:                         1
+          range:
+            min:                        100
+            max:                        300
+          format:
+            decimals:                   0
+
+    # --------------------------------------------------------------------------
+    # jgSlider thumbSpacing (galleryCustomizer)
+    #
+    - slider:
+        enabled:                        true
+        id:                             jgSlider_thumb_spacing
+
+        options:
+          title:                        ""
+          label:                        Thumb Image Spacing [px]
+          start:                        1
+          connect:                      true
+          step:                         1
+          range:
+            min:                        0
+            max:                        10
+          format:
+            decimals:                   0
+
+    # --------------------------------------------------------------------------
+    # jgSlider galleryPadding (galleryCustomizer)
+    #
+    - slider:
+        enabled:                        true
+        id:                             jgSlider_gallery_padding
+
+        options:
+          title:                        ""
+          label:                        Gallery Padding [px]
+          start:                        0
+          connect:                      true
+          step:                         1
+          range:
+            min:                        0
+            max:                        50
+          format:
+            decimals:                   0
+
+# ------------------------------------------------------------------------------
+# END config

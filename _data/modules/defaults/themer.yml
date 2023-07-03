@@ -155,9 +155,9 @@ defaults:
   reloadPageOnChange:                   false                                   # reload current page, if theme has been changed
   retries:                              30                                      # retry to load theme list from API
   preview_page:                         /pages/public/previewer/current_theme/
-  menu_icon_family:                     MDI
+  menu_icon_family:                     mdib
   menu_icon_color:                      "#9E9E9E"
-  menu_icon_size:                       mdi-sm
+  menu_icon_size:                       mdib-sm
   cssThemeLink:                         bootstrapTheme
   defaultCssFile:                       https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css
   bootswatchApiUrl:                     https://bootswatch.com/api

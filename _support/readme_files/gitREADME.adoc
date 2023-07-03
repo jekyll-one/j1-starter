@@ -171,18 +171,18 @@ Use the “git tag” command with the “-d” option
 
 === From local
 
-  git tag -d v2023.3.1
+  git tag -d v2023.3.2
 
 === From remote
 
-  git push -d origin v2023.3.1
+  git push -d origin v2023.3.2
 
 == Set a Git tag
 
 # When modifying remember to issue a new tag command in git before committing,
 # then push the new tag
 #
-  git tag -a v2023.3.1 -m "v2023.3.1"
+  git tag -a v2023.3.2 -m "v2023.3.2"
   git push origin --tags
 
 == Update Git Index (cache) completely
@@ -206,10 +206,10 @@ or forced
 Then:
 
   git commit -am "Cleanup files"
-  git commit -am "New version 2023.3.1"
-  git commit --allow-empty -m "New version 2023.3.1"
-  git commit -am "Prepare new version 2023.3.1"
-  git commit -am "Latest files of version 2023.3.1"
+  git commit -am "New version 2023.3.2"
+  git commit --allow-empty -m "New version 2023.3.2"
+  git commit -am "Prepare new version 2023.3.2"
+  git commit -am "Latest files of version 2023.3.2"
 
 == Add file permissions on Windows
 

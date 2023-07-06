@@ -63,7 +63,7 @@ settings:
       enabled:                          true
 
       src:                              /assets/themes/j1/core/css/icon-fonts/fontawesome.min.css
-      selector:                         '.mdi'
+      selector:                         '.fa'
       rootMargin:                       '150px 0px'
       description:                      FA Icon CSS
 

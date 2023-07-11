@@ -47,7 +47,7 @@
 #   values:                             development|production
 #   default:                            development
 #
-environment:                            development
+environment:                            production
 
 # version
 # ------------------------------------------------------------------------------
@@ -236,7 +236,7 @@ description: >
                                         as well. No pain for private or professional purposes.
 keywords: >
                                         opensource, free, j1, template, jekyll, jekyllone, web, sites,
-                                        static, jamstack
+                                        static, jamstack, starter
 author:
   name:                                 Juergen Adams
   email:                                juergen@jekyll.one
@@ -330,7 +330,8 @@ permalink:                              pretty
 # site.url will be set to the value of host, port.
 # NOTE: Required setting for the sitemap plugin, for example.
 #
-url:                                    http://localhost:30000
+# url:                                  http://localhost:22000
+url:                                    https://starter.jekyll.one/
 
 # The subpath of your site, e.g. /blog/. Used in conjunction with
 # site.url (see above) when you want a link to something with the
@@ -356,7 +357,7 @@ base_path:                              ""
 #
 protocol:                               http
 host:                                   localhost
-port:                                   30000
+port:                                   22000
 timezone:                               Europe/Berlin
 encoding:                               UTF-8
 
@@ -396,7 +397,7 @@ exclude:                                [
                                           package-lock.json, package.json,
                                           '*.ignore', '*._config.yml',
                                           '*.bat', '*.sh', '*.tmp', 'dot.*',
-                                          '*.log', '*.ppt*', '*.pdf',
+                                          '*.txt', '*.log', '*.ppt*', '*.pdf',
                                           '*.zip', '*.7z', '*.tgz', '*.tar',
                                           '*.a2p', '*.asciidoc'
                                         ]
@@ -585,13 +586,6 @@ excerpt_truncate_words:                 100
 collections:
 
   # ----------------------------------------------------------------------------
-  # People
-  #
-  people:
-    output:                             true
-    permalink:                          /collections/public/:collection/:name/
-
-  # ----------------------------------------------------------------------------
   # Portfolio
   #
   portfolio:
@@ -682,7 +676,6 @@ defaults:
 
       toc:                              true
       fab_menu_id:                      open_toc
-      comments:                         false
       scrollbar:                        false
       personalization:                  false
       exclude_from_search:              false
@@ -726,7 +719,6 @@ defaults:
 
       toc:                              true
       fab_menu_id:                      open_toc
-      comments:                         false
       scrollbar:                        false
       page_navigation:                  true
       personalization:                  false
@@ -765,7 +757,6 @@ defaults:
 
       toc:                              true
       fab_menu_id:                      open_toc
-      comments:                         false
       scrollbar:                        false
       page_navigation:                  true
       personalization:                  false

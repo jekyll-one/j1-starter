@@ -47,13 +47,13 @@
 #   values:                             development|production
 #   default:                            development
 #
-environment:                            production
+environment:                            development
 
 # version
 # ------------------------------------------------------------------------------
 # Sets the build version of the site
 #
-version:                                2023.4.1
+version:                                2023.4.2
 
 # copyright
 # ------------------------------------------------------------------------------
@@ -236,7 +236,7 @@ description: >
                                         as well. No pain for private or professional purposes.
 keywords: >
                                         opensource, free, j1, template, jekyll, jekyllone, web, sites,
-                                        static, jamstack, starter
+                                        static, jamstack
 author:
   name:                                 Juergen Adams
   email:                                juergen@jekyll.one
@@ -330,8 +330,7 @@ permalink:                              pretty
 # site.url will be set to the value of host, port.
 # NOTE: Required setting for the sitemap plugin, for example.
 #
-# url:                                  http://localhost:22000
-url:                                    https://starter.jekyll.one/
+url:                                    http://localhost:30000
 
 # The subpath of your site, e.g. /blog/. Used in conjunction with
 # site.url (see above) when you want a link to something with the
@@ -357,7 +356,7 @@ base_path:                              ""
 #
 protocol:                               http
 host:                                   localhost
-port:                                   22000
+port:                                   30000
 timezone:                               Europe/Berlin
 encoding:                               UTF-8
 
@@ -397,7 +396,7 @@ exclude:                                [
                                           package-lock.json, package.json,
                                           '*.ignore', '*._config.yml',
                                           '*.bat', '*.sh', '*.tmp', 'dot.*',
-                                          '*.txt', '*.log', '*.ppt*', '*.pdf',
+                                          '*.log', '*.ppt*', '*.pdf',
                                           '*.zip', '*.7z', '*.tgz', '*.tar',
                                           '*.a2p', '*.asciidoc'
                                         ]
@@ -586,6 +585,13 @@ excerpt_truncate_words:                 100
 collections:
 
   # ----------------------------------------------------------------------------
+  # People
+  #
+  people:
+    output:                             true
+    permalink:                          /collections/public/:collection/:name/
+
+  # ----------------------------------------------------------------------------
   # Portfolio
   #
   portfolio:
@@ -676,6 +682,7 @@ defaults:
 
       toc:                              true
       fab_menu_id:                      open_toc
+      comments:                         false
       scrollbar:                        false
       personalization:                  false
       exclude_from_search:              false
@@ -719,6 +726,7 @@ defaults:
 
       toc:                              true
       fab_menu_id:                      open_toc
+      comments:                         false
       scrollbar:                        false
       page_navigation:                  true
       personalization:                  false
@@ -757,6 +765,7 @@ defaults:
 
       toc:                              true
       fab_menu_id:                      open_toc
+      comments:                         false
       scrollbar:                        false
       page_navigation:                  true
       personalization:                  false

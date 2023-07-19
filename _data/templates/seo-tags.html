@@ -18,15 +18,12 @@
 
 <!-- Begin J1 SEO tags -->
 
-{% if seo_tag.title? %}
-  <title>{{ seo_tag.title }}</title>
-{% endif %}
-
 <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 <meta name="builder" content="J1 Template v{{ site.version }}">
 
-{% if seo_tag.page_title %}
-  <meta property="og:title" content="{{ seo_tag.page_title }}">
+{% if seo_tag.title? %}
+  <title>{{ seo_tag.title }}</title>
+  <meta property="og:title" content="{{ seo_tag.title }}">
 {% endif %}
 
 {% if seo_tag.author.name %}
@@ -131,9 +128,10 @@
 {% endif %}
 
 {% comment %} jadams 2023-07-17, remove INVALID property 'alt' from 'ImageObject'
+{{ seo_tag.json_ld | jsonify | remove: '"alt":"J1 Theme Home",' }}
 # ------------------------------------------------------------------------------ {% endcomment %}
 <script type="application/ld+json">
-  {{ seo_tag.json_ld | jsonify | remove: '"alt":"J1 Theme Home",' }}
+  {{ seo_tag.json_ld | jsonify }}
 </script>
 
 <!-- End J1 SEO tags -->

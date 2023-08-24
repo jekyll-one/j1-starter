@@ -1,0 +1,34 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/framer.yml
+# User configuration settings for iFrameResizer
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                Framer
+  scope:                                User settings
+  location:                             _data/modules/framer.yml
+
+# ------------------------------------------------------------------------------
+# User settings
+#
+settings:
+  enabled:                            false
+
+  # ----------------------------------------------------------------------------
+  # Framer options
+  # ----------------------------------------------------------------------------
+  autoResize:                         true
+
+# ------------------------------------------------------------------------------
+# END config

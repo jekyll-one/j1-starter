@@ -1,0 +1,344 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/defaults/blog_navigator.yml
+# Default configuration to configure generated pages by J1 Blog Navigator
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                J1 Blog Navigator
+  scope:                                Default settings
+  location:                             _data/builder/defaults/blog_navigator.yml
+
+# ------------------------------------------------------------------------------
+# Global Builder settings
+# ------------------------------------------------------------------------------
+
+# Settings for future posts
+#
+# Future posts
+# -------------------------------------
+# The future flag allows post authors to give the post a date in the future
+# and to have it excluded from the build until the system time is equal or
+# after the post time.
+#
+# In Jekyll 3, this has been corrected and --future is disabled by default.
+# This means you will need to include --future if you want your future-dated
+# posts to generate when running jekyll build or jekyll serve.
+#
+# Note: In Jekyll 2.x, the --future flag was automatically enabled.
+#
+#future:                                 false
+
+# ------------------------------------------------------------------------------
+#   Blog (page) builder settings
+# ------------------------------------------------------------------------------
+
+#   The helper modules collate_simple.proc|collate_calendar.proc and
+#   collate_timeline.proc (located in the include|procedures/posts folder)
+#   are page generators to display blog posts in a e.g. timeline presentation
+#   (collate_timeline.proc) of a given category. Some genereal features to
+#   control how to build those pages can be set here.
+#
+#   icon|image_random
+#   ----------------------------------------------------------------------------
+#   For the timeline-box, an icon OR image can be configured that is displayed
+#   with the post excerpt text. DON'T use both - only icon OR image is
+#   supported for the timeline-box. The parameters icon|image can be
+#   overwritten by the frontmatter of a post.
+#
+#   icon
+#     If configured, puts an icon in front of the post excerpt for all posts
+#     of a category. Can be seen as a default setting and can be overwritten
+#     individually by the frontmatter parameter "icon" each post.
+#
+#     values:                 string (name of the icon|false)
+#     default:                false
+#
+#   icon_family
+#     Set the icon familiy from what a configured "icon" should be taken from.
+#     Note that the respective CSS file for the icon-set needs to be included
+#     (with the CSS loader).
+#
+#     values:                 string (FontAwesome|Glyphicon)
+#     default:                FontAwesome
+#
+#   image_random
+#     If configured, selects an random image from the folder specified by
+#     "image_random_path" for all posts of a category. Can be seen as a
+#     default setting if no specific "image" is|should configured with the
+#     posts frontmatter.
+#
+#     values:                 boolean (true|false)
+#     default:                false
+#
+#   image_random_path
+#     If "image_random" is set to "true", the random image is taken from folder
+#     specified by "image_random_path"
+#
+#     values:                 string (path)
+#     default:                empty
+#
+#   sharing_provider
+#   ----------------------------------------------------------------------------
+#   Set the provider (API) from which are likes_count|comment_count is taken.
+#
+#   provider
+#     Name of the the provider (API) used for commenting the blog post.
+#
+#     values:                 disqus|livefyre|intensedebate|facebook|false
+#     default:                false
+#
+#   likes_count, comment_count
+#     If set to true, set the respective values for the blog posts helper
+#     to display their numbers
+#
+#     values:                 boolean (true|false)
+#     default:                true
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Builder settings
+#
+#   previewer
+#   ----------------------------------------------------------------------------
+#   Set the previewer type
+#
+#   NOTE:
+#   The helper modules collate_simple.proc|collate_calendar.proc and
+#   collate_timeline.proc (located in the include|procedures/posts folder)
+#   are page generators to display blog posts in a e.g. timeline presentation
+#   (collate_timeline.proc) of a given category. Some genereal features to
+#   control how to build those pages can be set here.
+#
+#   previewer
+#     Name of the preview generator for the article preview.
+#
+#     values:                 list|calendar|timeline
+#     default:                list
+#
+#   description
+#   ----------------------------------------------------------------------------
+#   For the timeline-box, an icon OR image can be configured that is displayed
+#   with the post excerpt text. DON'T use both - only icon OR image is
+#   supported for the timeline-box. The parameters icon|image can be
+#   overwritten by the frontmatter of a post.
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Default settings
+#
+defaults:
+
+  # ----------------------------------------------------------------------------
+  # Navigator options
+  # ----------------------------------------------------------------------------
+  post_image:                           /assets/images/modules/attics/christa-dodoo-1920x1280.jpg
+  previewer:                            timeline
+
+  filters:
+    grayscale:                          0
+    contrast:                           0.8
+    brightness:                         0.8
+
+  button_text:
+
+    pager:
+      previous:
+        en:                             Previous
+        de:                             Vorheriger
+      next:
+        en:                             Next
+        de:                             Nächster
+      back:
+        en:                             Navigator
+        de:                             Navigator
+      first:
+        en:                             First
+        de:                             Erster
+      last:
+        en:                             Last
+        de:                             Letzter
+
+    paginator:
+      older_posts:
+        en:                             Older
+        de:                             Ältere
+      newer_posts:
+        en:                             Newer
+        de:                             Neuere
+      first_post:
+        en:                             First
+        de:                             Erste
+      last_post:
+        en:                             Last
+        de:                             Letzte
+
+    view_selector:
+      category_view:
+        en:                             Category
+        de:                             Kategorie
+      date_view:
+        en:                             Date
+        de:                             Datum
+      archive_view:
+        en:                             All
+        de:                             Alle
+      tag_view:
+        en:                             Tag
+        de:                             Tag
+
+  article_navigator:
+    page_text:
+      enabled:                          true
+
+      en:
+        description: >
+                                        <p>
+                                          Navigate through all of the articles available on this site.
+                                          To do this, use the various buttons obove to find the articles
+                                          that interest you.
+                                        </p>
+                                        <p>
+                                          The <b>Category</b> button lists articles on a specific <b>topic</b>.
+                                          If you are looking for articles by publication date, you can use the
+                                          button <b>Date</b>. All articles in reverse order of appearance can be
+                                          found by clicking the button <b>All</b>.
+                                        </p>
+
+  article_previewer:
+    page_text:
+      enabled:                          true
+
+      en:
+        headline:                       Preview
+        description: >
+                                        <p>
+                                          All articles are reverse ordered by date. The current articles are
+                                          displayed first. From the FAB button
+                                          <a href="#" class="btn-fab-floating btn-small bg-primary">
+                                          <i class="mdib mdib-plus"></i>FAB button</a>
+                                          you can reach a table of contents
+                                          <a href="#" class="btn-fab-floating btn-small bg-primary">
+                                          <i class="mdib mdib-wrap"></i>open_mmenu_toc</a>
+                                          of all available articles in this reverse order.
+                                        </p>
+                                        <p>
+                                          To preview older posts, click the button <b>Older</b> from the Preview Bar.
+                                          For newer posts, click the button <b>Newer</b> for more recent articles.
+                                        </p>
+
+  archive_view:
+    page_text:
+      enabled:                          true
+
+      en:
+        headline:                       All Posts
+        description: >
+                                        <p>
+                                          Check out <b>all</b> articles in the blog posts <b>archive</b>.
+                                          Below, find articles available this site sorted from the youngest
+                                          to the oldest. From the FAB button <button type="button" class="btn-fab-floating
+                                          btn-small bg-primary raised-z5 mr-2 ml-2" aria-label="fab-button">
+                                          <i class="mdib mdib-plus"></i></button> you can reach a
+                                          table of contents <button type="button" class="btn-fab-floating btn-small
+                                          bg-primary raised-z5 mr-2 ml-2" aria-label="fab-button">
+                                          <i class="mdib mdib-wrap"></i></button> of all available
+                                          articles in the same order.
+                                        </p>
+                                        <p>
+                                          From the navigation bar, <b>Navigator</b> takes you back to the
+                                          <b>main page</b> of the Navigator. Articles ordered by <b>category</b>
+                                          can be found clicking the button <b>Category</b>. To list all posts
+                                          in the archive by <b>date</b>, click on the button <b>Date</b>.
+                                        </p>
+
+  category_view:
+    page_text:
+      enabled:                          true
+
+      en:
+        headline:                       Posts by Category
+        description: >
+                                        <p>
+                                          On this page you will find all articles from the <b>Archive</b>
+                                          of the blog posts. The articles are grouped by <b>Category</b>.
+                                          From the FAB button <button type="button" class="btn-fab-floating
+                                          btn-small bg-primary raised-z5 mr-2 ml-2" aria-label="fab-button">
+                                          <i class="mdib mdib-plus"></i></button> you can reach a table of
+                                          contents <button type="button" class="btn-fab-floating btn-small
+                                          bg-primary raised-z5 mr-2 ml-2" aria-label="fab-button">
+                                          <i class="mdib mdib-wrap"></i></button> of all articles available.
+                                        </p>
+                                        <p>
+                                          From the navigation bar, the button <b>Navigator</b> takes you back
+                                          to the <b>main page</b>. To list all articles in the Archive by date,
+                                          click on the button <b>Date</b>. All articles in reverse order
+                                          of appearance can be listed by clicking the button <b>All</b>.
+                                        </p>
+
+  date_view:
+    page_text:
+      enabled:                          true
+
+      en:
+        headline:                       Posts by Date
+        description: >
+                                        <p>
+                                          On this page you will find all articles from the <b>archive</b>
+                                          of the blog posts. The articles are grouped by <b>Date</b>.
+                                          From the FAB button <button type="button" class="btn-fab-floating
+                                          btn-small bg-primary raised-z5 mr-2 ml-2" aria-label="fab-button">
+                                          <i class="mdib mdib-plus"></i></button> you can reach a
+                                          table of contents <button type="button" class="btn-fab-floating btn-small
+                                          bg-primary raised-z5 mr-2 ml-2" aria-label="fab-button">
+                                          <i class="mdib mdib-wrap"></i></button> of all available articles
+                                          in the same order.
+                                        </p>
+                                        <p>
+                                          From the navigation bar, the button <b>Navigator</b> takes you back
+                                          to the <b>main page</b>. To list all articles in the archive by
+                                          Category, click on the button <b>Category</b>. All articles
+                                          in reverse order of appearance can be listed by clicking the button
+                                          <b>All</b>.
+                                        </p>
+
+  tag_view:
+    page_text:
+      enabled:                          true
+
+      en:
+        headline:                       Posts by Tag
+        description: >
+                                        <p>
+                                          On this page you will find all articles from the <b>archive</b>
+                                          of the blog posts. The articles are grouped by <b>Tag</b>.
+                                          From the FAB button <button type="button" class="btn-fab-floating
+                                          btn-small bg-primary raised-z5 mr-2 ml-2" aria-label="fab-button">
+                                          <i class="mdib mdib-plus"></i></button> you can reach a
+                                          table of contents <button type="button" class="btn-fab-floating btn-small
+                                          bg-primary raised-z5 mr-2 ml-2" aria-label="fab-button">
+                                          <i class="mdib mdib-wrap"></i></button> of all available articles
+                                          in the same order.
+                                        </p>
+                                        <p>
+                                          From the navigation bar, the button <b>Navigator</b> takes you back
+                                          ti the <b>main page</b>. To list articles in the
+                                          archive by Category, click on the button <b>Category</b>. All articles
+                                          in reverse order of appearance can be listed listed by clicking the button
+                                          <b>All</b>.
+                                        <p>
+
+# ------------------------------------------------------------------------------
+# END config

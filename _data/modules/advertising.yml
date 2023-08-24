@@ -1,0 +1,179 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/advertising.yml
+# User Configuration of the Ad Module
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+#
+# ------------------------------------------------------------------------------
+# NOTE:
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                Advertising
+  scope:                                User settings
+  location:                             _data/modules/advertising.yml
+
+# ------------------------------------------------------------------------------
+# User settings
+#
+settings:
+  enabled:                              true
+
+  google:
+    publisherID:                        <your-publisher-id>
+
+    # --------------------------------------------------------------------------
+    # Container settings
+    #
+    #   enabled
+    #   ------------------------------------------------------------------------
+    #   Enables or disables the ad unit (container). If an container is
+    #   disabled, this unit get NOT initialized for ads on any page.
+    #
+    #   values:                       true|false
+    #   default:                      true
+    #
+    #   placement (currently NOT supported)
+    #   ------------------------------------------------------------------------
+    #   Defines the placement of ad unit containers. For default
+    #   (manual), all ad units are placed on content pages manually
+    #   by adding the <ins>-code on the id (Ad Properties) specified.
+    #
+    #   values:                       auto|manual
+    #   default:                      manual
+    #
+    # --------------------------------------------------------------------------
+
+    # --------------------------------------------------------------------------
+    # Ad Properties
+    #
+    #   id
+    #   ------------------------------------------------------------------------
+    #   Unique ad id (on an page)
+    #
+    #   values:                       ad_integer
+    #   default:                      none
+    #
+    #   layout
+    #   ------------------------------------------------------------------------
+    #   Set the page layout for the ad
+    #
+    #   values:                       home|page|post
+    #   default:                      none
+    #
+    #   styles
+    #   ------------------------------------------------------------------------
+    #   Defines the CSS style|s
+    #
+    #   values:                       string
+    #   default:                      display: block
+    #
+    #   publisherID
+    #   ------------------------------------------------------------------------
+    #   Defines the publisher id used for an advertising
+    #
+    #   values:                       ca-pub-number|pub-number
+    #   default:                      none
+    #
+    #   slot
+    #   ------------------------------------------------------------------------
+    #   Defines the slot id
+    #
+    #   values:                       number
+    #   default:                      none
+    #
+    #   ad_layout
+    #   ------------------------------------------------------------------------
+    #   Set the ad layout
+    #
+    #   values:                       string
+    #   default:                      none
+    #
+    #   format
+    #   ------------------------------------------------------------------------
+    #   Defines the (auto)-format settings
+    #
+    #   values:                       string
+    #   default:                      auto
+    #
+    #   test
+    #   ------------------------------------------------------------------------
+    #   For testing only. If ad-test is enabled (on), clicks and impressions
+    #   NOT recorded by the service and advertisers are NOT charged.
+    #
+    #   values:                       on|off
+    #   default:                      off
+    #
+    # --------------------------------------------------------------------------
+
+    # --------------------------------------------------------------------------
+    # All advertising container/ad available
+    # --------------------------------------------------------------------------
+    ads:
+
+      # ------------------------------------------------------------------------
+      # All advertising containers on the landing page
+      # ------------------------------------------------------------------------
+
+      # ------------------------------------------------------------------------
+      # Ad on slot id "<your-slot-id>" (Type Display)
+      #
+      - ad:
+
+        # container settings
+        # ----------------------------------------------------------------------
+        enabled:                        true
+
+        id:                             ad_<your-slot-id>
+        layout:                         home
+        content_page:                   home
+
+        # ad properties
+        # ----------------------------------------------------------------------
+        publisherID:                    <your-publisher-id>
+        test:                           "on"
+        styles:                         "display:block;"
+        slot:                           <your-slot-id>
+        ad_layout:                      display
+        ad_format:                      auto
+        ad_responsive:                  true
+
+      # ------------------------------------------------------------------------
+      # All advertising containers on content pages
+      # ------------------------------------------------------------------------
+
+      # ------------------------------------------------------------------------
+      # Ad on slot id "<your-slot-id>" (Type Display)
+      #
+      - ad:
+
+        # container settings
+        # ----------------------------------------------------------------------
+        enabled:                        true
+
+        id:                             ad_<your-slot-id>
+        layout:                         page
+        content_page:                   preview_google_adsense
+
+        # ad properties
+        # ----------------------------------------------------------------------
+        publisherID:                    <your-publisher-id>
+        test:                           "on"
+        styles:                         "display:block;"
+        slot:                           <your-slot-id>
+        ad_layout:                      display
+        ad_format:                      auto
+        ad_responsive:                  true
+
+# ------------------------------------------------------------------------------
+# END config

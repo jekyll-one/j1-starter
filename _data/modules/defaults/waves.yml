@@ -1,0 +1,34 @@
+# ------------------------------------------------------------------------------
+#  ~/_data/modules/defaults/wave.yml
+#  Default configuration settings for J1 Wave module
+#
+#  Product/Info:
+#  https://jekyll.one
+#
+#  Copyright (C) 2023 Juergen Adams
+#
+#  J1 Theme is licensed under the MIT License.
+#  See: https://github.com/jekyll-one/J1 Theme/blob/master/LICENSE
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                J1 Wave
+  scope:                                Default settings
+  location:                             _data/modules/defaults/wave.yml
+
+# ------------------------------------------------------------------------------
+# Default settings
+#
+defaults:
+  enabled:                              false
+
+  # ----------------------------------------------------------------------------
+  # Wave options
+  # ----------------------------------------------------------------------------
+  themes:                               [ UnoLight ]
+
+# ------------------------------------------------------------------------------
+# END config

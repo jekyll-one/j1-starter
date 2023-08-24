@@ -1,0 +1,437 @@
+---
+title:                                  Simple Document Skeleton
+tagline:                                Create Typical Articles
+
+date:                                   2022-01-01
+#last_modified:                         2023-01-01
+
+description: >
+                                        J1 Template is a Bootstrap V5 website template for the static
+                                        site generator Jekyll.
+                                        Simple documents are used quite often. If the number
+                                        of chapters is about or less than three and the document
+                                        is small in size. This document type does not use any
+                                        (local) Asciidoc include files or attributes.
+
+categories:                             [ Knowledge, Asciidoc ]
+tags:                                   [ Skeleton, SimpleDocument ]
+
+robots:
+  index:                                false
+  follow:                               false
+
+image:
+  path:                                 /assets/images/modules/attics/sigmund-1920x1280.jpg
+  width:                                1920
+  height:                               1280
+
+personalization:                        false
+comments:                               false
+exclude_from_search:                    false
+fab_menu_id:                            open_toc
+scrollbar:                              false
+toc:                                    true
+regenerate:                             false
+permalink:                              /pages/public/skeleton/simple/
+
+resources:                              [ animate, clipboard, lightbox, rouge ]
+resource_options:
+  - toccer:
+      collapseDepth:                    3
+  - attic:
+      slides:
+        - url:                          /assets/images/modules/attics/sigmund-1920x1280.jpg
+          alt:                          Photo by Sigmund on Unsplash
+          badge:
+            type:                       unsplash
+            author:                     Sigmund
+            href:                       https://unsplash.com/@sigmund
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+
+// Set (local) page attributes here
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
+:url-fontawesome--home:                 https://fontawesome.com/
+:url-fontawesome--icons:                https://fontawesome.com/icons?d=gallery/
+:url-fontawesome--get-started:          https://fontawesome.com/get-started/
+
+:url-mdi--home:                         https://materialdesignicons.com/
+:url-mdi-icons--cheatsheet:             https://cdn.materialdesignicons.com/3.3.92/
+
+:url-iconify--home:                     https://iconify.design/
+:url-iconify--icon-sets:                https://iconify.design/icon-sets/
+:url-iconify--medical-icons:            https://iconify.design/icon-sets/medical-icon/
+:url-iconify--brand-icons:              https://iconify.design/icon-sets/logos/
+
+:url-roundtrip--mdi-icons:              /pages/public/learn/roundtrip/mdi_icon_font/#material-design-icons
+:url-roundtrip--fontawesome-icons:      /pages/public/learn/roundtrip/mdi_icon_font/#fontawesome-icons
+:url-roundtrip--iconify-icons:          /pages/public/learn/roundtrip/mdi_icon_font/#iconify-icons
+:url-roundtrip--asciidoc-extensions:    /pages/public/learn/roundtrip/asciidoc_extensions/
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="global" %}
+
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The Asciidoc skeleton *simple-document* a helper for setting up a base file
+and folder structure for simple-document AsciiDoc pages based on _Jekyll_ and
+_J1 Template_. You need *both* to use this skeleton creating AsciiDoc
+documents from it.
+
+Simple documents are used quite often for documents of a website. If the number
+of chapters is about or less than three and the document is small in size,
+simple documents should fit. This document type is based on a *single* Asciidoc
+document and does *not* use any (local) Asciidoc include files or attributes.
+
+[NOTE]
+====
+.Moving documents based on a J1 Skeleton
+
+All J1 Asciidoc Skeletons are fully *relocateable* and can be placed in any
+subfolder of your Jekyll site.
+====
+
+// Include sub-documents (if any)
+// -----------------------------------------------------------------------------
+[role="mt-5"]
+== Synopsis
+
+_Jekyll_ is a *robot*, an *engine* to generate a site from a site *scaffold*.
+The _Jekyll_ Ruby *Gem* provides an  *executable*  named `jekyll` to be used
+at the commandline.
+
+Several *commands* and related *options* are available to control how the
+*engine* `jekyll` generates a *site*.
+
+[source, sh]
+----
+jekyll <command> [options]
+----
+
+Find all commands available for the  *executable*  `jekyll` with the following
+sections below.
+
+
+[role="mt-5"]
+== Commands
+
+To change Jekyll’s default behavior generating *sites*, have a look through
+the configuration options. All *general* options can be found with the section
+<<General commands>>. All specific commands and options to control *build*
+and *serve* processes for a *site*, see the sections for the <<Build command>>
+and the <<Serve command>>.
+
+
+=== General commands
+
+The *executable* `jekyll` provides some *general* commands to create e.g. a
+new site *scaffold* from the scratch (based on the default gem-based theme
+*Minima*) or some *support* commands like `doctor` to check the configuration
+of a site or `clean` to reset an existing, already generated *site*.
+
+Have a look through the commands and options available this section.
+
+.General commands
+[cols="2a,2a,8a", width="100%", options="header", role="rtable mt-4"]
+|===
+|Command |Options |Description
+
+|`new`
+|`--blank`
+|Creates a new Jekyll site with default gem-based theme. Using option
+`--blank` to create a new blank Jekyll site scaffold.
+
+|`doctor` \| `hyde`
+|`na`
+|Outputs any deprecation or configuration issues.
+
+|`new-theme`
+|`na`
+|Creates a new Jekyll theme scaffold.
+
+|`clean`
+|`na`
+|Removes the generated site (folder `_site`) and all Jekyll metadata files.
+
+|`help`
+|`<subcommand>`
+|Shows help, optionally for a given subcommand like *build*.
+Example: `jekyll help build`.
+
+|===
+
+=== Build command
+
+Performs a one off build your site. For default, site pages gets written
+to the folder *./_site*
+
+.Synopsis
+[source, sh]
+----
+jekyll build | b [options]
+----
+
+NOTE: Typically you’ll use `jekyll serve` while developing locally and
+`jekyll build` when you need to generate the site for production.
+Build Commands
+[cols="4a,8a", width="100%", options="header", role="rtable mt-4"]
+|===
+|Option |Description
+
+|`-c`, `--config` *CONFIG_FILE [,CONFIG_FILE2, ..]*
+|Use custom configuration file.
+
+|`-d, --destination` *DESTINATION*
+|The current folder will be generated into DESTINATION.
+
+|`-s` \| `--source` *SOURCE*
+|Custom source directory.
+
+|`--future`
+|Publishes posts with a future date.
+
+|`--limit_posts` *MAX_POSTS*
+|Limits the number of posts to parse and publish.
+
+|`-w` \| `--[no-]watch`
+|Watch for changes and rebuild
+
+|`-b` \| `--baseurl` *URL*
+|Serve the website from the given base URL.
+
+|`--force_polling`
+|Force watch to use polling.
+
+|`--lsi`
+|Use LSI for improved related posts.
+
+|`-D` \| `--drafts`
+|Render posts in the _drafts folder.
+
+|`--unpublished`
+|Render posts that were marked as unpublished.
+
+|`-q` \| `--quiet`
+|Silence output.
+
+|`-V` \| `--verbose`
+|Print verbose output
+
+|`-i` \| `--incremental`
+|Enable incremental rebuild.
+
+|`--strict_front_matter`
+|Fail if errors are present in front matter.
+
+|`-h` \| `--help`
+|Show detailed options an flags.
+
+|`-s` \| `--source` *DIR*
+|Source directory. Defaults to current directory `./`.
+
+|`-d` \| `--destination` *DIR*
+|Destination directory. Defaults to `./_site`.
+
+|`--safe`
+|Safe mode. Defaults to `false`
+
+|`-p` \| `--plugins` *PLUGINS_DIR1[,PLUGINS_DIR2[,...]]*
+|Plugins directory. Defaults to `./_plugins`
+
+|`--layouts` *DIR*
+|Layouts directory. Defaults to `./_layouts`.
+
+|`--profile`
+|Generate a Liquid rendering profile.
+
+|`-t` \| `--trace`
+|Show the full backtrace when an error occurs.
+
+|`-v` \| `--version`
+|Print the name and version.
+
+|===
+
+=== Serve command
+
+Create your site any time a source file changes and serves it locally using
+builtin web server *WEBRick*.
+
+For default, site pages gets writen to *./_site*
+
+.Synopsis
+[source, sh]
+----
+jekyll serve | s [options]
+----
+
+NOTE: Typically you’ll use `jekyll serve` while developing locally and
+`jekyll build` when you need to generate the site for production.
+
+
+.Serve Commands
+[cols="6a,6a", width="100%", options="header", role="rtable mt-4"]
+|===
+|Options |Description
+
+|`-c`, `--config` CONFIG_FILE [,CONFIG_FILE2, ..]
+|Use custom configuration file.
+
+|`-d, --destination` *DESTINATION*
+|The current folder will be generated into DESTINATION
+
+|`-s` \| `--source` *SOURCE*
+|Custom source directory.
+
+|`--future`
+|Publishes posts with a future date
+
+|`--limit_posts` *MAX_POSTS*
+|Limits the number of posts to parse and publish.
+
+|`-w` \| `--[no-]watch`
+|Watch for changes and rebuild.
+
+|`-b` \| `--baseurl` *URL*
+|Serve the website from the given base URL.
+
+|`--force_polling`
+|Force watch to use polling.
+
+|`--lsi`
+|Use `LSI` for improved related posts.
+
+|`-D` \| `--drafts`
+|Render posts in the _drafts folder
+
+|`--unpublished`
+|Render posts that were marked as unpublished.
+
+|`-q` \| `--quiet`
+|Silence the output.
+
+|`-V` \| `--verbose`
+|Print verbose output
+
+|`-i` \| `--incremental`
+|Enable incremental rebuild.
+
+|`--strict_front_matter`
+|Fail if errors are present in front matter.
+
+|`--ssl-cert` *CERT*
+|X.509 (SSL) certificate neede for HTTPS connections.
+
+|`--ssl-key` *KEY*
+|X.509 (SSL) Private Key needed for HTTPS connections.
+
+|`-H` \| `--host` *HOST*
+|Host to bind to.
+
+|`-o` \| `--open-url`
+|Launch your site in a browser.
+
+|`-B` \| `--detach`
+|Run the server in the background. *Not* available for the Windows operating
+system.
+
+|`-P` \| `--port` *PORT*
+|Port to listen on.
+
+|`--show-dir-listing`
+|Show a directory listing instead of loading your index file.
+
+|`--skip-initial-build`
+|Skips the initial site build which occurs before the server is started
+
+|`-l` \| `--livereload`
+|Use LiveReload to automatically refresh browsers.
+
+|`--livereload-ignore` *GLOB1[,GLOB2[,...]]*
+|Files for LiveReload to ignore. Remember to quote the values so your
+shell won't expand them.
+
+|`--livereload-min-delay` *SECONDS*
+|Minimum reload delay.
+
+|`--livereload-max-delay` *SECONDS*
+|Maximum reload delay.
+
+|`--livereload-port` *PORT*
+|Port for LiveReload to listen on.
+
+|`-h` \| `--help`
+|Show detailed options an flags.
+
+|`-s` \| `--source` *DIR*
+|Source directory. Defaults to current directory `./`.
+
+|`-d` \| `--destination` *DIR*
+|Destination directory. Defaults to `./_site`.
+
+|`--safe`
+|Safe mode. Defaults to `false`.
+
+|`-p` \| `--plugins` *PLUGINS_DIR1[,PLUGINS_DIR2[,...]]*
+|Plugins directory. Defaults to `./_plugins`.
+
+|`--layouts` *DIR*
+|Layouts directory. Defaults to `./_layouts`.
+
+|`--profile`
+|Generate a Liquid rendering profile.
+
+|`-t` \| `--trace`
+|Show the full backtrace when an error occurs.
+
+|`-v` \| `--version`
+|Print the name and version.
+
+|===
+
+
+[role="mt-5"]
+== Examples
+
+Find some typical use case running Jekyll from commandline below.
+
+=== Build a site from custom configuration
+
+Typically you’ll use `jekyll serve` while developing locally and
+`jekyll build` when you need to generate the site for production.
+
+[source, sh]
+----
+jekyll b -c ./site_configs/_config.yml
+----
+
+=== Build a site in mode incremental
+
+Typically you’ll use `jekyll serve` while developing locally and
+`jekyll build` when you need to generate the site for production.
+
+[source, sh]
+----
+jekyll b --incremental
+----
+
+=== Run a site in mode incremental
+
+Typically you’ll use `jekyll serve` while developing locally and
+`jekyll build` when you need to generate the site for production.
+
+[source, sh]
+----
+jekyll s --incremental
+----

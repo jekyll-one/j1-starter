@@ -1,0 +1,251 @@
+# ------------------------------------------------------------------------------
+# ~/_data/components/j1_panel.yml
+# Template specific configuration data to configure panel lanes
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023 Juergen Adams
+#
+# J1 Theme is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+
+  title:                                Panel
+  scope:                                Default settings
+  location:                             _data/blocks/defaults/panel.yml
+
+
+# ------------------------------------------------------------------------------
+# DEFAULT settings
+#
+defaults:
+
+  # ----------------------------------------------------------------------------
+  # Global settings
+  #
+  data_path:                            /assets/data/panel/index.html
+
+  # ----------------------------------------------------------------------------
+  # PLAN panel
+  #
+  #   Displays a fully configurable pricing plan. For commercial use or
+  #   for collecting donations, e.g. via GitHub Sponsors.
+  #
+  # ----------------------------------------------------------------------------
+  #
+  plan:
+    enabled:                            false
+
+    id:                                 home_plan_panel
+    comment:                            Home Plan Panel
+    type:                               plan
+
+    animate:                            false
+    properties:                         mt-5 mb-5
+    plan_price:
+      currency:                         $
+    provider:                           Github
+    account:                            daattali
+    title:                              J1 Plans
+    title_translate:                    notranslate                             # translate|notranslate
+    tagline:                            your way
+
+
+  # ----------------------------------------------------------------------------
+  # INTRO panel
+  #
+  #   Fully configurake display element, mainly used on landing
+  #   pages, to give a overview on the services provided by
+  #   the website.
+  #
+  # ----------------------------------------------------------------------------
+  #
+  intro:
+    enabled:                            false
+
+    id:                                 intro_panel_id
+    comment:                            Intro Panel
+    type:                               intro
+    icon_family:                        MDI
+
+
+    cards:
+
+      - card:
+          enabled:                      false
+          type:                         text
+          title:                        J1 Theme
+          tagline:                      tagline-text-1
+          icon:                         responsive
+          icon_size:                    8x
+          icon_color:                   md-grey-800
+          text:                         card-text-1
+
+          buttons:
+
+            - button:
+                text:                   button-text-1
+                class:                  btn-primary btn-flex
+                icon:                   image
+                icon_size:              lg
+                icon_color:             md-grey-50
+                href:                   #!
+
+      - card:
+          enabled:                      false
+          type:                         text
+          title:                        J1 Theme
+          tagline:                      tagline-text-2
+          icon:                         responsive
+          icon_size:                    8x
+          icon_color:                   md-grey-800
+          text:                         card-text-2
+
+          buttons:
+
+            - button:
+                text:                   button-text-2
+                class:                  btn-primary btn-flex
+                icon:                   image
+                icon_size:              lg
+                icon_color:             md-grey-50
+                href:                   #!
+
+      - card:
+          enabled:                      false
+          type:                         text
+          title:                        J1 Theme
+          tagline:                      tagline-text-3
+          icon:                         responsive
+          icon_size:                    8x
+          icon_color:                   md-grey-800
+          text:                         card-text-3
+
+          buttons:
+
+            - button:
+                text:                   button-text-3
+                class:                  btn-primary btn-flex
+                icon:                   image
+                icon_size:              lg
+                icon_color:             md-grey-50
+                href:                   #!
+
+
+  # ----------------------------------------------------------------------------
+  # SERVICE panel
+  #
+  #   Complex, but fully configurake display element (mainly used on landing
+  #   pages) to give a detailed inside view on the services provided by
+  #   the website.
+  #
+  # ----------------------------------------------------------------------------
+  #
+  service:
+    enabled:                            false
+
+    id:                                 service_panel
+    comment:                            Service Panel
+    type:                               service
+    scroller:                           true
+    properties:                         mt-5 mb-5
+
+    title:                              Title
+    tagline:                            tagline
+    description_properties:             mt-3 mr-3 mb-3
+    description: >
+                                        <p class="dropcap">
+                                          Default description text.
+                                        </p>
+    cards:
+
+      - card:
+          enabled:                      false
+          type:                         service
+          icon:                         image
+          icon_size:                    8x
+          icon_color:                   md-grey-800
+          href:                         #!
+          title:                        service-panel title-1
+          tagline:                      service-panel tagline-1
+          text:                         card text 1
+
+          services:
+            - service:
+                title:                  service 1-1
+                href:                   #!
+            - service:
+                title:                  service 1-2
+                href:                   #!
+            - service:
+                title:                  service 1-3
+                href:                   #!
+
+      - card:
+          enabled:                      false
+          type:                         service
+          icon:                         image
+          icon_size:                    8x
+          icon_color:                   md-grey-800
+          href:                         #!
+          title:                        service-panel title-2
+          tagline:                      service-panel tagline-2
+          text:                         service-panel card text 2
+
+          services:
+            - service:
+                title:                  service 2-1
+                href:                   #!
+            - service:
+                title:                  service 2-2
+                href:                   #!
+            - service:
+                title:                  service 2-3
+                href:                   #!
+
+
+  # ----------------------------------------------------------------------------
+  # NEWS panel
+  #
+  #   The news panel displays a configurable number of available posts
+  #   (excerpts) using infinite scroll.
+  #
+  # ----------------------------------------------------------------------------
+  #
+  news:
+    enabled:                            false
+
+    id:                                 news_panel_id
+    comment:                            News Panel
+    type:                               news
+
+    animate:                            fadeInUp
+    properties:                         mt-5 mr-3 mb-5 ml-3
+    title:                              news-panel-title
+    tagline:                            news-panel-tagline
+
+
+  # ----------------------------------------------------------------------------
+  # EXCEPTION panel
+  #
+  #   The EXCEPTION panel is used (internally) to place additional
+  #   information to the (default) exception CONTAINER if processing
+  #   of a panel has failed.
+  # ----------------------------------------------------------------------------
+  #
+  exception:
+    enabled:                            true
+
+    id:                                 exception_container
+    comment:                            Default Exception Panel
+    type:                               exception
+
+# ------------------------------------------------------------------------------
+# END config

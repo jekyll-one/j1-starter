@@ -1,0 +1,57 @@
+# ------------------------------------------------------------------------------
+#  ~/_data/modules/iconPicker.yml
+#  User configuration settings for J1 iconPicker module
+#
+#  Product/Info:
+#  https://jekyll.one
+#
+#  Copyright (C) 2023 Juergen Adams
+#
+#  J1 Theme is licensed under the MIT License.
+#  See: https://github.com/jekyll-one/J1 Theme/blob/master/LICENSE
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                J1 iconPicker
+  scope:                                User settings
+  location:                             _data/modules/iconPicker.yml
+
+# ------------------------------------------------------------------------------
+# User configuration settings
+#
+settings:
+  enabled:                              true
+  allowEmpty:                           false
+
+  # ------------------------------------------------------------------------------
+  # Picker configurations (currently NOT supported)
+  #
+  pickers:
+
+    # --------------------------------------------------------------------------
+    # MDI Light Picker
+    #
+    - picker:
+      enabled:                          false
+
+      id:                               base
+      picker_button_id:                 icon_picker_base
+      iconLibraries:                    [ mdi-icons-light.min.json ]
+      iconLibrariesCss:                 [ /assets/themes/j1/core/css/icon-fonts/mdil.min.css ]
+
+    # --------------------------------------------------------------------------
+    # MDI Base Picker
+    #
+    - picker:
+      enabled:                          false
+
+      id:                               mdi
+      picker_button_id:                 icon_picker_base
+      iconLibraries:                    [ mdi-icons-base.min.json ]
+      iconLibrariesCss:                 [ /assets/themes/j1/core/css/icon-fonts/mdib.min.css ]
+
+# ------------------------------------------------------------------------------
+# END config

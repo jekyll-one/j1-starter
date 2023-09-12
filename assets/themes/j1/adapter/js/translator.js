@@ -196,6 +196,7 @@ j1.adapter.translator = (function (j1, window) {
         var same_site     = '{{cookie_options.same_site}}';
         var option_domain = '{{cookie_options.domain}}';
         var translationFeedbackHighlight;
+        var translationIframeV106;
 
         user_consent      = j1.readCookie(cookie_names.user_consent);
 
@@ -314,11 +315,11 @@ j1.adapter.translator = (function (j1, window) {
 
           // hide the translation iFrame since chrome v106 ???
           //
-          translationFeedbackHighlight  = '<style id="translationIframeV106">';
-          translationFeedbackHighlight += '  .VIpgJd-ZVi9od-ORHb-OEVmcd {';
-          translationFeedbackHighlight += '    visibility:  hidden !important;';
-          translationFeedbackHighlight += '  }';
-          translationFeedbackHighlight += '</style>';
+          translationIframeV106  = '<style id="translationIframeV106">';
+          translationIframeV106 += '  .VIpgJd-ZVi9od-ORHb-OEVmcd {';
+          translationIframeV106 += '    visibility:  hidden !important;';
+          translationIframeV106 += '  }';
+          translationIframeV106 += '</style>';
 
           $('head').append(translationIframeV106);
 

@@ -104,6 +104,7 @@ j1.adapter.translator = (function (j1, window) {
   var hostname;
   var domain;
   var subDomain;
+  var isSubDomain;
   var cookie_option_domain;
   var secure;
   var logText;
@@ -150,7 +151,8 @@ j1.adapter.translator = (function (j1, window) {
       baseUrl               = url.origin;
       hostname              = url.hostname;
       domain                = hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1);
-      subDomain             = j1.subdomain(hostname);
+      subDomain             = '.' + domain;
+      isSubDomain           = j1.subdomain(hostname);
       secure                = (url.protocol.includes('https')) ? true : false;
       navigator_language    = navigator.language || navigator.userLanguage;     // userLanguage for MS IE compatibility
       translation_language  = navigator_language.split('-')[0];
@@ -412,8 +414,9 @@ j1.adapter.translator = (function (j1, window) {
       var url               = new liteURL(window.location.href);
       var baseUrl           = url.origin;
       var hostname          = url.hostname;
-      var auto_domain       = hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1);
-      var subDomain         = j1.subdomain(hostname);
+      var domain            = hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1);
+      var subDomain         = '.' + domain;
+      var isSubDomain       = j1.subdomain(hostname);
       var domainAttribute;
       var srcLang;
       var destLang;
@@ -471,8 +474,8 @@ j1.adapter.translator = (function (j1, window) {
       // in an empty field and two cookies (host+domain) if domain option
       // is enabled!!!
       // -----------------------------------------------------------------------
-      if (subDomain) {
-        Cookies.set('googtrans', transCode, { domain: auto_domain });
+      if (isSubDomain) {
+        Cookies.set('googtrans', transCode, { domain: domain });
         // jadams, 2023-09-12: added because BOTH cookies seems required
         Cookies.set('googtrans', transCode);
       } else {

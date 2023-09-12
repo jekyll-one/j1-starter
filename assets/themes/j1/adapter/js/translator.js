@@ -303,7 +303,8 @@ j1.adapter.translator = (function (j1, window) {
           // hide the translation feedback
           //
           translationFeedbackHighlight  = '<style id="translationFeedbackHighlight">';
-          translationFeedbackHighlight += '  .VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q {';
+//        translationFeedbackHighlight += '  .VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q {';
+          translationFeedbackHighlight += '  .VIpgJd-ZVi9od-ORHb-OEVmcd {';
           translationFeedbackHighlight += '    background-color:  transparent !important;';
           translationFeedbackHighlight += '    box-shadow: none !important;;';
           translationFeedbackHighlight += '  }';
@@ -329,7 +330,7 @@ j1.adapter.translator = (function (j1, window) {
               //   }
               // }
 
-              // remove googtrans cookie on domain (created by GT ???) 
+              // remove googtrans cookie on domain (created by GT ???)
               Cookies.remove('googtrans', { domain: '.' + domain });
             }
           } else {

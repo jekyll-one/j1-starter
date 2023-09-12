@@ -490,16 +490,16 @@ j1.adapter.translator = (function (j1, window) {
       // in an empty field and two cookies (host+domain) if domain option
       // is enabled!!!
       // -----------------------------------------------------------------------
+//       if (subDomain) {
+//         // Cookies.set('googtrans', transCode, { domain: auto_domain });
+//         Cookies.set('googtrans', transCode, { domain: domain });
+//       } else {
+//         Cookies.set('googtrans', transCode);
+// //      Cookies.set('googtrans', transCode, { domain: hostname });
+//       }
 
-      if (subDomain) {
-        // Cookies.set('googtrans', transCode, { domain: auto_domain });
-        Cookies.set('googtrans', transCode, { domain: domain });
-      } else {
-        Cookies.set('googtrans', transCode);
-//      Cookies.set('googtrans', transCode, { domain: hostname });
-      }
-
-//    Cookies.set('googtrans', transCode);
+      // set googtrans cookie only for this site
+      Cookies.set('googtrans', transCode);
 
       // reload current page (skip cache)
       location.reload(true);

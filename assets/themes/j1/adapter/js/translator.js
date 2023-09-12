@@ -421,7 +421,11 @@ j1.adapter.translator = (function (j1, window) {
       var hostname          = url.hostname;
       var auto_domain       = hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1);
       var subDomain         = j1.subdomain(hostname);
-      var domainAttribute   = '';
+      var domainAttribute   = '.' + subDomain;
+      var srcLang;
+      var destLang;
+      var transCode;
+      var selectedTranslationLanguage;
 
 //    var cookie_names          = j1.getCookieNames();
 //    var user_consent          = j1.readCookie(cookie_names.user_consent);
@@ -432,12 +436,6 @@ j1.adapter.translator = (function (j1, window) {
 //    var domain                = hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1);
 //    var cookie_option_domain  = '{{cookie_options.domain}}';
 //    var same_site             = '{{cookie_options.same_site}}';
-
-      var srcLang;
-      var destLang;
-      var transCode;
-      var domainAttribute;
-      var selectedTranslationLanguage;
 
       // set domain used by cookies
       // if (cookie_option_domain == 'auto') {

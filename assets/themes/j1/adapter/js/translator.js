@@ -335,6 +335,7 @@ j1.adapter.translator = (function (j1, window) {
               logger.info('\n' + 'remove existing Google Translate cookies');
               // remove all googtrans cookies that POTENTIALLY exists
               Cookies.remove('googtrans', { domain: domainAttribute });
+              Cookies.remove('googtrans', { domain: '.' + domain });
               Cookies.remove('googtrans', { domain: hostname });
               Cookies.remove('googtrans');
             }

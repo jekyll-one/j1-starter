@@ -283,21 +283,21 @@ j1.adapter.translator = (function (j1, window) {
           }
 
           j1.translator = new Translator({
-            contentURL:               translatorOptions.contentURL,                 // dialog content (modals) for all supported languages
-            cookieName:               cookie_names.user_translate,              // name of the translator cookie
-            cookieStorageDays:        expires,                                  // lifetime of a cookie [0..365], 0: session cookie
-            cookieSameSite:           same_site,                                // restrict consent cookie
-            cookieDomain:             domainAttribute,                          // set domain (hostname|domain)
-            cookieSecure:             secure,                                   // set
-            cookieConsentName:        translatorOptions.cookieConsentName,          // the name of the Cookie Consent Cookie (secondary data)
-            disableLanguageSelector:  translatorOptions.disableLanguageSelector,    // disable language dropdown for translation in dialog (modal)
-            dialogContainerID:        translatorOptions.dialogContainerID,          // dest container, the dialog modal is loaded (dynamically)
-            dialogLanguage:           translatorOptions.dialogLanguage,             // language for the dialog (modal)
-            translationLanguage:      translatorOptions.translationLanguage,        // default language for translation
-            translationLanguages:     translatorOptions.google.translationLanguages,// supported languages for translation
-            translationEnabled:       translatorOptions.translationEnabled,         // run translation enabled|disabled
-            translatorName:           translatorOptions.translatorName,             // translator used for translation
-            xhrDataElement:           translatorOptions.xhrDataElement,             // container for all language-specific dialogs (modals)
+            contentURL:               translatorOptions.contentURL,                     // dialog content (modals) for all supported languages
+            cookieName:               cookie_names.user_translate,                      // name of the translator cookie
+            cookieStorageDays:        expires,                                          // lifetime of a cookie [0..365], 0: session cookie
+            cookieSameSite:           same_site,                                        // restrict consent cookie
+            cookieDomain:             domainAttribute,                                  // set domain (hostname|domain)
+            cookieSecure:             secure,                                           // set
+            cookieConsentName:        translatorOptions.cookieConsentName,              // the name of the Cookie Consent Cookie (secondary data)
+            disableLanguageSelector:  translatorOptions.disableLanguageSelector,        // disable language dropdown for translation in dialog (modal)
+            dialogContainerID:        translatorOptions.dialogContainerID,              // dest container, the dialog modal is loaded (dynamically)
+            dialogLanguage:           translatorOptions.dialogLanguage,                 // language for the dialog (modal)
+            translationLanguage:      translatorOptions.translationLanguage,            // default language for translation
+            translationLanguages:     translatorOptions.google.translationLanguages,    // supported languages for translation
+            translationEnabled:       translatorOptions.translationEnabled,             // run translation enabled|disabled
+            translatorName:           translatorOptions.translatorName,                 // translator used for translation
+            xhrDataElement:           translatorOptions.xhrDataElement,                 // container for all language-specific dialogs (modals)
             postSelectionCallback:    translatorOptions.google.postSelectionCallback
           });
 

@@ -328,6 +328,9 @@ j1.adapter.translator = (function (j1, window) {
               //     $('google_translate_element').hide();
               //   }
               // }
+
+              // remove googtrans cookie on domain (created by GT ???) 
+              Cookies.remove('googtrans', { domain: '.' + domain });
             }
           } else {
             if (translatorOptions.translatorName === 'google') {

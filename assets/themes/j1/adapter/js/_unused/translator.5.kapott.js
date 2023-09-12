@@ -491,7 +491,7 @@ j1.adapter.translator = (function (j1, window) {
       if (subDomain) {
         Cookies.set('googtrans', transCode, { domain: auto_domain });
         // jadams, 2023-09-12: added
-        Cookies.set('googtrans', transCode);        
+        // Cookies.set('googtrans', transCode);        
       } else {
         Cookies.set('googtrans', transCode);
 //      Cookies.set('googtrans', transCode, { domain: hostname });

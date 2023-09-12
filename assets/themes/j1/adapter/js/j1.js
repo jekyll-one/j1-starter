@@ -718,7 +718,8 @@ var j1 = (function (options) {
 
               // show the content section for 'block content' to optimze CLS
               //
-              if (banner_state == 'success' && panel_state == 'success' && footer_state == 'success') {
+//            if (banner_state == 'success' && panel_state == 'success' && footer_state == 'success') {
+              if (banner_state == 'success' && panel_state == 'success') {
                 // show the content|footer
                 //
                 $('#content').show();

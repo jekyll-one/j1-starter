@@ -303,14 +303,25 @@ j1.adapter.translator = (function (j1, window) {
           // hide the translation feedback
           //
           translationFeedbackHighlight  = '<style id="translationFeedbackHighlight">';
-//        translationFeedbackHighlight += '  .VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q {';
-          translationFeedbackHighlight += '  .VIpgJd-ZVi9od-ORHb-OEVmcd {';
+          translationFeedbackHighlight += '  .VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q {';
           translationFeedbackHighlight += '    background-color:  transparent !important;';
-          translationFeedbackHighlight += '    box-shadow: none !important;;';
+          translationFeedbackHighlight += '    box-shadow: none !important;';
           translationFeedbackHighlight += '  }';
           translationFeedbackHighlight += '</style>';
 
           $('head').append(translationFeedbackHighlight);
+
+
+          // hide the translation iFrame since chrome v106 ???
+          //
+          translationFeedbackHighlight  = '<style id="translationIframeV106">';
+          translationFeedbackHighlight += '  .VIpgJd-ZVi9od-ORHb-OEVmcd {';
+          translationFeedbackHighlight += '    visibility:  hidden !important;';
+          translationFeedbackHighlight += '  }';
+          translationFeedbackHighlight += '</style>';
+
+          $('head').append(translationIframeV106);
+
 
           // enable|disable translation (after callback)
           if (user_translate.analysis && user_translate.personalization && user_translate.translationEnabled) {

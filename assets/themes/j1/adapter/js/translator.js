@@ -175,20 +175,20 @@ j1.adapter.translator = (function (j1, window) {
       // initialize state flag
       _this.state = 'pending';
 
-      // add GT callback script dynamically in the head section
-      // jadams, 2022-04-21: postTranslateElementInit cause error, disabled
-      // -----------------------------------------------------------------------
-      gtCallbackScript.text  = '\n';
-      gtCallbackScript.text += 'function googleTranslateElementInit() {' + '\n';
-      gtCallbackScript.text += '  var gtAPI = new google.translate.TranslateElement({' + '\n';
-      gtCallbackScript.text += '    pageLanguage: "{{translator_options.contentLanguage}}",' + '\n';
-      gtCallbackScript.text += '    layout:       google.translate.TranslateElement.FloatPosition.TOP_LEFT' + '\n';
-      gtCallbackScript.text += '  },' + '\n';
-      gtCallbackScript.text += '  "google_translate_element");' + '\n';
-      gtCallbackScript.text += '}' + '\n';
-      document.head.appendChild(gtCallbackScript);
-
       setTimeout (function() {
+        // add GT callback script dynamically in the head section
+        // jadams, 2022-04-21: postTranslateElementInit cause error, disabled
+        // -----------------------------------------------------------------------
+        gtCallbackScript.text  = '\n';
+        gtCallbackScript.text += 'function googleTranslateElementInit() {' + '\n';
+        gtCallbackScript.text += '  var gtAPI = new google.translate.TranslateElement({' + '\n';
+        gtCallbackScript.text += '    pageLanguage: "{{translator_options.contentLanguage}}",' + '\n';
+        gtCallbackScript.text += '    layout:       google.translate.TranslateElement.FloatPosition.TOP_LEFT' + '\n';
+        gtCallbackScript.text += '  },' + '\n';
+        gtCallbackScript.text += '  "google_translate_element");' + '\n';
+        gtCallbackScript.text += '}' + '\n';
+        document.head.appendChild(gtCallbackScript);
+
         // -----------------------------------------------------------------------
         // initializer
         // -----------------------------------------------------------------------

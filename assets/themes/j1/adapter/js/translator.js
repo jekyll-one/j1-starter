@@ -420,7 +420,7 @@ j1.adapter.translator = (function (j1, window) {
       var url               = new liteURL(window.location.href);
       var baseUrl           = url.origin;
       var hostname          = url.hostname;
-      var auto_domain       = hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1);
+      var domain            = hostname.substring(hostname.lastIndexOf('.', hostname.lastIndexOf('.') - 1) + 1);
       var subDomain         = j1.subdomain(hostname);
       var domainAttribute   = '';
 
@@ -468,6 +468,7 @@ j1.adapter.translator = (function (j1, window) {
       if (srcLang == selectedTranslationLanguage ) {
         // remove all googtrans cookies that POTENTIALLY exists
         Cookies.remove('googtrans', { domain: domainAttribute });
+        Cookies.remove('googtrans', { domain: '.' + domain });
         Cookies.remove('googtrans', { domain: hostname });
         Cookies.remove('googtrans');
         location.reload();
@@ -479,6 +480,7 @@ j1.adapter.translator = (function (j1, window) {
 
       // remove all googtrans cookies that POTENTIALLY exists
       Cookies.remove('googtrans', { domain: domainAttribute });
+      Cookies.remove('googtrans', { domain: '.' + domain });
       Cookies.remove('googtrans', { domain: hostname });
       Cookies.remove('googtrans');
 
@@ -490,7 +492,8 @@ j1.adapter.translator = (function (j1, window) {
       // -----------------------------------------------------------------------
 
       if (subDomain) {
-        Cookies.set('googtrans', transCode, { domain: auto_domain });
+        // Cookies.set('googtrans', transCode, { domain: auto_domain });
+        Cookies.set('googtrans', transCode, { domain: domain });
       } else {
         Cookies.set('googtrans', transCode);
 //      Cookies.set('googtrans', transCode, { domain: hostname });

@@ -335,6 +335,7 @@ j1.adapter.translator = (function (j1, window) {
               logger.info('\n' + 'remove existing Google Translate cookies');
               // remove all googtrans cookies that POTENTIALLY exists
               Cookies.remove('googtrans', { domain: domainAttribute });
+              Cookies.remove('googtrans', { domain: subDomain });
               Cookies.remove('googtrans', { domain: hostname });
               Cookies.remove('googtrans');
             }
@@ -465,6 +466,7 @@ j1.adapter.translator = (function (j1, window) {
       if (srcLang == selectedTranslationLanguage ) {
         // remove all googtrans cookies that POTENTIALLY exists
         Cookies.remove('googtrans', { domain: domainAttribute });
+        Cookies.remove('googtrans', { domain: subDomain });
         Cookies.remove('googtrans', { domain: hostname });
         Cookies.remove('googtrans');
         location.reload();
@@ -476,6 +478,7 @@ j1.adapter.translator = (function (j1, window) {
 
       // remove all googtrans cookies that POTENTIALLY exists
       Cookies.remove('googtrans', { domain: domainAttribute });
+      Cookies.remove('googtrans', { domain: subDomain });
       Cookies.remove('googtrans', { domain: hostname });
       Cookies.remove('googtrans');
 

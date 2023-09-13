@@ -500,8 +500,9 @@ j1.adapter.translator = (function (j1, window) {
 
 //    Cookies.set('googtrans', transCode);
 
-      // reload current page (skip cache)
-      location.reload(true);
+      // reload current page
+      location.reload();
+
     }, // END cbGoogle
 
     // -------------------------------------------------------------------------
@@ -518,5 +519,9 @@ j1.adapter.translator = (function (j1, window) {
 })(j1, window);
 
 {% endcapture %}
-{{ cache | strip_empty_lines }}
+{% if production %}
+  {{ cache | minifyJS }}
+{% else %}
+  {{ cache | strip_empty_lines }}
+{% endif %}
 {% assign cache = nil %}

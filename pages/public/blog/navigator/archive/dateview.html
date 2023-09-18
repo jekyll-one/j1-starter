@@ -98,6 +98,12 @@ resource_options:
   {% assign image_filters = '' %}
 {% endif %}
 
+{% comment %} Collect Readmore Text
+-------------------------------------------------------------------------------- {% endcomment %}
+{% if blog_navigator_options.readmore_text %}
+  {% assign readmore_text = blog_navigator_options.readmore_text %}
+{% endif %}
+
 {% comment %} language detection
 -------------------------------------------------------------------------------- {% endcomment %}
 {% if site.language == "en" %}

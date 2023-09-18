@@ -152,6 +152,8 @@ defaults:
     contrast:                           0.8
     brightness:                         0.8
 
+  readmore_text:                        read
+
   button_text:
 
     pager:

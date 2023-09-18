@@ -22,10 +22,12 @@ pagination:
   permalink:                            /page:num/
 
 image:
-  path:                                 /assets/images/modules/attics/matthaeus-1920x1280.jpg
+  path:                                 /assets/images/modules/attics/1920x1280/matthaeus.jpg
   width:                                1920
   height:                               1280
 
+tts:                                    false
+fab_menu_id:                            open_toc
 sort:                                   date
 exclude_from_search:                    true
 regenerate:                             false                                   # set to 'true', if update posts is required
@@ -34,7 +36,7 @@ resources:                              [ animate ]
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/images/modules/attics/matthaeus-1920x1280.jpg
+        - url:                          /assets/images/modules/attics/1920x1280/matthaeus.jpg
           alt:                          Photo by Matthaeus on Unsplash
           badge:
             type:                       unsplash
@@ -123,34 +125,17 @@ resource_options:
 -------------------------------------------------------------------------------- {% endcomment %}
 {% if site.language == "en" %}
   {% assign language = "en" %}
-{% elsif site.language == "de"%}
-  {% assign language = "de" %}
 {% else %}
   {% assign language = "en" %}
 {% endif %}
 
 {% if language == "en" %}
-  {% assign readmore_text              = "read" %}
+  {% assign category_view_button_text         = blog_navigator_options.button_text.view_selector.category_view %}
+  {% assign date_view_button_text             = blog_navigator_options.button_text.view_selector.date_view %}
+  {% assign archive_view_button_text          = blog_navigator_options.button_text.view_selector.archive_view %}
+  {% assign tag_view_button_text              = blog_navigator_options.button_text.view_selector.tag_view %}
 
-  {% assign category_view_button_text = blog_navigator_options.button_text.view_selector.category_view.en %}
-  {% assign date_view_button_text     = blog_navigator_options.button_text.view_selector.date_view.en %}
-  {% assign archive_view_button_text  = blog_navigator_options.button_text.view_selector.archive_view.en %}
-  {% assign tag_view_button_text      = blog_navigator_options.button_text.view_selector.tag_view.en %}
-
-  {% assign view_headline             = blog_navigator_options.tag_view.page_text.en.headline %}
-  {% assign view_description_text     = blog_navigator_options.tag_view.page_text.en.description %}
-{% endif %}
-
-{% if language == "de" %}
-  {% assign readmore_text              = "lesen" %}
-
-  {% assign category_view_button_text = blog_navigator_options.button_text.view_selector.category_view.de %}
-  {% assign date_view_button_text     = blog_navigator_options.button_text.view_selector.date_view.de %}
-  {% assign archive_view_button_text  = blog_navigator_options.button_text.view_selector.archive_view.de %}
-  {% assign tag_view_button_text      = blog_navigator_options.button_text.view_selector.tag_view.de %}
-
-  {% assign view_headline             = blog_navigator_options.tag_view.page_text.de.headline %}
-  {% assign view_description_text     = blog_navigator_options.tag_view.page_text.de.description %}
+  {% assign view_description_text             = blog_navigator_options.tag_view.page_text.description %}
 {% endif %}
 
 {% comment %} Debugging
@@ -177,12 +162,8 @@ site_category_word_list:    {{site_category_word_list | debug}}
 
 <div class="post-search-results ml-3">
   {% if blog_navigator_options.tag_view.page_text.enabled %}
-  <div class="view-description">{{view_description_text}}</div>
+  <div class="view-description mt-5 mb-5">{{view_description_text}}</div>
   {% endif %}
-
-  <div class="post-headline">
-    <h2 id="post-headline" class="notoc mt-5">Posts By Tag</h2>
-  </div>
 
   {% assign letter_group = letter_group_array[letter_group_counter] %}
 

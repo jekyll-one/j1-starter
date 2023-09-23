@@ -2036,7 +2036,7 @@ link:{url-bs-docs--components-alerts}[Bootstrap Docs {char-emdash} Alerts, {brow
     <div class="col-md-4">
       <div class="alert alert-info alert-dismissible" role="alert">
         <strong>Heads up!</strong> This alert needs your <a href="javascript:void(0)" class="alert-link">attention</a>, but it's not super important.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"</button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
   </div>

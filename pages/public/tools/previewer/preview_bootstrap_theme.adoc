@@ -3,7 +3,7 @@ title:                                  Theme Preview
 title_extention:                        Preview Bootstrap theme for J1 Template
 tagline:                                Explore Current Styles
 
-date:                                   2022-12-01
+date:                                   2023-09-21
 #last_modified:                         2023-01-01
 
 description: >
@@ -1303,7 +1303,7 @@ whereas the <h6> tag defines the least important heading in a document.
       <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
     </div>
     <div class="col-md-4">
-      <h3 class="notoc">Example body text</h2>
+      <h3 class="notoc">Example body text</h3>
       <p>Nullam quis risus eget <a href="javascript:void(0)">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
       <p><small>This line of text is meant to be treated as fine print.</small></p>
       <p>The following is <strong>rendered as bold text</strong>.</p>
@@ -1311,7 +1311,7 @@ whereas the <h6> tag defines the least important heading in a document.
       <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
     </div>
     <div class="col-md-4">
-      <h3 class="notoc">Emphasis classes</h2>
+      <h3 class="notoc">Emphasis classes</h3>
       <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
       <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
       <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>

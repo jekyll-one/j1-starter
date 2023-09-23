@@ -2023,20 +2023,20 @@ link:{url-bs-docs--components-alerts}[Bootstrap Docs {char-emdash} Alerts, {brow
   <div class="row">
     <div class="col-md-4">
       <div class="alert alert-danger alert-dismissible" role="alert">
-        <strong>Oh snap!</strong> <a href="javascript:void(0)" class="alert-link">Change a few</a> things up and try submitting again.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"</button>
+        <strong>Oh snap!</strong> <a href="javascript:void(0)" class="alert-link">Change a few things up and try submitting again.</a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
     <div class="col-md-4">
       <div class="alert alert-success alert-dismissible" role="alert">
         <strong>Well done!</strong> You successfully read this important <a href="javascript:void(0)" class="alert-link">alert message</a>.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"</button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
     <div class="col-md-4">
       <div class="alert alert-info alert-dismissible" role="alert">
         <strong>Heads up!</strong> This alert needs your <a href="javascript:void(0)" class="alert-link">attention</a>, but it's not super important.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"</button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
   </div>

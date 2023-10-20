@@ -409,7 +409,7 @@ The Dailymotion plugin using the Dailymotion *SDK* in the last version of
 October 2022.
 ====
 
-
+/////
 [role="mt-5"]
 === DailyMotion Video Galleries
 
@@ -447,6 +447,7 @@ Like YouTube, DailyMotion is a commercial platform using *advertising*
 on all video content. On every video, an ad clip is presented of 15 to
 30 seconds in length.
 ====
+/////
 
 
 [role="mt-5"]

@@ -374,7 +374,7 @@ settings:
           name:                         Carpool Karaoke Lady Gaga
           type:                         youtube
           size:                         "1280-720"
-          source:                       "https//youtube.com/watch?v=X5Cfi7U4eL4"
+          source:                       "//youtube.com/watch?v=X5Cfi7U4eL4"
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
@@ -415,7 +415,7 @@ settings:
           name:                         Carpool Karaoke Gwen Stefani
           type:                         youtube
           size:                         "1280-720"
-          source:                       "https//youtube.com/watch?v=F2SXmzk8ve4"
+          source:                       "//youtube.com/watch?v=F2SXmzk8ve4"
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
@@ -651,7 +651,7 @@ settings:
           name:                         Voice Kids - Ben
           type:                         youtube
           size:                         "1280-720"
-          source:                       "https//youtube.com/watch?v=GuiOYCv9NTI"
+          source:                       "//youtube.com/watch?v=GuiOYCv9NTI"
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
@@ -671,7 +671,7 @@ settings:
           name:                         Voice Kids - The Battle
           type:                         youtube
           size:                         "1280-720"
-          source:                       "https//youtube.com/watch?v=1bvE2mgJ22I"
+          source:                       "//youtube.com/watch?v=1bvE2mgJ22I"
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
@@ -840,7 +840,7 @@ settings:
           name:                         SELF Channel
           type:                         dailymotion
           size:                         "1280-720"
-          source:                       "https//dai.ly/x887s09"
+          source:                       "//dai.ly/x887s09"
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >

@@ -34,7 +34,7 @@ defaults:
   #
   #   enabled
   #   --------------------------------------------------------------------------
-  #   Enables or disables the Bot services.
+  #   Enables or disables the chat service glöobally.
   #
   #   values:                           [true|false]
   #   default:                          false
@@ -46,17 +46,28 @@ defaults:
   #
   #   values:                           [vivochat, chatbob, tutgpt, webwhiz]
   #   default:                          no default
-  #   recommended:                      tutgpt
+  #   recommended:                      vivochat, tutgpt
   #
-  #   Example chatbotIDs
+  #   chatbotID
   #   --------------------------------------------------------------------------
-  #   Bot ID procided by the provider
+  #   The ID of a bot privided by the respective provider. The ID can
+  #   be found with the embed script given by the procider to use the
+  #   bot on a webpage.
   #
-  #   J1 Template Bots:
-  #   tutgpt:                           clo54vmlw000582y700nkde5t
+  #   default:                          no default
+  #
+  # ----------------------------------------------------------------------------
+  #
+  #   Tested bots
+  #   --------------------------------------------------------------------------
+  #   Provider|Bot IDs
+  #
+  #   provider-id                        bot-id
+  #   ==========================================================================
   #   vivochat:                         3d0b29f1-623a-4915-a817-e436d328f18f
+  #   tutgpt:                           clo54vmlw000582y700nkde5t
   #   chatbob:                          qhtrvti8SjKDaf9QFKn6xw
-  #   webwhiz:                          653593d609b6412fa51792f6
+  #   webwhiz:                          653593d609b6412fa51792f6                # NOT recommended as BROKEN since 10/2023
   #
   # ----------------------------------------------------------------------------
   #

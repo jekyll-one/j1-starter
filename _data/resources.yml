@@ -1817,7 +1817,6 @@ resources:
         js:                             [ modules/slimSelect/js/select ]
         init_function:                  []
 
-
   # ----------------------------------------------------------------------------
   # Chat
   # AI Chatbot settings

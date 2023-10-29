@@ -30,8 +30,8 @@ settings:
   #
 # provider:                             <your-provider-id>
 # chatbotID:                            <your-chatbot-id>
-  provider:                             vivochat
-  chatbotID:                            3d0b29f1-623a-4915-a817-e436d328f18f
+  provider:                             tutgpt
+  chatbotID:                            clo54vmlw000582y700nkde5t
 
 # ------------------------------------------------------------------------------
 # END config

@@ -23,7 +23,7 @@ description:
 # User configuration settings
 #
 settings:
-  enabled:                              false
+  enabled:                              true
 
   # Replace this ID by <your-chatbot-id> if yuo have an account|your own
   # project configured.

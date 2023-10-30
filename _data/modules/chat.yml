@@ -5,7 +5,7 @@
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023 Juergen Adams
+# Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one/J1 Theme/blob/master/LICENSE
@@ -23,17 +23,16 @@ description:
 # User configuration settings
 #
 settings:
-  enabled:                              false
+  enabled:                              true
 
   # Replace this ID by <your-chatbot-id> if yuo have an account|your own
   # project configured.
   #
-  # provider:                             <your-provider-id>
-  # chatbotID:                            <your-chatbot-id>
+# provider:                             <your-chatbot>
+# chatbotID:                            <your-chatbot-id>
 
   provider:                             chatbob
-  chatbotID:                            qhtrvti8SjKDaf9QFKn6xw
-  # chatbotID:                          nzxiSnnrT2CgodkC71Q4JQ
+  chatbotID:                            nzxiSnnrT2CgodkC71Q4JQ
 
 # ------------------------------------------------------------------------------
 # END config

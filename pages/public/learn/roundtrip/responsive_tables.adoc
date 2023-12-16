@@ -27,7 +27,7 @@ tts:                                    false
 regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/responsive_tables/
 
-resources:                              [ animate, clipboard, rouge ]
+resources:                              [ animate, rouge ]
 resource_options:
   - attic:
       slides:

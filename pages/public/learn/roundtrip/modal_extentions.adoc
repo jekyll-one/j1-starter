@@ -29,7 +29,7 @@ tts:                                    false
 regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/modals/
 
-resources:                              [ animate, clipboard, rouge ]
+resources:                              [ animate, rouge ]
 resource_options:
   - attic:
       slides:

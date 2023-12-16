@@ -33,7 +33,7 @@ regenerate:                             false
 permalink:                              /pages/public/features/template_features/
 
 resources:                              [
-                                          animate, clipboard, comments, rouge,
+                                          animate, comments, rouge,
                                           lightbox, carousel,
                                           masterslider, lightgallery, gallery,
                                           videojs, vimeoplayer

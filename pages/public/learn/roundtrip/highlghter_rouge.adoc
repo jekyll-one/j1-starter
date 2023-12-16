@@ -27,7 +27,7 @@ image:
 regenerate:                             true
 permalink:                              /pages/public/learn/roundtrip/rouge/
 
-resources:                              [ animate, clipboard, rouge ]
+resources:                              [ animate, rouge ]
 resource_options:
   - attic:
       slides:

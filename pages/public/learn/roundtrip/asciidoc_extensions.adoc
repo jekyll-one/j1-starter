@@ -30,7 +30,7 @@ regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/asciidoc_extensions/
 
 resources:                              [
-                                          animate, clipboard, lightbox, lightgallery,
+                                          animate, lightbox, lightgallery,
                                           iconify, gallery, rouge, videojs
                                         ]
 resource_options:

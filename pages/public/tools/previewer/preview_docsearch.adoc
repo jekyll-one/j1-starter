@@ -1,0 +1,92 @@
+---
+title:                                  Preview DocSearch
+title_extention:                        Search Engine powered by AI
+tagline:                                Search Engine powered by AI
+
+date:                                   2023-11-02
+#last_modified:                         2023-01-01
+
+description: >
+                                        DocSearch is an AI-powered chatbot based on Documind AI that helps
+                                        visitors get the most out documents. With Documind, you can upload
+                                        entire documents, such as textbooks, research articles, and product
+                                        manuals, and then use GPT language models to ask questions and receive
+                                        human responses.
+keywords: >
+                                        Jekyll, Theme, JekyllOne, Info, Module, Preview, Ruby, Gem,
+                                        Documind, DocSearch
+
+categories:                             [ Previewer ]
+tags:                                   [ Module, DocSearch ]
+
+image:
+  path:                                 /assets/images/modules/attics/library-1920x1280.jpg
+  width:                                1920
+  height:                               1280
+
+personalization:                        true
+regenerate:                             false
+permalink:                              /pages/public/tools/previewer/docsearch/
+
+resources:                              [ animate, iframer, rouge ]
+resource_options:
+  - attic:
+      slides:
+        - url:                          /assets/images/modules/attics/library-1920x1280.jpg
+          alt:                          Library
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+:url-documind--home:                    https://documind.chat/
+
+// Set (local) page attributes here
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="global" %}
+
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[role="dropcap"]
+DocSearch is a AI-powered chatbot based on Documind AI that uses natural
+language processing (NLP) and machine learning algorithms to support your
+vistors by instant answers on their questions.
+
+[CAUTION]
+====
+The service *DocSearch* is only available, when you have agreed on
+*Personalization* with your *Privacy Settings* using Cookies.
+====
+
+mdi:clock-time-five-outline[24px, md-gray mt-5 mr-2]
+*2 Minutes* to read
+
+// Include sub-documents (if any)
+// -----------------------------------------------------------------------------
+[role="mt-5"]
+== Searching in Documents
+
+The template system link:{url-j1--home}[JekyllOne, {browser-window--new}] for
+the static website generator (SSG) link:{url-jekyll--home}[Jekyll, {browser-window--new}]
+supports your vistors in finding answers to what *your project* can do.
+
+[role="mt-4"]
+Setup *your* example question to provide an answer in *seconds*.
+
+.Example Question
+[source, apib, role="mt-4 mb-4"]
+----
+What is J1 Template?
+----
+
+iframe::documind[role="mt-5 mb-7"]

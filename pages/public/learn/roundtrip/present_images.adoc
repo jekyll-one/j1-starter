@@ -31,7 +31,7 @@ regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/present_images/
 
 resources:                              [
-                                          animate, clipboard, carousel,
+                                          animate, carousel,
                                           gallery, lightbox, lightgallery,
                                           masterslider, masonry, rouge, slick
                                         ]

@@ -31,7 +31,7 @@ image:
 regenerate:                             false
 permalink:                              /pages/public/features/general_features/
 
-resources:                              [ animate, clipboard, comments, rouge, lightbox, iconify ]
+resources:                              [ animate, comments, rouge, lightbox, iconify ]
 resource_options:
   - toccer:
       collapseDepth:                    3

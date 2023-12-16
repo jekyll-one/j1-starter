@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="/assets/themes/j1/core/css/themes/unolight/bootstrap.css">
+    <link rel="stylesheet" href="/assets/themes/j1/core/css/vendor.css">
+    <link rel="stylesheet" href="/assets/themes/j1/modules/rouge/css/uno.light/theme.min.css">
+    <link rel="stylesheet" href="/assets/themes/j1/core/css/icon-fonts/fontawesome.min.css">
+  </head>
+
+  <body class="r-text-300">
+
+    <h3 style="font-size: 150% !important;">Setting up DocSearch</h3>
+    <p>
+      To setup the module <b>DocSeach</b> with your own set of documents,
+      your need an account at <b>Documind AI</b> and then train your bot
+      with the documents to be searched for your website.
+    </p>
+
+    <div class="admonitionblock tip">
+      <table style="background: rgb(250, 250, 250);">
+        <tbody>
+          <tr>
+            <td class="icon">
+              <i class="fa icon-tip" title="Tip"></i>
+            </td>
+            <td class="content">
+              <div class="paragraph">
+                <p>
+                  Say goodbye to the hassle of scrolling lengthy documents endlessly
+                  to find the information your vistors need. Try yourselves
+                  <a href="https://documind.chat/" target="_blank" rel="noopener">Documind AI</a>
+                  for <b>free</b>.
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      An example setup for the <b>iframe</b> is available with the connfiguration
+      for the module <b>iFramer</b> at <i>_data/modules/iframer.yml</i>. Modify
+      the config data for the Documind iframe as shown below.
+    </p>
+
+    <div class="listingblock mt-4 mb-4">
+      <div class="title">Example Setup</div>
+      <div class="content">
+        <pre class="rouge highlight notranslate"><code data-lang="yaml">
+          <span class="c1"># ------------------------------------------------------------------------</span>
+          <span class="c1"># Documind iframe</span>
+          <span class="c1">#</span>
+          <span class="pi">-</span> <span class="na">iframe</span><span class="pi">:</span>
+            <span class="na">enabled</span><span class="pi">:</span>                          <span class="kc">true</span>
+
+            <span class="na">id</span><span class="pi">:</span>                               <span class="s">documind</span>
+            <span class="na">inject_contentWindowScript</span><span class="pi">:</span>       <span class="kc">false</span>
+
+            <span class="c1"># ------------------------------------------------------------------------</span>
+            <span class="c1"># iframe (HTML) attributes</span>
+            <span class="c1"># ------------------------------------------------------------------------</span>
+            <span class="c1">#</span>
+            <span class="na">attributes</span><span class="pi">:</span>
+              <span class="na">loading</span><span class="pi">:</span>                        <span class="s">lazy</span>
+              <span class="na">src</span><span class="pi">:</span>                            <span class="s">&lt;your-bot-source-link&gt;</span>
+              <span class="na">title</span><span class="pi">:</span>                          <span class="s2">"</span><span class="s">"</span>
+              <span class="na">allowtransparency</span><span class="pi">:</span>              <span class="kc">true</span>
+              <span class="na">style</span><span class="pi">:</span>                          <span class="s2">"</span><span class="s">background:</span><span class="nv"> </span><span class="s">#FAFAFA;"</span>
+              <span class="na">height</span><span class="pi">:</span>                         <span class="m">600</span>
+              <span class="na">width</span><span class="pi">:</span>                          <span class="s">100%</span>
+
+            <span class="c1"># ------------------------------------------------------------------------</span>
+            <span class="c1"># iFramer (module) options</span>
+            <span class="c1"># ------------------------------------------------------------------------</span>
+            <span class="na">options</span><span class="pi">:</span>
+              <span class="na">checkOrigin</span><span class="pi">:</span>                    <span class="kc">false</span></code>
+          </pre>
+      </div>
+    </div>
+
+  </body>
+</html>

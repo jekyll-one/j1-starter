@@ -31,7 +31,7 @@ image:
 regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/quicksearch/
 
-resources:                              [ animate, clipboard, lightbox, rouge ]
+resources:                              [ animate, lightbox, rouge ]
 resource_options:
   - attic:
       slides:

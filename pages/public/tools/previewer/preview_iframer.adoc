@@ -1,0 +1,106 @@
+---
+title:                                  iFramer Preview
+title_extention:                        Magic HTML iFrames
+tagline:                                Magic iFrames
+
+date:                                   2023-10-31
+#last_modified:                         2023-01-01
+
+description: >
+                                        The iframeResizer library enables the automatic resizing of the height
+                                        and width of both same and cross domain iFrames to fit their
+                                        contained content. It provides a wide range of features to address
+                                        the most common issues with using iFrames.
+keywords: >
+                                        open source, free, template, jekyll, jekyllone, web,
+                                        sites, static, jamstack, bootstrap,
+                                        html, iframe
+
+categories:                             [ Previewer ]
+tags:                                   [ Module, iFramer ]
+
+image:
+  path:                                 /assets/images/modules/attics/jessica-ruscello-1920x1280.jpg
+  width:                                1920
+  height:                               1280
+
+toc:                                    true
+tts:                                    false
+comments:                               false
+regenerate:                             false
+permalink:                              /pages/public/tools/previewer/iframer/
+
+resources:                              [ animate, iframer, rouge ]
+resource_options:
+  - attic:
+      padding_top:                      600
+      padding_bottom:                   50
+      opacity:                          0.5
+      slides:
+        - url:                          /assets/images/modules/attics/jessica-ruscello-1920x1280.jpg
+          alt:                          Photo by Jessica Ruscello Unsplash
+          badge:
+            type:                       unsplash
+            author:                     Jessica Ruscello
+            href:                       https://unsplash.com/@jruscello
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+:url-viewerjs--home:                    https://viewerjs.org/
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="global" %}
+
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[role="dropcap"]
+The iframeResizer library enables automatic resizing of HTML iFrames of the
+height, the width or both to fit their contained content on same and cross
+domain.
+
+mdi:clock-time-five-outline[24px, md-gray mt-4 mr-2]
+*2 Minutes* to read
+
+// Include sub-documents (if any)
+// -----------------------------------------------------------------------------
+[role="mt-4"]
+The library provides a wide range of features to address the most common
+issues using HTML iFrames on webpages which includes:
+
+* Height and width resizing of an iFrame for the content size
+* Works with multiple and nested iFrames
+* Domain authentication for cross domain iFrames
+* Provides a range of page size calculation methods to support
+  complex CSS layouts
+* Detects changes to the DOM that can cause the page to resize using
+  a MutationObserver
+* Detects events that can cause the page to resize (Window Resize,
+  CSS Animation and Transition, Orientation Change and Mouse events)
+* Simplified messaging between the iFrame and the page via postMessages
+* Fixes in-page links in an iFrame and supports links between the iFrame
+  and the parent page
+* Provides custom sizing and scrolling methods
+* Exposes parent position and viewport size to the iFrame
+* Provides onMouseEnter and onMouseLeave events for the iFrame
+* Supports link:{url-viewerjs--home}[ViewerJS, {browser-window--new}]
+  to use PDF and ODF documents for HTML iFrame sources
+
+
+[role="mt-5"]
+== iFrame Example
+
+[role="mb-4"]
+Resize the browser window in *width* to see how the HTML iframe
+follow your changes and behave fully reponsive for the document source within
+the page.
+
+iframe::magic_iframe[role="mt-4 mb-7"]

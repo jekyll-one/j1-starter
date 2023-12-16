@@ -27,7 +27,7 @@ image:
 regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/typography/
 
-resources:                              [ animate, clipboard, rouge ]
+resources:                              [ animate, rouge ]
 resource_options:
   - attic:
       opacity:                          0.3

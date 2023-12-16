@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# ~/_plugins/asciidoctor-extensions/gallery-block.rb
-# Asciidoctor extension for J1 Galleries
+# ~/_plugins/asciidoctor-extensions/iframe-block.rb
+# Asciidoctor extension for the J1 iFramer module
 #
 # Product/Info:
 # https://jekyll.one
@@ -13,38 +13,34 @@
 require 'asciidoctor/extensions' unless RUBY_ENGINE == 'opal'
 include Asciidoctor
 
-# A block macro that embeds a Gallery block into the output document
+# A block macro that embeds a iframe block into the output document
 #
 # Usage
 #
-#   gallery::gallery_id[role="additional classes"]
+#   iframe::iframe_id[role="additional classes"]
 #
 # Example:
 #
-#   .The gallery title
-#   gallery::jg_live_demo[role="mt-4 mb-5"]
+#   iframe::magic_iframe[role="mt-4 mb-5"]
 #
 Asciidoctor::Extensions.register do
 
-  class ImageBlockMacro < Extensions::BlockMacroProcessor
+  class IFrameBlockMacro < Extensions::BlockMacroProcessor
     use_dsl
 
-    named :gallery
+    named :iframe
     name_positional_attributes 'role'
     default_attrs 'role' => 'mt-4 mb-4'
 
     def process parent, target, attributes
-      title_html  = (attributes.has_key? 'title') ? %(<div class="gallery-title">#{attributes['title']}</div>\n) : nil
-      html        = %(
-        <div class="#{attributes['role']}">
-          #{title_html}
-          <div id="#{target}_parent" class="gallery"></div>
-        </div>
+      html = %(
+        <p id="resize_stats"></p>
+        <div id="#{target}_parent" class="iframe #{attributes['role']}"></div>
       )
 
       create_pass_block parent, html, attributes, subs: nil
     end
   end
 
-  block_macro ImageBlockMacro
+  block_macro IFrameBlockMacro
 end

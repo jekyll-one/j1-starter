@@ -1,11 +1,11 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/justifiedGallery.yml
+# ~/_data/modules/gallery.yml
 # User configuration for J1 Justified Gallery (jg)
 #
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023 Juergen Adams
+# Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
@@ -306,6 +306,13 @@ settings:
           muted:                      false
           preload:                    true
           playbackRates:              [0.25, 0.5, 1, 1.5, 2]
+          zoomPlugin:
+            enabled:                  true
+#           options:
+#             moveX:                  0
+#             moveY:                  0
+#             rotate:                 0
+#             zoom:                   1
           controlBar:
             remainingTimeDisplay:     true
             pictureInPictureToggle:   false
@@ -1005,5 +1012,3 @@ settings:
             text:                       "SELF Channel &middot; Pilates Core Workout"
           poster:
             source:                     pilates.jpg
-
-            

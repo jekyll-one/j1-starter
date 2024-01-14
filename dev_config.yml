@@ -373,6 +373,7 @@ exclude:                                [
                                           History.markdown, README.md,
                                           changelog.md, Rakefile,
                                           Gemfile, Gemfile.lock, Guardfile,
+                                          dev_config.yml, prod_config.yml,
                                           yarn.lock, config.ru,
                                           package-lock.json, package.json,
                                           '*.ignore', '*._config.yml',

@@ -447,9 +447,9 @@ To simulate a logical *AND* search of documents that contain the word `jekyll`
 [role="mt-5"]
 == What next
 
-You reached the end of the roundtrip. Hopefully you enjoyed exploring what J1
-can do for your new website. To make things real for your site, go for
-_J1 in a Day_.
+You reached the end of the overview what J1 can do. I hope you enjoyed
+exploring what the template can do for your new website. To learn using
+J1 for your site, I recomment to go for _J1 in a Day_ next.
 
 J1 in a Day is a tutorial learning to create modern websites using the J1
 Theme. This Tutorial focuses on the basics of Jekyll and J1, which all

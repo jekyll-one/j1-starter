@@ -350,12 +350,19 @@ settings:
             source:                     video1-poster.jpg
 
           tracks:
-            enabled:                    false
-            src:                        /assets/videos/gallery/html5/video1.subtitles.vtt
-            kind:                       captions
-            srclang:                    en
-            label:                      English
-            default:                    true
+            - track:
+              default:                  true                                    # Indicates that the track is to be enabled if the user's preferences do not indicate that another track would be more appropriate
+              kind:                     captions
+              srclang:                  en                                      # Code for the language of the text track
+              label:                    English                                 # Descriptive text for the track that will used in the user interface (player)
+              src:                      /assets/videos/vtt/captions/video1.vtt
+
+            - track:
+              default:                  true                                    # Indicates that the track is to be enabled if the user's preferences do not indicate that another track would be more appropriate
+              kind:                     chapters
+              srclang:                  en                                      # Code for the language of the text track
+              label:                    Chapters                                # Descriptive text for the track that will used in the user interface (player)
+              src:                      /assets/videos/vtt/chapters/video1.vtt
 
         - video:                        # video 2
           enabled:                      true

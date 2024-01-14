@@ -9,7 +9,7 @@ date:                                   2020-11-10
 description: >
                                         J1 Template offers various unique functionalities compared to other Jekyll
                                         themes and templates. Bootstrap themes for the J1 Template are based on the
-                                        free and open-source CSS front-end framework Bootstrap of version V5. The
+                                        free and Open Source CSS front-end framework Bootstrap of version V5. The
                                         Bootstrap themes for the J1 enable the presentation of different versions
                                         (skins) of the same site using already prepared Bootstrap CSS templates.
 keywords: >
@@ -62,7 +62,7 @@ resource_options:
 // Page content
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [role="dropcap"]
-Bootstrap themes for the J1 Template are based on the free and open-source
+Bootstrap themes for the J1 Template are based on the free and Open Source
 CSS front-end framework of version V5. The Bootstrap theme feature enables
 the presentation of different versions of the same site using already prepared
 Bootstrap CSS style sets.
@@ -92,15 +92,15 @@ include::{documentdir}/themes_bootstrap.asciidoc[]
 [role="mt-5"]
 == What next
 
-J1 Template is an excellent base for documentation websites. J1 supports
+J1 Template is an excellent base for all types of websites. J1 supports
 powerful code highlighting to distinguish different source code elements
-visually. Highlighting makes the code more readable and easier to understand
-by applying different colors or styles to different parts of the code.
+visually. Highlighting makes code more readable and easier to understand
+by applying different styles to the code.
 
-Programming languages have specific syntax rules and conventions,
-so code highlighting is tailored to each language. For example, in a typical
+Programming languages have specific syntax rules and conventions, so code
+highlighting is tailored to each language. For example, in a typical
 JavaScript syntax highlighting scheme, keywords like *if*, *for*, or
-function be displayed in one color, while variables and strings are
+*function* be displayed in one color, while variables and strings are
 displayed in another.
 
 The highlighter _Rouge_ is a native Ruby-based themeable syntax highlighter

@@ -1335,7 +1335,7 @@ resources:
                                         ]
         files:                          []
         js:                             [
-                                          modules/lightGallery/js/lightgallery,
+                                          modules/lightGallery/js/parser/webvtt/parser,
                                           modules/lightGallery/js/plugins/lg-autoplay,
                                           modules/lightGallery/js/plugins/lg-comment,
                                           modules/lightGallery/js/plugins/lg-fullscreen,
@@ -1347,7 +1347,8 @@ resources:
                                           modules/lightGallery/js/plugins/lg-thumbnail,
                                           modules/lightGallery/js/plugins/lg-video,
                                           modules/lightGallery/js/plugins/lg-vimeo-thumbnail,
-                                          modules/lightGallery/js/plugins/lg-zoom
+                                          modules/lightGallery/js/plugins/lg-zoom,
+                                          modules/lightGallery/js/lightgallery
                                         ]
         init_function:                  []
 

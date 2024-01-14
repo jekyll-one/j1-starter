@@ -198,18 +198,20 @@ end
 [role="mt-5"]
 == What next
 
-The search option for the J1 Template is based on the search engine Lunr and
-is fully integrated with the template. Lunr is designed to be lightweight
-yet full-featured to provide users with a great search experience. Using
-Lunr for a Jekyll website, there is no need to integrate complex external,
-server-sided search engines like Google or Bing.
+The search module *QuickSearch* for the J1 Template is based on _Lunr_.
+The engine is fully integrated with the template. Lunr is designed to provide
+users with a great search experience. Using Lunr for a J1  website, there is
+*no* need to integrate complex external, server-sided search engines like
+_Google_ or _Bing_.
 
-Visitors should be able to search your site to find pages and posts they
-are interested in. Usability is one of the top criteria for all visitors
+Visitors are able to search your site to find pages and posts they are
+interested in. Usability is one of the top criteria for all visitors
 browsing your site. A good user experience and excellent content are key
-factors for the success of a website. Nothing in this business is guaranteed,
-but user experience efforts are good reasons your readers will return.
+factors for the success of a website.
+
+Nothing in business is guaranteed, but excellent user experience efforts
+are good reasons your readers will return.
 
 [role="mb-7"]
-Check what is searching a J1 website all about at
+Learn what is searching a J1 website all about at
 link:{url-roundtrip--quicksearch}[Lunr Search].

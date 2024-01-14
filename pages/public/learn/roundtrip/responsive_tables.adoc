@@ -23,7 +23,6 @@ image:
   width:                                1920
   height:                               1280
 
-tts:                                    false
 regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/responsive_tables/
 
@@ -457,11 +456,11 @@ Expectedly you've enjoyed exploring all the possibilities J1 offers so far.
 An exciting feature may be the use of themes. But much, much more can the J1
 do for your Web Site.
 
-J1 Template offers various unique functionalities compared to other Jekyll
-themes and templates. Bootstrap themes for the J1 Template are based on the
-free and open-source CSS front-end framework Bootstrap of version V5. The
-Bootstrap themes for the J1 enable the presentation of different skins of
-the same site using already prepared Bootstrap CSS templates.
+J1 Template offers unique functionalities compared to other Jekyll templates.
+Themes for the J1 Template are based on the free and Open Source CSS front-end
+framework Bootstrap of version V5. Bootstrap themes for the J1 enable the
+presentation of different skins of the same site using already prepared
+CSS templates.
 
 Using Bootstrap themes results in a uniform appearance for the content in
 terms of the overall layout, text, tables, and form elements across all

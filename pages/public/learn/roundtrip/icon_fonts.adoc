@@ -24,7 +24,6 @@ image:
   width:                                1920
   height:                               1280
 
-tts:                                    false
 regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/mdi_icon_font/
 
@@ -79,7 +78,7 @@ for <<Material Design Icons>> and <<FontAwesome Icons>>.
 [NOTE]
 ====
 Iconify icons are not a locally stored icon-set like MDI or FA.
-Icons are loaded over the Internet using the so-called *Unified OpenSource Icon
+Icons are loaded over the Internet using the so-called *Unified Open Source Icon
 Framework*. See section <<Iconify Icons>> for more information.
 ====
 
@@ -634,7 +633,7 @@ fas:heart[5x md-red-900 fa-pulsed]
 Sometimes icons are missing like a specific brand or theme icon. An
 interesting solution for using icons from a remote repository is
 link:{url-iconify--home}[Iconify, {browser-window--new}]. Iconify use
-a so-called Unified OpenSource Icon framework that makes it possible
+a so-called Unified Open Source Icon framework that makes it possible
 to use icons from multiple sets.
 
 To access that framework, a Javascript client is needed. For the J1 Template,
@@ -732,7 +731,7 @@ iconify:medical-icon:i-ear-nose-throat[5x md-red-900]
 
 Have you've enjoyed the possibilities J1 offers for managing and
 manipulating font icons? Do you think these icon sets can fit your needs?
-Using Iconify, for all topics, you will find a suitable icon.
+For sure, using Iconify, for all topics, you will find a suitable icon.
 
 J1 Template implements some handy Ruby-based enhancements for the markup
 language Asciidoc. Providing extensions for a Jekyll theme is a unique

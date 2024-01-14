@@ -25,7 +25,6 @@ image:
   width:                                1920
   height:                               1280
 
-tts:                                    false
 regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/modals/
 
@@ -96,18 +95,17 @@ include::{documentdir}/410_table_bs_modal_examples.asciidoc[]
 [role="mt-5"]
 == What next
 
-Bootstrap is a helpful framework that offers a complete set of styles in
-the current V5 version to create excellent responsive designs. In the sense
-that all can be improved, the responsive tables supported by Bootstrap needs
-some enhancement to display tables on low-resolution devices or smaller window
-sizes better.
+Bootstrap is a helpful framework that offers a complete set of styles to
+create excellent responsive designs. In the sense that all can be improved,
+responsive tables supported by Bootstrap should get some enhancement to
+display on low-resolution devices or smaller window sizes better.
 
-The Theme Jekyll One supports a new design for responsive tables but based
+The theme Jekyll One supports a new design for responsive tables but based
 on Bootstrap. The approach used by J1 Template is based on CSS styles on
 top of the classic Bootstrap tags for simplicity and portability to be viewed
-best on all devices and browsers. Responsive tables help to read this important
-information on mobiles a lot. This feature is what is meant to be fully
-responsive!
+best on all devices and browsers. Responsive tables help to read this
+important information on mobiles a lot - this feature is what is meant to be
+fully responsive!
 
 [role="mb-7"]
 Check out from here what the

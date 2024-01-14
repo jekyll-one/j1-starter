@@ -204,6 +204,7 @@ That way, five series are available by the five scale factors. See the
 following table how `r-text` scales.
 
 .Scale factors
+[cols="3a,3a,6a", options="header", width="100%", role="table-responsive mt-4"]
 |===
 |Property |Factor |Example text
 

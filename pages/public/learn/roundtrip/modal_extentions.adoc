@@ -1,5 +1,5 @@
 ---
-title:                                  Modals
+title:                                  Advanced Modals
 title_extention:                        Advanced Bootstrap Modals for J1 Template
 tagline:                                Improve Visitor Experience
 
@@ -7,7 +7,7 @@ date:                                   2020-11-08
 #last_modified:                         2023-01-01
 
 description: >
-                                        J1 Template supports a large set of advanced Bootstrap Modals
+                                        J1 Template supports a rich set of advanced Bootstrap Modals
                                         that add dialogs to your web pages for user notifications.
                                         The advanced Modals highlight important information to your
                                         visitors. Modals are positioned over everything else in the
@@ -58,11 +58,12 @@ resource_options:
 // Page content
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [role="dropcap"]
-J1 Template supports a large set of advanced Bootstrap Modals that add
-dialogs to your web pages for user notifications. The advanced Modals
-highlight important information to your visitors. The dialogs are positioned
-over everything else in the document so that messages get the full user's
-attention.
+J1 Template supports a rich set of advanced Bootstrap Modals that add dialogs
+to your web pages for user notifications. This advanced Modals highlight
+important information to your visitors.
+
+The dialogs are positioned over everything else in the document so that
+messages get the full user's attention.
 
 mdi:clock-time-five-outline[24px, md-gray mt-4 mr-2]
 *5-10 Minutes* to read
@@ -108,5 +109,5 @@ important information on mobiles a lot - this feature is what is meant to be
 fully responsive!
 
 [role="mb-7"]
-Check out from here what the
+Check out from here what
 link:{url-roundtrip--responsive-tables}[Responsive Tables] can do!

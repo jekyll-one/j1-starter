@@ -1,7 +1,7 @@
 ---
-title:                                  Themes
-title_extention:                        Free Bootstrap themes for J1 Template
-tagline:                                Bootstrap Styles
+title:                                  Bootstrap Themes
+title_extention:                        Individual Bootstrap Styles for J1 Template Webs
+tagline:                                Individual CSS Styles for J1 Webs
 
 date:                                   2020-11-10
 #last_modified:                         2023-01-01
@@ -21,18 +21,18 @@ categories:                             [ Roundtrip ]
 tags:                                   [ Bootstrap, Module, Theme ]
 
 image:
-  path:                                 /assets/images/modules/attics//themes-1920x1280-bw.jpg
+  path:                                 /assets/images/modules/attics/themes-1920x1280-bw.jpg
   width:                                1920
   height:                               1280
 
 regenerate:                             false
 permalink:                              /pages/public/learn/roundtrip/themes/
 
-resources:                              [ animate, rouge ]
+resources:                              [ animate, lightbox, rouge ]
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/images/modules/attics//themes-1920x1280-bw.jpg
+        - url:                          /assets/images/modules/attics/themes-1920x1280-bw.jpg
           alt:                          Photo by Clem Onojeghuo on Unsplash
           badge:
             type:                       unsplash
@@ -62,24 +62,15 @@ resource_options:
 // Page content
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [role="dropcap"]
-Bootstrap themes for the J1 Template are based on the free and Open Source
-CSS front-end framework of version V5. The Bootstrap theme feature enables
-the presentation of different versions of the same site using already prepared
-Bootstrap CSS style sets.
+Themes for the J1 Template are based on the Open Source CSS front-end
+framework Bootstrap of version V5. The Bootstrap theme feature enables
+the presentation of a website using different skins of the same site using
+already prepared Bootstrap CSS style sets.
 
-[NOTE]
-====
-link:{url-bs--home}[Bootstrap, {browser-window--new}] is an HTML, CSS and
-Javascripts Library that focuses on simplifying the development of modern web
-pages. The primary purpose of applying the framework to J1 is to provide a
-general standard for colors, sizes, fonts, and the overall layout of a
-based site.
-====
-
-Using themes results in a uniform appearance for the content in terms of the
+Using a theme results in a uniform appearance for the content in terms of the
 overall layout, text, tables, and form elements across all modern web browsers
-available on the market. In addition, developers can take advantage of CSS
-classes defined in Bootstrap to customize a layout individually.
+available on the market. In addition, developers can take advantage of already
+defined CSS classes in Bootstrap to customize a layout individually.
 
 mdi:clock-time-five-outline[24px, md-gray mt-4 mr-2]
 *3 Minutes* to read

@@ -53,7 +53,7 @@ environment:                            development
 # ------------------------------------------------------------------------------
 # Sets the build version of the site
 #
-version:                                2024.1.3
+version:                                2024.1.5
 
 # copyright
 # ------------------------------------------------------------------------------
@@ -395,7 +395,7 @@ strict_front_matter:                    false
 #
 sass:
   sass_dir:                             _sass/scss
-  style:                                expanded                                # possible values: nested expanded compact compressed
+  style:                                expanded                                # values: compact|compressed|expanded|nested
 
 # ------------------------------------------------------------------------------
 # WEBRICK Customizations

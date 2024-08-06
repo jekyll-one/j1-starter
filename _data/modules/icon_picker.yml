@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one/J1 Theme/blob/master/LICENSE
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ settings:
       id:                               base
       picker_button_id:                 icon_picker_base
       iconLibraries:                    [ mdi-icons-light.min.json ]
-      iconLibrariesCss:                 [ /assets/themes/j1/core/css/icon-fonts/mdil.min.css ]
+      iconLibrariesCss:                 [ /assets/theme/j1/core/css/icon-fonts/mdil.min.css ]
 
     # --------------------------------------------------------------------------
     # MDI Base Picker
@@ -79,7 +79,7 @@ settings:
       id:                               mdi
       picker_button_id:                 icon_picker_base
       iconLibraries:                    [ mdi-icons-base.min.json ]
-      iconLibrariesCss:                 [ /assets/themes/j1/core/css/icon-fonts/mdib.min.css ]
+      iconLibrariesCss:                 [ /assets/theme/j1/core/css/icon-fonts/mdib.min.css ]
 
 # ------------------------------------------------------------------------------
 # END config

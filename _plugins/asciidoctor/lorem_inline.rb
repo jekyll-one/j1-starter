@@ -9,7 +9,7 @@
 # Copyright (C) 2022 Travis Dunn
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # Lorem adapted from Frank
 # Frank is licensed under the MIT License.
 # See: https://github.com/blahed/frank/blob/master/LICENSE

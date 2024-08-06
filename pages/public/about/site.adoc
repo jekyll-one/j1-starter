@@ -12,7 +12,7 @@ categories:                             [ About ]
 tags:                                   [ Site, Review ]
 
 image:
-  path:                                 /assets/images/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+  path:                                 /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
   width:                                1920
   height:                               1280
   alt:                                  J1 Theme Mockup
@@ -29,7 +29,7 @@ resource_options:
   - attic:
       padding_top:                      600
       slides:
-        - url:                          /assets/images/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+        - url:                          /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
           alt:                          J1 Themes Mockup
 ---
 

@@ -1,0 +1,274 @@
+== Safety settings
+
+This guide describes the adjustable safety settings available for the
+Gemini API. During the prototyping stage, you can adjust safety settings
+on 4 dimensions to quickly assess if your application requires more or
+less restrictive configuration. By default, safety settings block
+content (including prompts) with medium or higher probability of being
+unsafe across any dimension. This baseline safety is designed to work
+for most use cases, so you should only adjust your safety settings if
+it's consistently required for your application.
+
+**Note:** Adjusting to lower safety settings will trigger a more indepth
+review process of your application.
+
+=== Safety filters
+
+In addition to the adjustable safety filters, the Gemini API has
+built-in protections against core harms, such as content that endangers
+child safety. These types of harm are always blocked and cannot be
+adjusted.
+
+The adjustable safety filters cover the following categories:
+
+* Harassment
+* Hate speech
+* Sexually explicit
+* Dangerous
+
+These settings allow you, the developer, to determine what is
+appropriate for your use case. For example, if you're building a video
+game dialogue, you may deem it acceptable to allow more content that's
+rated as dangerous due to the nature of the game. Here are a few other
+example use cases that may need some flexibility in these safety
+settings:
+
+[cols=",",options="header",]
+|===
+|Use Case |Category
+|Anti-Harassment Training App |Hate speech, Sexually explicit
+|Screenplay Writer |Sexually explicit, Dangerous
+|Toxicity classifier |Harassment, Dangerous
+|===
+
+[[probability-vs]]
+==== Probability versus severity
+
+The Gemini API blocks content based on the *probability* of content
+being unsafe and *not* the severity. This is important to consider
+because some content can have low probability of being unsafe even
+though the severity of harm could still be high. For example, comparing
+the sentences:
+
+. The robot punched me.
+. The robot slashed me up.
+
+Sentence 1 might result in a higher probability of being unsafe but you
+might consider sentence 2 to be a higher severity in terms of violence.
+
+Given this, it is important for each developer to carefully test and
+consider what the appropriate level of blocking is needed to support
+their key use cases while minimizing harm to end users.
+
+[[safety-settings]]
+==== Safety Settings
+
+Safety settings are part of the request you send to the text service. It
+can be adjusted for each request you make to the API. The following
+table lists the categories that you can set and describes the type of
+harm that each category encompasses.
+
+[cols=",",options="header",]
+|===
+|Categories |Descriptions
+|Harassment |Negative or harmful comments targeting identity and/or
+protected attributes.
+
+|Hate speech |Content that is rude, disrespectful, or profane.
+
+|Sexually explicit |Contains references to sexual acts or other lewd
+content.
+
+|Dangerous |Promotes, facilitates, or encourages harmful acts.
+|===
+
+These definitions are in the
+https://ai.google.dev/api/rest/v1/HarmCategory[API reference] as well.
+The Gemini models only support `HARM_CATEGORY_HARASSMENT`,
+`HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`, and
+`HARM_CATEGORY_DANGEROUS_CONTENT`. The other categories are used by PaLM
+2 (Legacy) models.
+
+The following table describes the block settings you can adjust for each
+category. For example, if you set the block setting to *Block few* for
+the *Hate speech* category, everything that has a high probability of
+being hate speech content is blocked. But anything with a lower
+probability is allowed.
+
+If not set, the default block setting is *Block some* for all
+categories.
+
+[cols=",,",options="header",]
+|===
+|Threshold (Google AI Studio) |Threshold (API) |Description
+|Block none |BLOCK_NONE |Always show regardless of probability of unsafe
+content
+
+|Block few |BLOCK_ONLY_HIGH |Block when high probability of unsafe
+content
+
+|Block some |BLOCK_MEDIUM_AND_ABOVE |Block when medium or high
+probability of unsafe content
+
+|Block most |BLOCK_LOW_AND_ABOVE |Block when low, medium or high
+probability of unsafe content
+
+| |HARM_BLOCK_THRESHOLD_UNSPECIFIED |Threshold is unspecified, block
+using default threshold
+|===
+
+You can set these settings for each request you make to the text
+service. See the
+https://ai.google.dev/api/rest/v1/SafetySetting#harmblockthreshold[`HarmBlockThreshold`]
+API reference for details.
+
+==== Safety feedback
+
+https://ai.google.dev/api/rest/v1/models/generateContent[`generateContent`]
+returns a
+https://ai.google.dev/api/rest/v1/GenerateContentResponse[`GenerateContentResponse`]
+which includes safety feedback.
+
+Prompt feedback is included in
+https://ai.google.dev/api/rest/v1/GenerateContentResponse#PromptFeedback[`promptFeedback`].
+If
+https://ai.google.dev/api/rest/v1/GenerateContentResponse#blockreason[`promptFeedback.blockReason`]
+is set, then the content of the prompt was blocked.
+
+Response candidate feedback is included in
+https://ai.google.dev/api/rest/v1/GenerateContentResponse#FinishReason[`finishReason`]
+and
+https://ai.google.dev/api/rest/v1/GenerateContentResponse#safetyrating[`safetyRatings`].
+If response content was blocked and the `finishReason` was `SAFETY`, you
+can inspect `safetyRatings` for more details. The safety rating includes
+the category and the probability of the harm classification. The content
+that was blocked is not returned.
+
+The probability returned correspond to the block confidence levels as
+shown in the following table:
+
+[cols=",",options="header",]
+|===
+|Probability |Description
+|NEGLIGIBLE |Content has a negligible probability of being unsafe
+|LOW |Content has a low probability of being unsafe
+|MEDIUM |Content has a medium probability of being unsafe
+|HIGH |Content has a high probability of being unsafe
+|===
+
+For example, if the content was blocked due to the harassment category
+having a high probability, the safety rating returned would have
+category equal to `HARASSMENT` and harm probability set to `HIGH`.
+
+[[safety-settings-ai-studio]]
+=== Safety settings in Google AI Studio
+
+You can also adjust safety settings in Google AI Studio, but you cannot
+turn them off. To do so, in the *Run settings*, click *Edit safety
+settings*:
+
+image:/static/docs/images/safety_settings_button.png[Safety settings
+button,scaledwidth=50.0%]
+
+And use the knobs to adjust each setting:
+
+image:/static/docs/images/safety_settings_ui.png[Safety settings
+button,scaledwidth=50.0%]
+
+A [.material-icons]#warning# *No Content* message appears if the content
+is blocked. To see more details, hold the pointer over *No Content* and
+click [.material-icons]#warning# *Safety*.
+
+=== Code examples
+
+This section shows how to use the safety settings in code using the
+python client library.
+
+==== Request example
+
+The following is a python code snippet showing how to set safety
+settings in your `GenerateContent` call. This sets the harm categories
+`Harassment` and `Hate speech` to `BLOCK_LOW_AND_ABOVE` which blocks any
+content that has a low or higher probability of being harassment or hate
+speech.
+
+[source, python]
+----
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
+
+model = genai.GenerativeModel(model_name='gemini-pro-vision')
+response = model.generate_content(
+    ['Do these look store-bought or homemade?', img],
+    safety_settings={
+        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
+        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
+    }
+)
+----
+
+==== Response example
+
+The following shows a code snippet for parsing the safety feedback from
+the response.
+
+[source, python]
+----
+try:
+  print(response.text)
+except ValueError:
+  # If the response doesn't contain text, check if the prompt was blocked.
+  print(response.prompt_feedback)
+  # Also check the finish reason to see if the response was blocked.
+  print(response.candidates[0].finish_reason)
+  # If the finish reason was SAFETY, the safety ratings have more details.
+  print(response.candidates[0].safety_ratings)
+----
+
+=== Next steps
+
+* See the https://ai.google.dev/api/[API reference] to learn more about
+the full API.
+* Review the link:/docs/safety_guidance[safety guidance] for a general
+look at safety considerations when developing with LLMs.
+* Learn more about assessing probability versus severity from the
+https://developers.perspectiveapi.com/s/about-the-api-score[Jigsaw team]
+* Learn more about the products that contribute to safety solutions like
+the
+https://medium.com/jigsaw/reducing-toxicity-in-large-language-models-with-perspective-api-c31c39b7a4d7[Perspective
+API].
+* You can use these safety settings to create a toxicity classifier. See
+the
+https://ai.google.dev/examples/train_text_classifier_embeddings[classification
+example] to get started.
+
+[[devsite-thumb-label-footer]]
+Was this helpful?
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZGV2c2l0ZS10aHVtYi1pY29uIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMSw3aC02LjMxbDAuOTUtNC41N2wwLjAzLTAuMzJjMC0wLjQxLTAuMTctMC43OS0wLjQ0LTEuMDZMMTQuMTcsMGMwLDAtNy4wOSw2Ljg1LTcuMTcsN0gydjEzaDE2IGMwLjgzLDAsMS41NC0wLjUsMS44NC0xLjIybDMuMDItNy4wNUMyMi45NSwxMS41LDIzLDExLjI2LDIzLDExVjlDMjMsNy45LDIyLjEsNywyMSw3eiBNNywxOEg0VjloM1YxOHogTTIxLDExbC0zLDdIOVY4bDQuMzQtNC4zNCBMMTIsOWg5VjExeiI+PC9wYXRoPgogICAgICAgICAgICAgIDwvc3ZnPg==[image]
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZGV2c2l0ZS10aHVtYi1pY29uIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zLDE3aDYuMzFsLTAuOTUsNC41N2wtMC4wMywwLjMyYzAsMC40MSwwLjE3LDAuNzksMC40NCwxLjA2TDkuODMsMjRjMCwwLDcuMDktNi44NSw3LjE3LTdoNVY0SDYgQzUuMTcsNCw0LjQ2LDQuNSw0LjE2LDUuMjJsLTMuMDIsNy4wNUMxLjA1LDEyLjUsMSwxMi43NCwxLDEzdjJDMSwxNi4xLDEuOSwxNywzLDE3eiBNMTcsNmgzdjloLTNWNnogTTMsMTNsMy03aDl2MTBsLTQuMzQsNC4zNCBMMTIsMTVIM1YxM3oiPjwvcGF0aD4KICAgICAgICAgICAgICA8L3N2Zz4=[image]
+
+Send feedback
+
+Except as otherwise noted, the content of this page is licensed under
+the https://creativecommons.org/licenses/by/4.0/[Creative Commons
+Attribution 4.0 License], and code samples are licensed under the
+https://www.apache.org/licenses/LICENSE-2.0[Apache 2.0 License]. For
+details, see the https://developers.google.com/site-policies[Google
+Developers Site Policies]. Java is a registered trademark of Oracle
+and/or its affiliates.
+
+Last updated 2024-02-08 UTC.
+
+[\{ "type": "thumb-down", "id": "missingTheInformationINeed",
+"label":"Missing the information I need" },\{ "type": "thumb-down",
+"id": "tooComplicatedTooManySteps", "label":"Too complicated / too many
+steps" },\{ "type": "thumb-down", "id": "outOfDate", "label":"Out of
+date" },\{ "type": "thumb-down", "id": "samplesCodeIssue",
+"label":"Samples / code issue" },\{ "type": "thumb-down", "id":
+"otherDown", "label":"Other" }] [\{ "type": "thumb-up", "id":
+"easyToUnderstand", "label":"Easy to understand" },\{ "type":
+"thumb-up", "id": "solvedMyProblem", "label":"Solved my problem" },\{
+"type": "thumb-up", "id": "otherUp", "label":"Other" }]
+
+Need to tell us more?

@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ settings:
               polygon:
                 nb_sides:               5
               image:
-                src:                    /assets/themes/j1/modules/particles/css/images/snowflake-1.png
+                src:                    /assets/theme/j1/modules/particles/css/images/snowflake-1.png
                 width:                  100
                 height:                 100
 

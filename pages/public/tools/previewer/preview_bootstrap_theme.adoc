@@ -21,7 +21,7 @@ categories:                             [ Previewer ]
 tags:                                   [ Theme, Bootstrap ]
 
 image:
-  path:                                 /assets/images/modules/attics/themes-1920x1280-bw.jpg
+  path:                                 /assets/image/modules/attics/themes-1920x1280-bw.jpg
   width:                                1920
   height:                               1280
 
@@ -29,16 +29,13 @@ comments:                               false
 regenerate:                             false
 permalink:                              /pages/public/tools/previewer/current_theme/
 
-resources:                              [
-                                          animate, rouge,
-                                          bmd
-                                        ]
+resources:                              [ bmd, rouge ]
 resource_options:
   - toccer:
       collapseDepth:                    4
   - attic:
       slides:
-        - url:                          /assets/images/modules/attics/themes-1920x1280-bw.jpg
+        - url:                          /assets/image/modules/attics/themes-1920x1280-bw.jpg
           alt:                          Photo by Clem Onojeghuo on Unsplash
           badge:
             type:                       unsplash
@@ -2493,7 +2490,7 @@ ifeval::[{cards_image} == true]
   <div class="row">
     <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="card mb-3" style="max-width: 20rem;">
-        <img src="/assets/images/modules/attics/building-blocks-1920x1280.jpg" alt="Free site generators">
+        <img src="/assets/image/modules/attics/building-blocks-1920x1280.jpg" alt="Free site generators">
         <div class="card-body">
           <h4 class="card-title notoc">Card title</h4>
           <h5 class="card-subtitle text-muted notoc">Image card subtitle</h5>
@@ -2507,7 +2504,7 @@ ifeval::[{cards_image} == true]
     </div>
     <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="card mb-3" style="max-width: 20rem;">
-        <img src="/assets/images/modules/attics/building-blocks-1920x1280.jpg" alt="Free site generators">
+        <img src="/assets/image/modules/attics/building-blocks-1920x1280.jpg" alt="Free site generators">
         <div class="card-body">
           <h4 class="card-title notoc">Card title</h4>
           <h5 class="card-subtitle text-muted notoc">Image card subtitle</h5>
@@ -2525,7 +2522,7 @@ ifeval::[{cards_image} == true]
     <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="card mb-3" style="max-width: 20rem;">
         <h3 class="card-header notoc">Header</h3>
-        <img src="/assets/images/modules/attics/building-blocks-1920x1280.jpg" alt="Free site generators">
+        <img src="/assets/image/modules/attics/building-blocks-1920x1280.jpg" alt="Free site generators">
         <div class="card-body">
           <h4 class="card-title notoc">Card title</h4>
           <h5 class="card-subtitle text-muted notoc">Image card subtitle</h5>

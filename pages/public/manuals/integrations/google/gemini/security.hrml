@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <devsite-content>
+    <article class="devsite-article" has-bookmark="">
+      <style>
+        /* Styles inlined from /site-assets/css/style.css */
+        /* Ensure that full-bleed pages get the full width. */
+        body[theme="googledevai-theme"][layout="full"] .devsite-main-content {
+        max-width: none;
+        padding: 0;
+        }
+        /* And ensure that any site banners/ACL warnings/etc don't get hidden on
+        * full-bleed pages. */
+        body[theme="googledevai-theme"][layout="full"] .devsite-banner {
+        margin: 0;
+        }
+        tab:has(> a.hidden-tab) {
+        display: none;
+        }
+        .landing-page-card {
+        padding: 16px;
+        box-shadow: 0 0 36px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        }
+        /* Page section headings */
+        .landing-page-heading h2, h2.landing-page-heading {
+        font-family: "Google Sans", sans-serif;
+        color: #425066;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 40px;
+        }
+        /* Item title headings */
+        .landing-page-heading h3, h3.landing-page-heading,
+        .landing-page-card h3, h3.landing-page-card {
+        font-family: "Google Sans", sans-serif;
+        color: #425066;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 26px;
+        }
+        /* Notebooks */
+        devsite-code .tfo-notebook-code-cell-output {
+        max-height: 300px;
+        overflow: auto;
+        background: rgba(237, 247, 255, 1);  /* blue bg to distinguish from input code cells */
+        }
+        devsite-code .tfo-notebook-code-cell-output + .devsite-code-buttons-container button {
+        background: rgba(237, 247, 255, .7);  /* blue bg to distinguish from input code cells */
+        }
+        devsite-code[dark-code] .tfo-notebook-code-cell-output {
+        background: rgba(64, 78, 103, 1);  /* medium slate */
+        }
+        devsite-code[dark-code] .tfo-notebook-code-cell-output + .devsite-code-buttons-container button {
+        background: rgba(64, 78, 103, .7);  /* medium slate */
+        }
+        /* override default table styles for notebook buttons */
+        .devsite-table-wrapper .tfo-notebook-buttons {
+        display: inline-block;
+        margin-left: 3px;
+        width: auto;
+        }
+        .tfo-notebook-buttons td {
+        padding-left: 0;
+        padding-right: 20px;
+        }
+        /* on rendered notebook page,
+        remove link to webpage since we're already here */
+        .tfo-notebook-buttons:not(.tfo-api) td:first-child {
+        display: none;
+        }
+        .tfo-notebook-buttons a,
+        .tfo-notebook-buttons :link,
+        .tfo-notebook-buttons :visited {
+        border-radius: 8px;
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+        color: #202124;
+        padding: 12px 17px;
+        transition: box-shadow 0.2s;
+        }
+        .tfo-notebook-buttons a:hover,
+        .tfo-notebook-buttons a:focus {
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+        }
+        .tfo-notebook-buttons tr {
+        background: 0;
+        border: 0;
+        }
+        .tfo-notebook-buttons td > a {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        }
+        .tfo-notebook-buttons td > a > img {
+        margin-right: 8px;
+        }
+      </style>
+      <div class="devsite-article-meta nocontent" role="navigation">
+        <ul class="devsite-breadcrumb-list" aria-label="Breadcrumb">
+          <li class="devsite-breadcrumb-item
+            ">
+            <a href="https://ai.google.dev/" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="1" track-type="globalNav" track-name="breadcrumb" track-metadata-position="1" track-metadata-eventdetail="Google AI for Developers">
+            Google AI for Developers
+            </a>
+          </li>
+          <li class="devsite-breadcrumb-item
+            ">
+            <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+            <a href="https://ai.google.dev/docs" class="devsite-breadcrumb-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Breadcrumbs" data-value="2" track-type="globalNav" track-name="breadcrumb" track-metadata-position="2" track-metadata-eventdetail="">
+            Products
+            </a>
+          </li>
+        </ul>
+        <devsite-thumb-rating position="header">
+          <div class="devsite-thumb-rating" role="form" aria-labelledby="devsite-thumb-label-header">
+            <div class="devsite-thumb-label" id="devsite-thumb-label-header">Was this helpful?</div>
+            <div class="devsite-thumbs">
+              <button class="devsite-thumb devsite-thumb-up" data-title="Helpful" aria-label="Helpful">
+                <svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21,7h-6.31l0.95-4.57l0.03-0.32c0-0.41-0.17-0.79-0.44-1.06L14.17,0c0,0-7.09,6.85-7.17,7H2v13h16 c0.83,0,1.54-0.5,1.84-1.22l3.02-7.05C22.95,11.5,23,11.26,23,11V9C23,7.9,22.1,7,21,7z M7,18H4V9h3V18z M21,11l-3,7H9V8l4.34-4.34 L12,9h9V11z"></path>
+                </svg>
+              </button>
+              <button class="devsite-thumb devsite-thumb-down" data-title="Not helpful" aria-label="Not helpful">
+                <svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3,17h6.31l-0.95,4.57l-0.03,0.32c0,0.41,0.17,0.79,0.44,1.06L9.83,24c0,0,7.09-6.85,7.17-7h5V4H6 C5.17,4,4.46,4.5,4.16,5.22l-3.02,7.05C1.05,12.5,1,12.74,1,13v2C1,16.1,1.9,17,3,17z M17,6h3v9h-3V6z M3,13l3-7h9v10l-4.34,4.34 L12,15H3V13z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </devsite-thumb-rating>
+      </div>
+      <devsite-feedback position="header" project-name="Google AI for Developers" product-id="5292923" bucket="documentation" context="" version="t-devsite-webserver-20240220-r00-rc00.458658593551227362" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="header" class="nocontent" project-icon="https://www.gstatic.com/devrel-devsite/prod/v937c5f592532c0ad2ebbf299686fcceed4f5934a648172aa45e00618ae0982d7/googledevai/images/touchicon-180-new.png" feedback-type="thumb-rating">
+        <button>
+        Send feedback
+        </button>
+      </devsite-feedback>
+      <h1 class="devsite-page-title" tabindex="-1">Safety settings</h1>
+      <devsite-feature-tooltip ack-key="AckCollectionsBookmarkTooltipDismiss" analytics-category="Site-Wide Custom Events" analytics-action-show="Callout Profile displayed" analytics-action-close="Callout Profile dismissed" analytics-label="Create Collection Callout" class="devsite-page-bookmark-tooltip nocontent inline-block" dismiss-button="true" id="devsite-collections-dropdown" dismiss-button-text="Dismiss" close-button-text="Got it" ready="" current-step="0" style="--devsite-popout-offset-x: 32px;">
+        <devsite-bookmark class="show">
+          <devsite-dropdown-list ellipsis="" checkboxes="" fetchingitems="true" writable="" additemtext="New Collection" ready="" style="--devsite-popout-offset-x: 0px;"><span data-label="devsite-bookmark-direct-action" data-title="Save page" class="material-icons bookmark-icon bookmark-action" slot="toggle">bookmark_border</span><span data-label="devsite-bookmark-direct-action" data-title="Unsave page" hidden="" class="material-icons bookmark-icon unbookmark-action toggled" slot="toggle">bookmark</span></devsite-dropdown-list>
+        </devsite-bookmark>
+        <span slot="popout-heading">
+        Stay organized with collections
+        </span>
+        <span slot="popout-contents">
+        Save and categorize content based on your preferences.
+        </span>
+      </devsite-feature-tooltip>
+      <div class="devsite-page-title-meta"></div>
+      <devsite-toc class="devsite-nav devsite-toc-embedded" depth="2" devsite-toc-embedded="" expandable="" visible="">
+        <ul class="devsite-nav-list">
+          <li class="devsite-nav-item devsite-nav-heading devsite-toc-toggle"><span class="devsite-nav-title" role="heading" aria-level="2"><span class="devsite-nav-text">On this page</span></span><button type="button" title="Expand/collapse contents" class="devsite-nav-show-all button-transparent material-icons"></button></li>
+          <li class="devsite-nav-item" visible="">
+            <a href="#safety-filters" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="0" track-type="navigation" track-name="embeddedNav" track-metadata-position="0" track-metadata-link-destination="#safety-filters"><span class="devsite-nav-text" tooltip="">Safety filters</span></a>
+            <ul class="devsite-nav-list">
+              <li class="devsite-nav-item" visible=""><a href="#probability-vs" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="0.0" track-type="navigation" track-name="embeddedNav" track-metadata-position="0.0" track-metadata-link-destination="#probability-vs"><span class="devsite-nav-text" tooltip="">Probability versus severity</span></a></li>
+              <li class="devsite-nav-item" visible=""><a href="#safety-settings" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="0.1" track-type="navigation" track-name="embeddedNav" track-metadata-position="0.1" track-metadata-link-destination="#safety-settings"><span class="devsite-nav-text" tooltip="">Safety Settings</span></a></li>
+              <li class="devsite-nav-item" visible=""><a href="#safety-feedback" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="0.2" track-type="navigation" track-name="embeddedNav" track-metadata-position="0.2" track-metadata-link-destination="#safety-feedback"><span class="devsite-nav-text" tooltip="">Safety feedback</span></a></li>
+            </ul>
+          </li>
+          <li class="devsite-nav-item" visible=""><a href="#safety-settings-ai-studio" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="1" track-type="navigation" track-name="embeddedNav" track-metadata-position="1" track-metadata-link-destination="#safety-settings-ai-studio"><span class="devsite-nav-text" tooltip="">Safety settings in Google AI Studio</span></a></li>
+          <li class="devsite-nav-item" visible="">
+            <a href="#code-examples" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="2" track-type="navigation" track-name="embeddedNav" track-metadata-position="2" track-metadata-link-destination="#code-examples"><span class="devsite-nav-text" tooltip="">Code examples</span></a>
+            <ul class="devsite-nav-list">
+              <li class="devsite-nav-item" visible=""><a href="#request-example" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="2.0" track-type="navigation" track-name="embeddedNav" track-metadata-position="2.0" track-metadata-link-destination="#request-example"><span class="devsite-nav-text" tooltip="">Request example</span></a></li>
+              <li class="devsite-nav-item" visible=""><a href="#response-example" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="2.1" track-type="navigation" track-name="embeddedNav" track-metadata-position="2.1" track-metadata-link-destination="#response-example"><span class="devsite-nav-text" tooltip="">Response example</span></a></li>
+            </ul>
+          </li>
+          <li class="devsite-nav-item"><a href="#next-steps" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="3" track-type="navigation" track-name="embeddedNav" track-metadata-position="3" track-metadata-link-destination="#next-steps"><span class="devsite-nav-text" tooltip="">Next steps</span></a></li>
+          <li class="devsite-toc-toggle"><button type="button" class="button-flat devsite-nav-more-items material-icons" track-type="navigation" track-name="embeddedNavExpand" title="Expand/collapse contents"></button></li>
+        </ul>
+      </devsite-toc>
+      <div class="devsite-article-body clearfix
+        ">
+        <p></p>
+        <p>This guide describes the adjustable safety settings available for the Gemini
+          API. During the prototyping stage, you can adjust safety settings on 4
+          dimensions to quickly assess if your application requires more or less
+          restrictive configuration. By default, safety settings block content (including
+          prompts) with medium or higher probability of being unsafe across any dimension.
+          This baseline safety is designed to work for most use cases, so you should only
+          adjust your safety settings if it's consistently required for your application.
+        </p>
+        <aside class="note"><strong>Note:</strong><span> Adjusting to lower safety settings will trigger a more indepth review
+          process of your application.</span>
+        </aside>
+        <h2 id="safety-filters" data-text="Safety filters" tabindex="-1" role="presentation"><span class="devsite-heading" role="heading" aria-level="2">Safety filters</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copy link to this section: Safety filters" data-title="Copy link to this section: Safety filters" data-id="safety-filters"></button></h2>
+        <p>In addition to the adjustable safety filters, the Gemini API has built-in
+          protections against core harms, such as content that endangers child safety.
+          These types of harm are always blocked and cannot be adjusted.
+        </p>
+        <p>The adjustable safety filters cover the following categories:</p>
+        <ul>
+          <li>Harassment</li>
+          <li>Hate speech</li>
+          <li>Sexually explicit</li>
+          <li>Dangerous</li>
+        </ul>
+        <p>These settings allow you, the developer, to determine what is appropriate for
+          your use case. For example, if you're building a video game dialogue, you may
+          deem it acceptable to allow more content that's rated as dangerous due to the
+          nature of the game. Here are a few other example use cases that may need some
+          flexibility in these safety settings:
+        </p>
+        <div class="devsite-table-wrapper">
+          <table>
+            <tbody>
+              <tr>
+                <th>Use Case
+                </th>
+                <th>Category
+                </th>
+              </tr>
+              <tr>
+                <td>Anti-Harassment Training App
+                </td>
+                <td>Hate speech, Sexually explicit
+                </td>
+              </tr>
+              <tr>
+                <td>Screenplay Writer
+                </td>
+                <td>Sexually explicit, Dangerous
+                </td>
+              </tr>
+              <tr>
+                <td>Toxicity classifier
+                </td>
+                <td>Harassment, Dangerous
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 id="probability-vs" data-text="Probability versus severity" tabindex="-1" role="presentation"><span class="devsite-heading" role="heading" aria-level="3">Probability versus severity</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copy link to this section: Probability versus severity" data-title="Copy link to this section: Probability versus severity" data-id="probability-vs"></button></h3>
+        <p>The Gemini API blocks content based on the <strong>probability</strong> of content being
+          unsafe and <strong>not</strong> the severity. This is important to consider because some
+          content can have low probability of being unsafe even though the severity of
+          harm could still be high. For example, comparing the sentences:
+        </p>
+        <ol>
+          <li>The robot punched me.</li>
+          <li>The robot slashed me up.</li>
+        </ol>
+        <p>Sentence 1 might result in a higher probability of being unsafe but you might
+          consider sentence 2 to be a higher severity in terms of violence.
+        </p>
+        <p>Given this, it is important for each developer to carefully test and consider
+          what the appropriate level of blocking is needed to support their key use cases
+          while minimizing harm to end users.
+        </p>
+        <h3 id="safety-settings" data-text="Safety Settings" tabindex="-1" role="presentation"><span class="devsite-heading" role="heading" aria-level="3">Safety Settings</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copy link to this section: Safety Settings" data-title="Copy link to this section: Safety Settings" data-id="safety-settings"></button></h3>
+        <p>Safety settings are part of the request you send to the text service. It can be
+          adjusted for each request you make to the API. The following table lists the
+          categories that you can set and describes the type of harm that each category
+          encompasses.
+        </p>
+        <div class="devsite-table-wrapper">
+          <table>
+            <tbody>
+              <tr>
+                <th>Categories
+                </th>
+                <th>Descriptions
+                </th>
+              </tr>
+              <tr>
+                <td>Harassment
+                </td>
+                <td>Negative or harmful comments targeting identity and/or protected attributes.
+                </td>
+              </tr>
+              <tr>
+                <td>Hate speech
+                </td>
+                <td>Content that is rude, disrespectful, or profane.
+                </td>
+              </tr>
+              <tr>
+                <td>Sexually explicit
+                </td>
+                <td>Contains references to sexual acts or other lewd content.
+                </td>
+              </tr>
+              <tr>
+                <td>Dangerous
+                </td>
+                <td>Promotes, facilitates, or encourages harmful acts.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>These definitions are in the <a href="https://ai.google.dev/api/rest/v1/HarmCategory">API reference</a> as
+          well. The Gemini models only support <code translate="no" dir="ltr">HARM_CATEGORY_HARASSMENT</code>,
+          <code translate="no" dir="ltr">HARM_CATEGORY_HATE_SPEECH</code>, <code translate="no" dir="ltr">HARM_CATEGORY_SEXUALLY_EXPLICIT</code>, and
+          <code translate="no" dir="ltr">HARM_CATEGORY_DANGEROUS_CONTENT</code>. The other categories are used by PaLM 2
+          (Legacy) models.
+        </p>
+        <p>The following table describes the block settings you can adjust for each
+          category. For example, if you set the block setting to <strong>Block few</strong> for the
+          <strong>Hate speech</strong> category, everything that has a high probability of being hate
+          speech content is blocked. But anything with a lower probability is allowed.
+        </p>
+        <p>If not set, the default block setting is <strong>Block some</strong> for all categories.</p>
+        <div class="devsite-table-wrapper">
+          <table>
+            <tbody>
+              <tr>
+                <th>Threshold (Google AI Studio)
+                </th>
+                <th>Threshold (API)
+                </th>
+                <th>Description
+                </th>
+              </tr>
+              <tr>
+                <td>Block none
+                </td>
+                <td>BLOCK_NONE
+                </td>
+                <td>Always show regardless of probability of unsafe content
+                </td>
+              </tr>
+              <tr>
+                <td>Block few
+                </td>
+                <td>BLOCK_ONLY_HIGH
+                </td>
+                <td>Block when high probability of unsafe content
+                </td>
+              </tr>
+              <tr>
+                <td>Block some
+                </td>
+                <td>BLOCK_MEDIUM_AND_ABOVE
+                </td>
+                <td>Block when medium or high probability of unsafe content
+                </td>
+              </tr>
+              <tr>
+                <td>Block most
+                </td>
+                <td>BLOCK_LOW_AND_ABOVE
+                </td>
+                <td>Block when low, medium or high probability of unsafe content
+                </td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td>HARM_BLOCK_THRESHOLD_UNSPECIFIED
+                </td>
+                <td>Threshold is unspecified, block using default threshold
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>You can set these settings for each request you make to the text service. See
+          the <a href="https://ai.google.dev/api/rest/v1/SafetySetting#harmblockthreshold"><code translate="no" dir="ltr">HarmBlockThreshold</code></a>
+          API reference for details.
+        </p>
+        <h3 id="safety-feedback" data-text="Safety feedback" tabindex="-1" role="presentation"><span class="devsite-heading" role="heading" aria-level="3">Safety feedback</span><button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copy link to this section: Safety feedback" data-title="Copy link to this section: Safety feedback" data-id="safety-feedback"></button></h3>
+        <p><a href="https://ai.google.dev/api/rest/v1/models/generateContent"><code translate="no" dir="ltr">generateContent</code></a> returns a
+          <a href="https://ai.google.dev/api/rest/v1/GenerateContentResponse"><code translate="no" dir="ltr">GenerateContentResponse</code></a> which
+          includes safety feedback.
+        </p>
+        <p>Prompt feedback is included in
+          <a href="https://ai.google.dev/api/rest/v1/GenerateContentResponse#PromptFeedback"><code translate="no" dir="ltr">promptFeedback</code></a>.
+          If
+          <a href="https://ai.google.dev/api/rest/v1/GenerateContentResponse#blockreason"><code translate="no" dir="ltr">promptFeedback.blockReason</code></a>
+          is set, then the content of the prompt was blocked.
+        </p>
+        <p>Response candidate feedback is included in
+          <a href="https://ai.google.dev/api/rest/v1/GenerateContentResponse#FinishReason"><code translate="no" dir="ltr">finishReason</code></a> and
+          <a href="https://ai.google.dev/api/rest/v1/GenerateContentResponse#safetyrating"><code translate="no" dir="ltr">safetyRatings</code></a>. If
+          response content was blocked and the <code translate="no" dir="ltr">finishReason</code> was <code translate="no" dir="ltr">SAFETY</code>, you can
+          inspect <code translate="no" dir="ltr">safetyRatings</code> for more details. The safety rating includes the
+          category and the probability of the harm classification. The content that was
+          blocked is not returned.
+        </p>
+        <p>The probability returned correspond to the block confidence levels as shown in
+          the following table:
+        </p>
+        <div class="devsite-table-wrapper">
+          <table>
+            <tbody>
+              <tr>
+                <th>Probability
+                </th>
+                <th>Description
+                </th>
+              </tr>
+              <tr>
+                <td>NEGLIGIBLE
+                </td>
+                <td>Content has a negligible probability of being unsafe
+                </td>
+              </tr>
+              <tr>
+                <td>LOW
+                </td>
+                <td>Content has a low probability of being unsafe
+                </td>
+              </tr>
+              <tr>
+                <td>MEDIUM
+                </td>
+                <td>Content has a medium probability of being unsafe
+                </td>
+              </tr>
+              <tr>
+                <td>HIGH
+                </td>
+                <td>Content has a high probability of being unsafe
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>For example, if the content was blocked due to the harassment category having a
+          high probability, the safety rating returned would have category equal to
+          <code translate="no" dir="ltr">HARASSMENT</code> and harm probability set to <code translate="no" dir="ltr">HIGH</code>.
+        </p>
+        <h2 id="safety-settings-ai-studio" data-text="Safety settings in Google AI Studio" tabindex="-1">Safety settings in Google AI Studio</h2>
+        <p>You can also adjust safety settings in Google AI Studio, but you cannot turn
+          them off. To do so, in the <strong>Run settings</strong>, click <strong>Edit safety settings</strong>:
+        </p>
+        <p><img src="/static/docs/images/safety_settings_button.png" width="50%" class="screenshot" alt="Safety settings button"></p>
+        <p>And use the knobs to adjust each setting:</p>
+        <p><img src="/static/docs/images/safety_settings_ui.png" width="50%" class="screenshot" alt="Safety settings button"></p>
+        <p>A <span class="material-icons" aria-hidden="true" translate="no">warning</span> <strong>No Content</strong> message appears if
+          the content is blocked. To see more details, hold the pointer over <strong>No
+          Content</strong> and click <span class="material-icons" aria-hidden="true" translate="no">warning</span>
+          <strong>Safety</strong>.
+        </p>
+        <h2 id="code-examples" data-text="Code examples" tabindex="-1">Code examples</h2>
+        <p>This section shows how to use the safety settings in code using the python
+          client library.
+        </p>
+        <h3 id="request-example" data-text="Request example" tabindex="-1">Request example</h3>
+        <p>The following is a python code snippet showing how to set safety settings in
+          your <code translate="no" dir="ltr">GenerateContent</code> call. This sets the harm categories <code translate="no" dir="ltr">Harassment</code> and
+          <code translate="no" dir="ltr">Hate speech</code> to <code translate="no" dir="ltr">BLOCK_LOW_AND_ABOVE</code> which blocks any content that has a low
+          or higher probability of being harassment or hate speech.
+        </p>
+        <devsite-code data-copy-event-label="">
+          <pre class="lang-python" translate="no" dir="ltr" is-upgraded=""><code translate="no" dir="ltr"><span class="kwd">from</span><span class="pln"> google</span><span class="pun">.</span><span class="pln">generativeai</span><span class="pun">.</span><span class="pln">types </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">HarmCategory</span><span class="pun">,</span><span class="pln"> </span><span class="typ">HarmBlockThreshold</span><span class="pln"><br><br>model </span><span class="pun">=</span><span class="pln"> genai</span><span class="pun">.</span><span class="typ">GenerativeModel</span><span class="pun">(</span><span class="pln">model_name</span><span class="pun">=</span><span class="str">'gemini-pro-vision'</span><span class="pun">)</span><span class="pln"><br>response </span><span class="pun">=</span><span class="pln"> model</span><span class="pun">.</span><span class="pln">generate_content</span><span class="pun">(</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">[</span><span class="str">'Do these look store-bought or homemade?'</span><span class="pun">,</span><span class="pln"> img</span><span class="pun">],</span><span class="pln"><br>&nbsp; &nbsp; safety_settings</span><span class="pun">={</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ">HarmCategory</span><span class="pun">.</span><span class="pln">HARM_CATEGORY_HATE_SPEECH</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HarmBlockThreshold</span><span class="pun">.</span><span class="pln">BLOCK_LOW_AND_ABOVE</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ">HarmCategory</span><span class="pun">.</span><span class="pln">HARM_CATEGORY_HARASSMENT</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HarmBlockThreshold</span><span class="pun">.</span><span class="pln">BLOCK_LOW_AND_ABOVE</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">)</span><span class="pln"><br></span></code></pre>
+        </devsite-code>
+        <h3 id="response-example" data-text="Response example" tabindex="-1">Response example</h3>
+        <p>The following shows a code snippet for parsing the safety feedback from the
+          response.
+        </p>
+        <devsite-code data-copy-event-label="">
+          <pre class="lang-python" translate="no" dir="ltr" is-upgraded=""><code translate="no" dir="ltr"><span class="kwd">try</span><span class="pun">:</span><span class="pln"><br>&nbsp; </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">text</span><span class="pun">)</span><span class="pln"><br></span><span class="kwd">except</span><span class="pln"> </span><span class="typ">ValueError</span><span class="pun">:</span><span class="pln"><br>&nbsp; </span><span class="com"># If the response doesn't contain text, check if the prompt was blocked.</span><span class="pln"><br>&nbsp; </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">prompt_feedback</span><span class="pun">)</span><span class="pln"><br>&nbsp; </span><span class="com"># Also check the finish reason to see if the response was blocked.</span><span class="pln"><br>&nbsp; </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">candidates</span><span class="pun">[</span><span class="lit">0</span><span class="pun">].</span><span class="pln">finish_reason</span><span class="pun">)</span><span class="pln"><br>&nbsp; </span><span class="com"># If the finish reason was SAFETY, the safety ratings have more details.</span><span class="pln"><br>&nbsp; </span><span class="kwd">print</span><span class="pun">(</span><span class="pln">response</span><span class="pun">.</span><span class="pln">candidates</span><span class="pun">[</span><span class="lit">0</span><span class="pun">].</span><span class="pln">safety_ratings</span><span class="pun">)</span><span class="pln"><br></span></code></pre>
+        </devsite-code>
+        <h2 id="next-steps" data-text="Next steps" tabindex="-1">Next steps</h2>
+        <ul>
+          <li>See the <a href="https://ai.google.dev/api/">API reference</a> to learn more about the full API.</li>
+          <li>Review the <a href="/docs/safety_guidance">safety guidance</a> for a general look at safety
+            considerations when developing with LLMs.
+          </li>
+          <li>Learn more about assessing probability versus severity from the <a href="https://developers.perspectiveapi.com/s/about-the-api-score" class="external">Jigsaw
+            team</a>
+          </li>
+          <li>Learn more about the products that contribute to safety solutions like the
+            <a href="https://medium.com/jigsaw/reducing-toxicity-in-large-language-models-with-perspective-api-c31c39b7a4d7" class="external">Perspective
+            API</a>.
+          </li>
+          <li>You can use these safety settings to create a toxicity classifier. See the
+            <a href="https://ai.google.dev/examples/train_text_classifier_embeddings">classification example</a> to
+            get started.
+          </li>
+        </ul>
+      </div>
+      <devsite-thumb-rating position="footer">
+        <div class="devsite-thumb-rating" role="form" aria-labelledby="devsite-thumb-label-footer">
+          <div class="devsite-thumb-label" id="devsite-thumb-label-footer">Was this helpful?</div>
+          <div class="devsite-thumbs">
+            <button class="devsite-thumb devsite-thumb-up" data-title="Helpful" aria-label="Helpful">
+              <svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21,7h-6.31l0.95-4.57l0.03-0.32c0-0.41-0.17-0.79-0.44-1.06L14.17,0c0,0-7.09,6.85-7.17,7H2v13h16 c0.83,0,1.54-0.5,1.84-1.22l3.02-7.05C22.95,11.5,23,11.26,23,11V9C23,7.9,22.1,7,21,7z M7,18H4V9h3V18z M21,11l-3,7H9V8l4.34-4.34 L12,9h9V11z"></path>
+              </svg>
+            </button>
+            <button class="devsite-thumb devsite-thumb-down" data-title="Not helpful" aria-label="Not helpful">
+              <svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3,17h6.31l-0.95,4.57l-0.03,0.32c0,0.41,0.17,0.79,0.44,1.06L9.83,24c0,0,7.09-6.85,7.17-7h5V4H6 C5.17,4,4.46,4.5,4.16,5.22l-3.02,7.05C1.05,12.5,1,12.74,1,13v2C1,16.1,1.9,17,3,17z M17,6h3v9h-3V6z M3,13l3-7h9v10l-4.34,4.34 L12,15H3V13z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </devsite-thumb-rating>
+      <devsite-feedback position="footer" project-name="Google AI for Developers" product-id="5292923" bucket="documentation" context="" version="t-devsite-webserver-20240220-r00-rc00.458658593551227362" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="footer" class="nocontent" project-icon="https://www.gstatic.com/devrel-devsite/prod/v937c5f592532c0ad2ebbf299686fcceed4f5934a648172aa45e00618ae0982d7/googledevai/images/touchicon-180-new.png" feedback-type="thumb-rating">
+        <button>
+        Send feedback
+        </button>
+      </devsite-feedback>
+    </article>
+    <devsite-content-footer class="nocontent">
+      <p>Except as otherwise noted, the content of this page is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>, and code samples are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see the <a href="https://developers.google.com/site-policies">Google Developers Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+      <p>Last updated 2024-02-08 UTC.</p>
+    </devsite-content-footer>
+    <devsite-notification></devsite-notification>
+    <div class="devsite-content-data">
+      <template class="devsite-thumb-rating-down-categories">
+        [{
+        "type": "thumb-down",
+        "id": "missingTheInformationINeed",
+        "label":"Missing the information I need"
+        },{
+        "type": "thumb-down",
+        "id": "tooComplicatedTooManySteps",
+        "label":"Too complicated / too many steps"
+        },{
+        "type": "thumb-down",
+        "id": "outOfDate",
+        "label":"Out of date"
+        },{
+        "type": "thumb-down",
+        "id": "samplesCodeIssue",
+        "label":"Samples / code issue"
+        },{
+        "type": "thumb-down",
+        "id": "otherDown",
+        "label":"Other"
+        }]
+      </template>
+      <template class="devsite-thumb-rating-up-categories">
+        [{
+        "type": "thumb-up",
+        "id": "easyToUnderstand",
+        "label":"Easy to understand"
+        },{
+        "type": "thumb-up",
+        "id": "solvedMyProblem",
+        "label":"Solved my problem"
+        },{
+        "type": "thumb-up",
+        "id": "otherUp",
+        "label":"Other"
+        }]
+      </template>
+      <template class="devsite-thumb-rating-feedback">
+        <devsite-feedback position="thumb-rating" project-name="Google AI for Developers" product-id="5292923" bucket="documentation" context="" version="t-devsite-webserver-20240220-r00-rc00.458658593551227362" data-label="Send Feedback Button" track-type="feedback" track-name="sendFeedbackLink" track-metadata-position="thumb-rating" class="nocontent" project-icon="https://www.gstatic.com/devrel-devsite/prod/v937c5f592532c0ad2ebbf299686fcceed4f5934a648172aa45e00618ae0982d7/googledevai/images/touchicon-180-new.png" feedback-type="thumb-rating">
+          <button>
+          Need to tell us more?
+          </button>
+        </devsite-feedback>
+      </template>
+    </div>
+  </devsite-content>
+</body>
+
+</html>

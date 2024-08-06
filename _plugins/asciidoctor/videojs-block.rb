@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 require 'asciidoctor/extensions' unless RUBY_ENGINE == 'opal'
 include Asciidoctor
@@ -24,7 +24,7 @@ include Asciidoctor
 # Example:
 #
 #   .MP4 Video, Rolling Wild
-#   videojs::/assets/videos/gallery/html5/video2.mp4[start="00:00:50" poster="/assets/videos/gallery/video1-poster.jpg" role="mt-4 mb-5"]
+#   videojs::/assets/video/gallery/html5/video2.mp4[start="00:00:50" poster="/assets/video/gallery/video1-poster.jpg" role="mt-4 mb-5"]
 #
 # ------------------------------------------------------------------------------
 # See:
@@ -37,24 +37,26 @@ Asciidoctor::Extensions.register do
     use_dsl
 
     named :videojs
-    name_positional_attributes 'start', 'poster', 'theme', 'zoom', 'role'
-    default_attrs 'start' => '00:00:00',
-                  'poster' => '/assets/videos/gallery/videojs-poster.png',
+    name_positional_attributes 'caption', 'start', 'poster', 'theme', 'zoom', 'role'
+    default_attrs 'caption' => 'true',
+                  'start' => '00:00:00',
+                  'poster' => '/assets/video/gallery/videojs-poster.png',
                   'theme' => 'uno',
                   'zoom' => false,
                   'role' => 'mt-3 mb-3'
 
     def process parent, target, attributes
 
-      chars         = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
-      video_id      = (0...11).map { chars[rand(chars.length)] }.join
+      chars           = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
+      video_id        = (0...11).map { chars[rand(chars.length)] }.join
 
-      title_html    = (attributes.has_key? 'title') ? %(<div class="video-title">#{attributes['title']}</div>\n) : nil
-      poster_image  = (poster = attributes['poster']) ? %(#{poster}) : nil
-      theme_name    = (theme  = attributes['theme'])  ? %(#{theme}) : nil
+      title_html      = (attributes.has_key? 'title') ? %(<div class="video-title">#{attributes['title']}</div>\n) : %(<div class="video-title">VideoJS Video</div>\n)
+      poster_image    = (poster = attributes['poster']) ? %(#{poster}) : nil
+      theme_name      = (theme  = attributes['theme'])  ? %(#{theme}) : nil
+      caption_enabled = (caption  = attributes['caption'])  ? true : false
 
       html = %(
-        <div class="videojs-player #{attributes['role']}">
+        <div class="videojs-player bottom #{attributes['role']}">
           #{title_html}
           <video
             id="#{video_id}"
@@ -62,6 +64,7 @@ Asciidoctor::Extensions.register do
             controls
             width="640" height="360"
             poster="#{poster_image}"
+            alt="#{attributes['title']}"
             aria-label="#{attributes['title']}"
             data-setup='{
               "fluid" : true,
@@ -81,22 +84,70 @@ Asciidoctor::Extensions.register do
 
         <script>
           $(function() {
-            var dependencies_met_page_ready = setInterval (function (options) {
-              var pageState   = $('#no_flicker').css("display");
-              var pageVisible = (pageState == 'block') ? true : false;
 
-              if (j1.getState() === 'finished' && pageVisible) {
-                videojs("#{video_id}").ready(function() {
-                  var videojsPlayer = this;
-                  videojsPlayer.on("play", function() {
-                    var startFromSecond = new Date('1970-01-01T' + "#{attributes['start']}" + 'Z').getTime() / 1000;
-                    videojsPlayer.currentTime(startFromSecond);
-                  });
-                });
-                clearInterval(dependencies_met_page_ready);
+            function addCaptionAfterImage(imageSrc) {
+              const image = document.querySelector(`img[src="${imageSrc}"]`);
+
+              if (image) {
+                // create div|caption container
+                const newDiv = document.createElement('div');
+                newDiv.classList.add('caption');
+                newDiv.textContent = '#{attributes['title']}';
+
+                // insert div|caption container AFTER the image
+                image.parentNode.insertBefore(newDiv, image.nextSibling);
+              } else {
+                console.error(`No image found for  src="${imageSrc}".`);
               }
-            }, 10);
-          });
+            } // END addCaptionAfterImage
+
+            var appliedOnce = false;
+            videojs("#{video_id}").ready(function() {
+              var vjs_player    = document.getElementById("#{video_id}");
+              var videojsPlayer = this;
+
+              if ('#{caption_enabled}' === 'true') {
+                addCaptionAfterImage('#{poster_image}');
+              }
+
+              // add playbackRates
+              videojsPlayer.playbackRates([0.5, 1, 1.5, 2]);
+
+              // add hotkeys plugin
+              videojsPlayer.hotkeys({
+                enableModifiersForNumbers: false
+              });
+
+              // add zoom plugin
+              videojsPlayer.zoomPlugin({
+                moveX:  0,
+                moveY:  0,
+                rotate: 0,
+                zoom:   1
+              });
+
+              // set start position of current video
+              // ---------------------------------------------------------------
+              videojsPlayer.on("play", function() {
+                var startFromSecond = new Date('1970-01-01T' + "#{attributes['start']}" + 'Z').getTime() / 1000;
+                if (!appliedOnce) {
+                  videojsPlayer.currentTime(startFromSecond);
+                  appliedOnce = true;
+                }
+              }); // END start position
+
+              // scroll to player top position
+              // ---------------------------------------------------------------
+              vjs_player.addEventListener('click', function(event) {
+                var scrollOffset        = (window.innerWidth >= 720) ? -130 : -110;
+                const targetDiv         = document.getElementById("#{video_id}");
+                const targetDivPosition = targetDiv.offsetTop;
+
+                window.scrollTo(0, targetDivPosition + scrollOffset);
+              }); // END EventListener 'click'
+
+            }); // END VJS player ready
+          }); // END document ready
         </script>
       )
 

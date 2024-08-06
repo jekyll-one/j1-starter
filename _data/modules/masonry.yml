@@ -283,7 +283,7 @@ settings:
       type:                             image
       gutters:                          3
 
-      image_base_path:                  /assets/images/modules/gallery/mega_cities
+      image_base_path:                  /assets/image/modules/gallery/mega_cities
       image_styles:                     img-fluid
       image_height:                     300px
 
@@ -360,7 +360,7 @@ settings:
       type:                             image
       gutters:                          3
 
-      image_base_path:                  /assets/images/modules/gallery/mega_cities
+      image_base_path:                  /assets/image/modules/gallery/mega_cities
       image_styles:                     img-fluid
 
       # ------------------------------------------------------------------------
@@ -435,7 +435,7 @@ settings:
       type:                             image
       gutters:                          3
 
-      image_base_path:                  /assets/images/modules/gallery/mega_cities
+      image_base_path:                  /assets/image/modules/gallery/mega_cities
       image_styles:                     img-fluid
       image_height:                     300px
 
@@ -564,19 +564,38 @@ settings:
               muted:                    false
               preload:                  false
               autoplayFirstVideo:       true
+              playbackRates:            [0.25, 0.5, 1, 1.5, 2]
 
             controls:                   true
             controlBar:
               remainingTimeDisplay:     true
               pictureInPictureToggle:   false
+              playbackRates:            [0.25, 0.5, 1, 1.5, 2]
+
+              volumePanel:
+                inline:                 false
+
+              hotkeysPlugin:
+                enabled:                true
+                options:
+                  volumeStep:           0.2
+
+              zoomPlugin:
+                enabled:                true
+                options:
+                  moveX:                0
+                  moveY:                0
+                  rotate:               0
+                  zoom:                 1
 
           vimeoPlayer:
             enabled:                    true
             options:
               autoPlay:                 true
-              byline:                   0
-              portrait:                 0
-              color:                    var(--md-gray-100)
+              muted:                    true
+#             byline:                   0
+#             portrait:                 0
+#             color:                    var(--md-gray-100)
 
           wistiaPlayer:
             enabled:                    true
@@ -590,9 +609,9 @@ settings:
             enabled:                    true
             options:
               autoPlay:                 true
-              modestbranding:           1
-              showinfo:                 0
-              controls:                 0
+              muted:                    true
+              showinfo:                 true
+              controls:                 true
 
       # ------------------------------------------------------------------------
       # Lightbox settings
@@ -608,9 +627,13 @@ settings:
         plugins:                        lgThumbnail, lgVideo
 
         options:
+          licenseKey:                   0000-0000-000-0000
           download:                     false
           alignThumbnails:              left
-          autoplayFirstVideo:           true
+#         addClass:                     lg-uno-thumbnails                         # customized thumbnails
+#         appendThumbnailsTo:           .lg-outer                                 # required for customized thumbnails
+#         animateThumb:                 false                                     # required for customized thumbnails
+#         allowMediaOverlap:            true                                      # required for customized thumbnails
 
       # ------------------------------------------------------------------------
       # caption options
@@ -633,8 +656,8 @@ settings:
       # ------------------------------------------------------------------------
       #
       html5:
-        video_base_path:                /assets/videos/gallery/html5
-        poster_base_path:               /assets/videos/gallery
+        video_base_path:                /assets/video/html5
+        poster_base_path:               /assets/video/poster/html5
 
       # ------------------------------------------------------------------------
       # videos
@@ -645,85 +668,82 @@ settings:
         - video:
           name:                         Planet Earth II
           type:                         youtube
-          size:                         "1280-720"
-          source:                       "//youtu.be/IUN664s7N-c"
+          size:                         1280-720
+          source:                       //youtube.com/watch?v=IUN664s7N-c
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
-                                        <h5>Beauty of Nature</h5>
+                                        <h5>The Breathtaking Beauty of Nature</h5>
                                         <h6>
-                                          The BBC America presents breathtaking landscapes of
+                                          The BBC America presents impressive landscapes of
                                           amazing habitats from their Planet Earth II series
                                           on YouTube
                                         </h6>
                                         <br>
           poster:
             style:                      img-responsive
-            source:                     "//img.youtube.com/vi/IUN664s7N-c/maxresdefault.jpg"
+            source:                     //img.youtube.com/vi/IUN664s7N-c/maxresdefault.jpg
           caption:
             position:                   bottom
-            text:                       "YouTube Video &middot; Beauty of Nature"
+            text:                       YouTube Video &middot; The Breathtaking Beauty of Nature
 
 #       video 2
         - video:
           name:                         Nature Video by Charlie Kaye
           type:                         vimeo
-          size:                         "1280-720"
-          source:                       "//vimeo.com/112836958"
+          size:                         1280-720
+          source:                       //vimeo.com/112836958
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
                                         <h5>Amazing Nature</h5>
-                                        <h6>
-                                          Video by <a target='_blank' href='//vimeo.com/charliekaye'>Charlie Kaye.</a> on Vimeo
-                                        </h6>
+                                        <h6>Video by <a target='_blank' href='//vimeo.com/charliekaye'>Charlie Kaye.</a> on Vimeo</h6>
                                         <br>
           poster:
             style:                      img-responsive
-            source:                     "//www.lightgalleryjs.com/images/demo/vimeo-video-poster.jpg"
+            source:                     /assets/video/poster/vimeo/amazing_nature.jpg
           caption:
             position:                   bottom
-            text:                       "Vimeo Video &middot; Amazing Nature"
+            text:                       Vimeo Video &middot; Amazing Nature
 
 #       video 3
         - video:
-          name:                         Thank You
-          type:                         wistia
-          size:                         "1280-720"
-          source:                       "//private-sharing.wistia.com/medias/mwhrulrucj"
+          name:                         Beginner Mat Pilates
+          type:                         dailymotion
+          size:                         1280-720
+          source:                       //dai.ly/x87ycik
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
-                                        <h5>Thank You!</h5>
-                                        <h6>Sample Video on Wistia</h6>
+                                        <h5>SELF Channel</h5>
+                                        <h6>Beginner Mat Pilates</h6>
                                         <br>
           poster:
             style:                      img-responsive
-            source:                     "//www.lightgalleryjs.com/images/demo/wistia-video-poster.jpeg"
+            source:                     /assets/video/poster/dailymotion/pilates.jpg
+
           caption:
             position:                   bottom
-            text:                       "Wistia Video &middot; Thank You"
+            text:                       "Dailymotion Video &middot; SELF Channel: Beginner Mat Pilates"
 
 #       video 4
         - video:
           name:                         Peck Pocketed
           type:                         html5
-          size:                         "1280-720"
-          source:                       video1.mp4
+          size:                         1280-720
+          source:                       peck_pocketed.mp4
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
                                         <h5>Peck Pocketed by Kevin Herron</h5>
-                                        <h6>
-                                          Student Academy Award winning cartoon clip on VideoJS
-                                        </h6>
+                                        <h6>Student Academy Award winning cartoon clip on VideoJS</h6>
                                         <br>
           poster:
             style:                      img-responsive
-            source:                     video1-poster.jpg
+            source:                     peck_pocketed.jpg
           caption:
             position:                   bottom
-            text:                       "MP4 Video &middot; Peck Pocketed"
+            text:                       Local MP4 Video &middot; Peck Pocketed
 
 # ------------------------------------------------------------------------------
 # END config

@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one/J1 Theme/blob/master/LICENSE
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
@@ -57,16 +57,16 @@ settings:
       items: >
                                         <select id="icon_library" name="icon-library">
                                           <optgroup label="Material Design Icons (MDI)">
-                                            <option value="mdi-icons-base"        data-css="/assets/themes/j1/core/css/icon-fonts/mdib.min.css" selected="selected">MDI Icons Base</option>
-                                            <option value="mdi-icons-light"       data-css="/assets/themes/j1/core/css/icon-fonts/mdil.min.css">MDI Icons Light</option>
-                                            <option value="mdi-icons-regular"     data-css="/assets/themes/j1/core/css/icon-fonts/mdi.min.css">MDI Icons Regular</option>
+                                            <option value="mdi-icons-base"        data-css="/assets/theme/j1/core/css/icon-fonts/mdib.min.css" selected="selected">MDI Icons Base</option>
+                                            <option value="mdi-icons-light"       data-css="/assets/theme/j1/core/css/icon-fonts/mdil.min.css">MDI Icons Light</option>
+                                            <option value="mdi-icons-regular"     data-css="/assets/theme/j1/core/css/icon-fonts/mdi.min.css">MDI Icons Regular</option>
                                           </optgroup>
 
                                           <optgroup label="Font Awesome Icons (FA)">
-                                            <option value="font-awesome"          data-css="/assets/themes/j1/core/css/icon-fonts/fontawesome.min.css">FA Icons (all)</option>
-                                            <option value="font-awesome-solid"    data-css="/assets/themes/j1/core/css/icon-fonts/fontawesome.min.css">FA Icons Solid</option>
-                                            <option value="font-awesome-regular"  data-css="/assets/themes/j1/core/css/icon-fonts/fontawesome.min.css">FA Icons Regular</option>
-                                            <option value="font-awesome-brands"   data-css="/assets/themes/j1/core/css/icon-fonts/fontawesome.min.css">FA Icons Brands</option>
+                                            <option value="font-awesome"          data-css="/assets/theme/j1/core/css/icon-fonts/fontawesome.min.css">FA Icons (all)</option>
+                                            <option value="font-awesome-solid"    data-css="/assets/theme/j1/core/css/icon-fonts/fontawesome.min.css">FA Icons Solid</option>
+                                            <option value="font-awesome-regular"  data-css="/assets/theme/j1/core/css/icon-fonts/fontawesome.min.css">FA Icons Regular</option>
+                                            <option value="font-awesome-brands"   data-css="/assets/theme/j1/core/css/icon-fonts/fontawesome.min.css">FA Icons Brands</option>
                                           </optgroup>
                                         </select>
 

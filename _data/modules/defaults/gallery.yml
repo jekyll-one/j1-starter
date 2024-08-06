@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # ~/_data/modules/defaults/gallery.yml
-# Default configuration for J1 Justified Gallery (jg)
+# Default configuration for J1 justifiedGallery (jg)
 #
 # Product/Info:
 # https://jekyll.one
@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
@@ -43,18 +43,48 @@ defaults:
   #
   # ----------------------------------------------------------------------------
   #
-  enabled:                              false                                    # needed for j1.layout_shim_generator.html
+  enabled:                              false                                   # needed for j1.layout_shim_generator.html
+
+  # ----------------------------------------------------------------------------
+  # Global settings
+  #
   xhr_data_path:                        /assets/data/galeries
   gallery_complete_timeout:             1000
 
-  # ------------------------------------------------------------------------
-  # CSS filter options
+  # ----------------------------------------------------------------------------
+  # CSSFilter settings
   #
   filters:
     enabled:                            false
     grayscale:                          1
     contrast:                           0.8
     brightness:                         0.4
+
+  # ----------------------------------------------------------------------------
+  # justifiedGallery settings
+  #
+  rowHeight:                            250
+  gutters:                              3
+
+  # ----------------------------------------------------------------------------
+  # Lightbox settings
+  #
+  lightbox:
+    enabled:                            true
+    type:                               lg                                      # lightGallery
+
+  # ----------------------------------------------------------------------------
+  # lightGallery settings
+  #
+  lightGallery:
+    plugins:                            lgThumbnail, lgVideo
+    options:
+      licenseKey:                       0000-0000-000-0000
+      download:                         false
+      alignThumbnails:                  left
+      animateThumb:                     true
+      autoplayFirstVideo:               true
+      videojs:                          false
 
 # ------------------------------------------------------------------------------
 # END config

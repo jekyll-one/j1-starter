@@ -1,0 +1,47 @@
+// ~/document_base_folder/_includes
+//  Asciidoc attribute includes:                 attributes.asciidoc
+// -----------------------------------------------------------------------------
+
+
+// URLs - Internal references and/or sources on the Internet
+// -----------------------------------------------------------------------------
+tag::urls[]
+:mmenu-home:                                      https://mmenujs.com/mmenu-light/
+:mmenu-download:                                  https://mmenujs.com/mmenu-light/
+:mmenu-tut:                                       https://mmenujs.com/mmenu-light/tutorial.html
+end::urls[]
+
+
+// FOOTNOTES, global asciidoc attributes (variables)
+// -----------------------------------------------------------------------------
+tag::footnotes[]
+
+:fn-wikipedia--open_data:                         footnote:[link:https://de.wikipedia.org/wiki/Open_Data[Wikipedia · OpenOata, window="_blank"]]
+
+end::footnotes[]
+
+
+// Tags - Asciidoc attributes used internally
+// -----------------------------------------------------------------------------
+tag::tags[]
+end::tags[]
+
+// Data - Data elements for Asciidoctor extensions
+// -----------------------------------------------------------------------------
+tag::data[]
+end::data[]
+
+// Images - Images from local include/images folder
+// -----------------------------------------------------------------------------
+tag::images[]
+end::images[]
+
+// PRODUCTS, local product information (e.g. release)
+// -----------------------------------------------------------------------------
+tag::products[]
+end::products[]
+
+// AUTHORS, local author information (e.g. article)
+// -----------------------------------------------------------------------------
+tag::authors[]
+end::authors[]

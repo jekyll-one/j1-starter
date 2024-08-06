@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 # NOTE:
 #
@@ -40,7 +40,7 @@ settings:
       enabled:                          true
       description:                      MDI Icons (light)
 
-      src:                              /assets/themes/j1/core/css/icon-fonts/mdil.min.css
+      src:                              /assets/theme/j1/core/css/icon-fonts/mdil.min.css
       selector:                         '.mdil'
       rootMargin:                       '150px 0px'
 
@@ -51,7 +51,7 @@ settings:
       enabled:                          true
       description:                      MDI Icon CSS (regular)
 
-      src:                              /assets/themes/j1/core/css/icon-fonts/mdi.min.css
+      src:                              /assets/theme/j1/core/css/icon-fonts/mdi.min.css
       selector:                         '.mdi'
       rootMargin:                       '150px 0px'
 
@@ -62,7 +62,7 @@ settings:
       enabled:                          true
       description:                      FA Icon CSS
 
-      src:                              /assets/themes/j1/core/css/icon-fonts/fontawesome.min.css
+      src:                              /assets/theme/j1/core/css/icon-fonts/fontawesome.min.css
       selector:                         '.fa'
       rootMargin:                       '150px 0px'
 
@@ -73,7 +73,7 @@ settings:
       enabled:                          true
       description:                      CountryFlag Icon CSS
 
-      src:                              /assets/themes/j1/core/country-flags/css/theme/uno.min.css
+      src:                              /assets/theme/j1/core/country-flags/css/theme/uno.min.css
       selector:                         '.flag-icon'
       rootMargin:                       '150px 0px'
 
@@ -84,7 +84,7 @@ settings:
       enabled:                          true
       description:                      rTable CSS
 
-      src:                              /assets/themes/j1/modules/rtable/css/theme/uno/rtable.min.css
+      src:                              /assets/theme/j1/modules/rtable/css/theme/uno/rtable.min.css
       selector:                         '.rtable'
       rootMargin:                       '150px 0px'
 

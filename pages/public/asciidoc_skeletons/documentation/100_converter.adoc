@@ -20,7 +20,7 @@ categories:                             [ Knowledge ]
 tags:                                   [ Asciidoctor, PDF, Converter ]
 
 image:
-  path:                                 /assets/images/modules/attics/sigmund-1920x1280.jpg
+  path:                                 /assets/image/modules/attics/sigmund-1920x1280.jpg
   width:                                1920
   height:                               1280
 
@@ -33,7 +33,7 @@ resource_options:
   - attic:
       alignY:                             0.3
       slides:
-        - url:                          /assets/images/modules/attics/sigmund-1920x1280.jpg
+        - url:                          /assets/image/modules/attics/sigmund-1920x1280.jpg
           alt:                          Photo by Sigmund on Unsplash
           badge:
             type:                       unsplash

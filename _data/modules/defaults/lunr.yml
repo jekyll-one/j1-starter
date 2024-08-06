@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one/J1 Theme/blob/master/LICENSE
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
@@ -38,13 +38,13 @@ defaults:
   target:                               _blank
   rebuild:                              false
   full_index:                           true
-  stopwords:                            /assets/themes/j1/modules/lunr/stopwords/en.txt
+  stopwords:                            /assets/theme/j1/modules/lunr/stopwords/en.txt
   stopwords_locale:                     en
   strip_index_html:                     false
   min_length:                           3
   date_format:                          mmm dd, yyyy
 
-  module_dir:                           /assets/themes/j1/modules/lunr/js
+  module_dir:                           /assets/theme/j1/modules/lunr/js
   index_dir:                            /assets/data
   index_name:                           lunr-index.json
   index_file:                           /assets/data/lunr-index.json

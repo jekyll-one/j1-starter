@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# For details, see: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# For details, see: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 # A block macro that embeds an Image Block into the output document
 #
@@ -20,7 +20,7 @@
 # Example:
 #
 #  .The image block title
-#  lightbox::lightbox-example[450, "assets/images/modules/gallery/old_times/image_01.jpg, description 1, assets/images/modules/gallery/old_times/image_02.jpg, description 2" ]
+#  lightbox::lightbox-example[450, "assets/image/modules/gallery/old_times/image_01.jpg, description 1, assets/image/modules/gallery/old_times/image_02.jpg, description 2" ]
 #
 # ------------------------------------------------------------------------------
 include Asciidoctor

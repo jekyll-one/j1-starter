@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 require 'asciidoctor/extensions' unless RUBY_ENGINE == 'opal'
 include Asciidoctor
@@ -24,7 +24,7 @@ include Asciidoctor
 # Example:
 #
 #   .Video title
-#   youtube::nV8UZJNBY6Y[poster="/assets/images/icons/videojs/videojs-poster.png" theme="city" role="mt-5 mb-5"]
+#   youtube::nV8UZJNBY6Y[poster="/assets/image/icons/videojs/videojs-poster.png" theme="city" role="mt-5 mb-5"]
 #
 # ------------------------------------------------------------------------------
 # See:
@@ -46,22 +46,25 @@ Asciidoctor::Extensions.register do
     use_dsl
 
     named :youtube
-    name_positional_attributes 'poster', 'theme', 'role'
-    default_attrs 'poster' => '/assets/images/icons/videojs/videojs-poster.png',
-                  'theme' => 'uno',
-                  'role' => 'mt-3 mb-3'
+    name_positional_attributes 'caption', 'start', 'poster', 'theme', 'role'
+    default_attrs 'caption' => 'true',
+                  'start'   => '00:00:00',
+                  'poster'  => '/assets/image/icons/videojs/videojs-poster.png',
+                  'theme'   => 'uno',
+                  'role'    => 'mt-3 mb-3'
 
     def process parent, target, attributes
 
-      chars         = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
-      video_id      = (0...11).map { chars[rand(chars.length)] }.join
+      chars           = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
+      video_id        = (0...11).map { chars[rand(chars.length)] }.join
 
-      title_html    = (attributes.has_key? 'title') ? %(<div class="video-title">#{attributes['title']}</div>\n) : nil
-      poster_image  = (poster = attributes['poster']) ? %(#{poster}) : nil
-      theme_name    = (theme  = attributes['theme'])  ? %(#{theme}) : nil
+      title_html      = (attributes.has_key? 'title') ? %(<div class="video-title">#{attributes['title']}</div>\n) : nil
+      poster_image    = (poster = attributes['poster']) ? %(#{poster}) : nil
+      theme_name      = (theme  = attributes['theme'])  ? %(#{theme}) : nil
+      caption_enabled = (caption  = attributes['caption'])  ? true : false
 
       html = %(
-        <div class="youtube-player #{attributes['role']}">
+        <div class="youtube-player bottom #{attributes['role']}">
           #{title_html}
           <video
             id="#{video_id}"
@@ -69,6 +72,7 @@ Asciidoctor::Extensions.register do
             controls
             width="640" height="360"
             poster="#{poster_image}"
+            alt="#{attributes['title']}"
             aria-label="#{attributes['title']}"
             data-setup='{
               "fluid" : true,
@@ -77,15 +81,72 @@ Asciidoctor::Extensions.register do
               ],
               "sources": [{
                 "type": "video/youtube",
-                "src": "//youtube-nocookie.com/watch?v=#{target}"
+                "src": "//youtube.com/watch?v=#{target}"
               }],
               "controlBar": {
-                "pictureInPictureToggle": false
+                "pictureInPictureToggle": false,
+                "volumePanel": {
+                  "inline": false
+                }
               }
             }'
           > </video>
         </div>
+
+        <script>
+          $(function() {
+
+            function addCaptionAfterImage(imageSrc) {
+              const image = document.querySelector(`img[src="${imageSrc}"]`);
+
+              if (image) {
+                // create div|caption container
+                const newDiv = document.createElement('div');
+                newDiv.classList.add('caption');
+                newDiv.textContent = '#{attributes['title']}';
+
+                // insert div|caption container AFTER the image
+                image.parentNode.insertBefore(newDiv, image.nextSibling);
+              } else {
+                console.error(`No image found for  src="${imageSrc}."`);
+              }
+            } // END addCaptionAfterImage
+
+            var appliedOnce = false;
+            videojs("#{video_id}").ready(function() {
+              var vjs_player    = document.getElementById("#{video_id}");
+              var videojsPlayer = this;
+
+              if ('#{caption_enabled}' === 'true') {
+                addCaptionAfterImage('#{poster_image}');
+              }
+
+              // set start position of current video
+              // ---------------------------------------------------------------
+              videojsPlayer.on("play", function() {
+                var startFromSecond = new Date('1970-01-01T' + "#{attributes['start']}" + 'Z').getTime() / 1000;
+                if (!appliedOnce) {
+                  videojsPlayer.currentTime(startFromSecond);
+                  appliedOnce = true;
+                }
+              }); // END start position
+
+              // scroll to player top position
+              // ---------------------------------------------------------------
+              vjs_player.addEventListener('click', function(event) {
+                var scrollOffset = (window.innerWidth >= 720) ? -130 : -110;
+
+                // scroll player to top position
+                const targetDiv         = document.getElementById("#{video_id}");
+                const targetDivPosition = targetDiv.offsetTop;
+                window.scrollTo(0, targetDivPosition + scrollOffset);
+              }); // END EventListener 'click'
+
+            }); // END VJS player ready
+          }); // END document ready
+        </script>
       )
+
       create_pass_block parent, html, attributes, subs: nil
     end
   end

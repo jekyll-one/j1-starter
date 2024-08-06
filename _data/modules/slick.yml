@@ -8,7 +8,7 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
@@ -352,7 +352,7 @@ settings:
       id:                               image_carousel_simple
       type:                             image
       gutters:                          0                                       # 0 .. 5
-      image_base_path:                  /assets/images/modules/gallery/mega_cities
+      image_base_path:                  /assets/image/modules/gallery/mega_cities
       image_styles:                     img-fluid img-object--cover
       image_height:                     300px
 
@@ -441,7 +441,7 @@ settings:
       id:                               image_carousel_full
       type:                             image
       gutters:                          1                                       # 0 .. 5
-      image_base_path:                  /assets/images/modules/gallery/mega_cities
+      image_base_path:                  /assets/image/modules/gallery/mega_cities
       image_styles:                     img-fluid img-object--cover
       image_height:                     300px
 

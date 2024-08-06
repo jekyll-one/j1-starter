@@ -1,0 +1,525 @@
+---
+title:                                  Google Gemini API
+title_extention:                        Integration for J1 Template
+tagline:                                User Guide
+
+date:                                   2022-08-14
+
+description: >
+                                        Google Gemini refers to a family of large language models (LLMs)
+                                        developed by Google DeepMind. It was announced on December 6, 2023,
+                                        and is seen as the successor to "LaMDA" and "PaLM 2".
+keywords: >
+                                        Jekyll, Theme, JekyllOne, Info, Google,
+                                        Gemini, Manual
+
+categories:                             [ Manual, Module ]
+tags:                                   [ Google, Gemini ]
+
+image:
+  path:                                 /assets/image/modules/attics/1920x1280/build-with-gemini.jpg
+  width:                                1920
+  height:                               1280
+
+tts:                                    true
+comments:                               false
+exclude_from_search:                    false
+regenerate:                             false
+permalink:                              /pages/public/manuals/integrations/google/gemini/
+
+resources:                              [
+                                          animate,
+                                          clipboard, rouge
+                                        ]
+resource_options:
+  - attic:
+      slides:
+        - url:                          /assets/image/modules/attics/1920x1280/build-with-gemini.jpg
+          alt:                          Build with Gemini
+#          badge:
+#            type:                       unsplash
+#            author:                     Eleni Afiontzi
+#            href:                       //unsplash.com/de/@eleniafiontzi
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+
+// Set (local) page attributes here
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
+:images-dir:                            {imagesdir}/pages/roundtrip/100_present_images
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="all" %}
+
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Include sub-documents (if any)
+// -----------------------------------------------------------------------------
+[role="dropcap"]
+Google Gemini refers to a family of large language models (LLMs) developed by
+Google DeepMind. It was announced on December 6, 2023, and is seen as the
+successor to LaMDA and PaLM 2.
+
+The Gemini family consists of three models:
+
+Gemini Ultra::
+The largest and most capable model. It excels at multimodal tasks, which
+involve understanding and generating text, code, and other forms of data.
+
+Gemini Pro::
+A smaller model, designed for a balance of performance and efficiency. It
+is well-suited for tasks such as question answering, summarization, and
+translation.
+
+Gemini Nano::
+The smallest model, optimized for mobile and edge devices. It can still
+perform basic language tasks such as text generation and translation.
+
+
+Gemini is still under development, but it has already achieved impressive
+results on a range of benchmarks. For example, Gemini Ultra achieved a
+state-of-the-art score of 59.4% on the new MMMU benchmark, which consists
+of multimodal tasks spanning different domains requiring deliberate reasoning.
+
+Google is making Gemini models available through Google AI Studio and
+Google Cloud Vertex AI, so developers can integrate them into their own
+applications. The company is also releasing a limited number of Gemini 1.5
+Pro models for early testing.
+
+[role="mt-5"]
+== Gemini Pro
+
+The first version of Gemini Pro is now accessible via the Gemini API and
+here’s more about it:
+
+* Gemini Pro outperforms other similarly-sized models on research
+  benchmarks.
+* Today’s version comes with a 32K context window for text, and future
+  versions will have a larger context window.
+* It’s free to use right now, within limits, and it will be competitively
+  priced.
+* It comes with a range of features: function calling, embeddings, semantic
+  retrieval and custom knowledge grounding, and chat functionality.
+* It supports 38 languages across 180+ countries and territories worldwide.
+
+In today’s release, Gemini Pro accepts text as input and generates text as##
+output. It is also made a dedicated Gemini Pro Vision multimodal endpoint
+available today that accepts text and imagery as input, with text output.
+
+SDKs are available for Gemini Pro to help you build apps that run anywhere.
+Python, Android (Kotlin), Node.js, Swift and JavaScript are all supported.
+
+
+[role="mt-5"]
+== Google AI Studio
+// https://ai.google.dev/docs
+
+link://ai.google.dev/[Google AI Studio, {browser-window--new}] is a free,
+web-based developer tool that enables you to quickly develop prompts and
+then get an API key to use in your app development.
+
+You can sign into Google AI Studio with your Google account and take
+advantage of the free quota, which allows 60 requests per minute; 20x
+more than other free offerings. When you’re ready, you can simply click
+on “Get code” to transfer your work to your IDE of choice, or use one of
+the quickstart templates available in Android Studio, Colab or Project IDX.
+
+To help us improve product quality, when you use the free quota, your API
+and Google AI Studio input and output may be accessible to trained reviewers.
+This data is de-identified from your Google account and API key.
+
+
+[role="mt-5"]
+== Safety settings
+
+This guide describes the adjustable safety settings available for the
+Gemini API. During the prototyping stage, you can adjust safety settings
+on 4 dimensions to quickly assess if your application requires more or
+less restrictive configuration.
+
+By default, safety settings block
+content (including prompts) with medium or higher probability of being
+unsafe across any dimension. This baseline safety is designed to work
+for most use cases, so you should only adjust your safety settings if
+it's consistently required for your application.
+
+[NOTE]
+====
+Adjusting to lower safety settings will trigger a more indepth
+review process of your application.
+====
+
+[role="mt-4"]
+=== Safety filters
+
+In addition to the adjustable safety filters, the Gemini API has
+built-in protections against core harms, such as content that endangers
+child safety. These types of harm are always blocked and cannot be
+adjusted.
+
+The adjustable safety filters cover the following categories:
+
+* Harassment
+* Hate speech
+* Sexually explicit
+* Dangerous
+
+These settings allow the developer to determine what is appropriate for
+your use case. For example, if you're building a video game dialogue,
+you may deem it acceptable to allow more content rated as dangerous due
+to the nature of the game. Here are a few other example use cases that
+may need some flexibility in these safety settings:
+
+[cols="4a, 8a", options="header", width="100%", role="rtable mt-3 mb-5"]
+|===
+|Use Case |Category
+
+|Anti-Harassment Training App
+|Hate speech, Sexually explicit
+
+|Screenplay Writer
+|Sexually explicit, Dangerous
+
+|Toxicity classifier
+|Harassment, Dangerous
+
+|===
+
+[role="mt-4"]
+==== Probability versus severity
+
+The Gemini API blocks content based on the *probability* of content
+being unsafe and *not* the severity. This is important to consider
+because some content can have low probability of being unsafe even
+though the severity of harm could still be high. For example, comparing
+the sentences:
+
+. The robot punched me.
+. The robot slashed me up.
+
+Sentence 1 might result in a higher probability of being unsafe but you
+might consider sentence 2 to be a higher severity in terms of violence.
+
+Given this, it is important for each developer to carefully test and
+consider what the appropriate level of blocking is needed to support
+their key use cases while minimizing harm to end users.
+
+[role="mt-4"]
+==== Safety Settings
+
+Safety settings are part of the request you send to the text service. It
+can be adjusted for each request you make to the API. The following
+table lists the categories that you can set and describes the type of
+harm that each category encompasses.
+
+[cols="4a, 8a", options="header", width="100%", role="rtable mt-3 mb-5"]
+|===
+|Categories |Descriptions
+
+|Harassment
+|Negative or harmful comments targeting identity and/or
+protected attributes.
+
+|Hate speech
+|Content that is rude, disrespectful, or profane.
+
+|Sexually explicit
+|Contains references to sexual acts or other lewd
+content.
+
+|Dangerous
+|Promotes, facilitates, or encourages harmful acts.
+
+|===
+
+These definitions are in the
+link://ai.google.dev/api/rest/v1/HarmCategory[API reference, {browser-window--new}]
+as well. The Gemini models only support `HARM_CATEGORY_HARASSMENT`,
+`HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`, and
+`HARM_CATEGORY_DANGEROUS_CONTENT`.
+
+The following table describes the block settings you can adjust for each
+category. For example, if you set the block setting to *Block few* for
+the *Hate speech* category, everything that has a high probability of
+being hate speech content is blocked. But anything with a lower
+probability is allowed.
+
+If not set, the default block setting is *Block some* for all
+categories.
+
+[cols="4a, 8a", options="header", width="100%", role="rtable mt-3 mb-5"]
+|===
+|Threshold (API) |Description
+
+|BLOCK_NONE
+|Always show regardless of probability of unsafe content
+
+|BLOCK_ONLY_HIGH
+|Block when high probability of unsafe content
+
+|BLOCK_MEDIUM_AND_ABOVE
+|Block when medium or high probability of unsafe content
+
+|BLOCK_LOW_AND_ABOVE
+|Block when low, medium or high
+probability of unsafe content
+
+|HARM_BLOCK_THRESHOLD_UNSPECIFIED
+|Threshold is unspecified, block using default threshold
+
+|===
+
+You can set these settings for each request you make to the text
+service. See the
+link://ai.google.dev/api/rest/v1/SafetySetting#harmblockthreshold[HarmBlockThreshold, {browser-window--new}]
+API reference for details.
+
+[role="mt-4"]
+==== Safety feedback
+
+link://ai.google.dev/api/rest/v1/models/generateContent[generateContent, {browser-window--new}]
+returns a
+link //ai.google.dev/api/rest/v1/GenerateContentResponse[GenerateContentResponse, {browser-window--new}]
+which includes safety feedback.
+
+Prompt feedback is included in
+link://ai.google.dev/api/rest/v1/GenerateContentResponse#PromptFeedback[promptFeedback, {browser-window--new}].
+If
+link://ai.google.dev/api/rest/v1/GenerateContentResponse#blockreason[promptFeedback.blockReason, {browser-window--new}]
+is set, then the content of the prompt was blocked.
+
+Response candidate feedback is included in
+link://ai.google.dev/api/rest/v1/GenerateContentResponse#FinishReason[finishReason, {browser-window--new}]
+and
+link://ai.google.dev/api/rest/v1/GenerateContentResponse#safetyrating[safetyRatings, {browser-window--new}].
+
+If response content was blocked and the `finishReason` was `SAFETY`, you
+can inspect `safetyRatings` for more details. The safety rating includes
+the category and the probability of the harm classification. The content
+that was blocked is not returned.
+
+The probability returned correspond to the block confidence levels as
+shown in the following table:
+
+[cols="4a, 8a", options="header", width="100%", role="rtable mt-3 mb-5"]
+|===
+|Probability |Description
+
+|NEGLIGIBLE
+|Content has a negligible probability of being unsafe
+
+|LOW
+|Content has a low probability of being unsafe
+
+|MEDIUM
+|Content has a medium probability of being unsafe
+
+|HIGH
+|Content has a high probability of being unsafe
+
+|===
+
+For example, if the content was blocked due to the harassment category
+having a high probability, the safety rating returned would have
+category equal to `HARASSMENT` and harm probability set to `HIGH`.
+
+[role="mt-4"]
+=== Safety settings in Google AI Studio
+
+You can also adjust safety settings in Google AI Studio, but you cannot
+turn them off. To do so, in the *Run settings*, click *Edit safety
+settings*:
+
+And use the knobs to adjust each setting:
+
+
+A [.material-icons]#warning# *No Content* message appears if the content
+is blocked. To see more details, hold the pointer over *No Content* and
+click [.material-icons]#warning# *Safety*.
+
+[role="mt-4"]
+=== Code examples
+
+This section shows how to use the safety settings in code using the
+python client library.
+
+[role="mt-4"]
+==== Request example
+
+The following is a python code snippet showing how to set safety
+settings in your `GenerateContent` call. This sets the harm categories
+`Harassment` and `Hate speech` to `BLOCK_LOW_AND_ABOVE` which blocks any
+content that has a low or higher probability of being harassment or hate
+speech.
+
+[source, js]
+----
+import { GoogleGenerativeAI } from "//esm.run/@google/generative-ai";
+
+import { HarmCategory, HarmBlockThreshold } from "//esm.run/@google/generative-ai";
+const safetySettings = [
+  {
+    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+    threshold: HarmBlockThreshold.BLOCK_NONE
+  }
+];
+
+const model = genAI.getGenerativeModel({
+  model: "gemini-pro",
+  safetySettings
+});
+
+----
+
+[role="mt-4"]
+==== Response example
+
+The following shows a code snippet for parsing the safety feedback from
+the response.
+
+[source, python]
+----
+try:
+  print(response.text)
+except ValueError:
+  # If the response doesn't contain text, check if the prompt was blocked.
+  print(response.prompt_feedback)
+  # Also check the finish reason to see if the response was blocked.
+  print(response.candidates[0].finish_reason)
+  # If the finish reason was SAFETY, the safety ratings have more details.
+  print(response.candidates[0].safety_ratings)
+----
+
+[role="mt-4"]
+=== Next steps
+
+* See the link://ai.google.dev/api/[API reference, {browser-window--new}]
+  to learn more about the full API.
+* Review the link://ai.google.dev/docs/safety_setting_gemini[safety guidance, {browser-window--new}]
+  for a general look at safety considerations when developing with LLMs.
+* Learn more about assessing probability versus severity from the
+  link://developers.perspectiveapi.com/s/about-the-api-score[Jigsaw team, {browser-window--new}]
+* Learn more about the products that contribute to safety solutions
+  like the
+  link://medium.com/jigsaw/reducing-toxicity-in-large-language-models-with-perspective-api-c31c39b7a4d7[Perspective API, {browser-window--new}].
+* You can use these safety settings to create a toxicity classifier.
+  See the
+  link://ai.google.dev/examples/train_text_classifier_embeddings[classification example, {browser-window--new}]
+  to get started.
+
+[role="mt-5"]
+== Train a Google Gemini bot using the API interface
+
+. Set Up a Google Cloud Project
+
+* Create a Google Cloud project if you don't already have one.
+* Enable the Dialogflow API and the Gemini API.
+* Create a service account with the "Dialogflow API Admin" and "Gemini API Admin" roles.
+* Generate a private key for the service account.
+
+[start=2]
+. Create a Gemini Agent
+
+* Go to the Gemini console and click "Create Agent".
+* Enter a name and description for your agent.
+* Select the language for your agent.
+* Click "Create".
+* Link Your Dialogflow Agent to Your Gemini Agent
+
+[start=3]
+. Go to the Dialogflow console and open your agent.
+
+* Click the "Integrations" tab.
+* Click "Add Integration".
+* Select "Gemini" from the list of integrations.
+* Enter the Gemini API endpoint and your service account's private key.
+* Click "Link".
+
+[start=4]
+. Train Your Gemini Bot
+
+* Open the Gemini console and go to the "Training" tab.
+* Click "Create Training Run".
+* Select your agent from the dropdown list.
+* Enter a name for the training run.
+* Select the training data to use.
+* Click "Start Training".
+
+[start=5]
+. Test the Agent
+
+* Click "Test" in the top right corner of the Dialogflow Console.
+* Type in a message and press "Enter."
+* The agent will generate a response based on the training data.
+
+[start=6]
+. Deploy the Agent to Gemini
+
+* Click the "Deploy" button in the top right corner of the Dialogflow Console.
+* Select "Gemini" as the deployment target.
+* Click "Deploy."
+
+[role="mt-4"]
+=== Monitor the Training Process
+
+The training process will take some time. You can monitor the progress in the Gemini console.
+Once the training is complete, you will receive an email notification.
+Deploy Your Gemini Bot
+
+Once the training is complete, you can deploy your bot to your website or mobile app.
+To do this, you will need to generate a deployment token from the Gemini console.
+Follow the instructions in the Gemini documentation to deploy your bot.
+Test Your Bot
+
+[role="mt-4"]
+=== Test the bot
+
+Once your bot is deployed, you can test it by sending it messages.
+You can use the Gemini console or the Gemini API to send messages to your bot.
+Evaluate the bot's responses to ensure that it is functioning as expected.
+Maintain and Update Your Bot
+
+Over time, you may need to maintain and update your bot.
+This may involve retraining the bot with new data or fixing bugs.
+You can use the Gemini console or the Gemini API to manage your bot.
+By following these steps, you can train, deploy, and maintain a Google Gemini bot using the API interface.
+
+[role="mt-5"]
+== What's next
+
+Prompt design is the process of creating prompts that elicit the desired
+response from language models. Writing well structured prompts is an essential
+part of ensuring accurate, high quality responses from a language model.
+Learn about link://ai.google.dev/docs/prompt_best_practices[best practices for prompt writing, {browser-window--new}].
+
+Gemini offers several model variations to meet the needs of different use
+cases, such as input types and complexity, implementations for chat or other
+dialog language tasks, and size constraints. Learn about the
+link://ai.google.dev/models/gemini[available Gemini models, {browser-window--new}].
+
+Gemini offers options for
+link://ai.google.dev/docs/increase_quota[requesting rate limit increases, {browser-window--new}].
+The rate limit for Gemini Pro models is 60 requests per minute (RPM).

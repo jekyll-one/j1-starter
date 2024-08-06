@@ -11,7 +11,7 @@
 # Copyright (c) 2018 Ulrich Wolf
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # jekyll-i18n-date is licensed under the MIT License.
 # See: https://github.com/uwolf/jekyll-i18n-date/blob/master/LICENSE
 # ------------------------------------------------------------------------------

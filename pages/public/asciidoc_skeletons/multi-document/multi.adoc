@@ -22,7 +22,7 @@ robots:
   follow:                               false
 
 image:
-  path:                                 /assets/images/modules/attics/sigmund-1920x1280.jpg
+  path:                                 /assets/image/modules/attics/sigmund-1920x1280.jpg
   width:                                1920
   height:                               1280
 
@@ -41,7 +41,7 @@ resource_options:
       collapseDepth:                    3
   - attic:
       slides:
-        - url:                          /assets/images/modules/attics/sigmund-1920x1280.jpg
+        - url:                          /assets/image/modules/attics/sigmund-1920x1280.jpg
           alt:                          Photo by Sigmund on Unsplash
           badge:
             type:                       unsplash

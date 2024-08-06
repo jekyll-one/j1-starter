@@ -8,13 +8,13 @@
 # Copyright (C) 2023, 2024 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-# About this configuration (used for J1 CC only)
+# Description
 #
-about_config:
+description:
 
   title:                                Logger
   scope:                                User settings

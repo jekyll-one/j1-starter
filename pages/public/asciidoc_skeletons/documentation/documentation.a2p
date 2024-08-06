@@ -21,7 +21,7 @@
 
 // Set global resource folders
 // -----------------------------------------------------------------------------
-:imagesdir:                             ../../../../assets/images/
+:imagesdir:                             ../../../../assets/image/
 :pdf-themesdir:                         ../../../../_data/asciidoc2pdf/themes
 :pdf-fontsdir:                          ../../../../_data/asciidoc2pdf/fonts
 //:pdf-stylesdir:                       ../../../../_data/asciidoc2pdf/styles

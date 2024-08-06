@@ -6,9 +6,8 @@ date:                                   2022-01-01
 #last_modified:                         2023-01-01
 
 description: >
-                                        J1 Template is a Bootstrap V5 website template for the static
-                                        site generator Jekyll. Please report failures.
-                                        Although I endeavor to keep this
+                                        J1 Template is a Bootstrap V5 based template for Jekyll.
+                                        Please report failures. Although I endeavor to keep this
                                         site as up-to-date as possible, even the best sites will
                                         have some bugs. If you spot any typos, factually
                                         outdated or incorrect information, formatting errors, or
@@ -20,7 +19,7 @@ categories:                             [ About ]
 tags:                                   [ Issues ]
 
 image:
-  path:                                 /assets/images/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+  path:                                 /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
   width:                                1920
   height:                               1280
 
@@ -32,8 +31,8 @@ resources:                              [ animate ]
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/images/modules/attics/1920x1280/j1-starter-mockup-1.jpg
-          alt:                          J1 Starter Mockup
+        - url:                          /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+          alt:                          J1 Template Mockup
 ---
 
 // Page Initializer
@@ -86,4 +85,4 @@ at GitHub_ is required in order to open new issues.
 
 [role="mb-7"]
 To report issues, please go on _Github_ for the repo
-link:{url-j1--reporting-issues}[J1 Starter Theme, {browser-window--new}].
+link:{url-j1--reporting-issues}[J1 Template, {browser-window--new}].

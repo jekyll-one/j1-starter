@@ -101,7 +101,7 @@ the page design.
 Three types of AmplitudeJS players are build-in for the J1 template system:
 
 * Mini Player
-* Compact Player (default payer)
+* Compact Player (default player)
 * Large Player
 
 [role="mt-4"]
@@ -132,8 +132,6 @@ amplitude::free_emancipator_mini[role="mt-3 mb-5"]
 .Royalty Free Music · Disco 80th
 amplitude::free_disco_mini[role="mt-3 mb-5"]
 
-lorem:sentences[5]
-
 
 [role="mt-5"]
 == Compact Player
@@ -142,19 +140,11 @@ A complex component like an audio player on a web page, *compact*
 typically refers to a design or layout that minimizes the component's
 space while maintaining its functionality and usability.
 
-////
-The *compact design* for an audio player is an efficient approach that
-involves condensing the player controls and display elements into a smaller
-area. It uses icons or symbols instead of text labels where possible, and
-possibly hides less frequently used features behind menus or dropdowns to
-reduce clutter, thereby instilling confidence in its effectiveness.
-
 A *compact* design allows the audio player to fit neatly within the web
 page's layout without overwhelming or dominating the content around it.
 The design aims to balance functionality and space efficiency, ensuring
 users can easily access and control the audio playback without sacrificing
 too much screen space.
-////
 
 .Emancipator · From Dusk To Dawn
 amplitude::free_emancipator_compact[role="mt-3 mb-5"]
@@ -162,13 +152,13 @@ amplitude::free_emancipator_compact[role="mt-3 mb-5"]
 .Royalty Free Music · Disco 80th
 amplitude::free_disco_compact[role="mt-3 mb-5"]
 
-lorem:sentences[5]
-
 
 [role="mt-5"]
 == Large Player
 
-lorem:sentences[5]
+A large player supports a design for displaying all components but requires
+the full (horizontal) space in a webpage. This player type makes it easy for
+all users to navigate and plaback all titles provided.
 
 .Emancipator · From Dusk To Dawn
 amplitude::free_emancipator_large[role="mt-3 mb-5"]
@@ -194,4 +184,5 @@ Quicktime, or Silverlight is no longer needed as the Theme JekyllOne provides
 HTML5 video for local content and from online sources on the Internet.
 
 [role="mb-7"]
-Incredible? See the next example page link:{url-tour--present-video}[Video Player].
+Incredible? See the next examples on how to playback video on the page
+link:{url-tour--playback-video}[Video Player].

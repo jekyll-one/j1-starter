@@ -94,7 +94,7 @@ the page design.
 Three types of AmplitudeJS players are build-in for the J1 template system:
 
 * Mini Player
-* Compact Player (default payer)
+* Compact Player (default player)
 * Large Player
 
 [role="mt-4"]
@@ -125,7 +125,6 @@ amplitude::free_emancipator_mini[role="mt-3 mb-5"]
 .Royalty Free Music · Disco 80th
 amplitude::free_disco_mini[role="mt-3 mb-5"]
 
-lorem:sentences[5]
 
 [role="mt-5"]
 == Compact Player
@@ -134,19 +133,11 @@ A complex component like an audio player on a web page, *compact*
 typically refers to a design or layout that minimizes the component's
 space while maintaining its functionality and usability.
 
-////
-The *compact design* for an audio player is an efficient approach that
-involves condensing the player controls and display elements into a smaller
-area. It uses icons or symbols instead of text labels where possible, and
-possibly hides less frequently used features behind menus or dropdowns to
-reduce clutter, thereby instilling confidence in its effectiveness.
-
-A *compact* design allows the audio player to fit neatly within the web
+The *compact* design allows the audio player to fit neatly within the web
 page's layout without overwhelming or dominating the content around it.
 The design aims to balance functionality and space efficiency, ensuring
 users can easily access and control the audio playback without sacrificing
 too much screen space.
-////
 
 .Emancipator · Dusk To Dawn
 amplitude::free_emancipator_compact[role="mt-3 mb-5"]
@@ -154,13 +145,16 @@ amplitude::free_emancipator_compact[role="mt-3 mb-5"]
 .Royalty Free Music · Disco 80th
 amplitude::free_disco_compact[role="mt-3 mb-5"]
 
-lorem:sentences[5]
-
 
 [role="mt-5"]
 == Large Player
 
-lorem:sentences[5]
+A large player supports a design for displaying all components but requires
+a webpage's full (horizontal) space. This player type makes it easy for all
+users to navigate and playback all audio titles provided.
+
+Large players are a good choice when only a seleted number of albums or
+playlists should be placed on a page.
 
 .Emancipator · Dusk To Dawn
 amplitude::free_emancipator_large[role="mt-3 mb-5"]
@@ -168,5 +162,10 @@ amplitude::free_emancipator_large[role="mt-3 mb-5"]
 .Royalty Free Music · Disco 80th
 amplitude::free_disco_large[role="mt-3 mb-5"]
 
-[role="mb-8"]
-lorem:sentences[3]
+I hope, you've enjoyed exploring the possibilities J1 offers for playing
+digital audio content. But much, much more can the J1 do for your web in
+terms of multimedia.
+
+[role="mb-7"]
+Find more players focussing video plackback technologies on the page
+link:{url-tour--playback-video}[Video Player].

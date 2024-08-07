@@ -1,0 +1,85 @@
+++++
+<style>
+
+/* MINI Player
+# --------------------------------------------------------- */
+
+div#mini-player {
+  -webkit-font-smoothing: antialiased;
+  max-width: 475px;
+  background-color: var(--ajs-theme-uno--black);
+}
+
+div#mini-player img[data-amplitude-song-info="cover_art_url"] {
+ width: 100%;
+}
+
+div.bottom-container {
+  background-color: var(--ajs-theme-uno--blue-gray-900);
+}
+
+div#meta-container {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div.control-container div.amplitude-play-pause {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  float: left;
+  margin-top: 15px;
+  margin-left: 24px;
+}
+
+div.control-container div.amplitude-play-pause:hover {
+  opacity: .5;
+
+}
+
+div.control-container div.amplitude-play-pause.amplitude-paused {
+  background-size: cover;
+  background: url("/assets/theme/j1/modules/amplitudejs/icons/black-player/large/play.svg") no-repeat;
+}
+
+div.control-container div.amplitude-play-pause.amplitude-playing {
+  background-size: cover;
+  background: url("/assets/theme/j1/modules/amplitudejs/icons/black-player/large/pause.svg") no-repeat;
+}
+
+div.time-container {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  height: 18px;
+  margin-top: 10px;
+  width: calc(100% - 30px);
+  margin-left: 20px;
+}
+
+div.mini-player.meta-container {
+  width: calc(60% + 60px);
+}
+
+div.mini-player.control-container {
+  margin-top: 5px;
+}
+
+div.control-container div.meta-container {
+  float: left;
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: var(--ajs-theme-uno--white);
+}
+
+input[type=range].mini-player.amplitude-volume-slider {
+  margin-top: -14px;
+  margin-left: 24px;
+  width: calc(90% + 18px);
+}
+
+</style>
+++++

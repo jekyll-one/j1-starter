@@ -1,21 +1,23 @@
 ---
-title:                                  Image
-title_extention:                        Present Images using J1 Template
-tagline:                                Present Images
+title:                                  Manage Images
+title_extention:                        Manage Images using J1 Template
+tagline:                                Present Image Files
 
 date:                                   2020-11-03
 #last_modified:                         2023-01-01
 
 description: >
-                                        The image modules supported by J1 Template offer valuable
-                                        features based on powerful Open Source libraries like
-                                        Masterslider, lightGallery, or Justified Gallery for high-end,
-                                        masonry-styled preview maps.
+                                        J1 Template support valuable features to manage your image-based
+                                        content using lightboxes, carousels, sliders, and galleries.
+                                        The image modules of J1 Template offer a wide range of complex
+                                        functionality based on powerful Open Source libraries like
+                                        Lightbox V2, Master Slider, lightGallery, or Justified Gallery
+                                        for high-end, masonry-styled preview maps.
 keywords: >
                                         open source, free, template, jekyll, jekyllone, web,
                                         sites, static, jamstack, bootstrap,
                                         image, lightbox, carousel, slider, gallery,
-                                        masterslider, lightgallery, justifiedgallery
+                                        lightbox2, master slider, lightgallery, justifiedgallery
 
 categories:                             [ Roundtrip ]
 tags:                                   [ Module, Carousel, Lightbox, Image, Slider, Slick ]
@@ -53,6 +55,7 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
+:images-dir:                            {imagesdir}/pages/roundtrip/100_present_images
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -493,5 +496,4 @@ Quicktime, or Silverlight is no longer needed as the Theme JekyllOne provides
 HTML5 video for local content and from online sources on the Internet.
 
 [role="mb-7"]
-Incredible? See the next example page forcussing on playing audio:
-link:{url-tour--playback-audio}[Audio Player].
+Incredible? See the next example page link:{url-tour--present-audio}[Audio Player].

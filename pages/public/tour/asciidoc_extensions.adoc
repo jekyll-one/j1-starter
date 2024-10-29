@@ -31,7 +31,7 @@ permalink:                              /pages/public/tour/asciidoc_extensions/
 
 resources:                              [
                                           gallery, iconify, lightbox,
-                                          lightgallery, rouge, videojs
+                                          lightgallery, videojs
                                         ]
 resource_options:
   - attic:

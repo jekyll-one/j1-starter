@@ -27,7 +27,7 @@ image:
 regenerate:                             true
 permalink:                              /pages/public/tour/rouge/
 
-resources:                              [ rouge ]
+resources:                              []
 resource_options:
   - attic:
       slides:

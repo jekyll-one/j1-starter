@@ -28,7 +28,7 @@ image:
 regenerate:                             false
 permalink:                              /pages/public/tour/modals/
 
-resources:                              [ rouge ]
+resources:                              []
 resource_options:
   - attic:
       slides:

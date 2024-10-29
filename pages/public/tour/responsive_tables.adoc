@@ -26,7 +26,7 @@ image:
 regenerate:                             false
 permalink:                              /pages/public/tour/responsive_tables/
 
-resources:                              [ rouge ]
+resources:                              []
 resource_options:
   - attic:
       slides:

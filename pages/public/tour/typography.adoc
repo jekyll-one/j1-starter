@@ -27,7 +27,7 @@ image:
 regenerate:                             false
 permalink:                              /pages/public/tour/typography/
 
-resources:                              [ rouge ]
+resources:                              []
 resource_options:
   - attic:
       opacity:                          0.3

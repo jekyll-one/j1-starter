@@ -1,15 +1,15 @@
 ---
 title:                                  Video Player
-title_extention:                        Playback Video using J1 Template
-tagline:                                Playback Video
+title_extention:                        Playing Video files
+tagline:                                Playing Video files
 
 date:                                   2020-11-04
 #last_modified:                         2023-01-01
 
 description: >
-                                        J1 Template provides playing video on web pages
-                                        by HTML5 Video and supports custom players created
-                                        by VidoeJS to playback video individually.
+                                        The J1 Template supports playing video on web pages
+                                        by HTML5 Video, the current standard of HTML to show
+                                        videos on web pages.
 keywords: >
                                         open source, free, template, jekyll, jekyllone, web,
                                         sites, static, jamstack, bootstrap,
@@ -31,7 +31,7 @@ permalink:                              /pages/public/tour/present_video/
 
 resources:                              [
                                           gallery, lightgallery, masonry,
-                                          videojs, vimeo-player
+                                          rouge, videojs, vimeo-player
                                         ]
 resource_options:
   - toccer:
@@ -42,12 +42,12 @@ resource_options:
         - url:                          /assets/video/headers/present_videos/still/underground-broadway.jpg
           alt:                          Broadway Underground
           title:                        Video Player
-          tagline:                      Playback Video
+          tagline:                      Playing Video files
         # Broadway Underground - FAYETTE ST
         - url:                          /assets/video/headers/present_videos/underground-broadway.mp4
           alt:                          Broadway Underground Video
           title:                        Video Player
-          tagline:                      Playback Video
+          tagline:                      Playing Video files
           isVideo:                      true
           loop:                         false
           duration:                     6000
@@ -55,7 +55,7 @@ resource_options:
         - url:                          /assets/video/headers/present_videos/still/underground-broadway.jpg
           alt:                          Broadway Underground
           title:                        Video Player
-          tagline:                      Playback Video
+          tagline:                      Playing Video files
 ---
 
 // Page Initializer
@@ -66,11 +66,7 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
-:time-num--string:                      5-10
-:time-en--string:                       Minutes
-:time-en--description:                  to read
-:time-de--string:                       Minuten
-:time-de--description:                  Lesezeit
+:images-dir:                            {imagesdir}/pages/roundtrip/100_present_images
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -93,17 +89,13 @@ software, like _Flash Player_, _Quicktime_, _Silverlight_ is no longer needed
 as the J1 Template provides audio and video support for local video files
 and online sources.
 
-[subs=attributes]
-++++
-<div class="video-title">
-  <i class="mdib mdib-clock-outline mdib-24px mr-2"></i>
-  {time-num--string} {time-en--string} {time-en--description}
-</div>
-++++
+mdi:clock-time-five-outline[24px, md-gray mt-5 mr-2]
+*10-15 Minutes* to read
 
 
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------
+
 [role="mt-5"]
 == HTML 5 Player
 // See: https://docs.asciidoctor.org/asciidoc/latest/macros/audio-and-video/
@@ -115,29 +107,24 @@ a built-in multimedia framework for decoding and displaying video content.
 Two types of video sources are supported:
 
 * Video files from local folders (your webspace)
-* Video files from online sources (on the Internet) like YouTube, Vimeo, etc.
+* Video files from Online sources (on the Internet) like YouTube, Wistia,
+  Dailymotion etc.
 
 Standalone video players embedded in websites are software components that
 integrate and play video sources directly within a page or application. These
 players are essential for all current sites and apps. Embedded players provide
 a seamless and user-friendly way to present multimedia content to your audience.
 
-[role="mb-4"]
 All modern browsers universally support the video tag `<video>`. This tag
 offers an out-of-the-box framework for decoding and displaying video content
 without loading *external players*.
 
-++++
-<div class="video-title">
-  <i class="mdib mdib-youtube-tv mdib-24px mr-2"></i>
-  Peck Pocketed · MP4 Video
-</div>
-++++
-video::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/html5/peck_pocketed.jpg", opts="" role="mt-1 mb-5"]
+.MP4 Video, Peck Pocketed
+video::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/html5/peck_pocketed.jpg", opts="" role="mt-4 mb-5"]
 
 
 [role="mt-5"]
-== VideoJS
+== VideoJS Player
 
 VideoJS is a *free-to-use* open-source JavaScript framework for building
 custom video players for the web. Implementing VideoJS for the J1 Template
@@ -155,37 +142,28 @@ better user experience.
 VideoJS provides a flexible and customizable platform for displaying and
 controlling MPEG 4 video content on websites and web applications.
 
-.Rolling Wild · MP4 Video
+.MP4 Video, Rolling Wild
 videojs::/assets/video//html5/rolling_wild.mp4[poster="/assets/video/poster/html5/rolling_wild.jpg", opts="" role="mt-4 mb-5"]
 
-[role="mt-4"]
+[role="mt-5"]
 === YouTube
 
 YouTube is a popular online video-sharing platform that allows users to
 upload, view, share, and comment on videos. The platform provides services
 for people and organizations to publish various video content.
 
-The season 19 (2024) of _America's Got Talent_ (AGT) is special. In the long
-history of AGT, only a few *Goldern Buzzers* were given. In 2024, this is
-different - for good reasons. See a compilation on YouTube of the very best
-auditions ever.
+.The Voice Kids NL 2021 - Emma Kok
+youtube::20gXikNRjbo[poster="/assets/video/poster/youtube/voice_kids/banner/best_of.jpg" role="mt-4 mb-5"]
 
-.AGT 2024 · Best Auditions
-youtube::4VSBJU52UvM[poster="//img.youtube.com/vi/4VSBJU52UvM/maxresdefault.jpg" role="mt-4 mb-5"]
+// .Andre Rieu Maastricht 2023 - Emma Kok
+// youtube::KdIhq1tb8Co[poster="/assets/video/poster/youtube/voice_kids/banner/best_of.jpg" role="mt-4 mb-5"]
+//
+// .BGT 2024 - Sydnie Christmas wins GOLDEN BUZZER
+// youtube::pjyy4tYZFDc[poster="/assets/video/poster/youtube/voice_kids/banner/best_of.jpg" role="mt-4 mb-5"]
+//
+// .BGT 2024 - Sydnie Christmas All Performances
+// youtube::9qRNdZ6G6B4[poster="/assets/video/poster/youtube/voice_kids/banner/best_of.jpg" role="mt-4 mb-5"]
 
-Dog Dancing is presented quite often on stage. Like AGT season 18,
-Adrian Stoica presented his dog Hurricane https://www.youtube.com/watch?v=ENGRnUN1UKQ)[Youtube, {browser-window--new}].
-But see Roni Sagi - an Israeli dog trainer - and her dog Rhythm.
-This is Dog Dancing the next level.
-
-.Roni Sagi & Rhythm · ALL Performances (AGT 2024)
-youtube::1J2qz6B-PFY[poster="//img.youtube.com/vi/1J2qz6B-PFY/maxresdefault.jpg" role="mt-4 mb-5"]
-
-// .Fortnight (feat. Post Malone, Official Music Video) · Taylor Swift
-// youtube::q3zqJs7JUCQ[poster="//img.youtube.com/vi/q3zqJs7JUCQ/maxresdefault.jpg" role="mt-4 mb-5"]
-
-
-////
 [role="mt-4"]
 === Dailymotion
 
@@ -194,25 +172,37 @@ high-quality advertisers through a proprietary advertising system.
 Like YouTube, videos can be watched for free, but ads are shown on every
 video.
 
-.Beginner Mat Pilates · SELF Channel
-dailymotion::x87ycik[poster="/assets/video/poster/dailymotion/pilates.jpg" role="mt-4 mb-5"]
-////
+.SELF Channel
+dailymotion::x87ycik[role="mt-4 mb-5"]
 
+[role="mt-4"]
+=== Wistia
+
+Wistia is a marketing software and video hosting platform for business-to-business
+marketers. Free or paid plans are available. While Wistia may not be the
+*Big Man on Campus*, like Vimeo, still brings valuable functionality and
+should be considered a viable video platform.
+
+.Platform Intro
+// wistia::29b0fbf547[poster="/assets/video/poster/wistia/wistia-black.jpg" role="mt-4 mb-4"]
+wistia::29b0fbf547[poster="auto" role="mt-4 mb-4"]
+// wistia::29b0fbf547[role="mt-4 mb-4"]
 
 [role="mt-4"]
 === Vimeo
- 
+
 Vimeo is an sharing platform that allows users to upload, share, and view
 video content. It was founded in 2004 by a group of filmmakers and has
 since grown into a popular platform for individuals and businesses to
-showcase their videos. Vimeo is known for its emphasis on high-quality 
-video and creative expression.
+showcase their videos. Vimeo is known for its emphasis on high-quality videos
+and creative expression.
 
-.Kick It Old School · Forever 21
+.Forever 21 - Kick It Old School
 vimeo::179528528[poster="/assets/video/poster/vimeo/kick_it_old_school.jpg" role="mt-4 mb-5"]
 // vimeo::179528528[poster="auto" role="mt-4 mb-5"]
 // vimeo::179528528[role="mt-4 mb-5"]
 
+[role="mb-7"]
 .Video controls
 [CAUTION]
 ====
@@ -252,7 +242,7 @@ and video content provided online.
 Masonry for J1 Template is a great tool for creating dynamic video galleries.
 The module makes creating a gallery to display videos of different types easy.
 
-.Mixed Video · Masonry + LightGallery
+.Mixed Video
 masonry::mixed_video_example[role="mt-4 mb-5"]
 
 [role="mb-5"]
@@ -264,8 +254,7 @@ link:{url-j1-masonry-previewer}[Masonry Preview, {browser-window--new}] page.
 ====
 
 [role="mt-4"]
-[[local-video-2]]
-=== Local video
+=== Local Media
 
 Videos created by a digicam or a mobile can be played by J1 Template using
 the lightGallery integration. Present videos you have made at it's best.
@@ -278,7 +267,7 @@ Using a modern MP4 Encoder for video compression, a video will play around
 HD 720p (1280x720 pixel).
 ====
 
-.Local MP4 Video · Justified Gallery + LightGallery
+.MP4 Video
 gallery::jg_video_html5[role="mt-4 mb-5"]
 
 [role="mt-4"]
@@ -288,22 +277,13 @@ gallery::jg_video_html5[role="mt-4 mb-5"]
 The community at link:{url-youtube--home}[YouTube, {browser-window--new}]
 is large, with over 1 billion users that watch hundreds of millions of
 hours of content every day. The number of YouTube channels is enormous.
-Today, it's a must for TV stations or musicians to publish videos of their
-shows or songs on YouTube.
+For TV Stations, it's a must to publish videos of their shows on YouTube.
 
-A really great channel at YouTube is presented by _Taylor Swift_ for her
-new studio album *The Tortured Poets Department: The Anthology*, released on
-April 19, 2024.
+Find below a classic channel *Carpool Karaoke* presented by the frontman
+_James Corden_ of *The Late Late Show* at CBS, Los Angeles.
 
-.Taylor Swift - The Tortured Poets Department · Justified Gallery + LightGallery
-gallery::jg_video_online_taylor_swift[role="mt-5 mb-4"]
-
-[role="mb-5"]
-[TIP]
-====
-An *anthology* is a collection of selected texts or, in a broader sense,
-a thematic compilation of literary or musical works.
-====
+.Carpool Karaoke
+gallery::jg_video_online_youtube_james_and_adele[role="mb-5"]
 
 [role="mt-4"]
 === Vimeo
@@ -328,11 +308,11 @@ Business. Each membership has varied storage limits, but the free plan
 offers sufficient space for private projects to present video content
 without advertising.
 
-.Forever 21 · Justified Gallery + LightGallery
+.Forever 21
 gallery::jg_video_online_vimeo[role="mb-5"]
 
 [role="mt-4"]
-=== Dailymotion
+=== DailyMotion
 
 link:{url-dailymotion--home}[Dailymotion, {browser-window--new}] is a
 video-sharing platform. The platform is available worldwide in 180+
@@ -343,7 +323,7 @@ connect to high-quality advertisers through a proprietary Advertising system.
 Like YouTube, videos can be watched for free, but ads are shown on each and
 every video.
 
-.SELF Chanel · Justified Gallery + LightGallery
+.SELF Chanel
 gallery::jg_video_online_dailymotion[role="mt-4 mb-5"]
 
 

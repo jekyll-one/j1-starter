@@ -28,7 +28,7 @@ image:
 regenerate:                             false
 permalink:                              /pages/public/tour/themes/
 
-resources:                              [ lightbox, rouge ]
+resources:                              [ lightbox ]
 resource_options:
   - attic:
       slides:

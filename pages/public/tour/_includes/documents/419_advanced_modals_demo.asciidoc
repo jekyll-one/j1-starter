@@ -16,8 +16,8 @@
           <p class="pt-1 pr-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nisi quo provident fugiat reprehenderit nostrum quos..</p>
         </div>
         <div class="row px-4">
-          <a type="button" class="btn btn-primary mr-2">Yes, please</a>
-          <a type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
+          <a href="#" type="button" class="btn btn-primary mr-2">Yes, please</a>
+          <a href="#" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
         </div>
       </div>
     </div>
@@ -54,8 +54,8 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer justify-content-center">
-        <a type="button" class="btn btn-primary mr-2">Yes, please</a>
-        <a type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
+        <a href="#" type="button" class="btn btn-primary mr-2">Yes, please</a>
+        <a href="#" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
       </div>
     </div>
     <!-- END Content -->
@@ -90,8 +90,8 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer justify-content-center">
-        <a type="button" class="btn btn-primary mr-2">Yes, please</a>
-        <a type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
+        <a href="#" type="button" class="btn btn-primary mr-2">Yes, please</a>
+        <a href="#" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
       </div>
     </div>
     <!-- END Content -->
@@ -113,8 +113,8 @@
       <!-- Body -->
       <div class="modal-body">
         <p class="mt-1 ml-3 mr-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nisi quo provident fugiat reprehenderit nostrum quos..</p><div class="row ml-3">
-          <a type="button" class="btn btn-primary mr-2">Yes, please</a>
-          <a type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks<div class="ripple-container"><div class="ripple-decorator ripple-on ripple-out" style="left: 51.4063px; top: 20px; background-color: rgb(1, 211, 107); transform: scale(14.5548);"></div></div></a>
+          <a href="#" type="button" class="btn btn-primary mr-2">Yes, please</a>
+          <a href="#" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks<div class="ripple-container"><div class="ripple-decorator ripple-on ripple-out" style="left: 51.4063px; top: 20px; background-color: rgb(1, 211, 107); transform: scale(14.5548);"></div></div></a>
         </div>
       </div>
     </div>
@@ -156,8 +156,8 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer justify-content-center">
-        <a type="button" class="btn btn-primary mr-2">Yes, please</a>
-        <a type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
+        <a href="#" type="button" class="btn btn-primary mr-2">Yes, please</a>
+        <a href="#" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
       </div>
     </div>
     <!-- END Content -->
@@ -200,8 +200,8 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer justify-content-center">
-        <a type="button" class="btn btn-primary mr-2">Yes, please</a>
-        <a type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
+        <a href="#" type="button" class="btn btn-primary mr-2">Yes, please</a>
+        <a href="#" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
       </div>
     </div>
     <!-- END Content -->
@@ -263,8 +263,8 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer">
-        <a type="button" class="btn btn-primary mr-2">Yes, please</a>
-        <a type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
+        <a href="#" type="button" class="btn btn-primary mr-2">Yes, please</a>
+        <a href="#" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
       </div>
     </div>
     <!-- END Content -->
@@ -326,8 +326,8 @@
       </div>
       <!-- Footer -->
       <div class="modal-footer">
-        <a type="button" class="btn btn-primary mr-2">Yes, please</a>
-        <a type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
+        <a href="#" type="button" class="btn btn-primary mr-2">Yes, please</a>
+        <a href="#" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No, thanks</a>
       </div>
     </div>
     <!-- END Content -->

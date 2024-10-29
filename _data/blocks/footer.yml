@@ -16,7 +16,7 @@
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-# Description 
+# Description
 #
 description:
 
@@ -81,19 +81,24 @@ settings:
             enabled:                    true
             href:                       //github.com/jekyll-one/j1-starter
           facebook:
-            enabled:                    true
+            enabled:                    false
             href:                       "#"
 #           href:                       //www.facebook.com/<your_profile>/
           twitter:
             enabled:                    false
             href:                       "#"
 #           href:                       //twitter.com/<your_profile>/
+          twitter_x:
+            enabled:                    false
+            href:                       "#"
+#           href:                       //twitter.com/<your_profile>/
+
           xing:
-            enabled:                    true
+            enabled:                    false
             href:                       "#"
 #           href:                       //www.xing.com/profile/<your_profile>/
           linkedin:
-            enabled:                    true
+            enabled:                    false
             href:                       "#"
 #           href:                       //www.linkedin.com/in/<your_profile>/
 
@@ -179,7 +184,7 @@ settings:
 
             title:                      J1 Template
             title_translation:          notranslate
-            tagline:                    Free Bootstrap V5 Theme for Jekyll
+            tagline:                    free bootstrap V5 theme for jekyll
             text: >
                                         The build-in web of J1 Template is a full-featured theme
                                         for Jekyll to create modern dynamic websites based on Bootstrap V5.

@@ -1,0 +1,448 @@
+---
+title:                                  Google Adsense
+tagline:                                Preview  Advertising
+date:                                   2023-05-19
+#last_modified:                         2023-01-01
+description: >
+                                        J1 Template is a Bootstrap V5 website template for the static
+                                        site generator Jekyll.
+                                        AdSense is an advertising platform provided by Google,
+                                        fully integrated into J1 Template for easy use, that
+                                        allows website owners and content creators to earn
+                                        money by displaying targeted advertisements on their
+                                        online properties.
+keywords: >
+                                        Jekyll, Theme, JekyllOne, Info, Preview, Google, Adsense
+
+categories:                             [ Manual ]
+tags:                                   [ Cheatsheet, Adsense ]
+
+image:
+  path:                                 /assets/image/modules/attics/1920x1280/eleni-afiontzi.jpg
+  width:                                1920
+  height:                               1280
+
+regenerate:                             false
+permalink:                              /pages/public/tools/previewer/gad/
+
+resources:                              [ animate, clipboard, rouge ]
+resource_options:
+  - attic:
+      slides:
+        - url:                          /assets/image/modules/attics/1920x1280/eleni-afiontzi.jpg
+          alt:                          Photo by Eleni Afiontzi on Unsplash
+          badge:
+            type:                       unsplash
+            author:                     Eleni Afiontzi
+            href:                       //unsplash.com/de/@eleniafiontzi
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+
+// Set (local) page attributes here
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="global" %}
+
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Include sub-documents (if any)
+// -----------------------------------------------------------------------------
+[role="dropcap"]
+AdSense is an advertising platform provided by _Google_ that allows website
+owners and content creators to earn money by displaying targeted advertisements
+on their online properties. It is one of the most popular and widely used
+advertising networks on the internet.
+
+It's important to note that _AdSense_ has *policies and guidelines* that
+publishers *must* adhere to. Violations of these policies can lead to penalties
+or even account suspension. Publishers need to ensure that their content and
+website comply with the AdSense *program policies* to maintain their
+eligibility for the program.
+
+IMPORTANT: For compliance reasons (GDPR/Europe, CPRA/USA), website visitors
+must accept cookies for *personalization*. If the user rejects personalization,
+the *Advertising* module for _Google Adsense_ is *disabled* on *all* pages.
+*No* advertising is used and all Cookies placed by _Google AdSense_ (if any)
+are removed automatically.
+
+
+[role="mt-5"]
+== Benefits using AdSense
+
+With AdSense, website owners can participate in the program to monetize
+their websites, blogs, or YouTube channels. AdSense provides a way for
+publishers to generate revenue by displaying relevant ads matched to their
+site's content or videos When a visitor clicks on an ad displayed through
+AdSense, the website owner earns a portion of the revenue generated from
+that click. The amount earned per click can vary depending on factors such
+as the advertiser's bid, the ad's keywords' competitiveness, and the
+website's overall performance.
+
+AdSense uses contextual targeting to display ads relevant to the website's
+content. Using the service means that the ads are tailored to match the
+interests of the visitors, increasing the likelihood of clicks and conversions
+for advertisers. Google handles the entire ad selection, delivery, and
+payment process, making it a convenient solution for website owners who
+want to monetize their online presence. AdSense also provides various
+customization options, allowing publishers to control the appearance and
+placement of ads on their websites.
+
+[role="mt-5"]
+== J1 Integration
+
+To make the implementation of _Google Adsense_ as easy as possible, no
+programming is needed. J1 Template integrates _Adsense_ by placing all
+required code (HTML- and Javascript code) by the *Advertising* module
+automatically.
+
+Setting up the _Adsense_ integration is a simple three step process:
+
+. *Configure* the ads you have already configured with the _Google Adsense_
+  home page, with the module configuration file `advertising.yml` located
+  in the `_data` folder (modules).
+. *Place* your ads in the *source code* of your pages. The integration does
+  not need any programming. Use the Asciidoc extension `gad::` to place a
+  container identified by the `id` you have given with the first step.
+. *Activate* the _Adsense_ integration *module* on all pages _Google Ads_
+  should be used by requesting the module in the front matter.
+
+On pages, the integration is *activated*, enabling adversting is done by:
+
+. *Placing* the _Google Adsense_ *API* (Javascript code) in the `<head>`
+  section of your page.
+. *Writing* the required *HTML* code for all ads placed in the configured
+  containers of a page.
+. *Activating* all ads placed in all containers of a page.
+
+First, find common examples of how *Google Ads* are integrated into the
+*pages* of your website. If your site is *successfully* registered with
+_Adsense_ program, you can define individual ad blocks from the main menu
+under *Advertisement*. Choosing the right ad type for Google AdSense depends
+on a variety of factors, including your site's layout, the type of content,
+and the preferences of your audience.
+
+=== Examples
+
+When choosing the type of ad, it's important to keep your visitors' user
+experience in mind. Ensure the ads aren't overly intrusive and don't unduly
+interfere with your site's content. Experiment with different ad types and
+monitor performance to see which ones work best for your site and goals to
+achive best results for monetizing.
+
+==== Type Display
+
+A practical *all-around* solution for _Google Ads_ is the type `display`
+that can be used *anywhere* on your site. The type `display` is typically
+used as a delimiter element between the landing page's main sections.
+
+.Configuration example
+[source, yaml]
+----
+# ------------------------------------------------------------------------------
+# Ad on slot id "5128488466" (Type Display)
+#
+- ad:
+
+  # container settings
+  # ----------------------------------------------------------------------------
+  enabled:                        true
+
+  id:                             ad_5128488466
+  layout:                         page
+  content_page:                   preview_google_adsense
+
+  # ad properties
+  # ----------------------------------------------------------------------------
+  publisherID:                    ca-pub-3885670015316130
+  test:                           "off"
+  styles:                         "display:block;"
+  slot:                           5128488466
+  ad_layout:                      display
+  ad_format:                      auto
+  ad_responsive:                  true
+----
+
+gad::ad_5128488466["mt-6 mb-6"]
+
+==== Type In-Article
+
+A common type for *Google Ads* is the type `in-article`. The *In-Article*
+format adapts to your website and is well suitable for content pages of
+type *page* or *post* (article) using a lot of text sections (chapters).
+
+.Configuration example
+[source, yaml]
+----
+# ------------------------------------------------------------------------------
+# Ad on slot id "7522184684" (Type In-Article)
+#
+- ad:
+
+  # container settings
+  # ----------------------------------------------------------------------------
+  enabled:                        true
+
+  id:                             ad_7522184684
+  layout:                         page
+  content_page:                   preview_google_adsense
+
+  # ad properties
+  # ----------------------------------------------------------------------------
+  publisherID:                    ca-pub-3885670015316130
+  test:                           "off"
+  styles:                         "display:block; text-align:center;"
+  slot:                           7522184684
+  ad_layout:                      in-article
+  ad_format:                      fluid
+----
+
+gad::ad_7522184684["mt-5 mb-5"]
+
+////
+==== Type Multiplex
+
+Multiplex Ads is a button-based ad unit that shows native ads with recommended
+content. *Multiplex Ads* is common on content pages of type *page* or *post*
+(article).
+
+NOTE: If you have specific requirements for the appearance of responsive
+multiplex ad units, you can add parameters to the ad code. The additional
+parameters allow you to change the layout of these ad units and determine
+how the rows and columns of the ads should be arranged.
+
+.Configuration example
+[source, yaml]
+----
+# ------------------------------------------------------------------------------
+# Ad on slot id "4814313879" (Type Multiplex)
+#
+- ad:
+
+  # container settings
+  # ----------------------------------------------------------------------------
+  enabled:                        true
+
+  id:                             ad_4814313879
+  layout:                         page
+  content_page:                   preview_google_adsense
+
+  # ad properties
+  # ----------------------------------------------------------------------------
+  publisherID:                    ca-pub-3885670015316130
+  test:                           "on"
+  styles:                         "display:block;"
+  slot:                           4814313879
+  ad_layout:                      multiplex
+  ui_type:                        image_card_sidebyside
+  ui_rows:                        1
+  ui_columns:                     2
+----
+
+gad::ad_4814313879["mt-6 mb-6"]
+////
+
+[role="mt-4"]
+=== Setup
+
+Setting up the *Advertising* requires to *enable* the module on every page
+by requesting the *module* to be loaded by the `resources` record. Add the
+*id* of the module `advertising` to enable the processing the ads you have
+configured.
+
+.Front matter settings (resources)
+[source, yaml, role="noclip"]
+----
+title:                                  Google Adsense
+tagline:                                Preview  Advertising
+
+...
+
+resources:                              [ animate, clipboard, rouge ]
+
+...
+----
+
+
+[role="mt-4"]
+=== Asciidoc Extension
+
+Making ads on a page easier, the Asciidoc Extention `gad::` supports you in
+placing a container into your source code. While your page is being processed
+by _Jekyll_, the module places a `<div>` element and fills in on module
+*initialization*.
+
+[source, bash, role="noclip"]
+----
+gad::ad_id[role="additional container classes"]
+----
+
+.Example
+[source, bash, role="noclip"]
+----
+gad::ad_5128488466["mt-6 mb-6"]
+----
+
+The *HTML code* generated for an ad (id `ad_5128488466`) looks like so:
+
+.Generated HTML code
+[source, html]
+----
+<div id="ad_5128488466" class="gad-container mt-6 mb-6">
+  <ins id="ins_ad_5128488466"
+    class="adsbygoogle"
+    style="display:block;"
+    data-ad-test="on"
+    data-ad-client="ca-pub-1234567890123456"
+    data-ad-slot="5128488466"
+    data-ad-format="auto"
+    data-full-width-responsive="true">
+  </ins>
+</div>
+----
+
+NOTE: On module *initialization*, all `<div>` elements get registered with
+*Google AdSense* to fill the *container* by active advertising code.
+
+
+[role="mt-5"]
+== Module Configuration
+
+The module configuration requires first to set your `publisherID` *globally*
+to register a page with *Google AdSense*. In a second step, all *ads*
+(ad blocks, slot ids) registered with your AdSense account are to be defined.
+
+[source, yaml, role="noclip"]
+----
+# ------------------------------------------------------------------------------
+# User settings
+#
+settings:
+  enabled:                              true
+
+  google:
+    publisherID:                        <your-publisher-id>
+    autoHideOnUnfilled:                 false
+    addBorderOnUnfilled:                true
+
+  # ----------------------------------------------------------------------------
+  # All advertising container/ad available
+  # ----------------------------------------------------------------------------
+  ads:
+
+    # --------------------------------------------------------------------------
+    # Ad on slot id "5128488466" (Type Display)
+    #
+    - ad:
+
+      # container settings
+      # ------------------------------------------------------------------------
+      enabled:                        true
+
+      id:                             ad_5128488466
+      layout:                         home
+
+      # ad properties
+      # ------------------------------------------------------------------------
+      publisherID:                    ca-pub-1234567890123456
+      test:                           "on"
+      styles:                         "display:block;"
+      slot:                           5128488466
+      ad_layout:                      display
+
+    # --------------------------------------------------------------------------
+    # Ad on slot id "5128488466" (Type Display)
+    #
+    - ad:
+
+      # container settings
+      # ------------------------------------------------------------------------
+      enabled:                        true
+
+      id:                             ad_5128488466
+      layout:                         page
+
+      # ad properties
+      # ------------------------------------------------------------------------
+      publisherID:                    ca-pub-1234567890123456
+      test:                           "on"
+      styles:                         "display:block;"
+      slot:                           5128488466
+      ad_layout:                      display
+
+      # ------------------------------------------------------------------------
+      # Ad on slot id "4814313879" (Type Multiplex)
+      #
+      - ad:
+
+        # container settings
+        # ----------------------------------------------------------------------
+        enabled:                        false
+
+        id:                             ad_4814313879
+        layout:                         page
+
+        # ad properties
+        # ----------------------------------------------------------------------
+        publisherID:                    ca-pub-1234567890123456
+        test:                           "on"
+        styles:                         "display:block;"
+        slot:                           4814313879
+        ad_layout:                      multiplex
+
+----
+
+CAUTION: Disable (enabled set to `false`) for all Ad **ID**s the are *NOT*
+used on any *page*.
+
+[role="mt-4"]
+=== Properties
+
+Find all property settings for ad blocks below.
+
+.Property settings
+[cols="2a, 2a, 3a, 5a", options="header", width="100%", role="rtable mt-3 mb-5"]
+|===
+|Prperty |Values |Default |Description
+
+|`styles`
+|string
+|none
+|Defines the CSS styles applied on an specific advertising. Contains *CSS*
+classes separated by an colon (`;`). Taken from the ad-code generated
+by Adsense. +
+Example: `display:block; text-align:center;`.
+
+|`publisherID`
+|string
+|ca-pub-number\|pub-number
+|Defines the publisher id used for an advertising. *Current* accounts at
+Adsense using the format of `ca-pub-1234567890123456` (fake id).
+
+|`ad_layout`
+|string
+|none
+|Specifies the layout of the *ad*. Taken from the ad-code generated
+by Adsense. +
+Example: `in-article`.
+
+|`test`
+|string (on\|off)
+|off
+|For testing only. If `test` is enabled (`on`), clicks and impressions
+*not* recorded by the service and advertisers are *not* charged. If tests
+are done on *localhost*, property `test` must set to `on`.
+
+|===

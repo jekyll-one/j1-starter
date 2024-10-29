@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 24 56.571429"
+   width="28"
+   height="66"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="icon-twitter-x-28 - social.svg"
+   inkscape:export-filename="D:\j1\github\j1-theme\j1-template\packages\300_theme_src\assets\image\modules\icons\social\twitter_x.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2353"
+     inkscape:window-height="1246"
+     id="namedview6"
+     showgrid="false"
+     inkscape:pagecheckerboard="false"
+     inkscape:showpageshadow="false"
+     inkscape:zoom="15.212121"
+     inkscape:cx="14"
+     inkscape:cy="31.533099"
+     inkscape:window-x="217"
+     inkscape:window-y="7"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4"
+     inkscape:document-rotation="0" />
+  <rect
+     style="opacity:0.523523;fill:#fafafa;fill-opacity:0.78039217;stroke-width:1.41318;stroke-miterlimit:4;stroke-dasharray:none"
+     id="rect837"
+     width="23.890722"
+     height="23.665339"
+     x="0.056345098"
+     y="1.9246635e-08"
+     inkscape:export-filename="D:\j1\github\j1-theme\j1-template\packages\300_theme_src\assets\image\modules\icons\social\rect837.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <path
+     d="m 6.8895836,7.4237745 3.8271184,5.7756795 -3.6259126,4.476375 h 1.4242397 l 2.8389979,-3.514134 2.328086,3.514134 h 3.727041 l -4.003041,-6.05156 3.393103,-4.2004945 H 15.3971 L 12.770894,10.663138 10.628213,7.4237745 Z m 2.0710469,1.139117 h 1.1050505 l 5.27348,7.9738215 h -1.09557 z"
+     id="path2-7"
+     style="stroke-width:0.554252" />
+  <g
+     id="g866"
+     transform="matrix(1,0,0,1.0504945,0,-2.8593901)">
+    <rect
+       style="opacity:0.523523;fill:#03a9f4;fill-opacity:1;stroke-width:1.36632;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect839"
+       width="23.928194"
+       height="22.087648"
+       x="0.075219117"
+       y="34.540127" />
+    <path
+       d="m 6.9323619,41.397271 3.8271191,5.390633 -3.6259131,4.17795 h 1.42424 l 2.8389981,-3.279858 2.328087,3.279858 h 3.72704 l -4.00304,-5.648122 3.393103,-3.920461 H 15.43988 l -2.626207,3.023406 -2.142681,-3.023406 z m 2.071047,1.063176 H 10.10846 l 5.273481,7.442232 h -1.09557 z"
+       id="path2-7-8"
+       style="stroke-width:0.535458" />
+  </g>
+</svg>

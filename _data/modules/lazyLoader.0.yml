@@ -1,0 +1,118 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/lazyCSSLoader.yml
+# User Configuration of the lazyCSSLoader Module
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023, 2024 Juergen Adams
+#
+# J1 Template is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+# ------------------------------------------------------------------------------
+# NOTE:
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                lazyCSSLoader
+  scope:                                User settings
+  location:                             _data/modules/lazyCSSLoader.yml
+
+# ------------------------------------------------------------------------------
+# User settings
+#
+settings:
+  enabled:                              true
+
+  # ----------------------------------------------------------------------------
+  # Loader settings
+  # ----------------------------------------------------------------------------
+  loaders:
+
+    # --------------------------------------------------------------------------
+    # Images (foreground)
+    #
+    - loader:
+      enabled:                          true
+      type:                             image
+      description:                      Foreground Images (img)
+
+      selector:                         'img.lazy'
+      rootMargin:                       '150px'
+
+    # --------------------------------------------------------------------------
+    # MDI Light Icon CSS
+    #
+    - loader:
+      enabled:                          true
+      type:                             css
+      description:                      MDI Icons (light)
+
+      src:                              /assets/theme/j1/core/css/icon-fonts/mdil.min.css
+      selector:                         '.mdil'
+      rootMargin:                       '150px'
+
+    # --------------------------------------------------------------------------
+    # MDI Regular Icon CSS
+    #
+    - loader:
+      enabled:                          true
+      type:                             css
+      description:                      MDI Icon CSS (regular)
+
+      src:                              /assets/theme/j1/core/css/icon-fonts/mdi.min.css
+      selector:                         '.mdi'
+      rootMargin:                       '150px'
+
+    # --------------------------------------------------------------------------
+    # FontAwesone (FA) Icon CSS
+    #
+    - loader:
+      enabled:                          true
+      type:                             css
+      description:                      FA Icon CSS
+
+      src:                              /assets/theme/j1/core/css/icon-fonts/fontawesome.min.css
+      selector:                         '.fa'
+      rootMargin:                       '150px'
+
+    # --------------------------------------------------------------------------
+    # countryFlag Icon CSS
+    #
+    - loader:
+      enabled:                          true
+      type:                             css
+      description:                      CountryFlag Icon CSS
+
+      src:                              /assets/theme/j1/core/country-flags/css/theme/uno.min.css
+      selector:                         '.flag-icon'
+      rootMargin:                       '150px'
+
+    # --------------------------------------------------------------------------
+    # rTable CSS
+    #
+    - loader:
+      enabled:                          true
+      description:                      rTable CSS
+
+      src:                               /assets/theme/j1/modules/rtable/css/theme/uno/rtable.min.css
+      selector:                         '.rtable'
+      rootMargin:                       '150px'
+
+    # --------------------------------------------------------------------------
+    # Rouge CSS
+    #
+    # - loader:
+    #   enabled:                          true
+    #   description:                      Rouge CSS
+    #
+    #   src:                              /assets/theme/j1/modules/rouge/css/uno.light/theme.min.css
+    #   selector:                         '.highlight'
+    #   rootMargin:                       '150px'
+
+# ------------------------------------------------------------------------------
+# END config

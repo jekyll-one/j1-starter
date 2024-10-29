@@ -1,7 +1,7 @@
 ---
 title:                                  Responsive Tables
 title_extention:                        Responsive tables for J1 Template
-tagline:                                Powerful tables viewed best
+tagline:                                Tables viewed best
 
 date:                                   2020-11-09
 #last_modified:                         2023-01-01
@@ -46,7 +46,11 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
-:images-dir:                            {imagesdir}/pages/roundtrip/100_present_images
+:time-num--string:                      5
+:time-en--string:                       Minutes
+:time-en--description:                  to read
+:time-de--string:                       Minuten
+:time-de--description:                  Lesezeit
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -67,8 +71,13 @@ Bootstrap framework.
 The approach is using pure CSS styles on top of the classic Bootstrap tags
 for simplicity and portability to be viewed best on all devices and browsers.
 
-mdi:clock-time-five-outline[24px, md-gray mt-5 mr-2]
-*5 Minutes* to read
+[subs=attributes]
+++++
+<div class="video-title">
+  <i class="mdib mdib-clock-outline mdib-24px mr-2"></i>
+  {time-num--string} {time-en--string} {time-en--description}
+</div>
+++++
 
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------

@@ -48,7 +48,11 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
-:images-dir:                            {imagesdir}/pages/roundtrip/100_present_images
+:time-num--string:                      3
+:time-en--string:                       Minutes
+:time-en--description:                  to read
+:time-de--string:                       Minuten
+:time-de--description:                  Lesezeit
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -72,8 +76,13 @@ overall layout, text, tables, and form elements across all modern web browsers
 available on the market. In addition, developers can take advantage of already
 defined CSS classes in Bootstrap to customize a layout individually.
 
-mdi:clock-time-five-outline[24px, md-gray mt-5 mr-2]
-*3 Minutes* to read
+[subs=attributes]
+++++
+<div class="video-title">
+  <i class="mdi mdi-gray mdi-clock-time-five-outline mdi-24px mr-2"></i>
+  {time-num--string} {time-en--string} {time-en--description}
+</div>
+++++
 
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------

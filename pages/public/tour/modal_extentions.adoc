@@ -44,7 +44,11 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
-:images-dir:                            {imagesdir}/pages/roundtrip/100_present_images
+:time-num--string:                      5-10
+:time-en--string:                       Minutes
+:time-en--description:                  to read
+:time-de--string:                       Minuten
+:time-de--description:                  Lesezeit
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -65,13 +69,15 @@ important information to your visitors.
 The dialogs are positioned over everything else in the document so that
 messages get the full user's attention.
 
-mdi:clock-time-five-outline[24px, md-gray mt-5 mr-2]
-*5-10 Minutes* to read
+[subs=attributes]
+++++
+<div class="video-title">
+  <i class="mdib mdib-clock-outline mdib-24px mr-2"></i>
+  {time-num--string} {time-en--string} {time-en--description}
+</div>
+++++
 
 // Include sub-documents (if any)
-// -----------------------------------------------------------------------------
-
-// Include the modals HTML portion (hidden)
 // -----------------------------------------------------------------------------
 include::{documentdir}/419_advanced_modals_demo.asciidoc[]
 

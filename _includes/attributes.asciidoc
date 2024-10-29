@@ -535,6 +535,7 @@ tag::tags[]
 
 // special characters
 //
+:char-space:                                      &nbsp;
 :char-emdash:                                     &#8212;
 :char-middot:                                     &middot;
 :char-dot:                                        &#46;

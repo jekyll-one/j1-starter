@@ -15,9 +15,9 @@
 # Description
 #
 description:
-  title:                                lazyLoader
+  title:                                lazyCSSLoader
   scope:                                Default settings
-  location:                             _data/modules/defaults/lazyLoader.yml
+  location:                             _data/modules/defaults/lazyCSSLoader.yml
 
 # ------------------------------------------------------------------------------
 # Default settings

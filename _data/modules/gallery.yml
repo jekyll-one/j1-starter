@@ -841,5 +841,141 @@ settings:
                                         <h6>Beginner Mat Pilates: Core Workout</h6>
                                         <br>
 
+    # --------------------------------------------------------------------------
+    # HTML5 VIDEO (over VodeoJS)
+    #
+    - gallery:
+      enabled:                          true
+
+      id:                               jg_video_html5_videojs
+      type:                             video
+      video:                            html5
+      video_base_path:                  /assets/video/html5
+      image_base_path:                  /assets/video/poster/html5
+      thumb_base_path:                  /assets/video/poster/html5
+
+      # ------------------------------------------------------------------------
+      # Justified Gallery settings
+      # ------------------------------------------------------------------------
+      #
+      gallery_options:
+        rowHeight:                      250
+        gutters:                        3
+
+      # ------------------------------------------------------------------------
+      # Lightbox|lightGallery settings
+      # ------------------------------------------------------------------------
+      #
+      lightbox:
+        enabled:                        true
+        type:                           lg
+
+      lightGallery:
+        plugins:                        lgThumbnail, lgVideo
+
+        options:
+          licenseKey:                   0000-0000-000-0000
+          download:                     false
+          alignThumbnails:              left
+          animateThumb:                 true
+          autoplayFirstVideo:           true
+          videojs:                      true
+          videojsTheme:                 vjs-theme-uno
+
+        videojsOptions:
+          enabled:                      true
+
+          muted:                        false
+          preload:                      true
+#         videoStart:                   ["00:00:30", "00:01:30"]                  # start time (hh:mm:ss) for [video1, video2]
+
+          controls:                     true
+          controlBar:
+            playbackRates:              [0.25, 0.5, 1, 1.5, 2]
+            remainingTimeDisplay:       true
+            pictureInPictureToggle:     false
+
+            volumePanel:
+              inline:                   false
+
+            # hotkeysPlugin:
+            #   enabled:                  true
+            #   options:
+            #     volumeStep:             0.2
+            #
+            # zoomPlugin:
+            #   enabled:                  true
+            #   options:
+            #     moveX:                  0
+            #     moveY:                  0
+            #     rotate:                 0
+            #     zoom:                   1
+
+      # ------------------------------------------------------------------------
+      # CSS filter options
+      #
+      filters:
+        enabled:                        false
+        grayscale:                      0
+        contrast:                       1
+        brightness:                     1
+
+      # ------------------------------------------------------------------------
+      # Video settings
+      # ------------------------------------------------------------------------
+      #
+      videos:
+
+        - video:                        # video 1
+          enabled:                      true
+
+          name:                         Peck Pocketed
+          type:                         html5
+          size:                         1280-720
+          source:                       peck_pocketed.mp4
+          poster_image:                 peck_pocketed.jpg
+          pinterest_prefix:             Pin video
+          tweet_prefix:                 Try video
+          caption_text:                 Peck Pocketed &middot; Student Academy Award winning Cartoon Clip
+          description: >
+                                        <h5>Peck Pocketed by Kevin Herron | Disney Favorite</h5>
+                                        <h6>Student Academy Award winning Cartoon Clip</h6>
+
+        # - video:                        # video 2
+        #   enabled:                      true
+        #
+        #   name:                         Rollin Wild
+        #   type:                         html5
+        #   size:                         1280-720
+        #   source:                       rolling_wild.mp4
+        #   poster_image:                 rolling_wild.jpg
+        #   pinterest_prefix:             Pin video
+        #   tweet_prefix:                 Try video
+        #   caption_text:                 Rollin` Wild &middot; Short Funny animated video clip created at the Film Academy
+        #   description: >
+        #                                 <h5>Rollin` Wild</h5>
+        #                                 <h6>Short Funny Animated Clip created at the Film Academy</h6>
+
+        - video:                        # video 2
+          enabled:                      true
+
+          name:                         Last Carpool Karaoke
+          type:                         youtube
+          size:                         1280-720
+          source:                       //youtube.com/watch?v=nV8UZJNBY6Y
+          poster_image:                 rolling_wild.jpg
+          pinterest_prefix:             Pin video
+          tweet_prefix:                 Try video
+          caption_text:                 Carpool Karaoke 2023 &middot; Last Carpool Karaoke
+          description: >
+                                        <h5>Carpool Karaoke 2023</h5>
+                                        <h6>
+                                          April 2023 - Adele wakeup James at home for the last Late Night Show,
+                                          for the last Carpool Caraoke ever.
+                                        </h6>
+                                        <br>
+          playerParams:
+            start:                      50                                      # seconds to start
+
 # ------------------------------------------------------------------------------
 # END config

@@ -30,7 +30,7 @@ permalink:                              /pages/public/tour/present_images/
 
 resources:                              [
                                           carousel, gallery, lightbox, lightgallery,
-                                          master-slider, masonry, rouge, slick-slider
+                                          master-slider, masonry, slick-slider, videojs
                                         ]
 resource_options:
   - toccer:
@@ -53,6 +53,11 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
+:time-num--string:                      10-15
+:time-en--string:                       Minutes
+:time-en--description:                  to read
+:time-de--string:                       Minuten
+:time-de--description:                  Lesezeit
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -61,6 +66,7 @@ resource_options:
 // Load page attributes
 // -----------------------------------------------------------------------------
 {% include {{load_attributes}} scope="all" %}
+
 
 // Page content
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,8 +80,13 @@ functionality based on powerful Open Source libraries like Lightbox Version 2,
 lightGallery Version 2, Slick Slider, Master Slider, or Masonry and
 Justified-Gallery to create masonry-styled preview maps.
 
-mdi:clock-time-five-outline[24px, md-gray mt-5 mr-2]
-*10-15 Minutes* to read
+[subs=attributes]
+++++
+<div class="video-title">
+  <i class="mdib mdib-clock-outline mdib-24px mr-2"></i>
+  {time-num--string} {time-en--string} {time-en--description}
+</div>
+++++
 
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------
@@ -405,6 +416,18 @@ masterslider::ms_00004[role="mt-4 mb-5"]
 masterslider::ms_00007[role="mt-4 mb-5"]
 
 
+////
+[role="mt-4"]
+[[ms_video]]
+=== MS Slider using Video
+
+lorem:sentences[5]
+
+.Slider using Video
+masterslider::ms_00010[role="mt-4 mb-5"]
+////
+
+
 [role="mt-4"]
 [[partialview]]
 === MS Slider using Layout PartialView
@@ -493,5 +516,4 @@ Quicktime, or Silverlight is no longer needed as the Theme JekyllOne provides
 HTML5 video for local content and from online sources on the Internet.
 
 [role="mb-7"]
-Incredible? See the next example page forcussing on playing audio:
-link:{url-tour--playback-audio}[Audio Player].
+Incredible? See the next example page link:{url-tour--present-audio}[Audio Player].

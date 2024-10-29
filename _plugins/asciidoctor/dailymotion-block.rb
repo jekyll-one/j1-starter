@@ -47,7 +47,7 @@ Asciidoctor::Extensions.register do
       chars           = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
       video_id        = (0...11).map { chars[rand(chars.length)] }.join
 
-      title_html      = (attributes.has_key? 'title') ? %(<div class="video-title">#{attributes['title']}</div>\n) : nil
+      title_html      = (attributes.has_key? 'title') ? %(<div class="video-title"> <i class="mdib mdib-youtube-tv mdib-24px mr-2"></i> #{attributes['title']} </div>\n) : nil
       poster_image    = (poster = attributes['poster']) ? %(#{poster}) : nil
       theme_name      = (theme = attributes['theme'])  ? %(#{theme}) : nil
       caption_enabled = (caption  = attributes['caption'])  ? true : false

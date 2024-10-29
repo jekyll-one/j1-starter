@@ -1,14 +1,14 @@
 # All you need for your new amazing site
 
-Jekyll meets Bootstrap - and makes a lot of friends. J1 Theme combines
-the best of OpenSource software for the Web and the Web site generator
-`Jekyll`. J1 is OpenSource, and so are the packaged modules - no pain for
+Jekyll meets Bootstrap - and makes a lot of friends. J1 Template combines
+the best of Open Source software for the Web and the Web site generator
+`Jekyll`. J1 is Open Source, and so are the packaged modules - no pain for
 private or professional use. Explore this site to learn what's possible if
 you go to the Jekyll Way.
 
-![Screenshot](https://github.com/jekyll-one-org/j1-template/raw/main/j1-template-screenshot.jpg "J1 Template")
+![Screenshot](https://github.com/jekyll-one-org/j1-template/raw/main/starter-screenshot.jpg "J1 Template Web")
 
-* Fully Responsive. J1 Theme supports modern web browsers on all
+* Fully Responsive. J1 Template supports modern web browsers on all
   devices for best results on PCs, Tablets, and SmartPhones.
 * Full Bootstpap V5 support. Current Technology and Design. Excellent
   performance running desktop and mobile websites. Use Jekyll One to
@@ -21,21 +21,19 @@ you go to the Jekyll Way.
 
 Have fun!
 
-
 # Live Demo
 
-The template comes with a Web included, a skeleton for your new Web site.
-This Web is called the **Starter Web**, a general-purpose Website scaffold to
-be modified for your needs. The built-in Starter Web can be visited live
-at [Netlify](https://starter.jekyll.one/).
+J1 Template comes with a build-in Web included, a skeleton for your new Web
+site. This Web is called the **build-in Web**, a general-purpose Website
+scaffold to be modified for your needs. The built-in Web can be visited live
+at [starter.jekyll.one](https://starter.jekyll.one/).
 
 **Have fun exploring what a modern static web, a Jekyll site can do**!
-
 
 # Features
 
 The template combines the best free software for the web. Jekyll One Theme
-is OpenSource and the modules included are free to use as well. No license
+is Open Source and the modules included are free to use as well. No license
 issues for private or professional use.
 
 * Fully Responsive. J1 Theme supports modern web browsers on all
@@ -51,59 +49,72 @@ issues for private or professional use.
 
 * Jekyll V4 support
 * Ruby V3 support
+* Bootstrap V5 support
 * Asciidoc (Asciidoctor) and Markdown support
 * Asciidoctor plugins included
-* Bootstrap V5
 * Responsive Design
-* Material Design
 * Responsive Text
 * Responsive HTML tables
++ Full-text search
 * Compressed HTML, CSS and Javascript support
-* Themes support (Bootswatch)
-* Icon Font support (MDI, FA, Iconify, Twitter Emoji)
-* Themeable source code highlighting (Rouge)
+* Themes support
+* Icon Font support (MDI, FA, Iconify)
+* Themeable source code highlighting
 * Desktop and Mobile Web and Navigation ready
 * Fully configurable
 * Highest Google Lighthouse scores
 
 ## Modules and Extensions
 
-* Bootstrap extensions included
+* Bootstrap V5 extensions included
+* Bootstrap V% Themes Support included
 * Asciidoctor extensions included
-* Smooth-srcoll support
-* Full-text search engine included (Lunr)
-* Blog Post navigation included
-* GDPR compatible cookie consent module included
-* Translator module (Google, Deepl) included
+* Advanced Banners and Panels included
+* Source Code Hightlighter (Rouge) included
+* Smooth Srcoll support
+* Infine Srcoll support
+* Animate on Srcoll support
+* Full-text Search Engine included (Lunr)
+* Desktop Web Navigation included
+* Mobile Web Navigation included
+* Blog Post Navigation included
+* GDPR compatible Cookie Consent module included
+* Translator module (Google Translator) included
+* Master Header module included
 * Clipboard module included
-* Floating Action Buttons included
-* Navigation modules included
-* Lightbox modules included
-* Gallery modules included
-* Carousel modules included
-* Audio Player modules included (AmplitudeJS)
-* Video Player modules included (VideoJS)
+* TOC module included
+* Floating Action Buttons (FAB) included
+* Lightbox module included
+* Gallery module included
+* Carousel and Slider modules included
+* Video modules included
+* Masonry module included
 
 ## Addons and Integrations
 
-* Featured example content included
-* Royalty free images included
-* Comment provider support for Hyvor and Disqus
+* Featured Example Content included
+* Royalty Free Images included
+* Asciidoc (Asciidoctor) and Markdown (Kramdown) support
+* Icon Fonts (FA, MDI, Iconify) included
+* Video Player (HTML, YouTube, Vimeo, Dailymotion) included
+* Scalable Text Support
+* Comment Provider support (Hyvor and Disqus)
 * Google Analytics support
+* Support for Jupyter Notebooks
 * Deploy on Github Pages (source only), Netlify and Heroku ready
 
 
 # Supported platforms
 
-J1 is supported on all current x64-based OS:
+J1 is supported on all current **x64-based** OS:
 
 * Windows 10, build >= 1903
 * Windows WSL 2
-* Linux, kernel version >= 4.15 (e.g. Ubuntu  18.x LTS)
+* Linux, Kernel version >= 4.15 (e.g. Ubuntu  18.x LTS)
 * OSX, version >= 10.10.5 (Yosemite)
 
-Note that 32-bit versions (x32) are generally **not** supported for all
-platforms.
+Note that 32-bit versions (x32) are generally **not** supported for
+**all** platforms.
 
 
 # Development languages and tools
@@ -111,32 +122,31 @@ platforms.
 To run the Development System for J1 Theme, the following languages and
 tools expected to be in place with your OS:
 
-* Ruby language, version v3
-* Javascript (NodeJS), version >= 18
-* NPM, version >= 8.5
-* YARN, version >= 1.22
-* Git, version >= 2.29
+* Ruby language, version >= 2.7
+* Python language, version > 2.7 (optional) <1>
+* Javascript language (NodeJS), version >= 14.x < 15.x
+* Git, version >= 2.29 (optional) <2>
+* Jekyll, version 4.2.x
 
-<1> required only for **full** Jupyter Notebook support
+<1> Required only for **full** Jupyter Notebook support.
+<2> Required only if J1 Projects should be managed as repos.
 
-Note: More current or older versions may work, but not tested.
-
+**NOTE**: More current or older versions may work, but not tested.
 
 ## Development packages
 
-For some of the componentsJ1 is using, a working C/C++ development environment
-is needed to compile platform-specific libraries. Ensure that all dev packages
-are installed for your OS (Linux, OSX, or Windows).
+For some of the components J1 is using, a working C/C++ development
+environment is needed to compile platform-specific libraries. Ensure
+that all dev packages are installed for your OS (Linux, OSX, or Windows).
 
 ### Development packages for Windows
 
-For Ruby on Windows, a installation using RubyInstaller is recommended. A
-current Ruby of version **3.1** is available at the
-[RubyInstaller](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.2-1/rubyinstaller-devkit-3.1.2-1-x64.exe)
+For Ruby on Windows, a installation using **RubyInstaller** is recommended.
+A current Ruby of version **3.1** is available at the
+[RubyInstaller V31](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.3-1/rubyinstaller-devkit-3.1.3-1-x64.exe)
 site.
-
-Note, to automatically install a development environment for Ruby on Windows,
-a x64 version of Ruby should be installed that is already bundled with a
+Note, to automatically install a development environment for Ruby on *Windows*,
+a version of Ruby should be installed that is already **bundled** with a
 **DEVKIT** (MSYS2 toolchain).
 
 ### Development packages on Linux (Ubuntu)
@@ -178,7 +188,7 @@ ruby-dev
 ```
 
 Note that priviliged (administrative) user rights are needed to install
-system-wide software packages for the OS.
+system-wide software packages for Ruby and the OS.
 
 ### Development packages on OSX
 
@@ -206,15 +216,15 @@ product installation pathes.
 Install latest bundler for Ruby:
 
 ``` sh
-  gem install bundler --no-document
+gem install bundler --no-document
 ```
 
 Install latest RubyGems for Ruby:
 
 ``` sh
-  gem install rubygems-update --no-document
-  update_rubygems --no-document
-  gem update --system
+gem install rubygems-update --no-document
+update_rubygems --no-document
+gem update --system
 ```
 
 ### Upgrades needed for NodeJS
@@ -224,337 +234,344 @@ management is `npm`. Besides `npm` there's another quite handy CLI for NPM
 available: *Yarn*.
 
 The CLI `yarn` is developed at Facebook and can be used as a replacement
-for `npm`. From a top-level perspective, both package management clients behave
-pretty much the same. The syntax `yarn` uses is shorter in writing, making
-the command-line look a bit more natural. Therefore, we prefer to use `yarn`.
+for `npm`. From a top-level perspective, both package management clients
+behave pretty much the same. The syntax `yarn` uses is shorter in writing,
+making the command-line look a bit more natural. Therefore, we prefer to
+use `yarn`.
 
-NOTE: Yarn adds some additional features to the NodeJS package management
-implemented for the needs at Facebook. Regarding the J1 development system,
-those add-ons are neither needed nor used.
+**NOTE**: Yarn adds some additional features to the NodeJS package
+management implemented for the needs at Facebook. To use J1 Theme, those
+add-ons are neither needed nor used.
 
-Install latest NPM and Yarn packages for NodeJS:
-
-``` sh
-  npm install -g npm@latest
-  npm install -g yarn@latest
-```
-
-
-# Setting up the project
-
-Running the J1 Theme project is very simple:
-
-* Downlad the repo
-* Setup the project
-* Run and develop the buildin starter web
-
-## Checkout the Repo
-
-The repo for the J1 Theme development system is published on Github.
-You can get it from Github by cloning the repository using `git`:
+Install latest *NPM* and *Yarn* packages for *NodeJS*:
 
 ``` sh
-git clone https://github.com/jekyll-one-org/j1-template.git
+npm install -g npm@latest
+npm install -g yarn@latest
 ```
 
-The repo gets written to folder `j1-template`. Have a look and browse the
-folder. You'll see a structure like this:
+# Managing J1 Projects
 
-j1 development repo
-```
-  ├──── .git
-  │    └─── packages
-  │         ├──  100_theme_css
-  │         ├──  200_theme_js
-  │         ├──  300_theme_src
-  │         ├──  400_theme_site
-  │         ├──  500_theme_gem
-  │         └─── 600_theme_utilsrv
-  ├──── .gitattributes
-  ├──── .gitignore
-  ├──── lerna.json
+Managing J1 Theme projects is very simple:
+
+* Install J1 Theme
+* Setup a project
+* Initialize the project
+* Run the J1 Project
+
+## Install J1 Theme
+
+You can install J1 Theme in two ways:
+
+* Installing the Ruby Gem of J1 Theme (recommended)
+* Clone the current J1 Theme Repo from *Github*
+
+The recommended method to install J1 is using the the **Ruby Gem**.
+If you're using *Git* already, cloning the Repo at *Github* may an
+option.
+
+### Installing the Ruby Gem
+
+It is highly recommended to install all project-related Ruby GEMs so-called
+**userized**. The **user install** option of the *RubyGems* CLI **gem** will
+install all requested Ruby Gems in the **home directory** of a user.
+Installing userized prevents polluting the System Ruby Installation by
+packages only needed by specific users or projects.
+
+**IMPORTANT**: If you're on *Linux* (Unix), a system-wide installation of
+Ruby GEMs requires **elevated** user rights (root). *Userized* installations
+of Ruby packages can be done by all users **without** having elevated
+user rights.
+
+J1 Theme uses the **user install** option internally by **default**.
+All depended Ruby GEMs are installed in the user's home directory in
+folder `.gem`.
+
+Prior to install the J1 Gem, make sure that a `.gem` folder already **exists**
+in your **home** directory.
+
+On *Windows*, run:
+
+    mkdir %HOMEDRIVE%%HOMEPATH%\.gem
+
+On *Unix/linux*, run:
+
+    md $HOME/.gem
+
+The latest version of J1 Theme is available at
+<a href="https://rubygems.org/gems/j1-template/" target="_blank">RubyGems</a>
+or can installed by the RubyGems CLI **gem**:
+
+    gem install j1-template --no-document --user-install
+
+**NOTE** The installation of the Gem will resolve all dependencies and
+downloaad|install all dpended Ruby GEMs as required (userized).
+
+### Checkout the Repo from Github
+
+The Repo for the **latest** version of J1 Theme is published on Github.
+You can get it by **cloning** the repository using **Git**`:
+
+    git clone https://github.com/jekyll-one/j1-starter
+
+The repo gets written to folder `j1-starter`. Have a look and
+browse the folder. You'll see a structure like this:
+
+General J1 Project Repo structure:
+
+``` sh
+  ├──── j1-starter
+  │    └─── _data
+  |    └─── _includes
+  │    └─── _plugins
+  │    └─── assets
+  │    └─── collections
+  │    └─── dot.bundle  
+  │    └─── pages
+  ├──── dot.gitattributes
+  ├──── dot.gitignore
+  ├──── dot.ruby-version
+  ├──── dot.nojekyll
+  ├──── dot.ruby-version
+  ├──── favicon.ico
+  ├──── Gemfile
+  ├──── index.html          
   ├──── LICENSE.md
   ├──── package.json
   └──── README.md
 ```
 
-J1 Theme is a so-called *multi-package* project, a *Monorepo* managed by
-Lerna. A Monorepo is a strategy where multiple (sub-)projects are stored in a
-single repository instead of putting them into individual repositories.
+**NOTE**: It is recommended to rename the folder `j1-template-starter` of
+the cloned repo to a more specific (project) name.
 
-All development *tasks* are defined as NPM *scripts* with the top-level project
-config file `package.json`. For each package, package-level config files
-are used having the same name `package.json` to manage specific tasks like
-the generation of CSS and JS files, or creating the buildin starter web.
+All development **tasks** are defined as NPM **scripts** with the project
+config file `package.json`. For your convenience, the J1 Theme Gem
+comes with a build-in CLI **j1** run all project-related commands;
+no need to learn **npm** or how to manage **NodeJS** projects.
 
-All **base** development *tasks* are defined with the top-level project
-configuration; no need to dive into all the package-level configurations.
-All is managed by Lerna, based on simple top-level *tasks*.
+
+## Setup the Project
+
+The setup procedure depends on how you installed J1 Theme. If you are
+using the J1 GEM as recommended, you need to **create** a personal project
+first. If you have cloned the J1 Theme Repo from *Github*, the project
+is already created by the clone's folder and you can skip the creation of
+a project; continue on section **Initialize a J1 Project**.
+
+### Create a J1 Project
+
+First, you should make a folder holding all your J1 projects.
+On *Windows*, run:
+
+    mkdir %HOMEDRIVE%%HOMEPATH%\j1-projects
+
+Managing J1 Projects is simple: all tasks you need are run by the buildin
+CLI **j1**. To create a new project inside the projects folder, run:
+
+    cd %HOMEDRIVE%%HOMEPATH%\j1-projects && j1 generate my-starter
+
+This command creates a **initial** project in folder **my-starter**.
+
+```
+  2023-02-28 18:12:08 - GENERATE: Running bundle install in C:/Users/xxx/j1-projects/my-starter ...
+  2023-02-28 18:12:08 - GENERATE: Install bundle in USER gem folder ~/.gem ...
+  2023-02-28 18:12:12 - GENERATE: Fetching gem metadata from https://rubygems.org/..........
+  2023-02-28 18:12:12 - GENERATE: Resolving dependencies...
+  2023-02-28 18:12:12 - GENERATE: Using bundler 2.3.7
+  ...
+  2023-02-28 18:12:12 - GENERATE: Using j1-template 2024.3.14
+  2023-02-28 18:12:12 - GENERATE: Bundle complete! 31 Gemfile dependencies, 78 gems now installed.
+  2023-02-28 18:12:12 - GENERATE: Bundled gems are installed into `../../.gem`
+  2023-02-28 18:12:12 - GENERATE:  C:/Users/xxx/.gem/ruby/3.1.0;C:/DevTools/Ruby31-x64/lib/ruby/gems/3.1.0;
+  2023-02-28 18:12:13 - GENERATE: Install patches in USER gem folder ~/.gem ...
+  2023-02-28 18:12:13 - GENERATE: Install patches on path C:/Users/xxx/.gem/ruby/3.1.0 ...
+  2023-02-28 18:12:13 - GENERATE: Patches already installed, skip install.
+  2023-02-28 18:12:13 - GENERATE: Generated Jekyll site installed in folder C:/Users/xxx/j1-projects/my-starter
+  2023-02-28 18:12:13 - GENERATE: To setup the site, change to the project folder C:/Users/xxx/j1-projects/my-starter and run: j1 setup
+```
 
 ## Initialize the project
 
-Initializing the project is managed by the top-level *task* `setup`. A bunch
-of sub-tasks are fired, all of the managed by Lerna.
+To make a project usable, is has to be initialzed first. This is needed
+only once after you create a **new** project.
+On *Windows*, run the `setup` task like so:
 
-Let's start ...
+    cd %HOMEDRIVE%%HOMEPATH%\j1-projects\my-starter && j1 setup
 
-``` sh
-yarn setup
+**NOTE**: While initializing a project, the J1 Theme Gem is downloaded as
+a dependecy (if **not** already installed). For the users **cloned** the J1
+Template repo (as a project), the J1 GEM will be installed and all **j1**
+commands are available as well.
+
+```
+  Check consistency of the J1 project ...
+  2023-02-28 18:17:47 - SETUP: Running bundle install in C:/Users/xxx/j1-projects/my-starter ...
+  2023-02-28 18:17:47 - SETUP: Install bundle in USER gem folder ~/.gem ...
+  ...
+  2023-02-28 18:17:48 - SETUP: Bundle complete! 31 Gemfile dependencies, 78 gems now installed.
+  2023-02-28 18:17:48 - SETUP: Bundled gems are installed into `../../.gem`
+  2023-02-28 18:17:48 - SETUP: Install patches in USER gem folder ~/.gem ...
+  2023-02-28 18:17:48 - SETUP: Install patches on path C:/Users/xxx/.gem/ruby/3.1.0 ...
+  2023-02-28 18:17:48 - SETUP: Initialize the project ...
+  2023-02-28 18:17:48 - SETUP: Be patient, this will take a while ...
+  2023-02-28 18:17:49 - SETUP:
+  2023-02-28 18:17:49 - SETUP: > j1@2024.3.14 setup C:\Users\xxx\j1-projects\my-starter
+  2023-02-28 18:17:49 - SETUP: > npm --silent run setup-start && npm --silent run setup-base && run-s -s setup:*
+  2023-02-28 18:17:49 - SETUP:
+  2023-02-28 18:17:50 - SETUP: Setup project for first use ..
+  2023-02-28 18:17:50 - SETUP: Bootstrap base modules ..
+  2023-02-28 18:18:05 - SETUP: done.
+  2023-02-28 18:18:05 - SETUP: Configure environment ..
+  2023-02-28 18:18:09 - SETUP: done.
+  2023-02-28 18:18:09 - SETUP: Create project folders ..
+  ...
+  2023-02-28 18:18:25 - SETUP: done.
+  2023-02-28 18:18:26 - SETUP: Detect OS ..
+  2023-02-28 18:18:27 - SETUP: OS detected: Windows_NT
+  2023-02-28 18:18:28 - SETUP: Build site incremental ..
+  2023-02-28 18:18:31 - SETUP: Configuration file: C:/Users/jadams/j1-projects/my-starter/_config.yml
+  2023-02-28 18:18:34 - SETUP:             Source: C:/Users/jadams/j1-projects/my-starter
+  2023-02-28 18:18:34 - SETUP:        Destination: C:/Users/jadams/j1-projects/my-starter/_site
+  2023-02-28 18:18:34 - SETUP:  Incremental build: enabled
+  2023-02-28 18:18:34 - SETUP:       Generating...
+  2023-02-28 18:18:36 - SETUP:            J1 Lunr: creating search index ...
+  2023-02-28 18:18:38 - SETUP:            J1 Lunr: finished, index ready.
+  2023-02-28 18:18:38 - SETUP:       J1 Paginator: autopages, disabled|not configured
+  2023-02-28 18:18:38 - SETUP:       J1 Paginator: pagination enabled, start processing ...
+  2023-02-28 18:18:38 - SETUP:       J1 Paginator: finished, processed 2 pagination page|s
+  2023-02-28 18:19:28 - SETUP:                     done in 53.925 seconds.
+  2023-02-28 18:19:28 - SETUP:  Auto-regeneration: disabled. Use --watch to enable.
+  2023-02-28 18:19:28 - SETUP: .. build finished.
+  2023-02-28 18:19:29 - SETUP: To open the site, run: yarn site
+  2023-02-28 18:19:29 - SETUP: Initializing the project finished successfully.
+  2023-02-28 18:19:29 - SETUP: To open your site, run: j1 site
 ```
 
-Because a lot of sub-tasks getting started for a (first) `setup`, see below
-the output as a summary :
+## Run the J1 Project
+
+After the setup process has been finished, you can run a project by running
+`j1 site`. Finally, the buildin Starter Web get openend in your default
+browser. Let's start the journey ...
+
+    cd %HOMEDRIVE%%HOMEPATH%\j1-projects\mystarter && j1 site
 
 ``` sh
-Set up development system for first use ..
-Bootstrap base modules ..
-done.
-Create project folders ..
-done.
-
-Create starter config files ..
-lerna info Executing command in 1 package: "yarn run jekyll_files"
-site: $ run-s -s jekyll_files:*
-lerna success run Ran npm script 'jekyll_files' in 1 package in 2.2s:
-lerna success - site
-Bootstrap project modules ..
-done.
-
-Initialize development packages ..
-lerna info Updating package.json
-lerna info Updating lerna.json
-lerna info Creating packages directory
-lerna success Initialized Lerna files
-lerna info Bootstrapping 6 packages
-lerna info Installing external dependencies
-lerna info Symlinking packages and binaries
-lerna success Bootstrapped 6 packages
-done.
-
-Detect operating system ..
-OS detected as: Windows_NT
-Create links for shared resources ..
-lerna info Executing command in 1 package: "yarn run setup-links"
-site: $ cross-var if-env OS=Windows_NT && run-s -s link-default || cross-env OS=$(echo $(getos)) run-s -s switch-links
-lerna success run Ran npm script 'setup-links' in 1 package in 2.4s:
-lerna success - site
-lerna info Executing command in 3 packages: "yarn run build"
-css: $ npm run clean
-js: $ npm run clean && npm run lint
-site: $ run-s -s jekyll_build:*
-css: > css@2024.3.8 clean path_to_\j1-template\packages\100_theme_css
-css: > run-p -s clean:*
-js: > js@2024.3.8 clean path_to_\j1-template\packages\200_theme_js
-js: > run-p -s clean:*
-site: > site@2024.3.8 bundle path_to_\j1-template\packages\400_theme_site
-site: > run-s -s bundler:*
-css: $ npm run build_css && npm run uglify_css
-site: Create bundle ..
-css: > css@2024.3.8 build_css path_to_\j1-template\packages\100_theme_css
-css: > run-p -s theme_css:*
-js: > js@2024.3.8 lint path_to_\j1-template\packages\200_theme_js
-js: > run-p -s lint:*
-css: Rendering Complete, saving .css file...
-css: Wrote CSS to path_to_\j1-template\packages\100_theme_css\dist\icon-fonts\fontawesome.css
-css: Rendering Complete, saving .css file...
-css: Wrote CSS to path_to_\j1-template\packages\100_theme_css\dist\icon-fonts\iconify.css
-css: Rendering Complete, saving .css file...
-css: Rendering Complete, saving .css file...
-css: Wrote CSS to path_to_\j1-template\packages\100_theme_css\dist\animate.css
-..
-js: $ npm run build-js
-css: Rendering Complete, saving .css file...
-css: Wrote CSS to path_to_\j1-template\packages\100_theme_css\dist\themes\uno-dark\bootstrap.css
-css: Rendering Complete, saving .css file...
-css: Wrote CSS to path_to_\j1-template\packages\100_theme_css\dist\icon-fonts\materialdesign.css
-css: Rendering Complete, saving .css file...
-css: Wrote CSS to path_to_\j1-template\packages\100_theme_css\dist\themes\uno-light\bootstrap.css
-js: > js@2024.3.8 build-js path_to_\j1-template\packages\200_theme_js
-js: > cross-var webpack --mode production --config $npm_package_wp_build
-site: Bundle Rubies using user path ..
-css: > css@2024.3.8 uglify_css path_to_\j1-template\packages\100_theme_css
-css: > run-p -s uglify_css:*
-js: $ npm run uglify-js && npm run deploy
-js: > js@2024.3.8 uglify-js path_to_\j1-template\packages\200_theme_js
-js: > terser dist/template.js -o dist/template.min.js -m --source-map
-..
-site: Fetching gem metadata from https://rubygems.org/..........
-site: Fetching gem metadata from https://rubygems.org/.
-site: Resolving dependencies...
-site: Using rake 12.3.3
-site: Using public_suffix 4.0.6
-site: Using addressable 2.8.0
-site: Using asciidoctor 1.5.8
-site: Using rouge 3.26.0
-..
-site: Bundle complete! 31 Gemfile dependencies, 88 gems now installed.
-..
-site: Configuration file: path_to_/j1-template/packages/400_theme_site/_config.yml
-site:             Source: path_to_/j1-template/packages/400_theme_site
-site:        Destination: path_to_/j1-template/packages/400_theme_site/_site
-site:  Incremental build: enabled
-site:       Generating...
-site:     J1 QuickSearch: creating search index ...
-site:     J1 QuickSearch: finished, index ready.
-site:       J1 Paginator: autopages, disabled|not configured
-site:       J1 Paginator: pagination enabled, start processing ...
-site:       J1 Paginator: finished, processed 1 pagination page|s
-
-site: Build Process Summary:
-site: | PHASE      |    TIME |
-site: +------------+---------+
-site: | RESET      |  0.0053 |
-site: | READ       |  1.5589 |
-site: | GENERATE   |  1.6977 |
-site: | RENDER     | 31.5453 |
-site: | CLEANUP    |  0.0241 |
-site: | WRITE      |  1.1489 |
-site: +------------+---------+
-site: | TOTAL TIME | 35.9802 |
-site:
-site: Site Render Stats:
-site: | Filename                                                                          | Count |     Bytes |    Time |
-site: +-----------------------------------------------------------------------------------+-------+-----------+---------+
-site: | _layouts/default.html                                                             |    60 |  5269.94K |  29.702 |
-site: | _includes/themes/j1/procedures/layouts/default_writer.proc                        |   240 |  5299.72K |  28.394 |
-site: | _includes/themes/j1/layouts/layout_module_generator.html                          |    60 |  1609.43K |  25.946 |
-site: | _includes/themes/j1/procedures/layouts/module_writer.proc                         |  2280 |  1290.96K |  25.672 |
-site: | _includes/themes/j1/procedures/global/set_base_vars_folders.proc                  |  2340 |    38.85K |  22.121 |
-..
-site: | _includes/themes/j1/procedures/global/get_category_item.proc                      |    72 |     3.59K |   0.009 |
-site: | _layouts/home.html                                                                |     1 |     5.95K |   0.009 |
-site: +-----------------------------------------------------------------------------------+-------+-----------+---------+
-site: | TOTAL (for 50 files)                                                              | 14138 | 31708.37K | 140.026 |
-site:
-site:                     done in 36.018 seconds.
-site:  Auto-regeneration: disabled. Use --watch to enable.
-..
-site: $ run-s -s jekyll_post_build:*
-lerna success run Ran npm script 'build' in 3 packages in 55.8s:
-lerna success - css
-lerna success - js
-lerna success - site
-Configure environment ..
-done.
-Done in 139.92s.
+  Check consistency of the J1 project ...
+  Check setup state of the J1 project ...
+  2023-02-28 18:26:18 - SITE: Starting up your site ...
+  2023-02-28 18:26:18 - SITE:
+  2023-02-28 18:26:18 - SITE: > j1@2024.3.14 j1-site C:\Users\jadams\j1-projects\my-starter
+  2023-02-28 18:26:18 - SITE: > run-p -s j1-site:*
+  2023-02-28 18:26:18 - SITE:
+  2023-02-28 18:26:20 - SITE: Startup UTILSRV ..
+  2023-02-28 18:26:21 - SITE: Log file exists :        messages_2023-02-28
+  2023-02-28 18:26:21 - SITE: Stop the server. Exiting ...
+  2023-02-28 18:26:21 - SITE: Reset file: messages_2023-02-28
+  2023-02-28 18:26:21 - SITE: Configuration file: C:/Users/jadams/j1-projects/my-starter/_config.yml
+  2023-02-28 18:26:24 - SITE:             Source: C:/Users/jadams/j1-projects/my-starter
+  2023-02-28 18:26:24 - SITE:        Destination: C:/Users/jadams/j1-projects/my-starter/_site
+  2023-02-28 18:26:24 - SITE:  Incremental build: enabled
+  2023-02-28 18:26:24 - SITE:       Generating...
+  2023-02-28 18:26:27 - SITE:            J1 Lunr: creating search index ...
+  2023-02-28 18:26:28 - SITE:            J1 Lunr: finished, index ready.
+  2023-02-28 18:26:28 - SITE:       J1 Paginator: autopages, disabled|not configured
+  2023-02-28 18:26:28 - SITE:       J1 Paginator: pagination enabled, start processing ...
+  2023-02-28 18:26:28 - SITE:       J1 Paginator: finished, processed 2 pagination page|s
+  2023-02-28 18:26:35 - SITE:                     done in 10.408 seconds.
+  2023-02-28 18:26:38 - SITE:  Auto-regeneration: enabled for '.'
+  2023-02-28 18:26:39 - SITE: LiveReload address: http://localhost:35729
+  2023-02-28 18:26:39 - SITE:     Server address: http://localhost:40000/
+  2023-02-28 18:26:39 - SITE:   Server running... press ctrl-c to stop.
 ```
 
-The `setup` process will take a while - typically up to ten minutes for the
-first run (depending on the performances of your Internet connection and your
-workstations power). A bunch of NPM modules and Ruby Gems are downloaded and
-linked for the packages part of the repo. See `setup` as an extended `install`
-and `build` process to manage an initial setup for the (Lerna) Monorepo.
+## Rebuild a project
 
-## Running the Starter Web
+For some reason, it may needed to re-create an existing project. The task
+`rebuild` rebuild all documents (pages and posts) from the scratch but
+leaves the base project files untouched.
+To **reset** a project, run (inside the project folder):
 
-Running the buildin **Starter Web** for development is done like so:
+    j1 reset
 
 ``` sh
-yarn site
+Check consistency of the J1 project ...
+Check setup state of the J1 project ...
+REBUILD: Rebuild the projects website ...
+REBUILD: Be patient, this will take a while ...
+2023-02-28 18:45:09 - REBUILD:
+2023-02-28 18:45:09 - REBUILD: > j1@2024.3.14 rebuild C:\Users\xxx\j1-projects\my-starter
+2023-02-28 18:45:09 - REBUILD: > run-s -s rebuild:* && run-s -s post-rebuild:*
+2023-02-28 18:45:09 - REBUILD:
+2023-02-28 18:45:10 - REBUILD: Rebuild site incremental ..
+2023-02-28 18:45:10 - REBUILD: Clean up site files ..
+2023-02-28 18:45:12 - REBUILD: Configuration file: C:/Users/xxx/j1-projects/my-starter/_config.yml
+2023-02-28 18:45:13 - REBUILD:            Cleaner: Removing _site...
+2023-02-28 18:45:13 - REBUILD:            Cleaner: Removing ./.jekyll-metadata...
+2023-02-28 18:45:13 - REBUILD:            Cleaner: Removing ./.jekyll-cache...
+2023-02-28 18:45:14 - REBUILD:            Cleaner: Nothing to do for .sass-cache.
+2023-02-28 18:45:17 - REBUILD: Configuration file: C:/Users/xxx/j1-projects/my-starter/_config.yml
+2023-02-28 18:45:19 - REBUILD:             Source: C:/Users/xxx/j1-projects/my-starter
+2023-02-28 18:45:19 - REBUILD:        Destination: C:/Users/xxx/j1-projects/my-starter/_site
+2023-02-28 18:45:19 - REBUILD:  Incremental build: enabled
+2023-02-28 18:45:19 - REBUILD:       Generating...
+2023-02-28 18:45:21 - REBUILD:            J1 Lunr: creating search index ...
+2023-02-28 18:45:23 - REBUILD:            J1 Lunr: finished, index ready.
+2023-02-28 18:45:23 - REBUILD:       J1 Paginator: autopages, disabled|not configured
+2023-02-28 18:45:23 - REBUILD:       J1 Paginator: pagination enabled, start processing ...
+2023-02-28 18:45:23 - REBUILD:       J1 Paginator: finished, processed 2 pagination page|s
+2023-02-28 18:46:11 - REBUILD:                     done in 52.09 seconds.
+2023-02-28 18:46:11 - REBUILD:  Auto-regeneration: disabled. Use --watch to enable.
+2023-02-28 18:46:12 - REBUILD: .. rebuild finished.
+2023-02-28 18:46:12 - REBUILD: To open the site, run: yarn site
+REBUILD: The projects website has been rebuild successfully.
+REBUILD: To open the site, run: j1 site
 ```
 
-The task `site` does a lot for you. Whatever is necessary for a full-stack
-Web development. The task will put in place all needed CSS and JS components,
-build the content, and finally run the website in a browser.
 
-Go, go, go ..
+## Reset a project
 
-``` sh
-site: $ run-p -s develop:*
-utls: $ run-p -s utilsrv
-utls: Startup UTILSRV ..
-utls: Log file exists :        messages_2021-08-11
-utls: Server enabled:          false
-utls: Environment detected as: dev
-utls: Daemon path set to:      path_to_\j1-template\packages\600_theme_utilsrv
-utls: Daemon verbosity set to: false
-utls: Project path set to:     path_to_\j1-template\packages\600_theme_utilsrv/../400_theme_site
-utls: Data path set to:        path_to_\j1-template\packages\600_theme_utilsrv/../400_theme_site/_data
-utls: Log file set to:         path_to_\j1-template\packages\600_theme_utilsrv/../../log/messages_2021-08-11.log
-utls: Stop the server. Exiting ...
-utls: Reset file: messages_2021-08-11
-site: i ｢wds｣: Project is running at http://localhost:41000/
-site: i ｢wds｣: webpack output is served from /assets/themes/j1/core/js
-site: i ｢wds｣: Content not from webpack is served from path_to_\j1-template\packages\400_theme_site\_site
-site: Configuration file: C:/Temp/j1-template/packages/400_theme_site/_config.yml
-site: i ｢wdm｣: wait until bundle finished: /assets/themes/j1/core/js/template.js
-site: i ｢wdm｣:    53 modules
-site: i ｢wdm｣: Compiled successfully.
-site:             Source: C:/Temp/j1-template/packages/400_theme_site
-site:        Destination: C:/Temp/j1-template/packages/400_theme_site/_site
-site:  Incremental build: enabled
-site:       Generating...
-site:     J1 QuickSearch: creating search index ...
-site:     J1 QuickSearch: finished, index ready.
-site:       J1 Paginator: autopages, disabled|not configured
-site:       J1 Paginator: pagination enabled, start processing ...
-site:       J1 Paginator: finished, processed 1 pagination page|s
-site:                     done in 10.093 seconds.
-site:  Auto-regeneration: enabled for '.'
-site:     Server address: http://localhost:4000/
-site:   Server running... press ctrl-c to stop.
-```
-
-Finally, the J1 starter web get openend in your default browser.
-
-
-## Reset the Development System
-
-To start from the beginning, you can reset the development system to the
-factory state. The top-level task `reset` does the resetting work for you
-and cleans up each and everything except the **Git repo** and the NPM modules
+To start a project from the beginning, you can reset the system to the
+factory state. The task `reset` does the resetting work for you
+and cleans up each and everything except the **Git** repo and the modules
 folder `node_modules` stored in the project root. Both are kept untouched
 by a reset.
 
-``` sh
-yarn reset
-```
+    j1 reset
 
 The cleanup runs some tasks for the root folder and in parallel sub-tasks
 using Lerna for all packages:
 
-``` sh
-Reset development system to factory state ..
-Clean up project root files ..
-Remove bundle folder ..
-Remove log folder ..
-Remove log files ..
-
-Clean up project packages ..
-lerna info Executing command in 6 packages: "yarn run clean"
-js: $ run-p -s clean:*
-css: $ run-p -s clean:*
-src: $ run-s clean:*
-site: $ run-p -s clean:*
-gem: $ run-p -s clean:* && run-p -s clean-bundle:*
-utls: $ shx rm -f *.lock && shx rm -f package-lock.json
-
-lerna success run Ran npm script 'clean' in 6 packages in 3.1s:
-lerna success - css
-lerna success - js
-lerna success - src
-lerna success - site
-lerna success - gem
-lerna success - utls
-
-Remove js modules from all packages ..
-lerna info clean removing path_to_\j1-template\packages\100_theme_css\node_modules
-lerna info clean removing path_to_\j1-template\packages\200_theme_js\node_modules
-lerna info clean removing path_to_\j1-template\packages\300_theme_src\node_modules
-lerna info clean removing path_to_\j1-template\packages\400_theme_site\node_modules
-lerna info clean removing path_to_\j1-template\packages\500_theme_gem\node_modules
-lerna info clean removing path_to_\j1-template\packages\600_theme_utilsrv\node_modules
-lerna success clean finished
-done.
-
-Done in 11.20s.
+```
+  Check consistency of the J1 project ...
+  Check setup state of the J1 project ...
+  2023-02-28 18:29:07 - RESET: Reset the project to factory state ...
+  2023-02-28 18:29:07 - RESET: Be patient, this will take a while ...
+  2023-02-28 18:29:08 - RESET:
+  2023-02-28 18:29:08 - RESET: > j1@2024.3.14 reset C:\Users\xxx\j1-projects\my-starter
+  2023-02-28 18:29:08 - RESET: > run-s -s reset:*
+  2023-02-28 18:29:08 - RESET:
+  2023-02-28 18:29:08 - RESET: Reset project to factory state ..
+  2023-02-28 18:29:09 - RESET: Clean up base modules ..
+  2023-02-28 18:29:10 - RESET: Clean up site files ..
+  2023-02-28 18:29:12 - RESET: Configuration file: C:/Users/xxx/j1-projects/my-starter/_config.yml
+  2023-02-28 18:29:13 - RESET:            Cleaner: Removing _site...
+  2023-02-28 18:29:13 - RESET:            Cleaner: Removing ./.jekyll-metadata...
+  2023-02-28 18:29:13 - RESET:            Cleaner: Removing ./.jekyll-cache...
+  2023-02-28 18:29:13 - RESET:            Cleaner: Nothing to do for .sass-cache.
+  2023-02-28 18:29:14 - RESET: Clean up projects files ..
+  2023-02-28 18:29:14 - RESET: Remove bundle config folder ..
+  2023-02-28 18:29:15 - RESET: Remove log folder ..
+  2023-02-28 18:29:15 - RESET: Remove etc folder ..
+  2023-02-28 18:29:15 - RESET: Remove various log files ..
+  2023-02-28 18:29:16 - RESET: Remove lock files ..
+  2023-02-28 18:29:16 - RESET: Clean up utility server ..
+  2023-02-28 18:29:21 - RESET: done.
+  2023-02-28 18:29:21 - RESET: The project reset finished successfully.
+  2023-02-28 18:29:21 - RESET: To setup the project, run: j1 setup
 ```
 
-To reset the Development System *completely*, delete the folder `node_modules`
-manually and start from the scratch by running the `setup` task again:
+Start your work from the scratch by running the `setup` task again:
 
-``` sh
-yarn setup
-```
+    j1 setup
 
 Happy Jekylling!

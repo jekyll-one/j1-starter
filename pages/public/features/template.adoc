@@ -33,10 +33,9 @@ regenerate:                             false
 permalink:                              /pages/public/features/template_features/
 
 resources:                              [
-                                          animate, comments, rouge,
-                                          lightbox, carousel,
-                                          masterslider, lightgallery, gallery,
-                                          videojs, vimeoplayer
+                                          amplitudejs, lightbox, carousel,
+                                          master-slider, lightgallery, gallery,
+                                          videojs, vimeo-player
                                         ]
 resource_options:
   - attic:
@@ -57,8 +56,8 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
-:url-fontawesome--home:                 https://fontawesome.com/
-:url-roundtrip--mdi-icons:              /pages/public/tour/mdi_icon_font/#material-design-icons
+:url-fontawesome--home:                 //fontawesome.com/
+:url-roundtrip--mdi-icons:              /pages/public/learn/roundtrip/mdi_icon_font/#material-design-icons
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -77,7 +76,7 @@ use cases for websites. The bad story: most of them require programming and
 low-level customization. Deep knowledge of Jekyll and valuable experience
 using HTML, CSS, and Javascript is required.
 
-J1 is different: easy to use, no programming is needed.
+*J1 is different: easy to use, no programming is needed.*
 
 
 // Include sub-documents (if any)
@@ -92,6 +91,8 @@ development or web design from the beginning.
 
 mdi:mouse-move-down[24px, md-blue ml-3 mr-2]
 <<Infinite scroll>> +
+mdi:speaker[24px, md-blue ml-3 mr-2]
+<<AmplitudeJS Player>> +
 mdi:speaker[24px, md-blue ml-3 mr-2]
 <<Screen reader>> +
 mdi:mouse-move-down[24px, md-blue ml-3 mr-2]
@@ -121,7 +122,7 @@ mdi:gesture-swipe[24px, md-blue ml-3 mr-2]
 mdi:folder-multiple-image[24px, md-blue ml-3 mr-2]
 <<Image and Video Galleries>>
 
-[role="mt-4"]
+[role="mt-5"]
 === Infinite scroll
 
 Infinite scrolling (IS), or known as endless scrolling, is a technique that
@@ -131,6 +132,15 @@ additional pages.
 
 J1 Template supports infinite scrolling and is used, for example, for loading
 previews of blog articles.
+
+[role="mt-4"]
+=== AmplitudeJS Player
+
+J1 Template provides playing audio on web pages by HTML5 and supports custom
+players created by AmplitudeJS to playback audio individually.
+
+.Emancipator · From Dusk To Dawn
+amplitude::free_emancipator_large[role="mt-3 mb-5"]
 
 [role="mt-4"]
 === Screen reader

@@ -47,7 +47,11 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
-:images-dir:                            {imagesdir}/pages/roundtrip/100_present_images
+:time-num--string:                      5-10
+:time-en--string:                       Minutes
+:time-en--description:                  to read
+:time-de--string:                       Minuten
+:time-de--description:                  Lesezeit
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -56,6 +60,7 @@ resource_options:
 // Load page attributes
 // -----------------------------------------------------------------------------
 {% include {{load_attributes}} scope="all" %}
+
 
 // Page content
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,8 +73,13 @@ http://lunrjs.com[Oliver Nightingale, {browser-window--new}], is fully
 integrated with the template system. The engine is designed to be small in code
 size yet full-featured to provide users with a great search experience.
 
-mdi:clock-time-five-outline[24px, md-gray mt-5 mr-2]
-*5-10 Minutes* to read
+[subs=attributes]
+++++
+<div class="video-title">
+  <i class="mdib mdib-clock-outline mdib-24px mr-2"></i>
+  {time-num--string} {time-en--string} {time-en--description}
+</div>
+++++
 
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------

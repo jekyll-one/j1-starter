@@ -2,7 +2,7 @@
 title:                                  Welcome to Jekyll
 tagline:                                Websites for Everyone
 
-#date:                                  2024-08-06
+#date:                                  2024-10-28
 #last_modified:                         2023-01-01
 
 description: >

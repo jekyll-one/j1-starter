@@ -669,13 +669,13 @@ settings:
           name:                         Planet Earth II
           type:                         youtube
           size:                         1280-720
-          source:                       //youtube.com/watch?v=IUN664s7N-c
+          source:                       //youtu.be/IUN664s7N-c
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
-                                        <h5>The Breathtaking Beauty of Nature</h5>
+                                        <h5>Beauty of Nature</h5>
                                         <h6>
-                                          The BBC America presents impressive landscapes of
+                                          The BBC America presents breathtaking landscapes of
                                           amazing habitats from their Planet Earth II series
                                           on YouTube
                                         </h6>
@@ -685,7 +685,7 @@ settings:
             source:                     //img.youtube.com/vi/IUN664s7N-c/maxresdefault.jpg
           caption:
             position:                   bottom
-            text:                       YouTube Video &middot; The Breathtaking Beauty of Nature
+            text:                       YouTube Video &middot; Beauty of Nature
 
 #       video 2
         - video:

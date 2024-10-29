@@ -1,0 +1,402 @@
+---
+title:                                  lazyLoader
+title_extention:                        Lazy loading HTML resources using J1 Template
+tagline:                                Lazy loading HTML resources
+
+date:                                   2020-11-04
+#last_modified:                         2023-01-01
+
+description: >
+                                        The J1 Template support playing video on web pages
+                                        by HTML5 Video, the new standard of HTML to show
+                                        videos on web pages.
+keywords: >
+                                        open source, free, template, jekyll, jekyllone, web,
+                                        sites, static, jamstack, bootstrap,
+                                        html, html5, video, support, flash player,
+                                        quicktime, silverlight
+
+categories:                             [ Roundtrip ]
+tags:                                   [ Module, Video ]
+
+image:
+  path:                                 /assets/image/icons/videojs/videojs-poster.png
+  width:                                1920
+  height:                               1280
+
+attic:                                  false
+regenerate:                             false
+personalization:                        true
+permalink:                              /pages/public/lazy_loader_tester/
+
+resources:                              []
+resource_options:
+  - attic:
+      slides:
+        - url:                          /assets/image/icons/videojs/videojs-poster.png
+          alt:                          VideoJS Poster
+---
+
+// Page Initializer
+// =============================================================================
+// Enable the Liquid Preprocessor
+:page-liquid:
+
+// Set (local) page attributes here
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
+
+//  Load Liquid procedures
+// -----------------------------------------------------------------------------
+{% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
+
+// Load page attributes
+// -----------------------------------------------------------------------------
+{% include {{load_attributes}} scope="global" %}
+
+
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[role="dropcap"]
+The J1 Template support playing video on web pages by HTML5 Video, the new
+standard of HTML to show videos on webpages.
+
+Modern browsers support the video tag `<video>` for the new HTML5 video
+standard. The previous proprietary de facto standard software like
+_Flash Player_, _Quicktime_, or _Silverlight_ is no longer needed as the
+Jekyll theme J1 provides HTML5 Video support for local video content
+and from online sources on the Internet.
+
+// Include sub-documents (if any)
+// -----------------------------------------------------------------------------
+[role="mt-5"]
+== Load Images
+
+lorem:sentences[45]
+
+jQuery Lazy is a fast, feature-rich and lightweight delayed content loading
+plugin for jQuery.
+
+It's designed to speed up page loading times and decrease traffic to your
+users by only loading the content in view. You can use Lazy in all vertical
+and horizontal scroll ways.
+
+lorem:sentences[5]
+
+++++
+<img class="lazy" data-src="/assets/image/modules/attics/markus-spiske-1920x1280.jpg" src="" alt="markus-spiske">
+++++
+
+// ++++
+// <img class="lazy" data-src="/assets/image/icons/videojs/videojs-poster.png" src="" alt="VideoJS Poster">
+// ++++
+
+
+// [role="mt-5"]
+// == Load HTML5 Audio
+//
+// Audio players can easily be embedded in web pages using the *audio* tag
+// `<audio>.` Browsers have a built-in framework for decoding and playing audio
+// content directly within a webpage.
+//
+// lorem:sentences[5]
+//
+// .HTML5 Audio
+// ++++
+// <div class="lazy" data-loader="av">
+//   <audio src="/assets/audio/sound-effects/ambient-piano.mp3" controls="">
+//     Your browser does not support the audio tag.
+//   </audio>
+// </div>
+// ++++
+
+[role="mt-5"]
+== Load HTML5 Video
+
+lorem:sentences[5]
+
+.HTML5 Video
+++++
+<!-- video
+  data-poster="/assets/video/poster/html5/peck_pocketed.jpg"
+  src="/assets/video//html5/peck_pocketed.mp4" type="video/mp4"
+>
+</video -->
+
+<!-- div class="lazy" data-loader="av">
+  <video
+    controls
+    src="/assets/video//html5/peck_pocketed.mp4"
+    poster="/assets/video/poster/html5/peck_pocketed.jpg">
+    Your browser does not support the video tag.
+  </video>
+</div -->
+
+<div class="lazy" data-loader="av">
+  <video controls data-poster="/assets/image/icons/videojs/videojs-poster.png">
+    <data-src src="/assets/video//html5/peck_pocketed.mp4" type="video/mp4"></data-src>
+  </video>
+</div>
+++++
+
+[role="mt-5"]
+== Load Scroll-Item Images
+
+lorem:sentences[5]
+
+[role="mt-5 mb-5"]
+.News Scroll Group
+++++
+<div id="home_news" class="preview_content">
+  <ul id="home_news-scroll-group" class="scroll-group scroll-group-horizontal align-items-stretch flex-wrap">
+    <!-- [INFO   ] [~/assets/data/panel.html              ] [ write post items (card_block == 'card-list')] -->
+    <li id="home_news-scroll-item" class="scroll-group-item items-2 p-0">
+      <article class="card card-same-height raised-z0 mb-5">
+        <img class="lazy img-fluid img-object--cover g-height-300" data-src="/assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg" src="" alt="Protocol scheme" style="filter: grayscale(1) contrast(1) brightness(1);">
+        <!-- h3 id="639670" class="card-header bg-primary notoc notranslate">URLs</h3 -->
+        <h3 id="286107" class="card-header bg-primary notranslate">URLs</h3>
+        <!-- Body|Excerpt -->
+        <div class="card-body r-text-300 mt-0">
+          <div class="paragraph dropcap">
+            <p class="dropcap"><span class="j1-dropcap">W</span>hat is the difference between the URLs https://domain and //domain?</p>
+          </div>
+        </div>
+        <!-- End Body|Excerpt -->
+        <div class="card-footer speak2me-ignore r-text-200">
+          <div class="card-footer-text">
+            <i class="mdib mdib-calendar-blank md-grey-900 mr-1"></i>2023 October, 18
+            <!-- Cleanup categories by given blacklist -->
+            <!-- Build element strings -->
+            <p class="result-item-text small mb-3 notranslate">
+              <i class="mdib mdib-tag-text-outline mdib-18px mr-1"></i>
+              <span class="sr-categories">Web</span>
+              <br>
+              <i class="mdib mdib-tag mdib-18px mr-1"></i>
+              <span class="sr-tags">Protocols</span>
+            </p>
+          </div>
+          <a class="card-link text-lowercase" href="/posts/public/featured/web/2023/10/18/url-types/">
+          read · Protocol scheme
+          </a>
+        </div>
+      </article>
+    </li>
+    <li id="home_news-scroll-item" class="scroll-group-item items-2 p-0">
+      <article class="card card-same-height raised-z0 mb-5">
+        <img class="lazy img-fluid img-object--cover g-height-300" data-src="/assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg" src="" alt="About the Template" style="filter: grayscale(1) contrast(1) brightness(1);">
+        <!-- h3 id="781169" class="card-header bg-primary notoc notranslate">J1 Theme</h3 -->
+        <h3 id="318611" class="card-header bg-primary notranslate">J1 Theme</h3>
+        <!-- Body|Excerpt -->
+        <div class="card-body r-text-300 mt-0">
+          <div class="paragraph dropcap">
+            <p class="dropcap"><span class="j1-dropcap">J</span>1 Template is a Bootstrap V5 website template for the static site generator
+              Jekyll.
+            </p>
+          </div>
+          <div class="paragraph">
+            <p>The Theme J1 has been developed to create simple but fully configurable
+              websites. Jekyll One is a full-featured Theme for Jekyll to create modern
+              websites for free.
+            </p>
+          </div>
+        </div>
+        <!-- End Body|Excerpt -->
+        <div class="card-footer speak2me-ignore r-text-200">
+          <div class="card-footer-text">
+            <i class="mdib mdib-calendar-blank md-grey-900 mr-1"></i>2022 February,  1
+            <!-- Cleanup categories by given blacklist -->
+            <!-- Build element strings -->
+            <p class="result-item-text small mb-3 notranslate">
+              <i class="mdib mdib-tag-text-outline mdib-18px mr-1"></i>
+              <span class="sr-categories">Jekyll</span>
+              <br>
+              <i class="mdib mdib-tag mdib-18px mr-1"></i>
+              <span class="sr-tags">Theme</span>
+            </p>
+          </div>
+          <a class="card-link text-lowercase" href="/posts/public/featured/jekyll/2022/02/01/about-j1/">
+          read · About the Template
+          </a>
+        </div>
+      </article>
+    </li>
+    <li id="home_news-scroll-item" class="scroll-group-item items-2 p-0">
+      <article class="card card-same-height raised-z0 mb-5">
+        <!-- [INFO   ] [j1.layouts.content_generator_news_panel_posts.html ] [ place post image ] -->
+        <img class="lazy img-fluid img-object--cover g-height-300" data-src="/assets/image/modules/attics/machine-generator-1920x1280.jpg" src=""  alt="Top open source Tools" style="filter: grayscale(1);">
+        <!-- h3 id="376383" class="card-header bg-primary notoc notranslate">Site Generators</h3 -->
+        <h3 id="955445" class="card-header bg-primary notranslate">Site Generators</h3>
+        <!-- Body|Excerpt -->
+        <div class="card-body r-text-300 mt-0">
+          <div class="paragraph dropcap">
+            <p class="dropcap"><span class="j1-dropcap">T</span>his article highlights the top Open Source projects providing static site
+              generators, so-called SSGs, in many different programming languages. You will
+              find Jekyll one of them.
+            </p>
+          </div>
+          <div class="paragraph">
+            <p>A SSG is a software tool that assists in creating websites by generating
+              static HTML, CSS, and JavaScript files. Unlike dynamic websites that generate
+              content on the server side in response to each request of a user, static sites
+              pre-generate the content upfront it is served to users.
+            </p>
+          </div>
+        </div>
+        <!-- End Body|Excerpt -->
+        <div class="card-footer speak2me-ignore r-text-200">
+          <div class="card-footer-text">
+            <i class="mdib mdib-calendar-blank md-grey-900 mr-1"></i>2021 February,  1
+            <!-- Cleanup categories by given blacklist -->
+            <!-- Build element strings -->
+            <p class="result-item-text small mb-3 notranslate">
+              <i class="mdib mdib-tag-text-outline mdib-18px mr-1"></i>
+              <span class="sr-categories">Jekyll</span>
+              <br>
+              <i class="mdib mdib-tag mdib-18px mr-1"></i>
+              <span class="sr-tags">Generators</span>
+            </p>
+          </div>
+          <a class="card-link text-lowercase" href="/posts/public/featured/jekyll/2021/02/01/static-site-generators/">
+          read · Top open source Tools
+          </a>
+        </div>
+      </article>
+    </li>
+    <li id="home_news-scroll-item" class="scroll-group-item items-2 p-0">
+      <article class="card card-same-height raised-z0 mb-5">
+        <!-- [INFO   ] [j1.layouts.content_generator_news_panel_posts.html ] [ place post image ] -->
+        <img class="lazy img-fluid img-object--cover g-height-300" data-src="/assets/image/modules/attics/cookies-1920x1200.jpg" src="" alt="Data for Site Control" style="filter: grayscale(1);">
+        <!-- h3 id="283406" class="card-header bg-primary notoc notranslate">Cookies</h3 -->
+        <h3 id="343365" class="card-header bg-primary notranslate">Cookies</h3>
+        <!-- Body|Excerpt -->
+        <div class="card-body r-text-300 mt-0">
+          <div class="paragraph dropcap">
+            <p class="dropcap"><span class="j1-dropcap">C</span>ookies can be used for various purposes, such as tracking user behavior,
+              remembering login credentials, and personalizing the user experience.
+            </p>
+          </div>
+          <div class="paragraph">
+            <p>Providing clear and transparent information about using cookies by website
+              operators helps users understand how their data is used and allows them to
+              make better choices about their privacy.
+            </p>
+          </div>
+        </div>
+        <!-- End Body|Excerpt -->
+        <div class="card-footer speak2me-ignore r-text-200">
+          <div class="card-footer-text">
+            <i class="mdib mdib-calendar-blank md-grey-900 mr-1"></i>2021 January,  1
+            <!-- Cleanup categories by given blacklist -->
+            <!-- Build element strings -->
+            <p class="result-item-text small mb-3 notranslate">
+              <i class="mdib mdib-tag-text-outline mdib-18px mr-1"></i>
+              <span class="sr-categories">Technology</span>
+              <br>
+              <i class="mdib mdib-tag mdib-18px mr-1"></i>
+              <span class="sr-tags">Cookies</span>
+            </p>
+          </div>
+          <a class="card-link text-lowercase" href="/posts/public/featured/technology/2021/01/01/about-cookies/">
+          read · Data for Site Control
+          </a>
+        </div>
+      </article>
+    </li>
+  </ul>
+</div>
+++++
+
+// [role="mt-5"]
+// == Load CSS Styles
+//
+// lorem:sentences[5]
+//
+// [role="mt-5 mb-5"]
+// .HTML Code
+// [source, html]
+// ----
+// <div class="lazy" data-loader="av">
+//   <audio src="/assets/audio/sound-effects/ambient-piano.mp3" controls="">
+//     Your browser does not support the audio tag.
+//   </audio>
+// </div>
+// ----
+
+
+[role="mt-5"]
+== Load Background Images
+
+lorem:sentences[5]
+
+++++
+<div class="lazy parallaxBg" alt="sigmund">
+
+    <style>
+        .parallaxBg{background:url("/assets/image/modules/attics/sigmund-1920x1280.jpg"); min-height: 450px; background-attachment: fixed; background-position: center;  background-repeat: no-repeat; background-size: cover; }
+        .banner_parallax-parallax-quote{color:#fff;padding:100px 0;position:relative;text-align:center}
+        .banner_parallax-parallax-quote:before{top:0;left:0;width:100%;height:100%;content:" ";position:absolute;background: url("/assets/image/modules/patterns/gridtile.png") repeat;}
+        .banner_parallax-parallax-quote:after{top:0;left:0;width:100%;height:100%;content:" ";position:absolute;background:rgba(0,0,0,0.6)}
+        .banner_parallax-parallax-quote-in{z-index: 2;position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; padding: 20px; text-align: center; font-family: "Roboto Slab", Helvetica, Arial, sans-serif; }
+        .banner_parallax-parallax-quote-in p{color:var(--md-gray-300);font-size:300%;text-transform:uppercase;line-height: 1.25;}
+    </style>
+
+</div>
+++++
+
+++++
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <!-- [INFO   ] [~/assets/data/footer.html                ] [Enable horizontal list using id #inline] -->
+      <div class="col-md-10" id="inline">
+        <!-- [INFO   ] [legal_statements.proc              ] [ process legal statements configured ] -->
+        <ul class="list-inline terms-menu">
+          <li class="notranslate"><a class="link-no-decoration" href="/pages/public/legal/en/copyright/">© 2023, 2024, 2024 J1 · All rights reserved</a></li>
+          <li class="notranslate"><a class="link-no-decoration" href="/pages/public/legal/en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="col-md-10" id="inline">
+        <!-- [INFO   ] [issue.proc                         ] [ issue date information ] -->
+        <!-- [INFO   ] [issue.proc                         ] [ place issue ] -->
+        <p class="footer-issue">Last modified: Saturday, 17 August 2024</p>
+      </div>
+      <div class="col-md-10">
+        <!-- [INFO   ] [social_media_icons.proc            ] [ place icons configured ] -->
+        <ul class="lazy social-icons">
+          <li><a id="footerGithubButton" href="//github.com/jekyll-one/j1-starter" aria-label="footerGithubButton" data-original-title="Github" class="lazy rounded-circle social_github     " target="_blank" rel="noopener noreferrer"></a></li>
+          <li><a id="footerFacebookButton" href="#" aria-label="footerFacebookButton" data-original-title="Facebook" class="lazy rounded-circle social_facebook   " target="_blank" rel="noopener noreferrer"></a></li>
+          <li><a id="footerXingButton" href="#" aria-label="footerXingButton" data-original-title="Xing" class="lazy rounded-circle social_xing       " target="_blank" rel="noopener noreferrer"></a></li>
+          <li><a id="footerLinkedinButton" href="#" aria-label="footerLinkedinButton" data-original-title="linkedin" class="lazy rounded-circle social_linkedin   " target="_blank" rel="noopener noreferrer"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+++++
+
+// [role="mt-5 mb-5"]
+// .Parallax Banner
+// ++++
+// <div id="banner_parallax" class="elevated-z0"><div id="banner_parallax_content" class="lazy parallax"
+//   <style>
+//       .parallaxBg{background:url("/assets/image/modules/attics/ideas-start-here-1920x1280.jpg"); min-height: 450px; background-attachment: fixed; background-position: center;  background-repeat: no-repeat; background-size: cover; }
+//       .banner_parallax-parallax-quote{color:#fff;padding:100px 0;position:relative;text-align:center}
+//       .banner_parallax-parallax-quote:before{top:0;left:0;width:100%;height:100%;content:" ";position:absolute;background: url("/assets/image/modules/patterns/gridtile.png") repeat;}
+//       .banner_parallax-parallax-quote:after{top:0;left:0;width:100%;height:100%;content:" ";position:absolute;background:rgba(0,0,0,0.6)}
+//       .banner_parallax-parallax-quote-in{z-index: 2;position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; padding: 20px; text-align: center; font-family: "Roboto Slab", Helvetica, Arial, sans-serif; }
+//       .banner_parallax-parallax-quote-in p{color:var(--md-gray-300);font-size:300%;text-transform:uppercase;line-height: 1.25;}
+//   </style>
+//
+//   <div class="panel-fluid ">
+//     <div class="lazy row no-gutters banner_parallax-parallax-quote parallaxBg parallax-quoteblock">
+//       <div class="col-md-12 col-xs-12 banner_parallax-parallax-quote-in quote-text">
+//          <p><strong>  <span class="text-primary">Making is</span>  <span class="text-light">like Wanting, <br> but even</span>  <span class="text-primary">Better</span></strong></p>
+//       </div>
+//     </div>
+//   </div>
+//
+// </div>
+// ++++
+
+// [role="mt-5 mb-8"]
+// lorem:sentences[5]

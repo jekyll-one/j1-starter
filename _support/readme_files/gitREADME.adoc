@@ -209,14 +209,14 @@ git commit -am "Cleanup files"
 git commit -am "Set mode production"
 git commit -am "Set mode development"
 
-git commit -am "New version 2024.3.13"
-git commit --allow-empty -m "New version 2024.3.13"
-git commit -am "Prepare new version 2024.3.13"
+git commit -am "New version 2024.3.14"
+git commit --allow-empty -m "New version 2024.3.14"
+git commit -am "Prepare new version 2024.3.14"
 
-git commit -am "Latest files of version 2024.3.13"
+git commit -am "Latest files of version 2024.3.14"
 
-git commit -am "Latest posts of version 2024.3.13"
-git commit -am "Latest articles of version 2024.3.13"
+git commit -am "Latest posts of version 2024.3.14"
+git commit -am "Latest articles of version 2024.3.14"
 
 git commit -am "Updated site config (_config.yml)"
 

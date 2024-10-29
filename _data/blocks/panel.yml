@@ -406,7 +406,7 @@ settings:
 
         position:                       left                                    # left | center
         title:                          J1 Template
-        tagline:                        Free Bootstrap V5 Theme for Jekyll
+        tagline:                        free bootstrap V5 theme for jekyll
         description_properties:         mt-3 mr-3 mb-3
         description: >
                                         <p class="dropcap">
@@ -642,7 +642,7 @@ settings:
                                           Enhanced Navigation <br />
                                           <i class="mdib mdib-lightbulb-on mdib-24px md-blue-700 ml-3 mr-2"></i>
                                           Lightboxes <br />
-                                          <i class="mdib mdib-folder-multiple-image mdib-24px md-blue-700 ml-3 mr-2"></i>
+                                          <i class="mdib mdib-gesture-swipe mdib-24px md-blue-700 ml-3 mr-2"></i>
                                           Image and Video Galleries <br />
                                           <i class="mdib mdib-view-carousel mdib-24px md-blue-700 ml-3 mr-2"></i>
                                           Text and Image Carousels <br />

@@ -25,10 +25,9 @@ image:
   width:                                1920
   height:                               1280
 
-compress:                               false
 personalization:                        true
 regenerate:                             false
-permalink:                              /pages/public/tour/playback_video/
+permalink:                              /pages/public/tour/present_video/
 
 resources:                              [
                                           gallery, lightgallery, masonry,
@@ -39,9 +38,22 @@ resource_options:
       collapseDepth:                    3
   - attic:
       slides:
-        # Tylor Swift Concert Munich 2024
-        - url:                          //img.youtube.com/vi/Zu7EA3aA9Z4/maxresdefault.jpg
-          alt:                          Tylor Swift Concert Munich 2024
+        # Broadway Underground - still image (animate default)
+        - url:                          /assets/video/headers/present_videos/still/underground-broadway.jpg
+          alt:                          Broadway Underground
+          title:                        Video Player
+          tagline:                      Playback Video
+        # Broadway Underground - FAYETTE ST
+        - url:                          /assets/video/headers/present_videos/underground-broadway.mp4
+          alt:                          Broadway Underground Video
+          title:                        Video Player
+          tagline:                      Playback Video
+          isVideo:                      true
+          loop:                         false
+          duration:                     6000
+        # Broadway Underground - still image (animate random)
+        - url:                          /assets/video/headers/present_videos/still/underground-broadway.jpg
+          alt:                          Broadway Underground
           title:                        Video Player
           tagline:                      Playback Video
 ---
@@ -54,6 +66,11 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
+:time-num--string:                      5-10
+:time-en--string:                       Minutes
+:time-en--description:                  to read
+:time-de--string:                       Minuten
+:time-de--description:                  Lesezeit
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -76,13 +93,17 @@ software, like _Flash Player_, _Quicktime_, _Silverlight_ is no longer needed
 as the J1 Template provides audio and video support for local video files
 and online sources.
 
-mdi:clock-time-five-outline[24px, md-gray mt-5 mr-2]
-*10-15 Minutes* to read
+[subs=attributes]
+++++
+<div class="video-title">
+  <i class="mdib mdib-clock-outline mdib-24px mr-2"></i>
+  {time-num--string} {time-en--string} {time-en--description}
+</div>
+++++
 
 
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------
-
 [role="mt-5"]
 == HTML 5 Player
 // See: https://docs.asciidoctor.org/asciidoc/latest/macros/audio-and-video/
@@ -102,12 +123,18 @@ integrate and play video sources directly within a page or application. These
 players are essential for all current sites and apps. Embedded players provide
 a seamless and user-friendly way to present multimedia content to your audience.
 
+[role="mb-4"]
 All modern browsers universally support the video tag `<video>`. This tag
 offers an out-of-the-box framework for decoding and displaying video content
 without loading *external players*.
 
-.MP4 Video · Peck Pocketed
-video::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/html5/peck_pocketed.jpg", opts="" role="mt-4 mb-5"]
+++++
+<div class="video-title">
+  <i class="mdib mdib-youtube-tv mdib-24px mr-2"></i>
+  Peck Pocketed · MP4 Video
+</div>
+++++
+video::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/html5/peck_pocketed.jpg", opts="" role="mt-1 mb-5"]
 
 
 [role="mt-5"]
@@ -129,7 +156,7 @@ better user experience.
 VideoJS provides a flexible and customizable platform for displaying and
 controlling MPEG 4 video content on websites and web applications.
 
-.MP4 Video · Rolling Wild
+.Rolling Wild · MP4 Video
 videojs::/assets/video//html5/rolling_wild.mp4[poster="/assets/video/poster/html5/rolling_wild.jpg", opts="" role="mt-4 mb-5"]
 
 [role="mt-4"]
@@ -139,34 +166,11 @@ YouTube is a popular online video-sharing platform that allows users to
 upload, view, share, and comment on videos. The platform provides services
 for people and organizations to publish various video content.
 
-See below Adele's opening concert in Munich's specially built open-air arena,
-and tens of thousands celebrated with her. It is an extraordinary concert
-series: a pop-up stadium tailored to her needs was built specifically for her
-and long catwalks bring Adele closer to her fans.
+.Best Auditions · AGT 2024
+youtube::4VSBJU52UvM[poster="//img.youtube.com/vi/4VSBJU52UvM/maxresdefault.jpg" role="mt-4 mb-5"]
 
-The arena, shaped like an amphitheater, is decorated in black and white and
-is dominated by a 220-meter-long and 17-meter-high screen. Find below the first
-45 minutes of her opening concert in August 2024 at the Adele World, Munich.
-
-.Adele Concert, August 2024 · Adele World Munich
-youtube::KIvU5etrbSM[poster="//img.youtube.com/vi/KIvU5etrbSM/maxresdefault.jpg" role="mt-4 mb-5"]
-
-Pop icon Taylor Swift thrilled more than 70,000 fans at a sold-out concert
-at the Olympic Stadium in Munich. But the enthusiasm for the US star
-extended far beyond the stadium.
-
-Taylor Swift recognized the unusual situation in Munich and, at the
-beginning of her concert, greeted not only the fans in the stadium
-but also the thousands who had gathered in the park in front of the
-stadium.
-
-That evening, Taylor Swift took her fans through her long career. For
-over three hours, the pop queen played 45 songs, album by album, the
-so-called Eras. Taylor Swift concluded the show with a spectacular
-fireworks display. See impressions of this emotional event below.
-
-.Taylor Swift Concert, August 2024 · Olympic Stadium in Munich
-youtube::Zu7EA3aA9Z4[poster="//img.youtube.com/vi/Zu7EA3aA9Z4/maxresdefault.jpg" role="mt-4 mb-5"]
+// .Fortnight (feat. Post Malone, Official Music Video) · Taylor Swift
+// youtube::q3zqJs7JUCQ[poster="//img.youtube.com/vi/q3zqJs7JUCQ/maxresdefault.jpg" role="mt-4 mb-5"]
 
 [role="mt-4"]
 === Dailymotion
@@ -176,7 +180,7 @@ high-quality advertisers through a proprietary advertising system.
 Like YouTube, videos can be watched for free, but ads are shown on every
 video.
 
-.SELF Channel · Beginner Mat Pilates
+.Beginner Mat Pilates · SELF Channel
 dailymotion::x87ycik[poster="/assets/video/poster/dailymotion/pilates.jpg" role="mt-4 mb-5"]
 
 [role="mt-4"]
@@ -188,7 +192,7 @@ since grown into a popular platform for individuals and businesses to
 showcase their videos. Vimeo is known for its emphasis on high-quality videos
 and creative expression.
 
-.Forever 21 · Kick It Old School
+.Kick It Old School · Forever 21
 vimeo::179528528[poster="/assets/video/poster/vimeo/kick_it_old_school.jpg" role="mt-4 mb-5"]
 // vimeo::179528528[poster="auto" role="mt-4 mb-5"]
 // vimeo::179528528[role="mt-4 mb-5"]
@@ -232,7 +236,7 @@ and video content provided online.
 Masonry for J1 Template is a great tool for creating dynamic video galleries.
 The module makes creating a gallery to display videos of different types easy.
 
-.Mixed Video
+.Mixed Video · Masonry + LightGallery
 masonry::mixed_video_example[role="mt-4 mb-5"]
 
 [role="mb-5"]
@@ -258,7 +262,7 @@ Using a modern MP4 Encoder for video compression, a video will play around
 HD 720p (1280x720 pixel).
 ====
 
-.Local MP4 Video
+.Local MP4 Video · Justified Gallery + LightGallery
 gallery::jg_video_html5[role="mt-4 mb-5"]
 
 [role="mt-4"]
@@ -271,17 +275,11 @@ hours of content every day. The number of YouTube channels is enormous.
 Today, it's a must for TV stations or musicians to publish videos of their
 shows or songs on YouTube.
 
-// Below a classic channel *Carpool Karaoke* featured by frontman _James Corden_
-// of *The Late Late Show* at CBS, Los Angeles.
-//
-// .James Corden · Carpool Karaoke
-// gallery::jg_video_online_youtube_james_and_adele[role="mb-5"]
-
 A really great channel at YouTube is presented by _Taylor Swift_ for her
 new studio album *The Tortured Poets Department: The Anthology*, released on
 April 19, 2024.
 
-.The Tortured Poets Department · Taylor Swift
+.Taylor Swift - The Tortured Poets Department · Justified Gallery + LightGallery
 gallery::jg_video_online_taylor_swift[role="mt-5 mb-4"]
 
 [role="mb-5"]
@@ -314,7 +312,7 @@ Business. Each membership has varied storage limits, but the free plan
 offers sufficient space for private projects to present video content
 without advertising.
 
-.Forever 21
+.Forever 21 · Justified Gallery + LightGallery
 gallery::jg_video_online_vimeo[role="mb-5"]
 
 [role="mt-4"]
@@ -329,7 +327,7 @@ connect to high-quality advertisers through a proprietary Advertising system.
 Like YouTube, videos can be watched for free, but ads are shown on each and
 every video.
 
-.SELF Chanel
+.SELF Chanel · Justified Gallery + LightGallery
 gallery::jg_video_online_dailymotion[role="mt-4 mb-5"]
 
 

@@ -29,6 +29,52 @@ settings:
   # ----------------------------------------------------------------------------
   playlists:
 
+
+    # --------------------------------------------------------------------------
+    # Emancipator
+    # --------------------------------------------------------------------------
+    #
+    - playlist:
+      enabled:                          true
+
+      name:                             mimi_rutherfurt_yt
+      title:                            Mimi Rutherfurt
+
+      # ------------------------------------------------------------------------
+      # ALBUM settings
+      # ------------------------------------------------------------------------
+      album:                            &album_mimi_rutherfurt_yt
+        name:                           Mimi Rutherfurt
+        artist:                         Maritim Verlag
+        audio_base:                     //youtube.com
+        cover_image:                    /assets/audio/cover/default/placeholder-blue.jpg
+
+      # ------------------------------------------------------------------------
+      # TITLE settings (songs)
+      # ------------------------------------------------------------------------
+      items:
+
+        # title 01
+        - item:
+          enabled:                      true
+          <<:                           *album_mimi_rutherfurt_yt
+          title:                        Alte Zeiten
+          audio:                        watch?v=qEhzpBJpUq0
+          audio_info:                   //www.youtube.com/@MaritimVerlag
+          cover_image:                  //img.youtube.com/vi/qEhzpBJpUq0/maxresdefault.jpg
+          duration:                     "5:25"
+
+        # title 02
+        - item:
+          enabled:                      true
+          <<:                           *album_mimi_rutherfurt_yt
+          title:                        Nacht-Express
+          audio:                        watch?v=I4VTc8nQxDs
+          audio_info:                   //www.youtube.com/@MaritimVerlag
+          cover_image:                  //img.youtube.com/vi/I4VTc8nQxDs/maxresdefault.jpg
+          duration:                     "5:12"
+
+
     # --------------------------------------------------------------------------
     # Emancipator
     # --------------------------------------------------------------------------
@@ -294,10 +340,20 @@ settings:
       enabled:                          true
 
       # ------------------------------------------------------------------------
+      # CONTROL BUTTON settings
+      #
+      song_progress_bar:                true
+      volume_slider:
+        enabled:                        true
+      # ------------------------------------------------------------------------
       # PLAYER settings
       #
       id:                               free_disco_mini
       type:                             mini
+
+      # ------------------------------------------------------------------------
+      # TIME settings
+      display_hours:                    false
 
       playlist:
         name:                           free_disco
@@ -318,6 +374,18 @@ settings:
       id:                               free_disco_compact
       type:                             compact
 
+      # ------------------------------------------------------------------------
+      # TIME settings
+      display_hours:                    false
+
+      # ------------------------------------------------------------------------
+      # CONTROL BUTTON settings
+      #
+      song_progress_bar:                true
+      skip_forward_backward_button:     true
+      volume_slider:
+        enabled:                        false
+
       playlist:
         name:                           free_disco
         title:                          Disco 80th
@@ -337,6 +405,18 @@ settings:
       id:                               free_disco_large
       type:                             large
 
+      # ------------------------------------------------------------------------
+      # TIME settings
+      display_hours:                    false
+
+      # ------------------------------------------------------------------------
+      # CONTROL BUTTON settings
+      #
+      song_progress_bar:                true
+      skip_forward_backward_button:     true
+      volume_slider:
+        enabled:                        false
+
       playlist:
         name:                           free_disco
         title:                          Disco 80th
@@ -349,6 +429,17 @@ settings:
     #
     - plaver:
       enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # TIME settings
+      display_hours:                    false
+
+      # ------------------------------------------------------------------------
+      # CONTROL BUTTON settings
+      #
+      song_progress_bar:                true
+      volume_slider:
+        enabled:                        true
 
       # ------------------------------------------------------------------------
       # PLAYER settings
@@ -370,6 +461,12 @@ settings:
       enabled:                          true
 
       # ------------------------------------------------------------------------
+      # CONTROL BUTTON settings
+      #
+      song_progress_bar:                true
+      skip_forward_backward_button:     true
+
+      # ------------------------------------------------------------------------
       # PLAYER settings
       #
       id:                               free_emancipator_compact
@@ -389,6 +486,18 @@ settings:
       enabled:                          true
 
       # ------------------------------------------------------------------------
+      # TIME settings
+      display_hours:                    false
+
+      # ------------------------------------------------------------------------
+      # CONTROL BUTTON settings
+      #
+      song_progress_bar:                true
+      skip_forward_backward_button:     true
+      volume_slider:
+        enabled:                        false
+
+      # ------------------------------------------------------------------------
       # PLAYER settings
       #
       id:                               free_emancipator_large
@@ -399,6 +508,42 @@ settings:
         title:                          Emancipator
         audio_info:                     true
         controls:                       true
+
+
+    # --------------------------------------------------------------------------
+    # LARGE player, Mimi Rutherfurt
+    # --------------------------------------------------------------------------
+    #
+    - plaver:
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # SOURCE settings
+      source:                           video
+
+      # ------------------------------------------------------------------------
+      # TIME settings
+      display_hours:                    true
+
+      # ------------------------------------------------------------------------
+      # CONTROL BUTTON settings
+      #
+      song_progress_bar:                false
+      skip_forward_backward_button:     true
+      volume_slider:
+        enabled:                        false
+
+      # ------------------------------------------------------------------------
+      # PLAYER settings
+      #
+      id:                               mimi_rutherfurt_yt_large
+      type:                             large
+
+      playlist:
+        name:                           mimi_rutherfurt_yt
+        title:                          Mimi Rutherfurt
+        controls:                       false
+        audio_info:                     false
 
 # ------------------------------------------------------------------------------
 # END config

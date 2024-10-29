@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/j1_navigator_menu.yml (runtime)
+# ~/_data/modules/j1_navigator_menu.yml (development)
 # Configuration of the J1 NAV Module for the main navigation bar
 #
 # Product/Info:
@@ -27,10 +27,10 @@
       href:                             /pages/public/tour/present_images/
       icon:                             image
     - title:                            Audio
-      href:                             /pages/public/tour/playback_audio/
+      href:                             /pages/public/tour/present_audio/
       icon:                             volume-high
     - title:                            Video
-      href:                             /pages/public/tour/playback_video/
+      href:                             /pages/public/tour/present_video/
       icon:                             video
 
     - title:                            Typography
@@ -68,6 +68,14 @@
     - title:                            Where to go
       href:                             /pages/public/learn/where_to_go/
       icon:                             foot-print
+
+#   - title:                            Core Web Vitals
+#     href:                             /pages/public/learn/core_web_vitals/
+#     icon:                             quadcopter
+#
+#   - title:                            BS Sass Variables
+#     href:                             /pages/public/learn/bs_sass_variables/
+#     icon:                             code-tags
 
     # --------------------------------------------------------------------------
     # Collections
@@ -459,10 +467,30 @@
         href:                           /pages/public/tools/previewer/current_theme/
         icon:                           theme-light-dark
 
+#      - title:                         J1 DocSearch
+#        href:                          ://jekyll.one/pages/public/tools/previewer/docsearch/
+#        icon:                          head-question
+#        target:                        _blank
+#      - title:                         J1 iFramer
+#        href:                          //jekyll.one/pages/public/tools/previewer/iframer/
+#        icon:                          window-open-variant
+#        target:                        _blank
+
+#      - title:                         Icon Picker
+#        href:                          /pages/public/test_icon_picker/
+#        icon:                          emoticon-cool-outline
+#      - title:                         Google Gemini AI
+#        href:                          /pages/public/tools/previewer/google-gemini-ai/
+#        icon:                          robot
+#      - title:                         Google Gemini AI
+#        href:                          //jekyll.one/pages/public/tools/previewer/google-gemini-ai/
+#        icon:                          robot
+#        target:                        _blank
+
       - title:                          J1 Amplitude
-        href:                           //jekyll.one/pages/public/tools/previewer/amplitudejs/
+        href:                           /pages/public/tools/previewer/amplitudejs/
         icon:                           speaker
-        target:                         _blank
+
       - title:                          J1 Geolocation
         href:                           //jekyll.one/pages/public/tools/previewer/geolocation/
         icon:                           google-maps

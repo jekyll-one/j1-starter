@@ -3,6 +3,13 @@
 git config --global user.name "Juergen Adams"
 git config --global user.email "juergen@jekyll.one"
 
+~/.gitconfig
+
+[user]
+	name  = Juergen Adams
+	email = juergen@jekyll.one
+
+
 == Git status colors
 
 [cols="4a,8a", options="header", width="100%", role="rtable mt-3"]
@@ -29,6 +36,7 @@ git config --global user.email "juergen@jekyll.one"
 
 == Git Aliases (~/.gitconfig)
 
+[alias]
 	aa 	= add .
 	st 	= status
 	sts = status -b -s
@@ -40,6 +48,8 @@ git config --global user.email "juergen@jekyll.one"
 	cl 	= clone
 	br 	= branch
 	co 	= checkout
+	com = checkout main
+	cod = checkout develop
 	la 	= ls-files
 	ll 	= ls-tree --full-tree -r --name-only HEAD
 	lg 	= log --stat

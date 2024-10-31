@@ -25,6 +25,7 @@ image:
   width:                                1920
   height:                               1280
 
+compress:                               false
 personalization:                        true
 regenerate:                             false
 permalink:                              /pages/public/tour/present_video/

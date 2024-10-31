@@ -25,12 +25,13 @@ image:
   width:                                1920
   height:                               1280
 
+compress:                               false
 regenerate:                             false
 permalink:                              /pages/public/tour/present_images/
 
 resources:                              [
                                           carousel, gallery, lightbox, lightgallery,
-                                          master-slider, masonry, slick-slider, videojs
+                                          master-slider, masonry, slick-slider
                                         ]
 resource_options:
   - toccer:

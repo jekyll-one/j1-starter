@@ -148,9 +148,14 @@ lorem:sentences[5]
 [role="mt-5"]
 == Compact Player
 
-A complex component like an audio player on a web page, *compact*
-typically refers to a design or layout that minimizes the component's
-space while maintaining its functionality and usability.
+The design of a *Compact player* is an efficient approach that involves
+condensing the player controls and display elements into a smaller area.
+It allows the audio player to fit neatly within the web page's layout without
+overwhelming or dominating the content around it.
+
+The player aims to balance functionality and space efficiency, ensuring users
+can easily access and control the audio playback without sacrificing too much
+screen space or placing  multiple players side-by-side.
 
 ////
 The *compact design* for an audio player is an efficient approach that
@@ -178,7 +183,14 @@ lorem:sentences[5]
 [role="mt-5"]
 == Large Player
 
-lorem:sentences[5]
+A complex component, like an audio player on a web page, typically refers
+to a design or layout that minimizes the component's space while maintaining
+its functionality and usability.
+
+The large design provides the full functionality of an audio player to ensure
+users can easily control audio playback. The player behaves similarly to a
+compact player, but all controls are displayed in a single window; there is
+no need to open other widgets.
 
 .Emancipator · From Dusk To Dawn
 amplitude::free_emancipator_large[role="mt-3 mb-5"]

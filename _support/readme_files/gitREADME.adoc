@@ -181,18 +181,18 @@ Use the “git tag” command with the “-d” option
 
 === From local
 
-  git tag -d v2024.3.14
+  git tag -d v2024.3.15
 
 === From remote
 
-  git push -d origin v2024.3.14
+  git push -d origin v2024.3.15
 
 == Set a Git tag
 
 # When modifying remember to issue a new tag command in git before committing,
 # then push the new tag
 #
-  git tag -a v2024.3.14 -m "v2024.3.14"
+  git tag -a v2024.3.15 -m "v2024.3.15"
   git push --tags
 
 == Update Git Index (cache) completely
@@ -219,14 +219,14 @@ git commit -am "Cleanup files"
 git commit -am "Set mode production"
 git commit -am "Set mode development"
 
-git commit -am "New version 2024.3.14"
-git commit --allow-empty -m "New version 2024.3.14"
-git commit -am "Prepare new version 2024.3.14"
+git commit -am "New version 2024.3.15"
+git commit --allow-empty -m "New version 2024.3.15"
+git commit -am "Prepare new version 2024.3.15"
 
-git commit -am "Latest files of version 2024.3.14"
+git commit -am "Latest files of version 2024.3.15"
 
-git commit -am "Latest posts of version 2024.3.14"
-git commit -am "Latest articles of version 2024.3.14"
+git commit -am "Latest posts of version 2024.3.15"
+git commit -am "Latest articles of version 2024.3.15"
 
 git commit -am "Updated site config (_config.yml)"
 

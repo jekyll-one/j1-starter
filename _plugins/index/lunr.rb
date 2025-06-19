@@ -394,6 +394,10 @@ end
 
 module Jekyll
   module J1LunrSearch
+<<<<<<< HEAD
     VERSION = '2024.3.26'
+=======
+    VERSION = '2024.3.15'
+>>>>>>> 70c127e7b484d3b30612374b170aeadb04553717
   end
 end

@@ -5,7 +5,7 @@
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023, 2024 Juergen Adams
+# Copyright (C) 2023-2025 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -143,14 +143,14 @@
 #   loading strategies for SYNC and DEFER.
 #
 #   type:                               string
-#   values:                             head|body
+#   values:                             head|body-footer
 #   default:                            head
 #
 # layout
 # ------------------------------------------------------------------------------
 #   Specifies the LAYOUT the resources is loaded
 #
-#   type:                               ARRAY
+#   type:                               sequence (array)
 #   values:                             home|page|post|app|all
 #   default:                            []
 #
@@ -184,14 +184,10 @@
 #   BROWSER
 #
 #   type:                               string
-#   values:                             sync|defer|async
-#   default:                            default
+#   values:                             async|defer|empty
+#   default:                            no default
 #
 #   NOTE:
-#   If 'sync' is set for script_load, NO attribute is placed and
-#   the resource is processed (loaded) syncronously at the tine
-#   the brouwser reads the (script) tag (default).
-
 #   Modern web browsers support the ASYNC and DEFER attributes
 #   on JS|SCRIPTS. These attributes instructs the browser it
 #   is safe to CONTINUE parsing (the HTML code) while the scripts
@@ -262,7 +258,7 @@
 #   init_function
 #   ----------------------------------------------------------------------------
 #   Specifies the name of the (J1|Module) initializer
-#   function (and method) to be started on the document-ready (event).
+#   function to be started on document-ready (event).
 #
 #   type:                               string
 #   values:                             name
@@ -277,11 +273,11 @@
 #  - resource:
 #      enabled:                         true|false
 #      id:                              resource_id
-#      comment:                         cmments on YOUR RESOURCE
-#      region:                          head|body
+#      comment:                         cmments on YOUR_RESOURCE_NAME
+#      region:                          head|body-footer
 #      layout:                          [ layout_name(s)|all ]
 #      required:                        always|ondemand
-#      script_load:                     sync|async|defer
+#      script_load:                     sync|defer|async
 #      pass_init_data:                  true|false
 #
 #      data:
@@ -309,7 +305,11 @@
 #                                         },
 #                                         ...
 #                                       ]
-#        init_function:                 INITIALIZER_NAME.INIT_METHOD
+#        init_function:                 [
+#                                         INITIALIZER_NAME.INIT_METHOD_NAME,
+#                                         INITIALIZER_NAME.INIT_METHOD_NAME,
+#                                         ...
+#                                       ]
 #
 # ------------------------------------------------------------------------------
 
@@ -319,6 +319,8 @@
 globals:
   base_path:                            /assets/theme/j1
   location:                             local
+  dependency_check_cycle:               25
+  dependency_check_timeout:             50
   extensions:
     css_dev:                            css
     css_prod:                           min.css
@@ -341,22 +343,24 @@ resources:
   # NOTE: load always 'unolight' as a 'bese' (e.g. for unodark, but should be removed)
   # NOTE: Changed J1 Theme Core resources for template.js bcecause of potential AV Scanner issues of min version
   #
-  - name:                               J1 Template Core
+  - name:                               J1 Theme Core
     resource:
       enabled:                          true
 
       id:                               core
-      comment:                          J1 Template Core
+      comment:                          Module Theme Core
       region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
         css:                            [
                                           core/css/themes/unolight/bootstrap,
                                           core/css/icon-fonts/mdib,
+                                          core/css/icon-fonts/fontawesome,
                                           core/css/vendor
                                         ]
         files:                          [ adapter/js/j1.js ]
@@ -384,7 +388,8 @@ resources:
       region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -395,18 +400,19 @@ resources:
 
   # ----------------------------------------------------------------------------
   # Speak2Me
-  # Speech synthesis (TTS)
+  # Speech Synthesis (TTS)
   #
-  - name:                               speak2me
+  - name:                               J1 Speak2Me
     resource:
       enabled:                          true
 
       id:                               speak2me
-      comment:                          Module speak2me
-      region:                           body-footer
+      comment:                          Module Speak2Me
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -426,10 +432,11 @@ resources:
 
       id:                               bmd
       comment:                          Module BMD
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
-      script_load:                      defer
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -449,10 +456,11 @@ resources:
 
       id:                               ga-optin
       comment:                          Module GA OptIn
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -473,10 +481,11 @@ resources:
 
       id:                               logger
       comment:                          Module Logger
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -497,10 +506,11 @@ resources:
 
       id:                               backstretch
       comment:                          Module Backstretch
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -521,10 +531,11 @@ resources:
 
       id:                               attic
       comment:                          Module Attic
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -545,10 +556,11 @@ resources:
 
       id:                               navigator
       comment:                          Module Navigator
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -562,16 +574,17 @@ resources:
   #
   # See: https://github.com/FrDH/mmenu-light
   #
-  - name:                               J1 MMenu
+  - name:                               J1 Mobile Menu
     resource:
       enabled:                          true
 
       id:                               mmenu
-      comment:                          Module MMenu
-      region:                           body-footer
+      comment:                          Module Mobile Menu
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -595,10 +608,11 @@ resources:
 
       id:                               themes
       comment:                          Module Themes
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -620,9 +634,10 @@ resources:
       id:                               toccer
       comment:                          Module Toccer
       layout:                           [ page, post, collection, blog_archive ]
-      region:                           body-footer
+      region:                           head
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -643,10 +658,11 @@ resources:
 
       id:                               cookie-consent
       comment:                          Module Cookie Consent
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -667,10 +683,11 @@ resources:
 
       id:                               lunr
       comment:                          Module Lunr
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -694,10 +711,11 @@ resources:
 
       id:                               fab
       comment:                          Module FAB
-      region:                           body-footer
-      layout:                           [ page, post, home ]
+      region:                           head
+      layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -720,10 +738,11 @@ resources:
 
       id:                               preload-polyfill
       comment:                          Module Preload Polyfill
-      region:                           body-footer
+      region:                           head
       layout:                           [all]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -748,10 +767,11 @@ resources:
 
       id:                               jquery-ui
       comment:                          Module jQueryUI
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -774,10 +794,11 @@ resources:
 
       id:                               theme-switcher
       comment:                          Module Theme Switcher
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -796,16 +817,18 @@ resources:
     resource:
       enabled:                          true
 
-      id:                               responsive-tables
+      id:                               rtable
       comment:                          Module Responsive Tables
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
-        css:                            []
+        css:                            [ modules/rtable/css/theme/uno/rtable ]
         files:                          [ adapter/js/rtable.js ]
         js:                             [ modules/rtable/js/rtable ]
         init_function:                  [ j1.adapter.rtable.init ]
@@ -819,10 +842,11 @@ resources:
 
       id:                               asciidoctor
       comment:                          Module Asciidoctor
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post, collection, blog_archive, app ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -840,10 +864,11 @@ resources:
 
       id:                               text-resizer
       comment:                          Module Text Resizer
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -864,10 +889,11 @@ resources:
 
       id:                               ms-dropdown
       comment:                          Module MS Dropdown
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -887,10 +913,11 @@ resources:
 
       id:                               translator
       comment:                          Module Translator
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -910,10 +937,11 @@ resources:
 
       id:                               analytics
       comment:                          Module Analytics
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -936,10 +964,11 @@ resources:
 
       id:                               custom-module
       comment:                          Module Custom Module
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -957,10 +986,11 @@ resources:
 
       id:                               custom-function
       comment:                          Module Custom Function
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -979,10 +1009,11 @@ resources:
 
       id:                               rouge
       comment:                          Module Rouge
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1003,12 +1034,13 @@ resources:
     resource:
       enabled:                          true
 
-      id:                               animate-css
+      id:                               animate
       comment:                          Module AnimateCSS
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1030,9 +1062,10 @@ resources:
       id:                               iframer
       comment:                          Module IFramer
       layout:                           [ home, page, post ]
-      region:                           body-footer
+      region:                           head
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -1053,9 +1086,10 @@ resources:
       id:                               lightbox
       comment:                          Module Lightbox
       layout:                           [ all ]
-      region:                           body-footer
+      region:                           head
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -1078,10 +1112,11 @@ resources:
 
       id:                               iconify
       comment:                          Module Iconify framework
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1099,12 +1134,13 @@ resources:
     resource:
       enabled:                          false
 
-      id:                               algolia-search
+      id:                               algolia
       comment:                          Module Algolia Search
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1128,10 +1164,11 @@ resources:
 
       id:                               clipboard
       comment:                          Module Clipboard
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1149,10 +1186,11 @@ resources:
 
       id:                               carousel
       comment:                          Module Carousel
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -1174,10 +1212,11 @@ resources:
 
       id:                               master-slider
       comment:                          Module Master Slider
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1201,10 +1240,11 @@ resources:
 
       id:                               master-slider-pro
       comment:                          Module Master Slider Professional
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1243,10 +1283,11 @@ resources:
 
       id:                               gallery
       comment:                          Module Gallery
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -1264,23 +1305,24 @@ resources:
   #
   # See: https://www.lightgalleryjs.com/
   #
-  - name:                               J1 lightGallery V2
+  - name:                               J1 lightGallery
     resource:
       enabled:                          true
 
       id:                               lightgallery
-      comment:                          Module J1 lightGallery V2
-      region:                           body-footer
+      comment:                          Module lightGallery
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
         css:                            [
-                                          modules/lightGallery/css/lightgallery-bundle,
                                           modules/lightGallery/css/lg-transitions,
-                                          modules/lightGallery/css/themes/uno/uno
+                                          modules/lightGallery/css/lightgallery-bundle,
+                                          modules/lightGallery/css/theme/uno/uno
                                         ]
         files:                          []
         js:                             [
@@ -1310,34 +1352,40 @@ resources:
 
       id:                               videojs
       comment:                          Module VideoJS
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
         css:                            [
                                           modules/videojs/css/videojs,
-                                          modules/videojs/css/plugins/controls/zoom,
                                           modules/videojs/css/themes/city,
                                           modules/videojs/css/themes/fantasy,
                                           modules/videojs/css/themes/forest,
                                           modules/videojs/css/themes/sea,
-                                          modules/videojs/css/themes/uno
+                                          modules/videojs/css/themes/uno,
+                                          modules/videojs/plugins/controls/aspect-ratio-panel/css/aspect-ratio-panel,
+                                          modules/videojs/plugins/controls/skipbuttons/css/skipbuttons,
+                                          modules/videojs/plugins/controls/zoom/css/zoom
                                         ]
-        files:                          []
+        files:                          [ adapter/js/videojs.js ]
         js:                             [
                                           modules/videojs/js/video,
-                                          modules/videojs/js/plugins/controls/hotkeys/hotkeys,
-                                          modules/videojs/js/plugins/controls/zoom/zoom,
-                                          modules/videojs/js/plugins/players/dm/dailymotion,
-                                          modules/videojs/js/plugins/players/vm/vimeo,
-                                          modules/videojs/js/plugins/players/yt/youtube
-
-
+                                          modules/videojs/plugins/controls/aspect-ratio-panel/js/aspect-ratio-panel,
+                                          modules/videojs/plugins/controls/hotkeys/js/hotkeys,
+                                          modules/videojs/plugins/controls/skipbuttons/js/skipbuttons,
+                                          modules/videojs/plugins/controls/persist-settings/js/videojs-persist,
+                                          modules/videojs/plugins/controls/playbackrate-adjuster/js/playbackrate-adjuster,
+                                          modules/videojs/plugins/controls/zoom/js/zoom,
+                                          modules/videojs/plugins/players/dm/js/dailymotion,
+                                          modules/videojs/plugins/players/vm/js/vimeo,
+                                          modules/videojs/plugins/players/wt/js/wistia,
+                                          modules/videojs/plugins/players/yt/js/youtube
                                         ]
-        init_function:                  []
+        init_function:                  [ j1.adapter.videojs.init ]
 
   # ----------------------------------------------------------------------------
   # TikToc Player, Version v1.0.11
@@ -1348,10 +1396,11 @@ resources:
 
       id:                               tiktoc-player
       comment:                          Module TikToc Player
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1369,10 +1418,11 @@ resources:
 
       id:                               dailymotion-player
       comment:                          Module Dailymotion Player
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1390,10 +1440,11 @@ resources:
 
       id:                               vimeo-player
       comment:                          Module Vimeo Player
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1411,10 +1462,11 @@ resources:
 
       id:                               wistia-player
       comment:                          Module Wistia Player
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1434,10 +1486,11 @@ resources:
 
       id:                               range-slider
       comment:                          Module Range Slider
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1455,10 +1508,11 @@ resources:
 
       id:                               scroller
       comment:                          Module Scroller
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1478,10 +1532,11 @@ resources:
 
       id:                               advertising
       comment:                          Module Advertising
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -1499,10 +1554,11 @@ resources:
 
       id:                               comments
       comment:                          Module Comments
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   true
 
       data:
@@ -1527,10 +1583,11 @@ resources:
 
       id:                               require-js
       comment:                          Module RequireJS
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1548,10 +1605,11 @@ resources:
 
       id:                               waves
       comment:                          Module Waves
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1566,22 +1624,23 @@ resources:
   #
   # See: https://github.com/js-cookie/js-cookie/
   #
-  - name:                               jsCookie
+  - name:                               J1 CookieJS
     resource:
       enabled:                          false
 
-      id:                               js-cookie
-      comment:                          Module jsCookie
-      region:                           body-footer
+      id:                               cookiejs
+      comment:                          Module CookieJS
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
         css:                            []
         files:                          []
-        js:                             [ modules/js-cookies/js/js.cookie ]
+        js:                             [ modules/cookiejs/js/cookiejs ]
         init_function:                  []
 
   # ----------------------------------------------------------------------------
@@ -1593,10 +1652,11 @@ resources:
 
       id:                               particles
       comment:                          Module Particles
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1606,21 +1666,22 @@ resources:
         init_function:                  [ j1.adapter.particles.init ]
 
   # ----------------------------------------------------------------------------
-  # Slick
+  # Slick Slider
   # Ultimate Slider library
   #
   # See: https://github.com/kenwheeler/slick/
   #
-  - name:                               Slick Slider
+  - name:                               J1 Slick
     resource:
       enabled:                          true
 
-      id:                               slick-slider
-      comment:                          Module Slick Slider
-      region:                           body-footer
+      id:                               slick
+      comment:                          Module Slick
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1649,10 +1710,11 @@ resources:
 
       id:                               masonry
       comment:                          Module Masonry
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1675,11 +1737,12 @@ resources:
       enabled:                          true
 
       id:                               icon-picker
-      comment:                          Module J1 Icon Picker
-      region:                           body-footer
+      comment:                          Module Icon Picker
+      region:                           head
       layout:                           [ page ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1706,11 +1769,12 @@ resources:
       enabled:                          true
 
       id:                               theme-toggler
-      comment:                          Module heme Toggler
-      region:                           body-footer
+      comment:                          Module Theme Toggler
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1720,55 +1784,26 @@ resources:
         init_function:                  [ j1.adapter.themeToggler.init ]
 
   # ----------------------------------------------------------------------------
-  # J1 lazy Loader
-  # Load resources if required|requested
+  # dynamicLoader
+  # Configurable JS
   #
-  - name:                               J1 lazyLoader
+  - name:                               J1 CSS Loader
     resource:
       enabled:                          true
 
-      id:                               lazy-loader
-      comment:                          Module J1 lazyLoader
-      region:                           body-footer
+      id:                               cssloader
+      comment:                          Module CSS Loader
+      region:                           head
       layout:                           [ all ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
         css:                            []
         files:                          [ adapter/js/lazyLoader.js ]
         js:                             []
-        init_function:                  [ j1.adapter.lazyLoader.init ]
-
-  # ----------------------------------------------------------------------------
-  # jQuery Lazy
-  # Load CSS|JS and general files if required|requested
-  #
-  - name:                               jQuery Lazy
-    resource:
-      enabled:                          false
-
-      id:                               jquery-lazy-loader
-      comment:                          Module jQuery Lazy
-      region:                           head
-      layout:                           [ all ]
-      required:                         always
-      script_load:                      sync
-      pass_init_data:                   false
-
-      data:
-        css:                            []
-        files:                          [ adapter/js/lazyLoader.js ]
-        js:                             [
-                                          modules/lazyLoader/js/jquery.lazy,
-                                          modules/lazyLoader/js/plugins/jquery.lazy.ajax,
-                                          modules/lazyLoader/js/plugins/jquery.lazy.av,
-                                          modules/lazyLoader/js/plugins/jquery.lazy.iframe,
-                                          modules/lazyLoader/js/plugins/jquery.lazy.script,
-                                          modules/lazyLoader/js/plugins/jquery.lazy.vimeo,
-                                          modules/lazyLoader/js/plugins/jquery.lazy.youtube
-                                        ]
         init_function:                  [ j1.adapter.lazyLoader.init ]
 
   # ----------------------------------------------------------------------------
@@ -1782,11 +1817,12 @@ resources:
       enabled:                          false
 
       id:                               dropdowns
-      comment:                          Module J1 Dropdown Menus
-      region:                           body-footer
+      comment:                          Module Dropdown Menus
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1810,10 +1846,11 @@ resources:
 
       id:                               slim-select
       comment:                          Module Slim Select
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         always
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1832,10 +1869,11 @@ resources:
 
       id:                               chat-bot
       comment:                          Module Chatbot
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1854,10 +1892,11 @@ resources:
 
       id:                               doc-search
       comment:                          Module DocSearch
-      region:                           body-footer
+      region:                           head
       layout:                           [ all ]
       required:                         ondemand
-      script_load:                      sync
+      script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1876,10 +1915,11 @@ resources:
 
       id:                               gemini
       comment:                          Module Gemini
-      region:                           body-footer
+      region:                           head
       layout:                           [ page ]
       required:                         ondemand
       script_load:                      defer
+      dependencies:                     false
       pass_init_data:                   false
 
       data:
@@ -1900,7 +1940,7 @@ resources:
 
       id:                               amplitudejs
       comment:                          Module AmplitudeJS
-      region:                           body-footer
+      region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
       script_load:                      defer
@@ -1918,25 +1958,94 @@ resources:
         init_function:                  [ j1.adapter.amplitude.init ]
 
   # ----------------------------------------------------------------------------
-  # jqueryScrollbar
+  # SwiperJS
   #
-  - name:                               J1 jqueryScrollbar
+  - name:                               J1 SwiperJS
     resource:
-      enabled:                          false
+      enabled:                          true
 
-      id:                               scrollbars
-      comment:                          Module jqueryScrollbar
-      region:                           body-footer
+      id:                               swiperjs
+      comment:                          Module SwiperJS
+      region:                           head
       layout:                           [ home, page, post ]
-      required:                         always
+      required:                         ondemand
       script_load:                      defer
       pass_init_data:                   false
 
       data:
-        css:                            [ modules/jqueryScrollbar/css/scrollbar ]
+        css:                            [                                          
+                                          modules/swiperjs/css/theme/uno,
+                                          modules/swiperjs/css/swiper-bundle,
+                                          modules/swiperjs/css/modules/layoutBase,
+                                          modules/swiperjs/css/modules/layoutExpanding,
+                                          modules/swiperjs/css/modules/layoutNeighbor,
+                                          modules/swiperjs/css/modules/layoutPanorama,
+                                          modules/swiperjs/css/modules/layoutParallax,
+                                          modules/swiperjs/css/modules/layoutStacked,
+                                          modules/swiperjs/css/modules/layoutThumbs
+                                        ]
+        files:                          [ adapter/js/swiper.js ]
+        js:                             [
+                                          modules/swiperjs/js/swiper-bundle,
+                                          modules/swiperjs/js/modules/layoutBase,
+                                          modules/swiperjs/js/modules/layoutExpanding,
+                                          modules/swiperjs/js/modules/layoutNeighbor,
+                                          modules/swiperjs/js/modules/layoutPanorama,
+                                          modules/swiperjs/js/modules/layoutParallax,
+                                          modules/swiperjs/js/modules/layoutStacked,
+                                          modules/swiperjs/js/modules/layoutThumbs
+                                        ]
+        init_function:                  [ j1.adapter.swiper.init ]
+
+  # ----------------------------------------------------------------------------
+  # Photoswipe Lightbox
+  #
+  - name:                               J1 PhotoswipeJS
+    resource:
+      enabled:                          true
+
+      id:                               photoswipejs
+      comment:                          Module PhotoswipeJS
+      region:                           head
+      layout:                           [ home, page, post ]
+      required:                         ondemand
+      script_load:                      defer
+      pass_init_data:                   false
+
+      data:
+        css:                            [
+                                          modules/photoswipe/css/photoswipe,
+                                          modules/photoswipe/css/photoswipe-caption-plugin
+                                        ]
         files:                          []
-        js:                             [ modules/jqueryScrollbar/js/scrollbar ]
+        js:                             [
+                                          modules/photoswipe/js/photoswipe-core,
+                                          modules/photoswipe/js/photoswipe-lightbox,
+                                          modules/photoswipe/js/photoswipe-caption-plugin
+                                        ]
         init_function:                  []
+
+  # ----------------------------------------------------------------------------
+  # jqueryScrollbar
+  #
+  # - name:                               J1 jqueryScrollbar
+  #   resource:
+  #     enabled:                          true
+
+  #     id:                               scrollbars
+  #     comment:                          Module jqueryScrollbar
+  #     region:                           head
+  #     layout:                           [ home, page, post ]
+  #     required:                         always
+  #     script_load:                      defer
+  #     dependencies:                     false
+  #     pass_init_data:                   false
+
+  #     data:
+  #       css:                            [ modules/jqueryScrollbar/css/scrollbar ]
+  #       files:                          []
+  #       js:                             [ modules/jqueryScrollbar/js/scrollbar ]
+  #       init_function:                  []
 
 # ------------------------------------------------------------------------------
 # END config

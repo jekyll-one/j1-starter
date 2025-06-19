@@ -5,7 +5,7 @@
 #  Product/Info:
 #  https://jekyll.one
 #
-#  Copyright (C) 2023, 2024 Juergen Adams
+#  Copyright (C) 2023-2025 Juergen Adams
 #
 #  J1 Template is licensed under the MIT License.
 #  See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -104,7 +104,7 @@ settings:
               width:                    12
               type:                     text
               position:                 left                                    # left | center
-              title:                    J1 Template
+              title:                    Jekyll
               tagline:                  <b>create modern websites</b>
               translate_description:    notranslate                             # translate|notranslate
               description_properties:   mt-3 mb-3
@@ -217,7 +217,7 @@ settings:
               gridify:                  true
               size_y:                   450
               darken:                   6
-              background_image:         /assets/image/modules/attics/ideas-start-here-1920x1280-bw.jpg
+              background_image:         /assets/image/module/attic/1920x1280/ideas-start-here-1920x1280.jpg
 
 
   # ----------------------------------------------------------------------------
@@ -246,7 +246,7 @@ settings:
           justify:                      true
           brightness:                   80
           opacity:                      false
-          picture:                      /assets/image/modules/attics/ideas-start-here-1920x1280-bw.jpg
+          picture:                      /assets/image/module/attic/1920x1280/ideas-start-here-1920x1280.jpg
 
 # ------------------------------------------------------------------------------
 # END config

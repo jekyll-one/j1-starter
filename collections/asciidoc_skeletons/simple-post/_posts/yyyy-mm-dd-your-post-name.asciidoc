@@ -8,7 +8,7 @@ categories:                             [ Theme ]
 tags:                                   [ Simple Post ]
 
 image:
-  path:                                 /assets/image/modules/attics/sigmund-1920x1280.jpg
+  path:                                 /assets/image/module/attic/sigmund-1920x1280.jpg
   width:                                1920
   height:                               1280
   alt:                                  Photo by Sigmund on Unsplash
@@ -30,7 +30,7 @@ resource_options:
   - attic:
       padding_top:                      630
       slides:
-        - url:                          /assets/image/modules/attics/sigmund-1920x1280.jpg
+        - url:                          /assets/image/module/attic/sigmund-1920x1280.jpg
           alt:                          Photo by Sigmund on Unsplash
           badge:
             type:                       unsplash
@@ -46,7 +46,7 @@ resource_options:
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
 // :page--attr:                         <attr-value>
-// :post-image:                         /assets/image/modules/attics/sigmund-1920x1280.jpg
+// :post-image:                         /assets/image/module/attic/sigmund-1920x1280.jpg
 
 // Place an excerpt at the most top position
 // -----------------------------------------------------------------------------

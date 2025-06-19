@@ -5,7 +5,7 @@
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023, 2024 Juergen Adams
+# Copyright (C) 2023-2025 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -48,7 +48,7 @@ Asciidoctor::Extensions.register do
       chars           = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
       video_id        = (0...11).map {chars[rand(chars.length)]}.join
 
-      title_html      = (attributes.has_key? 'title') ? %(<div class="video-title"> <i class="mdib mdib-youtube-tv mdib-24px mr-2"></i> #{attributes['title']} </div>\n) : nil
+      title_html      = (attributes.has_key? 'title') ? %(<div class="video-title"> <i class="mdib mdib-video mdib-24px mr-2"></i> #{attributes['title']} </div>\n) : nil
       poster_image    = (poster = attributes['poster']) ? %(#{poster}) : nil
       theme_name      = (theme = attributes['theme']) ? %(#{theme}) : nil
       caption_enabled = (caption  = attributes['caption'])  ? true : false
@@ -121,6 +121,9 @@ Asciidoctor::Extensions.register do
                 var vjs_player = document.getElementById("#{video_id}");
 
                 vjs_player.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  event.stopPropagation();
+
                   var scrollOffset = (window.innerWidth >= 720) ? -130 : -110;
 
                   // scroll player to top position

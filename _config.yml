@@ -5,10 +5,10 @@
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023, 2024 Juergen Adams
+# Copyright (C) 2023-2025 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
-# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE.md
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
 # ------------------------------------------------------------------------------
 
 # ==============================================================================
@@ -47,19 +47,19 @@
 #   values:                             development|production
 #   default:                            development
 #
-environment:                            production
+environment:                            development
 
 # version
 # ------------------------------------------------------------------------------
 # Sets the build version of the site
 #
-version:                                2024.3.14
+version:                                2024.3.26
 
 # copyright
 # ------------------------------------------------------------------------------
 # Sets the copyright info of the site
 #
-copyright:                              © 2023, 2024 J1 · All rights reserved
+copyright:                              © 2023-2025 J1 · All rights reserved
 
 # noscript
 # ------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ theme:                                  j1-template
 # Sets the theme "path" of J1 Theme for the ~/assets/themes
 # folder. To not conflict with other template systems, all
 # template assets for J1 Theme are stored under the default
-# path "/assets/themes/j1".
+# path "/assets/theme/j1".
 #
 # NOTE:
 #   Do NOT change template.name to other values.
@@ -216,9 +216,12 @@ doctype:                                html
 #   default:                            false
 # ------------------------------------------------------------------------------
 #
-title:                                  J1 Starter
-title_extention:                        Free Template for Jekyll and Bootstrap
+title:                                  J1 Template
+title_extention:                        Free Bootstrap V5 theme for Jekyll
 
+slogan:                                 Free Jekyll Template based on Bootstrap V5 for websites,
+                                        landing pages, blogs, portfolios, directories, ecommerce
+                                        and documentations.
 description: >
                                         J1 Template gives web developers and hobbyists a clean
                                         implementation in Jekyll for starting new projects
@@ -226,8 +229,11 @@ description: >
                                         software for the Web. Jekyll One is open source,
                                         free to use, and the modules packed as well.
 keywords: >
-                                        open source, free, template, jekyll, jekyllone, web,
-                                        sites, static, jamstack, bootstap
+                                        free, open, source, open source, free, bootstap,
+                                        theme, template, jekyll, jekyll one, web, sites,
+                                        website, landing page, portfolio, directory,
+                                        ecommerce, documentation, jamstack,
+                                        deploy, netlify
 
 # Crawling/Indexing ENABLED for default. Settings managed page-wise using
 # front matter defaults or by page default settings to make sure that only
@@ -241,7 +247,7 @@ robots:
 # BRAND configuration
 # Set the brand image and favicon (located in /asset/images)
 brand:
-  image:                                icons/j1/j1-512x512.png
+  image:                                icon/j1/j1-512x512.png
   image_height:                         48px
   text:                                 Jekyll One
   text_color:                           "#9E9E9E"
@@ -249,7 +255,7 @@ brand:
 # Set the favicon and type
 #
 favicon:
-  image:                                icons/j1/favicon.ico
+  image:                                icon/j1/favicon.ico
   type:                                 image/ico
 
 
@@ -310,8 +316,7 @@ permalink:                              pretty
 # site.url will be set to the value of host, port.
 # NOTE: Required setting for the sitemap plugin, for example.
 #
-#url:                                   http://localhost:22000
-url:                                    https://starter.jekyll.one/
+url:                                    http://localhost:30000
 
 # The subpath of your site, e.g. /blog/. Used in conjunction with
 # site.url (see above) when you want a link to something with the
@@ -337,7 +342,7 @@ base_path:                              ""
 #
 protocol:                               http
 host:                                   localhost
-port:                                   22000
+port:                                   30000
 timezone:                               Europe/Berlin
 encoding:                               UTF-8
 
@@ -367,16 +372,14 @@ collections_dir:                        collections
 include:                                [ .htaccess ]
 exclude:                                [
                                           log, vendor, node_modules, utilsrv,
-                                          '.sass-cache', '.vscode', '.idea',
-                                          'pages/public/jupyter/notebooks/j1',
-                                          'pages/public/jupyter/notebooks/nbi-docs',
                                           History.markdown, README.md,
                                           changelog.md, Rakefile,
                                           Gemfile, Gemfile.lock, Guardfile,
                                           dev_config.yml, prod_config.yml,
-                                          yarn.lock, config.ru,
+                                          yarn.lock, config.ru, jekyll.log,
                                           package-lock.json, package.json,
-                                          '*.ignore', '*._config.yml',
+                                          '.sass-cache', '.vscode', '.idea',
+                                          '*.ignore',
                                           '*.bat', '*.sh', '*.tmp', 'dot.*',
                                           '*.log', '*.ppt*', '*.pdf',
                                           '*.zip', '*.7z', '*.tgz', '*.tar',
@@ -486,7 +489,7 @@ asciidoc_attributes:                    &asciidoc_attributes
   hardbreaks-option:
   source-highlighter:                   rouge
   icons:                                font
-  imagesdir:                            /assets/images
+  imagesdir:                            /assets/image
   iconsdir:                             '{imagesdir}/icons/asciidoc'
   experimental:                         true                                    # enable the UI macros, e.g kbd:[], for Asciidoctor globally
 
@@ -524,10 +527,10 @@ author:
   twitter:
   feedburner:
 
-logo:                                   /assets/images/icons/j1/j1-512x512.png
+logo:                                   /assets/image/icon/j1/j1-512x512.png
 
 image:
-  path:                                 /assets/images/promo/home/screenshot.jpg
+  path:                                 /assets/image/promo/home/screenshot.jpg
   width:                                1200
   height:                               800
 
@@ -644,10 +647,10 @@ defaults:
         name:                           Juergen Adams
         url:                            https://jekyll.one/
 
-      logo:                             /assets/images/icons/j1/j1-512x512.png
+      logo:                             /assets/image/icon/j1/j1-512x512.png
 
       image:
-        path:                           /assets/images/promo/home/screenshot.jpg
+        path:                           /assets/image/promo/home/screenshot.jpg
         width:                          1200
         height:                         800
 
@@ -657,7 +660,7 @@ defaults:
         size:                           5x
 
       images:
-        dir:                            /assets/images/pages
+        dir:                            /assets/image/page
 
       robots:
         index:                          true
@@ -698,10 +701,10 @@ defaults:
         name:                           Juergen Adams
         url:                            https://jekyll.one/
 
-      logo:                             /assets/images/icons/j1/j1-512x512.png
+      logo:                             /assets/image/icon/j1/j1-512x512.png
 
       image:
-        path:                           /assets/images/promo/home/screenshot.jpg
+        path:                           /assets/image/promo/home/screenshot.jpg
         width:                          1200
         height:                         800
 

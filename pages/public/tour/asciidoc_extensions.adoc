@@ -20,7 +20,7 @@ categories:                             [ Roundtrip ]
 tags:                                   [ Asciidoc, Extension ]
 
 image:
-  path:                                 /assets/image/pages/tour/puzzle-1920x1280-bw.jpg
+  path:                                 /assets/image/module/attic/1920x1280/martin-sanchez.jpg
   width:                                1920
   height:                               1280
 
@@ -36,8 +36,12 @@ resources:                              [
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/image/pages/tour/puzzle-1920x1280-bw.jpg
-          alt:                          puzzle-1920x1280-bw
+        - url:                          /assets/image/module/attic/1920x1280/martin-sanchez.jpg
+          alt:                          Photo by Martin Sanchez on Unsplash
+          badge:
+            type:                       unsplash
+            author:                     BP Miller
+            href:                       //unsplash.com/de/@bp_miller
 ---
 
 // Page Initializer
@@ -399,7 +403,7 @@ lightbox::<block_id>[ 800, {<data-images-id>} ]
 ----
 
 .Lightbox block for standalone images
-lightbox::images-standalone[ 800, {data-images-standalone} ]
+lightbox::images-standalone[ 800, {data-images-lightbox--standalone} ]
 
 [role="mt-5"]
 === Grouped Images
@@ -416,7 +420,7 @@ lightbox::<block_id>[ 400, {<data-images-group_id>}, <group_name> ]
 ----
 
 .Lightbox block for grouped images
-lightbox::images-group[ 400, {data-images-group}, group_name ]
+lightbox::images-group[ 400, {data-images-lightbox--group}, group_name ]
 
 
 [role="mt-5"]

@@ -1,7 +1,7 @@
 ---
 title:                                  Icon Fonts
 title_extention:                        Icons for J1 Template
-tagline:                                Popular Icons for Your Web
+tagline:                                Icons for Your Web
 
 date:                                   2020-11-06
 #last_modified:                         2023-01-01
@@ -20,7 +20,7 @@ categories:                             [ Roundtrip ]
 tags:                                   [ Module, Icon ]
 
 image:
-  path:                                 assets/image/pages/tour/icon-fonts-1920x1280-bw.jpg
+  path:                                 /assets/image/module/attic/1920x1280/material_symbols.jpg
   width:                                1920
   height:                               1280
 
@@ -31,12 +31,8 @@ resources:                              [ iconify ]
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/image/pages/tour/icon-fonts-1920x1280-bw.jpg
-          alt:                          Photo by Harpal Singh on Unsplash
-          badge:
-            type:                       unsplash
-            author:                     Harpal Singh
-            href:                       //unsplash.com/@aquatium
+        - url:                          /assets/image/module/attic/1920x1280/material_symbols.jpg
+          alt:                          Material Design Symbols
 ---
 
 // Page Initializer

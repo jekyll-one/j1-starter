@@ -19,7 +19,7 @@ categories:                             [ Info ]
 tags:                                   [ Introduction ]
 
 image:
-  path:                                 /assets/image/modules/attics/1920x1280/brigitta-schneiter.jpg
+  path:                                 /assets/image/module/attic/1920x1280/brigitta-schneiter.jpg
   width:                                1920
   height:                               1280
 
@@ -27,11 +27,11 @@ comments:                               false
 regenerate:                             false
 permalink:                              /pages/public/learn/where_to_go/
 
-resources:                              [ rouge ]
+resources:                              []
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/image/modules/attics/1920x1280/brigitta-schneiter.jpg
+        - url:                          /assets/image/module/attic/1920x1280/brigitta-schneiter.jpg
           alt:                          Photo by Brigitta Schneiter on Unsplash
           badge:
             type:                       unsplash
@@ -94,7 +94,7 @@ the top features of J1.
 
 If you're interested what J1 Template can do, continue by walking through the
 roundtrip examples by starting an inspiring tour
-link:{url-j1-roundtrip--present-images}[from here].
+link:{url-j1-roundtrip--image_data}[from here].
 
 [role="mt-4"]
 === Cheatsheets

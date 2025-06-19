@@ -21,7 +21,7 @@ categories:                             [ Roundtrip ]
 tags:                                   [ Bootstrap, Modal, Extension ]
 
 image:
-  path:                                 /assets/image/pages/tour/bootstrap-1920x1000-bw.jpg
+  path:                                 /assets/image/module/attic/1920x1280/bootstrap-modal.jpg
   width:                                1920
   height:                               1280
 
@@ -32,7 +32,7 @@ resources:                              []
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/image/pages/tour/bootstrap-1920x1000-bw.jpg
+        - url:                          /assets/image/module/attic/1920x1280/bootstrap-modal.jpg
           alt:                          Bootstrap Framework Logo
 ---
 
@@ -41,14 +41,21 @@ resource_options:
 // Enable the Liquid Preprocessor
 :page-liquid:
 
-// Set (local) page attributes here
-// -----------------------------------------------------------------------------
-// :page--attr:                         <attr-value>
+// Attribute settings for page content control (e.g includes)
+//
+:documentdir:                           _includes/documents
+
+// Attribute settings for page section control
+//
 :time-num--string:                      5-10
 :time-en--string:                       Minutes
 :time-en--description:                  to read
 :time-de--string:                       Minuten
 :time-de--description:                  Lesezeit
+
+// Additiona page attributes
+// -----------------------------------------------------------------------------
+// :page--attr:                         <attr-value>
 
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
@@ -77,7 +84,7 @@ messages get the full user's attention.
 </div>
 ++++
 
-// Include sub-documents (if any)
+// Include sub-documents (hidden content)
 // -----------------------------------------------------------------------------
 include::{documentdir}/419_advanced_modals_demo.asciidoc[]
 
@@ -95,7 +102,7 @@ For more information on how to use Bootstrap’s JavaScript modal
 plugin, refer to: link:{url-bs-docs--components-modal}[Bootstrap Docs, {browser-window--new}].
 ====
 
-// include::{documentdir}/tables/bs_modal_examples.asciidoc[]
+// Include sub-documents (table for BS Modal examples)
 include::{documentdir}/410_table_bs_modal_examples.asciidoc[]
 
 

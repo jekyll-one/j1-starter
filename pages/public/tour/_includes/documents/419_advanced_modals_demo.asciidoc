@@ -83,7 +83,7 @@
       </div>
       <!-- Body -->
       <div class="modal-body">
-        <img src="/assets/image/modules/attics/admin-dashboard-bootstrap-1280x600.jpg" alt="admin-dashboard-bootstrap" class="img-fluid">
+        <img src="/assets/image/module/attic/1920x1280/admin-dashboard-bootstrap.jpg" alt="admin-dashboard-bootstrap" class="img-fluid">
         <div class="text-center">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vero illo error eveniet cum.</p>
         </div>
@@ -187,7 +187,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-3 text-center">
-            <img src="/assets/image/pages/tour/410_bs_modals_extentions/avatar.jpg" alt="avatar.jpg" class="img-fluid z-depth-1-half rounded-circle">
+            <img src="/assets/image/page/tour/410_bs_modals_extentions/avatar.jpg" alt="avatar.jpg" class="img-fluid z-depth-1-half rounded-circle">
             <div style="height: 10px"></div>
             <p class="title mb-0">Jane</p>
             <p class="text-muted " style="font-size: 13px">Consultant</p>

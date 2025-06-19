@@ -3,10 +3,9 @@
 
 node_modules/
 
+
 # Unneeded files created by you or helper processes
 # ------------------------------------------------------------------------------
-
-package-lock.json
 
 /google*.html
 

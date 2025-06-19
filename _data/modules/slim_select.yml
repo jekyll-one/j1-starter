@@ -5,7 +5,7 @@
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023, 2024 Juergen Adams
+# Copyright (C) 2023-2025 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -23,18 +23,21 @@ description:
 # User configuration settings
 #
 settings:
-  enabled:                              true
+
+  # ----------------------------------------------------------------------------
+  # GENERAL options
+  # ----------------------------------------------------------------------------
+  #
+  enabled:                              false
 
   # ----------------------------------------------------------------------------
   # API options
-  # ----------------------------------------------------------------------------
   #
-  api_options:
-    showSearch:                         true
+  # api_options:
+  #   showSearch:                         false
 
   # ----------------------------------------------------------------------------
   # SELECT options
-  # ----------------------------------------------------------------------------
   #
   selects:
 
@@ -42,7 +45,7 @@ settings:
     # Select Icon library
     #
     - select:                           icon_library
-      enabled:                          true
+      enabled:                          false
 
       # CONTAINER settings
       # ------------------------------------------------------------------------
@@ -74,7 +77,7 @@ settings:
     # Prompt history (gemini ai previewer)
     #
     - select:                           prompt_history
-      enabled:                          true
+      enabled:                          false
 
       # CONTAINER settings
       # ------------------------------------------------------------------------
@@ -92,7 +95,7 @@ settings:
     # Search history (site search)
     #
     - select:                           search_history
-      enabled:                          true
+      enabled:                          false
 
       # CONTAINER settings
       # ------------------------------------------------------------------------

@@ -5,7 +5,7 @@
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023, 2024 Juergen Adams
+# Copyright (C) 2023-2025 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # For details, see: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -20,7 +20,7 @@
 # Example:
 #
 #  .The image block title
-#  lightbox::lightbox-example[450, "assets/image/modules/gallery/old_times/image_01.jpg, description 1, assets/image/modules/gallery/old_times/image_02.jpg, description 2" ]
+#  lightbox::lightbox-example[450, "assets/image/module/gallery/old_times/image_01.jpg, description 1, assets/image/module/gallery/old_times/image_02.jpg, description 2" ]
 #
 # ------------------------------------------------------------------------------
 include Asciidoctor
@@ -43,8 +43,8 @@ Asciidoctor::Extensions.register do
       html_block    = Builder::XmlMarkup.new(:indent => 2)
       imagesdir     = parent.attr 'imagesdir'
       images_hash   = Hash[*attributes['image_data'].split(',')]
+      title_html    = (attributes.has_key? 'title') ? %(<div class="lightbox-title"> <i class="mdib mdib-lightbulb-on  mdib-24px mr-2"></i> #{attributes['title']} </div>\n) : nil
 
-      title_html    = (attributes.has_key? 'title') ? %(<div class="lightbox-title">#{attributes['title']}</div>\n) : nil
       role          = (attributes.has_key? 'role') ? role : ''
       grouped       = (attributes.has_key? 'group') ? true : false
 

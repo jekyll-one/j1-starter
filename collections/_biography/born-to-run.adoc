@@ -11,10 +11,10 @@ categories:                             [ Book ]
 tags:                                   [ Biography ]
 
 image:
-  path:                                 /assets/image/collections/books/biography/born_to_run.jpg
+  path:                                 /assets/image/collection/books/biography/born_to_run.jpg
 
 book:
-  cover:                                /assets/image/collections/books/biography/born_to_run.jpg
+  cover:                                /assets/image/collection/books/biography/born_to_run.jpg
   format:                               hardback
   pages:                                528
   publisher:                            Simon and Schuster Ltd.
@@ -34,7 +34,7 @@ resource_options:
   - attic:
       padding_top:                      600
       slides:
-        - url:                          /assets/image/modules/attics/giammarco-boscaro-1920x1280.jpg
+        - url:                          /assets/image/module/attic/giammarco-boscaro-1920x1280.jpg
           alt:                          Photo by Giammarco on Unsplash
           badge:
             type:                       unsplash

@@ -10,7 +10,7 @@ categories:                             [ Jekyll ]
 tags:                                   [ Theme ]
 
 image:
-  path:                                 /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+  path:                                 /assets/image/module/attic/1920x1280/j1-mockup.jpg
   width:                                1920
   height:                               1280
   alt:                                  J1 Template Mockup
@@ -28,7 +28,7 @@ resource_options:
   - attic:
       padding_top:                      630
       slides:
-        - url:                          /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+        - url:                          /assets/image/module/attic/1920x1280/j1-mockup.jpg
           alt:                          J1 Template Mockup
 ---
 

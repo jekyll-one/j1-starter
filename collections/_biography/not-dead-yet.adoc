@@ -11,10 +11,10 @@ categories:                             [ Book ]
 tags:                                   [ Biography ]
 
 image:
-  path:                                 /assets/image/collections/books/biography/not_dead_yet.jpg
+  path:                                 /assets/image/collection/books/biography/not_dead_yet.jpg
 
 book:
-  cover:                                /assets/image/collections/books/biography/not_dead_yet.jpg
+  cover:                                /assets/image/collection/books/biography/not_dead_yet.jpg
   format:                               hardback
   pages:                                464
   publisher:                            Cornerstone
@@ -34,7 +34,7 @@ resource_options:
   - attic:
       padding_top:                      600
       slides:
-        - url:                          /assets/image/modules/attics/giammarco-boscaro-1920x1280.jpg
+        - url:                          /assets/image/module/attic/giammarco-boscaro-1920x1280.jpg
           alt:                          Photo by Giammarco on Unsplash
           badge:
             type:                       unsplash

@@ -1,7 +1,7 @@
 ---
 title:                                  Responsive Tables
 title_extention:                        Responsive tables for J1 Template
-tagline:                                Tables viewed best
+tagline:                                Present tables at its best
 
 date:                                   2020-11-09
 #last_modified:                         2023-01-01
@@ -19,7 +19,7 @@ categories:                             [ Roundtrip ]
 tags:                                   [ Bootstrap, Tables, Extension ]
 
 image:
-  path:                                 /assets/image/pages/tour/tables-1920x1280-bw.jpg
+  path:                                 /assets/image/page/tour/tables-1920x1280-bw.jpg
   width:                                1920
   height:                               1280
 
@@ -30,12 +30,12 @@ resources:                              []
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/image/pages/tour/tables-1920x1280-bw.jpg
-          alt:                          Photo by Markus Spiske on Unsplash
+        - url:                          /assets/image/module/attic/1920x1280/towfiqu-barbhuiya.jpg
+          alt:                          Photo by Towfiqu barbhuiya on Unsplash
           badge:
             type:                       unsplash
-            author:                     Markus Spiske
-            href:                       //unsplash.com/@markusspiske/portfolio
+            author:                     Towfiqu barbhuiya
+            href:                       https://unsplash.com/de/@towfiqu999999
 ---
 
 // Page Initializer
@@ -89,7 +89,7 @@ a compromise. To fit the everyday needs for tables, viewed well on desktop
 and mobile devices, two types of *responsive* tables are implemented by the
 J1 Template system:
 
-.Types of responsive tables
+.Types of Responsive Tables
 [cols="3a,3a,6a", options="header", width="100%", role="rtable mt-4"]
 |===
 |Style |Type |Description
@@ -123,7 +123,7 @@ tablets.
 
 
 [role="mt-5"]
-== Bootstrap Tables
+== Bootstrap Tables (striped)
 
 Tables are widely used for documentation pages. Below, simple 2-column tables
 are used to explain some of the Jekyll variables for templating your content
@@ -140,7 +140,7 @@ normally and do not scroll horizontally.
 .Bootstrap using fixed text size `no-rtext`
 [source, asciidoc, role="noclip"]
 ----
-[cols="4a,8a", options="header", width="100%", role="table-responsive-md no-rtext"]
+[cols="4a,8a", options="header", width="100%", role="table-striped table-responsive-md no-rtext"]
 |===
 |Variable |Description
 
@@ -157,7 +157,7 @@ depending upon what Liquid is being processed and what `page` is.
 ----
 
 .Bootstrap, fixed text size `no-rtext`
-[cols="4a,8a", options="header", width="100%", role="table-responsive-md no-rtext mt-4"]
+[cols="4a,8a", options="header", width="100%", role="table-striped table-responsive-md no-rtext mt-4"]
 |===
 |Variable |Description
 
@@ -184,7 +184,7 @@ Post's front matter by specifying a new date/time in the format
 .Bootstrap using responsive text size
 [source, asciidoc, role="noclip"]
 ----
-[cols="4a,8a", options="header", width="100%", role="table-responsive-md"]
+[cols="4a,8a", options="header", width="100%", role="table-striped table-responsive-md"]
 |===
 |Variable |Description
 
@@ -198,7 +198,7 @@ depending upon what Liquid is being processed and what `page` is.
 ----
 
 .Bootstrap, responsive text size
-[cols="4a,8a", options="header", width="100%", role="table-responsive mt-4"]
+[cols="4a,8a", options="header", width="100%", role="table-striped table-responsive mt-4"]
 |===
 |Variable |Description
 
@@ -219,7 +219,8 @@ Post's front matter by specifying a new date/time in the format
 |===
 
 [role="mt-4"]
-== Responsive Tables
+[[rtables-striped]]
+== Responsive Tables (striped)
 
 Responsive tables *rebuild* a table. The header is set to invisible, and
 all columns get vertically *stacked as rows*.
@@ -227,7 +228,7 @@ all columns get vertically *stacked as rows*.
 .R Table using responsive text size
 [source, asciidoc, role="noclip"]
 ----
-[cols="4a,8a", options="header", width="100%", role="rtable"]
+[cols="4a,8a", options="header", width="100%", role="table-striped rtable"]
 |===
 |Variable |Description
 
@@ -241,7 +242,7 @@ depending upon what Liquid is being processed and what `page` is.
 ----
 
 .R Table, responsive text size
-[cols="4a,8a", options="header", width="100%", role="rtable mt-4"]
+[cols="4a,8a", options="header", width="100%", role="table-striped rtable mt-4"]
 |===
 |Variable |Description
 
@@ -261,7 +262,12 @@ Post's front matter by specifying a new date/time in the format
 
 |===
 
-.R Table using fixed font size
+
+[role="mt-4"]
+[[rtables-not-striped]]
+== Responsive Tables (NOT striped)
+
+.R Table using fixed font size (no rtext)
 [source, asciidoc, role="noclip"]
 ----
 [cols="4a,8a", options="header", width="100%", role="rtable no-rtext"]

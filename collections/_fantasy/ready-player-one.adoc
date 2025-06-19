@@ -15,10 +15,10 @@ categories:                             [ Books ]
 tags:                                   [ Fantasy ]
 
 image:
-  path:                                 /assets/image/collections/books/fantasy/ready-player-one.jpg
+  path:                                 /assets/image/collection/books/fantasy/ready-player-one.jpg
 
 book:
-  cover:                                /assets/image/collections/books/fantasy/ready-player-one.jpg
+  cover:                                /assets/image/collection/books/fantasy/ready-player-one.jpg
   format:                               paperback
   pages:                                384
   publisher:                            Cornerstone
@@ -37,7 +37,7 @@ resource_options:
   - attic:
       padding_top:                      600
       slides:
-        - url:                          /assets/image/modules/attics/giammarco-boscaro-1920x1280.jpg
+        - url:                          /assets/image/module/attic/giammarco-boscaro-1920x1280.jpg
           alt:                          Photo by Giammarco on Unsplash
           badge:
             type:                       unsplash

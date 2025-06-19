@@ -1,11 +1,11 @@
 # ------------------------------------------------------------------------------
 # ~/_data/modules/defaults/amplitude.yml
-# Default configuration for J1 Amplitude
+# Default settings for J1 AmplitudeJS Module
 #
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023, 2024 Juergen Adams
+# Copyright (C) 2023-2025 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -16,18 +16,20 @@
 #
 description:
   title:                                AmplitudeJS
-  scope:                                Default settings
-  location:                             _data/apps/defaults/amplitude.yml
+  scope:                                Default App settings
+  location:                             _data/modules/defaults/amplitude_app.yml
 
 # ------------------------------------------------------------------------------
-# User configuration settings
+# Default settings
 #
 defaults:
 
   # ----------------------------------------------------------------------------
-  # gloabl defaults
+  # GENERAL options
   # ----------------------------------------------------------------------------
-  xhr_data_path:                        /assets/data/amplitude
+  #
+  enabled:                              false
+  xhr_data_path:                        /assets/data/amplitude_app
 
   # ----------------------------------------------------------------------------
   # PLAYLIST defaults
@@ -35,104 +37,107 @@ defaults:
   playlist:
 
     # --------------------------------------------------------------------------
-    # ALBUM settings
+    # ALBUM settings (no defaults)
     # --------------------------------------------------------------------------
     album:
-    # ------------------------------------------------------------------------
+
+    # --------------------------------------------------------------------------
     # name
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # Name of the album.
     #
     # values:                         string
     # default:                        no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # artist
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # Name of the artist.
     #
     # values:                           string
     # default:                          no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # playlist
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # UNIQUE name of the playlist. Required to create MUTIPLE player
     # instances for AmplitudeJS,
     #
     # values:                           string
     # default:                          no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # audio_base
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # Base folder or URL. Specifies the the base forlder or URL for
     # the audio files to be loaded.
     #
     # values:                           string|URL
     # default:                          no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # cover_image
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # The album cover image (path).
     #
     # values:                           string
     # default:                          no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
-    # TITLE settings (songs)
+    # ITEM (songs) settings (no defaults)
     # --------------------------------------------------------------------------
     items:
-    # ------------------------------------------------------------------------
+
+    # --------------------------------------------------------------------------
     # enabled
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # Enables or disables a title.
     #
     # values:                           true|false
     # default:                          true
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # title
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # Name of the title.
     #
     # values:                           string
     # default:                          no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # audio
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # Name|URL of the audio file..
     #
     # values:                           string
     # default:                          no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # title_info
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # Link on title info.
     #
     # values:                           string
     # default:                          no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # duration
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     # Duration info for a title.
     #
     # values:                           string (minutes:seconds)
     # default:                          no default
     #
-    # ------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
     # PLAYLIST defaults
     #
-    audio_info:                           false
-    controls:                             true
+    audio_info:                         false
+    audio_rating:                       false
+    controls:                           true
 
   # ----------------------------------------------------------------------------
   # PLAYER defaults
@@ -251,36 +256,108 @@ defaults:
     # values:                           integer (ms)
     # default:                          500
     # --------------------------------------------------------------------------
+    # 
+    enabled:                            false
 
     # --------------------------------------------------------------------------
-    # PLAYER defaults
-    #
-    type:                               compact
-    source:                             audio
+    # GENERAL settings
+    #    
+    type:                               large                                   # default player type compact|large
+    source:                             audio                                   # default player source audio|video
+    loop:                               false                                   # true|false, start playing on FIRST item
+    display_hours:                      false                                   # use hours for timestamps in time container
+ 
+    player_repeat:                      false                                   # ???
+    player_shuffle:                     false                                   # ???
 
-    display_hours:                      false
-    play_next_title:                    true
-    pause_next_title:                   false
-    delay_next_title:                   250
-    forward_backward_skip_seconds:      10
+    player_playback_rate:               small                                   # YT video resolution
+    player_fade_audio:                  true                                    # enable|disable audio faden in|out
+    player_scroll_control:              false                                   # additional control on scrolling player song items
+    player_auto_scroll_song_element:    true                                    # auto scroll of active player song items 
+    player_scroller_song_element_min:   5                                       # number of player song items a scrollbat is added
+    player_continue_on_last_item:       true                                    # continue playing on last song|timestamp  
+    player_hover_page_scroll_disabled:  true                                    # disable page scrolling on player hover   
+
+    player_song_element_heigt_desktop:  104.44                                  # heigt of player song items (sub)pixel
+    player_song_element_heigth_mobile:  94.53                                   # heigt of player song items (sub)pixel
+
+    mute_after_video_switch_interval:   750                                     # mute audio after swiching a video (ms)
+    check_active_video_interval:        100                                     # how often the data structure 'activeVideoElement' is updated (ms)
+
+    audio_fade_animated:                true                                    # animate the volume slider on fade in|out
+    audio_fade_in:                      true                                    # enable|disable audio fade-in 
+    audio_fade_in_speed:                fast                                    # fast|slow|slower
+    audio_fade_out:                     true                                    # enable|disable audio fade-out 
+    audio_fade_out_speed:               fast                                    # fast|slow|slower
+
+    play_next_title:                    true                                    # play next title on end
+    pause_next_title:                   false                                   # add a pause on title on end
+    delay_next_title:                   250                                     # delay the next title is loaded (ms)
+    forward_backward_skip_seconds:      15                                      # number of seconds a video is skipped by click forward|backward button in the player
+
+    audio_fade:
+      enabled:                          true                                    # true|false, use fade transitions
+      animated:                         true                                    # animate the volume slider in player
+      fade_in:                          true                                    # true|false audio fade-in
+      fade_in_speed:                    fast                                    # transition speed fast|slow|slower
+      fade_out:                         true                                    # true|false, audio fade-in
+      fade_out_speed:                   fast                                    # transition speed fast|slow|slower
+
+    yt_player:
+      autoplay:                         0                                       # start playing using the AJS player START button
+      height:                           0                                       # display player 'minimited'
+      width:                            0                                       # display player 'minimized'
+      quality:                          small                                   # reduce amout of VIDEO data loaded at a minimum
+      loop:                             0                                       # control looping by the AJS player
+
+    plugin_manager:
+      enabled:                          false                                   # true|false, load plugins
+      plugins:                          [ ytp ]                                 # prepared as an array to support multiple plugins (NOT supported yet)
+
+    waveforms:
+      enabled:                          false                                   # currently NOT supported
+      sample_rate:                      0.25
+
+    visualization:
+      enabled:                          false                                   # currently NOT supported
+      name:                             [ bar ]                                 # prepared as an array to support multiple visualizations (NOT supported yet)
 
     # --------------------------------------------------------------------------
-    # CONTROL BUTTON settings
+    # CONTROL settings
     #
-    shuffle_button:                     false
-    repeat_button:                      false
-    song_progress_bar:                  false
+    delay_after_video_loaded:           500                                     # 0..1000 (ms), delay after yt video loaded
+    shuffle_button:                     false                                   # true|false, shuffle button (currently NOT supported)
+    repeat_button:                      false                                   # true|false, repeat  button (currently NOT supported)
+    song_progress_bar:                  false                                   # true|false, show progressbar in player
     skip_forward_backward_button:       false
-    volume_slider:
-      enabled:                          false
-      min_value:                        0
-      max_value:                        100
-      preset_value:                     50
-      slider_step:                      1
+    do_previous_button_on_first:        none                                    # none|last, item to select on click
+    do_next_button_on_last:             first                                   # none|first, item to select on click
 
+    skip_buttons:
+      enabled:                          true                                    # true|false, enable skip buttion in player
+      skip_forward:                     15                                      # seconds
+      skipbackward:                     15                                      # seconds
+
+    volume_slider:
+      enabled:                          true                                    # true|false, enable volume slider in player
+      preset_value:                     50                                      # default volume level (percent)
+      min_value:                        0                                       # percent
+      max_value:                        100                                     # percent
+      preset_value:                     50                                      # percent
+      slider_step:                      1                                       # integer 1..10
+
+    # --------------------------------------------------------------------------
+    # PLAYLIST settings
+    #
     playlist:
-      controls:                         true
-      audio_info:                       false
+      audio_info:                       true                                    # true|false, show info button in playlist
+      audio_rating:                     true                                    # true|false, show ratings in playlist
+      audio_single:                     false                                   # true|false, a single audio (video) file used
+      audio_fade:                       false                                   # true|false, fadeIn|Out audio on start|end (if configured
+      controls:                         false                                   # true|false, show control buttons in playlist (currently NOT supported for YTP)
+      start:                            false                                   # false|timestanp, set video|audio start position
+      end:                              false                                   # false|timestanp, set video|audio start position
+      shuffle:                          false
 
 # ------------------------------------------------------------------------------
 # END config

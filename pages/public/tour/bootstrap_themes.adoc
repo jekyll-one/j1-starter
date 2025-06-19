@@ -1,7 +1,7 @@
 ---
 title:                                  Themes
-title_extention:                        Bootstrap V5 Themes for J1 Template
-tagline:                                Individual Themes for Your Web
+title_extention:                        Bootstrap V5 Themes
+tagline:                                Individual Style
 
 date:                                   2020-11-10
 #last_modified:                         2023-01-01
@@ -21,7 +21,7 @@ categories:                             [ Roundtrip ]
 tags:                                   [ Bootstrap, Module, Theme ]
 
 image:
-  path:                                 /assets/image/modules/attics/themes-1920x1280-bw.jpg
+  path:                                 /assets/image/module/attic/1920x1280/stories-ink-tattoo-care.jpg
   width:                                1920
   height:                               1280
 
@@ -32,12 +32,12 @@ resources:                              [ lightbox ]
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/image/modules/attics/themes-1920x1280-bw.jpg
-          alt:                          Photo by Clem Onojeghuo on Unsplash
+        - url:                          /assets/image/module/attic/1920x1280/stories-ink-tattoo-care.jpg
+          alt:                          Photo by Stories & Ink Tattoo Care on Unsplash
           badge:
             type:                       unsplash
-            author:                     Clem Onojeghuo
-            href:                       //unsplash.com/@clemono
+            author:                     Stories & Ink Tattoo Care
+            href:                       https://unsplash.com/de/@storiesandink
 ---
 
 // Page Initializer
@@ -84,9 +84,64 @@ defined CSS classes in Bootstrap to customize a layout individually.
 </div>
 ++++
 
+
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------
-include::{documentdir}/themes_bootstrap.asciidoc[]
+[role="mt-5"]
+== The Themes
+
+Styles adjust the website's appearance based on the CSS rules and definitions
+of Bootstrap. Styles do not change the framework's functionality but modify
+rule-based, e.g., the color scheme, fonts, sizes, or the appearance of more
+complex elements like forms or tables. Additionally, a style may add additional
+components to extend the Bootstrap's framework.
+
+Modifying the CSS styles of link:{url-bs--home}[Bootstrap, {browser-window--new}]
+is not rocket science. But, to be honest, some knowledge is needed for the
+link:{url-w3org--css-spec}[CSS technology, {browser-window--new}] to do so.
+I encourage you to spend some time on learning CSS, the
+link:{url-w3schools--css-tutorial}[Design base, {browser-window--new}] of each
+and every website.
+
+.Bootswatch Themes (Examples)
+lightbox::bootswatch-themes[1280, {data-images--bootswatch-themes}]
+
+Thanks to the people at link:{url-bootswatch--home}[Bootswatch, {browser-window--new}],
+a great set of already prepared Bootstrap stylesheets in various designs are
+available on their website; no need to start from scratch. It is not
+required to re-define all the Bootstrap variables and rebuild the framework.
+Many different styles are available. What is already available at Bootswatch
+is at least a good base for your modifications -- your unique design.
+
+Besides the bunch of different stylesheets at *Bootswatch*, an
+link:{url-bootswatch--api}[Integration API, {browser-window--new}] is provided
+that helps a lot to make designs available for an existing site. This API
+is the base to integrate selectable Bootswatch stylesheets into the J1 Template
+navigation system.
+
+[role="mt-4"]
+=== Apply a Style
+
+The base for designing pages using the J1 Template is the style Uno, a modern
+light or dark CSS layout used for many types of websites. What I mentioned
+already, web design is not: one size fits all. The style Uno can be seen as
+a good base, a starting point. Combining Uno and a different styles may be
+a fast solution for your site!
+
+You can find all available stylesheets to be applied on your pages from the
+*Themes* menu. You're invited to check how a page is changing for its design
+if a different stylesheet for web design is used.
+
+[WARNING]
+====
+For changing from one style to the next at *runtime*, the current
+version of the J1 Template system tries add new styles to J1 specific
+components like fonts, headlines, lists or paragraphs. Changing the style
+will work for the most *common* elements, but *not all* of them for now.
+====
+
+Select a style from the *Themes* menu, and the new BS-based stylesheet is
+automatically applied to all pages of your website.
 
 
 [role="mt-5"]

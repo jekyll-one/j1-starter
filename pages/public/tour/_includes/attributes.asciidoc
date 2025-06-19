@@ -38,9 +38,9 @@ tag::urls[]
 :url-tour--data-slider-picker:                    /pages/public/tour/data_slider_picker
 :url-tour--image_headers:                         /pages/public/tour/image_header
 :url-tour--readme-first:                          /pages/public/learn/read_me_first/
-:url-tour--present-images:                        /pages/public/tour/present_images/
-:url-tour--present-audio:                         /pages/public/tour/present_audio/
-:url-tour--present-video:                         /pages/public/tour/present_video/
+:url-tour--image_data:                            /pages/public/tour/image_data/
+:url-tour--audio_data:                            /pages/public/tour/audio_data/
+:url-tour--video_data:                            /pages/public/tour/video_data/
 :url-tour--cards:                                 /pages/public/tour/cards/
 :url-tour--typography:                            /pages/public/tour/typography/
 :url-tour--asciidoc-extensions:                   /pages/public/tour/asciidoc_extensions/
@@ -99,15 +99,11 @@ end::tags[]
 // -----------------------------------------------------------------------------
 tag::data[]
 
-:data-images-standalone:                          "assets/image/modules/gallery/old_times/image_02.jpg, GrandPa's 80th Birthday"
-:data-images-group:                               "assets/image/modules/gallery/old_times/image_03.jpg, GrandPa's annual journey, assets/image/modules/gallery/old_times/image_04.jpg, GrandPa's annual journey"
+:data-images--bootswatch-themes:                  "assets/image/page/tour/bootswatch-themes.jpg, Bootswatch Themes"
 
-:data-images--themes-menu:                        "assets/image/pages/tour/themes-1920x1280.jpg, Themes menu (Bootswatch)"
-:data-images--styles-menu:                        "assets/image/pages/tour/styles-menu-1280x800.jpg, Styles menu (Bootswatch)"
-
-:data-quicksearch--icon:                          "assets/image/pages/tour/600_quicksearch/quicksearch_icon.jpg, Search button (magnifier) in the quick access area"
-:data-quicksearch--input:                         "assets/image/pages/tour/600_quicksearch/quicksearch_input.jpg, Input bar for a QuickSearch"
-:data-quicksearch--results:                       "assets/image/pages/tour/600_quicksearch/quicksearch_results.jpg, Results for a QuickSearch"
+:data-quicksearch--icon:                          "assets/image/page/tour/600_quicksearch/quicksearch_icon.jpg, Search button (magnifier) in the quick access area"
+:data-quicksearch--input:                         "assets/image/page/tour/600_quicksearch/quicksearch_input.jpg, Input bar for a QuickSearch"
+:data-quicksearch--results:                       "assets/image/page/tour/600_quicksearch/quicksearch_results.jpg, Results for a QuickSearch"
 
 end::data[]
 

@@ -17,7 +17,7 @@ categories:                             [ Web ]
 tags:                                   [ Website, Design ]
 
 image:
-  path:                                 /assets/image/collections/portfolio/6.jpg
+  path:                                 /assets/image/collection/portfolio/6.jpg
   width:                                1920
   height:                               1280
   alt:                                  Portfolio Image
@@ -32,7 +32,7 @@ resource_options:
   - attic:
       padding_top:                      600
       slides:
-        - url:                          /assets/image/modules/attics/giammarco-boscaro-1920x1280.jpg
+        - url:                          /assets/image/module/attic/giammarco-boscaro-1920x1280.jpg
           alt:                          Photo by Giammarco on Unsplash
           badge:
             type:                       unsplash

@@ -1,11 +1,11 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/gallery.yml
+# ~/_data/modules/defaults/gallery_app.yml
 # Default configuration for J1 justifiedGallery (jg)
 #
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023, 2024 Juergen Adams
+# Copyright (C) 2023-2025 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -39,7 +39,7 @@ defaults:
   # a gallery is initialized by the JS adapter.
   #
   #   values:                           string
-  #   default:                          /assets/data/galleries.html
+  #   default:                          /assets/data/gallery_app
   #
   # ----------------------------------------------------------------------------
   #
@@ -48,7 +48,7 @@ defaults:
   # ----------------------------------------------------------------------------
   # Global settings
   #
-  xhr_data_path:                        /assets/data/galeries
+  xhr_data_path:                        /assets/data/gallery_app
   gallery_complete_timeout:             1000
 
   # ----------------------------------------------------------------------------
@@ -78,6 +78,10 @@ defaults:
   #
   lightGallery:
     plugins:                            lgThumbnail, lgVideo
+
+    # --------------------------------------------------------------------------
+    # lightGallery options
+    #
     options:
       licenseKey:                       0000-0000-000-0000
       download:                         false
@@ -85,6 +89,44 @@ defaults:
       animateThumb:                     true
       autoplayFirstVideo:               true
       videojs:                          false
+
+    # --------------------------------------------------------------------------
+    # VideoJS options
+    #
+    videojsOptions:
+      enabled:                          false
+
+      muted:                            false
+      preload:                          true
+  #   videoStart:                       ["00:00:30", "00:01:30"]                # start time (hh:mm:ss) for [video1, video2]
+
+      controls:                         true
+      controlBar:
+        playbackRates:                  [0.25, 0.5, 1, 1.5, 2]
+        remainingTimeDisplay:           true
+        pictureInPictureToggle:         false
+
+        volumePanel:
+          inline:                       false
+
+        hotkeysPlugin:
+          enabled:                      true
+          options:
+            volumeStep:                 0.2
+
+        skipButtonsPlugin:
+          enabled:                      true
+          options:
+            forward:                    15
+            backward:                   15
+
+        zoomPlugin:
+          enabled:                      true
+          options:
+            moveX:                      0
+            moveY:                      0
+            rotate:                     0
+            zoom:                       1
 
 # ------------------------------------------------------------------------------
 # END config

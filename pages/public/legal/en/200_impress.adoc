@@ -19,7 +19,7 @@ robots:
   follow:                               false
 
 image:
-  path:                                 /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+  path:                                 /assets/image/module/attic/1920x1280/j1-mockup.jpg
   width:                                1920
   height:                               1200
 
@@ -31,12 +31,12 @@ toc:                                    false
 regenerate:                             false
 permalink:                              /pages/public/legal/en/impress/
 
-resources:                              [ rouge ]
+resources:                              []
 resource_options:
   - attic:
       padding_top:                      630
       slides:
-        - url:                          /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+        - url:                          /assets/image/module/attic/1920x1280/j1-mockup.jpg
           alt:                          J1 Template Mockup
 
 ---

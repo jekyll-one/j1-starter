@@ -1,6 +1,6 @@
 ---
-title:                                  J1 Template
-tagline:                                Learn the Features
+title:                                  Features
+tagline:                                Version Information
 
 date:                                   2022-12-31
 #last_modified:                         2023-01-01
@@ -18,18 +18,18 @@ categories:                             [ About ]
 tags:                                   [ J1, Features ]
 
 image:
-  path:                                 /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+  path:                                 /assets/image/module/attic/1920x1280/j1-launch.jpg
   width:                                1920
   height:                               1280
 
 regenerate:                             false
 permalink:                              /pages/public/about/features/
 
-resources:                              [ animate, lightbox ]
+resources:                              [ lightbox ]
 resource_options:
   - attic:
       slides:
-        - url:                          /assets/image/modules/attics/1920x1280/j1-starter-mockup-1.jpg
+        - url:                          /assets/image/module/attic/1920x1280/j1-launch.jpg
           alt:                          J1 Template Mockup
 ---
 

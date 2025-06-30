@@ -1,0 +1,44 @@
+/*
+ # -----------------------------------------------------------------------------
+ # ~/assets/theme/j1/modules/swiper/css/modules/layoutThumbs.css
+ # CSS styles of the J1 Template for SwiperJS v11 (layout)
+ # -----------------------------------------------------------------------------
+ #
+ # Product/Info:
+ # http://jekyll.one
+ #
+ # Copyright (C) 2025 Juergen Adams
+ #
+ # J1 Theme is licensed under MIT License.
+ # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+ # -----------------------------------------------------------------------------
+*/
+
+/* Thumbs Slider
+-------------------------------------------------------------------------------- */
+
+.thumbs-slider:active { 
+  cursor: grabbing; 
+}
+
+.thumbs-slider--top .swiper-slide {
+  height: 200px !important;
+}
+
+.thumbs-slider--bottom .swiper-slide {
+  height: 200px !important;
+}
+
+.thumbs-slider--top .swiper-slide,
+.thumbs-slider--right .swiper-slide,
+.thumbs-slider--bottom .swiper-slide,
+.thumbs-slider--left .swiper-slide {
+  opacity: .6;
+}
+
+.thumbs-slider--top .swiper-slide-thumb-active,
+.thumbs-slider--right .swiper-slide-thumb-active,
+.thumbs-slider--bottom .swiper-slide-thumb-active,
+.thumbs-slider--left .swiper-slide-thumb-active {
+  opacity: 1;
+}

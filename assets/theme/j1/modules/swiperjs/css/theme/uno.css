@@ -1,0 +1,289 @@
+/*
+ # -----------------------------------------------------------------------------
+ # ~/assets/theme/j1/modules/swiper/css/theme/uno.css
+ # Provides SwiperJS v11.2.0 (January, 2025) CSS styles for theme Uno
+ # -----------------------------------------------------------------------------
+ #
+ # Product/Info:
+ # http://jekyll.one
+ #
+ # Copyright (C) 2023-2025 Juergen Adams
+ #
+ # J1 Theme is licensed under MIT License.
+ # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+ # -----------------------------------------------------------------------------
+*/
+
+/* Global styles
+-------------------------------------------------------------------------------- */
+
+/* Global Theme styles
+-------------------------------------------------------------------- */
+:root {
+  --swiper-theme-color: var(--bs-primary);
+  --swiper-preloader-color: var(--swiper-theme-color);
+  --swiper-wrapper-transition-timing-function: initial;
+}
+
+/* Navigation styles
+-------------------------------------------------------------------- */
+:root {
+  --swiper-navigation-color: var(--bs-gray-100);
+  --swiper-navigation-size: 44px;
+  --swiper-navigation-top-offset: 50%;
+  --swiper-navigation-sides-offset: 20px;
+}
+
+/* Pagination styles
+-------------------------------------------------------------------- */
+:root {
+  --swiper-pagination-color: var(--swiper-theme-color);
+  --swiper-pagination-left: auto;
+  --swiper-pagination-right: 8px;
+  --swiper-pagination-bottom: 8px;
+  --swiper-pagination-top: auto;
+  --swiper-pagination-fraction-color: inherit;
+  --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+  --swiper-pagination-progressbar-size: 4px;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-width: 8px;
+  --swiper-pagination-bullet-height: 8px;
+  --swiper-pagination-bullet-border-radius: 50%;
+  --swiper-pagination-bullet-inactive-color: #000;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 4px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+}
+
+/* Scrollbar styles
+-------------------------------------------------------------------- */
+:root {
+  --swiper-scrollbar-border-radius: 10px;
+  --swiper-scrollbar-top: auto;
+  --swiper-scrollbar-bottom: 4px;
+  --swiper-scrollbar-left: auto;
+  --swiper-scrollbar-right: 4px;
+  --swiper-scrollbar-sides-offset: 1%;
+  --swiper-scrollbar-bg-color: rgba(0, 0, 0, 0.1);
+  --swiper-scrollbar-drag-bg-color: rgba(0, 0, 0, 0.5);
+  --swiper-scrollbar-size: 4px;
+}
+
+/* Titles and Captions
+-------------------------------------------------------------------- */
+.swiper-title {
+  display: flex;
+  align-items: center;
+  text-rendering: optimizeLegibility;
+  text-align: left;
+  line-height: 1.25;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
+.swp-caption-content {
+  display: none;
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  padding: 10px; 
+  background: rgba(0, 0, 0, 0.5); 
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left; 
+}
+
+.swiper-slide:hover .swp-caption-content {
+  display: block;
+}
+
+/* Components
+-------------------------------------------------------------------- */
+ul.swiper-wrapper {
+  list-style-type: none;  /* temove bullet and space from UL list */
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Photoswipe Lightbox
+-------------------------------------------------------------------- */
+.pswp__img {
+  cursor: pointer !important;  /* override zoom cursor */
+}
+
+/* Slides
+-------------------------------------------------------------------- */
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Buttons
+-------------------------------------------------------------------- */
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: var(--swiper-navigation-sides-offset, 20px) !important;
+  right: auto;
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, 20px) !important;
+  left: auto;
+}
+
+/* Pagination, absolute (relative to the swiper container/parent)
+-------------------------------------------------------------------------------- */
+.swiper-pagination,
+.swiper-pagination-inner {
+  position: absolute;
+  text-align: center;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+}
+
+.swiper-pagination-outer {
+  padding-top: 12px;
+  bottom: unset !important;
+  text-align: center;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+.swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  text-align: center;
+  line-height: 25px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--bs-black) !important;
+  opacity: .6 !important;
+  background: rgba(0, 0, 0, 0.5) !important
+}
+
+.swiper-pagination-bullet-active {
+  color: var(--bs-white) !important;
+  background: var(--swiper-theme-color) !important;
+  opacity: 1 !important;
+}
+
+/* Autoplay
+-------------------------------------------------------------------------------- */
+
+/* Progress
+-------------------------------------------------------------------- */
+.autoplay-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--swiper-theme-color);
+}
+
+.autoplay-progress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: var(--swiper-theme-color);
+  fill: none;
+  stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
+}
+
+/* Text Swipers
+-------------------------------------------------------------------------------- */
+
+/* BASE Text Swipers
+-------------------------------------------------------------------- */
+.swiper-text-base {
+  padding: 5px 0 5px 15px !important;
+  border-left: 5px solid var(--bs-primary);
+}
+
+.swiper-text-base .swiper-wrapper .swiper-slide p {
+  margin-bottom: 0px !important;
+  font-size: 1.5rem;
+  font-weight: 400;   
+  text-align: left;
+  color: var(--md-gray-700);
+  background: var(--md-gray-50);
+  overflow-x: hidden;
+}
+
+/* PARALLAX Text Swipers
+-------------------------------------------------------------------- */
+
+/* jadams. 2025-02-25: configurable background image placed via /assets/data/swiper_app.html (styles) */
+/*
+.swiper-text-parallax {
+  width: 100%;
+  height: 100%;
+  padding: 75px 0 75px 0;
+  position: relative;
+  background: url(/assets/image/quote/default.jpg) 50% 0 repeat fixed;
+}
+/*
+
+/* jadams. 2025-02-25: placed via /assets/data/swiper_app.html (styles) if swiper.gridify enabled */
+/*
+.swiper-text-parallax:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/assets/image/pattern/image/gridtile.png) repeat;
+}
+*/
+
+.swiper-text-parallax .swiper-wrapper .swiper-slide p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font-size: 1.5rem;
+  font-weight: 500;   
+  text-align: left;
+  color: rgba(255, 255, 255, .75);
+  overflow-x: hidden;
+}
+
+
+/* BS Multi-Slider
+-------------------------------------------------------------------------------- */
+.swiper--multi {
+  height: 400px;
+}

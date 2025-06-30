@@ -1,0 +1,97 @@
+/*
+ # -----------------------------------------------------------------------------
+ # ~/assets/theme/j1/modules/swiper/css/modules/layoutStacked.css
+ # CSS styles of the J1 Template for SwiperJS v11 (layout)
+ # -----------------------------------------------------------------------------
+ #
+ # Product/Info:
+ # http://jekyll.one
+ #
+ # Copyright (C) 2025 Juergen Adams
+ #
+ # J1 Theme is licensed under MIT License.
+ # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+ # -----------------------------------------------------------------------------
+*/
+
+:root {
+    /* actually sets slide shadow that should match background color of the element behind th slider */
+    --stacked-slider-shadow-bg-color: #000;
+    /* width of the swiper container (image) */
+    --stacked-slider-width: 265px;
+    /* height of the swiper container (image) */
+    --stacked-slider-height: 392px;
+}
+
+/*
+ * VW unit CSS: viewport width.
+ * Relative unit that represents a percentage of the width of the
+ * current viewport.
+ * NOTE: 1vw means 1 percent of the screen width.
+*/
+
+@media ((orientation: portrait) and (min-width: 768px)) {
+    .stacked-slider {
+        --stacked-slider-width: 68vw;
+        --stacked-slider-height: 55vw;
+    }
+}
+
+@media ((orientation: portrait) and (min-width: 576px)) {
+    .stacked-slider {
+        --stacked-slider-width: 68vw;
+        --stacked-slider-height: 60vw;
+    }
+}
+
+@media ((orientation: portrait) and (max-width: 575.98px)) {
+    .stacked-slider {
+        --stacked-slider-width: 72vw;
+        --stacked-slider-height: 162vw;
+    }
+}
+
+@media ((orientation: landscape) and (min-width: 768px)) {
+    .stacked-slider {
+        --stacked-slider-width: calc(80vh / 1.1);
+        --stacked-slider-height: 80vh;
+    }
+}
+
+@media ((orientation: landscape) and (min-width: 992px)) {
+    .stacked-slider {
+        --stacked-slider-width: calc(80vh / 1.1);
+        --stacked-slider-height: 55vh;
+    }
+}
+
+.stacked-slider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.stacked-slider .swiper {
+    overflow: visible;
+    width: var(--stacked-slider-width);
+    height: var(--stacked-slider-height);
+}
+
+.stacked-slider .swiper-slide {
+    border-radius: 10px;
+    justify-content: center;
+    display: flex;
+}
+
+.stacked-slider .swiper-slide-shadow {
+    background: var(--stacked-slider-shadow-bg-color);
+}
+
+.stacked-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

@@ -1,0 +1,26 @@
+/*
+ # -----------------------------------------------------------------------------
+ # ~/assets/theme/j1/modules/swiper/css/modules/layoutPanorama.css
+ # CSS styles of the J1 module for SwiperJS v11 (layout)
+ # -----------------------------------------------------------------------------
+ #
+ # Product/Info:
+ # http://jekyll.one
+ #
+ # Copyright (C) 2025 Juergen Adams
+ #
+ # J1 Theme is licensed under MIT License.
+ # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+ # -----------------------------------------------------------------------------
+*/
+
+.panorama-slider {
+    width: 100%;
+    padding: 14px 0;
+}
+
+.panorama-slider .swiper-pagination {
+    bottom: -10px;
+    --swiper-pagination-bullet-inactive-color: #fff;
+    --swiper-pagination-color: #fff;
+}

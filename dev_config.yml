@@ -53,13 +53,13 @@ environment:                            development
 # ------------------------------------------------------------------------------
 # Sets the build version of the site
 #
-version:                                2024.3.27
+version:                                2024.3.28
 
 # copyright
 # ------------------------------------------------------------------------------
 # Sets the copyright info of the site
 #
-copyright:                              © 2023, 2024 J1 · All rights reserved
+copyright:                              © 2023, 2025 J1 · All rights reserved
 
 # noscript
 # ------------------------------------------------------------------------------

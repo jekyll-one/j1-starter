@@ -323,4 +323,4 @@ content individually for a seamless integration in existing webs.
 [role="mb-7"]
 Check out what the *Theme Feature* can do for modern static websites.
 Experience the functionality checking the preview page at
-link:{url-tour--themes}[Bootstrap Themes]!
+link:{url-tour--themes}[Bootstrap Themes].

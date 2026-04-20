@@ -106,7 +106,7 @@ gem 'j1-template', '~> 2026.0'
 
 # Loaded from gem.fury.io
 #source 'https://gem.fury.io/jekyll-one-org/' do
-#  gem 'j1-template', '~> 2026.ß'
+#  gem 'j1-template', '~> 2026.0'
 #end
 
 # ------------------------------------------------------------------------------

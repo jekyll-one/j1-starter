@@ -495,10 +495,32 @@ resources:
         init_function:                  [ j1.adapter.logger.init ]
 
   # ----------------------------------------------------------------------------
-  # Implementaion to create top headers for J1 Theme  based on the JS API
-  # jQuery Backstretch API to add responsive image|video content.
-  #
+  # Backstretch, JS API to add responsive image|video content
+  # to J1 Top Headers
   # See: https://github.com/jquery-backstretch/jquery-backstretch
+  #
+  - name:                               J1 Backstretch
+    resource:
+      enabled:                          true
+
+      id:                               backstretch
+      comment:                          Module Backstretch
+      region:                           head
+      layout:                           [ all ]
+      required:                         always
+      script_load:
+      dependencies:                     false
+      pass_init_data:                   false
+
+      data:
+        css:                            []
+        files:                          []
+        js:                             [ modules/backstretch/js/backstretch ]
+        init_function:                  []
+
+  # ----------------------------------------------------------------------------
+  # Top Header, JS implementaion to create top headers for J1 Theme
+  # based on the JS API jQuery Backstretch
   #
   - name:                               J1 Attic
     resource:
@@ -516,7 +538,7 @@ resources:
       data:
         css:                            [ modules/backstretch/css/attic ]
         files:                          [ adapter/js/attic.js ]
-        js:                             [ modules/backstretch/js/backstretch ]
+        js:                             []
         init_function:                  [ j1.adapter.attic.init ]
 
   # ----------------------------------------------------------------------------
@@ -2000,26 +2022,50 @@ resources:
         init_function:                  []
 
   # ----------------------------------------------------------------------------
-  # jqueryScrollbar
+  # Markdown (MD -> HTML renderer)
   #
-  # - name:                               J1 jqueryScrollbar
-  #   resource:
-  #     enabled:                          true
+  - name:                               J1 Markdown
+    resource:
+      enabled:                          true
 
-  #     id:                               scrollbars
-  #     comment:                          Module jqueryScrollbar
-  #     region:                           head
-  #     layout:                           [ home, page, post ]
-  #     required:                         always
-  #     script_load:                      defer
-  #     dependencies:                     false
-  #     pass_init_data:                   false
+      id:                               renderMD
+      comment:                          Module Markdown
+      region:                           head
+      layout:                           [ home, page, post ]
+      required:                         ondemand
+      script_load:                      defer
+      pass_init_data:                   false
 
-  #     data:
-  #       css:                            [ modules/jqueryScrollbar/css/scrollbar ]
-  #       files:                          []
-  #       js:                             [ modules/jqueryScrollbar/js/scrollbar ]
-  #       init_function:                  []
+      data:
+        css:                            []
+        files:                          []
+        js:                             [ modules/markdown/js/marked ]
+        init_function:                  []
+
+  # ----------------------------------------------------------------------------
+  # PDF tools
+  #
+  - name:                               J1 PDF
+    resource:
+      enabled:                          true
+
+      id:                               pdf
+      comment:                          Module PDF
+      region:                           head
+      layout:                           [ home, page, post ]
+      required:                         ondemand
+      script_load:                      defer
+      pass_init_data:                   false
+
+      data:
+        css:                            []
+#       files:                          [ modules/pdf/js/pdf.mjs ]              # JS Module
+        files:                          []
+        js:                             [
+                                          modules/pdf/js/pdf,                   # PDF text extraction
+                                          modules/pdf/js/jsPDF                  # convert text to PDF
+                                        ]
+        init_function:                  []
 
 # ------------------------------------------------------------------------------
 # END config

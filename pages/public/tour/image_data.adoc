@@ -30,7 +30,7 @@ regenerate:                             false
 permalink:                              /pages/public/tour/image_data/
 
 resources:                              [
-                                          gallery, lightbox, lightgallery,
+                                          gallery, lightbox3, lightgallery,
                                           masonry, photoswipejs, swiperjs
                                         ]
 resource_options:
@@ -103,7 +103,7 @@ support such functionality.
 
 For J1 Template, different lightbox modules are available:
 
-* Lightbox V2  (default)
+* Lightbox V3  (default)
 * PhotoSwipeJS (optional)
 * lightGallery (optional)
 
@@ -132,7 +132,7 @@ under the link:{url-j1-docs--lightbox-module}[Lightbox module, {browser-window--
 ====
 
 [role="mt-5"]
-=== Lightbox V2
+=== Lightbox V3
 
 Find below an example of using the the default lightbox used for standalone
 images. See how individual images are linked.
@@ -146,26 +146,6 @@ group below to see how a group is managed.
 .Lightbox for grouped images
 lightbox::example-group[395, {data-images-lightbox--group}, group, role="mt-4 mb-4 wm-800"]
 
-
-// [role="mt-5"]
-// === lightGallery
-
-// The J1 Gallery module *LightGallery* provides much more complex image data
-// functions than the default lightbox. The module supports a **gallery**-style
-// thumbnail preview, image resizing, a download dialog, sharing provider support,
-// and more helpful features. Check what LightGallery can do with the following
-// example.
-
-// .Gallery + lightGallery
-// gallery::jg_old_times[role="mt-4 mb-4"]
-
-// .lightGallery - Gallery or Lightbox
-// [NOTE]
-// ====
-// The name lightGallery implies a sort of a gallery, but the library is a
-// *lightbox*, and provides enhannced functionality on image-based data rather
-// than enlarged displaying of images.
-// ====
 
 [role="mt-5"]
 == J1 Slider
@@ -424,5 +404,4 @@ QuickTime or Silverlight is no longer needed, as the J1 Theme provides
 HTML5 video support for both local content and online sources on the
 Internet.
 
-[role="mb-7"]
 Incredible? See the next example page link:{url-tour--audio_data}[Audio Player].

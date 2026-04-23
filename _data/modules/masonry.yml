@@ -309,6 +309,8 @@ settings:
       lightbox:
         enabled:                        true
         type:                           lb                                      # lb | lg
+        sw-width:                       1920
+        sw-height:                      1280
 
       # ------------------------------------------------------------------------
       # caption options

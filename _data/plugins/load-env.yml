@@ -28,13 +28,11 @@ settings:
   # ----------------------------------------------------------------------------
   # Global settings
   #
-  enabled:                              true                                    # enable|disable the plugin
+  # enabled:                            true                                    # enable|disable the plugin
   # ----------------------------------------------------------------------------
   # Plugin settings
   #
-  allowedEnvVars:                       [
-                                          CLAUDE_API_KEY
-                                        ]
+  # allowedEnvVars:                     []
 
 # ------------------------------------------------------------------------------
 # END config

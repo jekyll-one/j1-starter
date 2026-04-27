@@ -2098,6 +2098,28 @@ resources:
         init_function:                  []
 
   # ----------------------------------------------------------------------------
+  # J1 Claude AI
+  #
+  - name:                               J1 claudeAI
+    resource:
+      enabled:                          true
+
+      id:                               claudeAI
+      comment:                          Module claudeAI
+      region:                           head
+      layout:                           [ all ]
+      required:                         ondemand
+      script_load:                      defer
+      dependencies:                     false
+      pass_init_data:                   false
+
+      data: 
+        css:                            [ modules/claudeAI/css/claudeAI ]
+        js:                             [ modules/claudeAI/js/claudeAI ]
+        files:                          [ adapter/js/claudeAI.js ]
+        init_function:                  [ j1.adapter.claudeAI.init ]
+
+  # ----------------------------------------------------------------------------
   # J1 VideoPlayer
   #
   - name:                               J1 VideoPlayer

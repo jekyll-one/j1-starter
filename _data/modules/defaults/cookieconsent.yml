@@ -30,7 +30,7 @@ defaults:
   #
   enabled:                              false
 
-  show_cookie_icon:                     false
+  showCookieIcon:                       false
   expire_cookies_on_required_only:      true
 
   reloadPageOnChange:                   true

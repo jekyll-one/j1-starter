@@ -125,12 +125,6 @@ All lightboxes are fully integrated to be used as standalone modules or
 used as helpers *under-the-hood* by other modules focussing on image-data
 like gallerys or carousels.
 
-[TIP]
-====
-For details of the default lightbox of J1 Template, see the documentation
-under the link:{url-j1-docs--lightbox-module}[Lightbox module, {browser-window--new}].
-====
-
 [role="mt-5"]
 === Lightbox V3
 

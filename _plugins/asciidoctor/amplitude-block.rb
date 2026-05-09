@@ -43,7 +43,7 @@ Asciidoctor::Extensions.register do
       html = %(
         <div class="audioblock #{attributes['role']}">
           #{title_html}
-          <div id="#{target}_app" class="amplitude-player"></div>
+          <div id="#{target}_audio" class="amplitude-player"></div>
           <div id="#{target}_video" class="yt-player"></div>
         </div>
       )

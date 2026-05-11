@@ -819,7 +819,7 @@
 
     - title:                            This Site
       icon:                             home-variant-outline
-      href:                             /pages/public/about/starter/
+      href:                             /pages/public/about/site/
 
     - title:                            Privacy
       icon:                             heart

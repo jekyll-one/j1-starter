@@ -376,7 +376,7 @@ resources:
 
   # ----------------------------------------------------------------------------
   # Bootstrap JS
-  # Bootstrap Javascript component (v5.3.2)
+  # Bootstrap Javascript component (v5.3.8)
   #
   # See: https://getbootstrap.com/docs/5.0/getting-started/introduction/
   #
@@ -394,9 +394,36 @@ resources:
       pass_init_data:                   false
 
       data:
-        css:                            [ modules/bootstrap/css/bootstrap ]
+#       css:                            [ modules/bootstrap/css/bootstrap ]
+        css:                            []
         files:                          []
         js:                             [ modules/bootstrap/js/bootstrap ]
+        init_function:                  []
+
+  # ----------------------------------------------------------------------------
+  # J1 Test/Manual
+  # Additional CSS for test/manual
+  #
+  - name:                               J1 Tester 
+    resource:
+      enabled:                          true
+
+      id:                               test-css
+      comment:                          Additional CSS for test/manual
+      region:                           head
+      layout:                           [ all ]
+      required:                         always
+      script_load:
+      dependencies:                     false
+      pass_init_data:                   false
+
+      data:
+        css:                            []
+        files:                          [
+                                          modules/test/css/lightbox3.css,
+                                          modules/test/css/photoswipeLightbox.css
+                                        ]
+        js:                             []
         init_function:                  []
 
   # ----------------------------------------------------------------------------
@@ -675,8 +702,11 @@ resources:
 
       data:
         css:                            []
-        files:                          [ adapter/js/cookieConsent.js ]
-        js:                             [ modules/cookieConsent/js/cookieConsent ]
+        files:                          [
+                                          modules/cookieConsent/js/cookieConsent.mjs,
+                                          adapter/js/cookieConsent.js
+                                        ]
+        js:                             []
         init_function:                  [ j1.adapter.cookieConsent.init ]
 
   # ----------------------------------------------------------------------------
@@ -932,8 +962,11 @@ resources:
 
       data:
         css:                            [ modules/translator/css/translator ]
-        files:                          [ adapter/js/translator.js ]
-        js:                             [ modules/translator/js/translator ]
+        files:                          [
+                                          modules/translator/js/translator.mjs,
+                                          adapter/js/translator.js
+                                        ]
+        js:                             []
         init_function:                  [ j1.adapter.translator.init ]
 
   # ----------------------------------------------------------------------------
@@ -2043,13 +2076,13 @@ resources:
                                           modules/photoswipe/css/photoswipe,
                                           modules/photoswipe/css/photoswipe-caption-plugin
                                         ]
-        files:                          []
+        files:                          [ adapter/js/photoswipe.js]
         js:                             [
                                           modules/photoswipe/js/photoswipe-core,
                                           modules/photoswipe/js/photoswipe-lightbox,
                                           modules/photoswipe/js/photoswipe-caption-plugin
                                         ]
-        init_function:                  []
+        init_function:                  [ j1.adapter.photoswipe.init ]
 
   # ----------------------------------------------------------------------------
   # Markdown (MD -> HTML renderer)
@@ -2089,7 +2122,6 @@ resources:
 
       data:
         css:                            []
-#       files:                          [ modules/pdf/js/pdf.mjs ]              # JS Module
         files:                          []
         js:                             [
                                           modules/pdf/js/pdf,                   # PDF text extraction
@@ -2118,6 +2150,28 @@ resources:
         js:                             [ modules/claudeAI/js/claudeAI ]
         files:                          [ adapter/js/claudeAI.js ]
         init_function:                  [ j1.adapter.claudeAI.init ]
+
+  # ----------------------------------------------------------------------------
+  # litElement
+  #
+  - name:                               litElement
+    resource:
+      enabled:                          true
+
+      id:                               lit3
+      comment:                          Module litElement
+      region:                           head
+      layout:                           [ all ]
+      required:                         ondemand
+      script_load:                      defer
+      dependencies:                     false
+      pass_init_data:                   false
+
+      data: 
+        css:                            []
+        js:                             []
+        files:                          [ modules/lit3/js/lit-all.mjs ]         # JS Module
+        init_function:                  []
 
   # ----------------------------------------------------------------------------
   # J1 VideoPlayer

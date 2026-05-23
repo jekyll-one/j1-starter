@@ -9,7 +9,7 @@ date:                                   2026-05-07
 description: >
                                         J1 Template provides playing audio on web pages
                                         by HTML5 and supports custom players created
-                                        by Amplitude to playback audio individually.
+                                        by AmplitudeJS to playback audio individually.
 keywords: >
                                         open source, free, template, jekyll, jekyllone, web,
                                         sites, static, jamstack, bootstrap, html, html5,
@@ -134,6 +134,7 @@ Native players are the built-in Amplitude players for the J1 Template.
 They do not require plugins to play audio files, such as MP3, and serve
 as a replacement for the HTML5 audio element.
 
+[role="mt-4"]
 [NOTE]
 ====
 See <<Player over YouTube>> for players using the *YouTube plugin* to play

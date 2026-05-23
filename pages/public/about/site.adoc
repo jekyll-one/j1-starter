@@ -27,7 +27,7 @@ scrollbar:                              false
 comments:                               false
 
 regenerate:                             false
-permalink:                              /pages/public/about/site/
+permalink:                              /pages/public/about/starter/
 
 resources:                              []
 resource_options:
@@ -46,6 +46,7 @@ resource_options:
 // Attribute settings for page content control (e.g includes)
 //
 :includedir:                            _includes
+:tabledir:                              _includes/tables
 :documentdir:                           _includes/documents
 
 // Set (local) page attributes here

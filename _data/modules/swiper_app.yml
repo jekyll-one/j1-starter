@@ -341,7 +341,13 @@ settings:
       events:
         enabled:                        true
         init: >
-                                        function (swiper) { var slideHeight = 300; swiper.slides.forEach(slide => { slide.style.height = `${slideHeight}px`; }); }
+                                        function (swiper) {
+                                          var slideHeight = 300;
+                                          swiper.slides.forEach (
+                                            slide => { 
+                                              slide.style.height = `${slideHeight}px`;
+                                          });
+                                        }
 
       # ------------------------------------------------------------------------
       # LIGHTBOX Options

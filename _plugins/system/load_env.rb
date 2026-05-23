@@ -30,7 +30,7 @@
 #      never read or exposed.
 #
 # ------------------------------------------------------------------------------
-
+#
 require 'yaml'
 require 'date'
 
@@ -39,7 +39,6 @@ module Jekyll
     safe true
     priority :highest
 
-    # claude - J1 Jekyll plugin #2
     # The hard-coded ALLOWED_ENV_VARS constant has been removed. The
     # whitelist is now sourced from the YAML config files
     #   _data/plugins/defaults/load-env.yml  -> defaults.allowedEnvVars
@@ -54,7 +53,6 @@ module Jekyll
       @mode     = site.config['environment']
       @template = site.config['theme']
 
-      # claude - J1 Jekyll plugin #1
       # Resolve config paths relative to the Jekyll source directory.
       # The original `File.dirname(__FILE__).sub('_plugins/system', '')`
       # was fragile (the path segment did not actually exist) and broke
@@ -66,7 +64,6 @@ module Jekyll
       default_config_file = File.join(@module_config_path, 'defaults', 'load-env.yml')
       user_config_file    = File.join(@module_config_path, 'load-env.yml')
 
-      # claude - J1 Jekyll plugin #1
       # Load default + user settings safely. Missing or malformed files are
       # tolerated so the plugin never breaks the build over a config issue.
       default_yaml = load_yaml(default_config_file)
@@ -75,7 +72,6 @@ module Jekyll
       default_settings = default_yaml['defaults'] || {}
       user_settings    = user_yaml['settings']    || {}
 
-      # claude - J1 Jekyll plugin #1
       # Non-destructive merge: user settings override defaults without
       # mutating the loaded defaults hash (the original used `merge!`).
       @module_config = default_settings.merge(user_settings)
@@ -88,7 +84,6 @@ module Jekyll
       Jekyll.logger.info 'J1 Env:', 'enabled'
       Jekyll.logger.info 'J1 Env:', 'exposing whitelisted environment variables'
 
-      # claude - J1 Jekyll plugin #1
       # Optionally pull values from a project-root .env file via the
       # dotenv gem. dotenv is optional; plain ENV still works without it.
       # Moved out of class body so it runs once per build with access to
@@ -96,7 +91,6 @@ module Jekyll
       # nested inside `generate` after a `private` declaration.
       load_dotenv(@project_path)
 
-      # claude - J1 Jekyll plugin #2
       # Resolve the whitelist of variables from the merged config. The
       # YAML can legitimately produce nil, an empty array, or entries
       # with stray whitespace, so coerce defensively:
@@ -118,11 +112,6 @@ module Jekyll
         return
       end
 
-      # claude - J1 Jekyll plugin #1
-      # Read each whitelisted variable from ENV and expose them via
-      # site.config['j1_env'] for use in Liquid as:
-      #   {{ site.j1_env.CLAUDE_API_ENDPOINT }}
-      # claude - J1 Jekyll plugin #2
       # Iterate over the config-derived list instead of the removed
       # ALLOWED_ENV_VARS constant.
       env_vars = {}
@@ -142,7 +131,6 @@ module Jekyll
 
     private
 
-    # claude - J1 Jekyll plugin #1
     # Returns the plugin's effective config (defaults merged with user
     # settings) or an empty hash if nothing was loaded. Promoted from a
     # nested def-inside-def to a real private instance method.
@@ -150,14 +138,12 @@ module Jekyll
       @module_config || {}
     end
 
-    # claude - J1 Jekyll plugin #1
     # Plugin is enabled when config['enabled'] is truthy. Treat missing
     # config as disabled to fail safe.
     def plugin_disabled?
       !config['enabled']
     end
 
-    # claude - J1 Jekyll plugin #1
     # Safely load a YAML config file. Returns an empty hash if the file
     # is missing or cannot be parsed. Replaces the original
     # `YAML::load(File.open(...))` which leaked file handles, used the
@@ -175,7 +161,6 @@ module Jekyll
       {}
     end
 
-    # claude - J1 Jekyll plugin #1
     # Try to load a project-root .env file via the dotenv gem if it is
     # installed. The original begin/rescue lived at class-body scope
     # nested below `private` inside `generate`, which made it never run
@@ -185,12 +170,12 @@ module Jekyll
       require 'dotenv'
       if File.exist?(env_file)
         Dotenv.load(env_file)
-        Jekyll.logger.info 'J1 Env:', "dotenv - loaded #{env_file}"
+        Jekyll.logger.info 'J1 Env:', 'dotenv file loaded'
       else
-        Jekyll.logger.info 'J1 Env:', 'dotenv - no .env file found'
+        Jekyll.logger.info 'J1 Env:', 'no dotenv fiule found'
       end
     rescue LoadError
-      Jekyll.logger.warn 'J1 Env:', 'dotenv gem not available, using plain ENV only'
+      Jekyll.logger.warn 'J1 Env:', 'dotenv gem not available, using process ENV'
     end
 
   end

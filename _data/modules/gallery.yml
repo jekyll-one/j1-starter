@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/gallery.yml
+# ~/_data/modules/gallery.yml (1)
 # User configuration for J1 Justified Gallery (jg)
 #
 # Product/Info:
@@ -66,7 +66,7 @@ settings:
       #
       lightbox:
         enabled:                        true
-        type:                           lg                                      # lb | lg
+        type:                           ps                                      # ps | lb | lg
 
       lightGallery:
         plugins:                        lgFullscreen, lgRotate, lgThumbnail
@@ -81,29 +81,41 @@ settings:
       #
       images:
 
-        - image:                        # image
+        # image 1
+        - image:
           file:                         image-1.jpg
+          width:                        1600
+          height:                       1050
           caption_text:                 GrandPa &middot; 80th Birthday
           description: >
                                         <h2>GrandPa</h2>
                                         <h3>80th Birthday</h3>
 
-        - image:                        # image
+         # image 2
+        - image: 
           file:                         image-2.jpg
+          width:                        1600
+          height:                       1050        
           caption_text:                 GrandPa &middot; 80th Birthday
           description: >
                                         <h2>GrandPa</h2>
                                         <h3>80th Birthday</h3>
 
-        - image:                        # image
+         # image 3
+        - image:
           file:                         image-3.jpg
+          width:                        1600
+          height:                       1050        
           caption_text:                 GrandPa &middot; Annual journey
           description: >
                                         <h2>GrandPa</h2>
                                         <h3>Annual journey</h3>
 
-        - image:                        # image
+         # image 4
+        - image:
           file:                         image-4.jpg
+          width:                        1600
+          height:                       1050       
           caption_text:                 GrandPa &middot; Annual journey
           description: >
                                         <h2>GrandPa</h2>
@@ -134,10 +146,10 @@ settings:
       #
       lightbox:
         enabled:                        true
-        type:                           lb
+        type:                           lg                                      # ps | lb | lg
 
       lightGallery:
-        plugins:                        lgFullscreen, lgRotate, lgThumbnail
+        plugins:                        lgFullscreen, lgRotate, lgThumbnail, lgZoom
 
         options:
           licenseKey:                   0000-0000-000-0000
@@ -162,85 +174,110 @@ settings:
       #
       images:
 
-        - image:                        # image 1
+        # image 1
+        - image:
           file:                         banter-snaps_b.jpg
+          width:                        1280
+          height:                       1920
           caption_text:                 Japan &middot; City of Osaka
           description: >
                                         <h2>Japan</h2>
                                         <h3>City of Osaka</h3>
-
-        - image:                        # image 2
+        # image 2
+        - image:
           file:                         denys-nevozhai-1_b.jpg
+          width:                        1920
+          height:                       1280          
           caption_text:                 China &middot; Man posing at the rooftop of Jin Mao Tower Shanghai
           description: >
                                         <h2>China</h2>
                                         <h3>Man posing at the rooftop of Jin Mao Tower Shanghai</h3>
-
-        - image:                        # image 3
+        # image 3
+        - image:
           file:                         gints-gailis_b.jpg
+          width:                        1468
+          height:                       1920          
           caption_text:                 Indonesia &middot; Shangri-La Hotel Jakarta
           description: >
                                         <h2>Indonesia</h2>
                                         <h3>Shangri-La Hotel Jakarta</h3>
-
-        - image:                        # image 4
+        # image 4
+        - image:
           file:                         steven-diaz_b.jpg
-          caption_text:                 Indonesia &middot; Shangri-La Hotel Jakarta
+          width:                        1920
+          height:                       1123          
+          caption_text:                 Japan &middot; Tokyo seen from World Trade Center Observation Deck
           description: >
                                         <h2>Japan</h2>
                                         <h3>Tokyo seen from World Trade Center Observation Deck</h3>
-
-        - image:                        # image 5
+        # image 5
+        - image:
           file:                         denys-nevozhai-2_b.jpg
+          width:                        1920
+          height:                       1300          
           caption_text:                 China &middot; Young couple over Shenzhen
           description: >
                                         <h2>China</h2>
                                         <h3>Young couple over Shenzhen</h3>
-
-        - image:                        # image 6
+        # image 6
+        - image:
           file:                         johan-mouchet_b.jpg
+          width:                        872
+          height:                       1280          
           caption_text:                 Australia &middot; The Queen Bee at the Eureka Tower of Melbourne
           description: >
                                         <h2>Australia</h2>
                                         <h3>The Queen Bee at the Eureka Tower of Melbourne</h3>
-
-        - image:                        # image 7
+        # image 7
+        - image:
           file:                         thomas-tucker_b.jpg
+          width:                        1600
+          height:                       1050
           caption_text:                 Taiwan &middot; Sunset over City of Taipei
           description: >
                                         <h2>Taiwan</h2>
                                         <h3>Sunset over City of Taipei</h3>
-
-        - image:                        # image 8
+        # image 8
+        - image:
           file:                         emmad-mazhari_b.jpg
+          width:                        1920
+          height:                       1822
           caption_text:                 United States &middot; City of Chicago
           description: >
                                         <h2>United States</h2>
                                         <h3>City of Chicago</h3>
-
-        - image:                        # image 9
+        # image 9
+        - image:
           file:                         federico-rizzarelli_b.jpg
+          width:                        1920
+          height:                       2880
           caption_text:                 China &middot; City of Shanghai
           description: >
                                         <h2>China</h2>
                                         <h3>City of Shanghai</h3>
-
-        - image:                        # image 10
+        # image 10
+        - image:
           file:                         andreas-brucker_b.jpg
+          width:                        1920
+          height:                       1280
           caption_text:                 Thailand &middot; City of Bangkok
           description: >
                                         <h2>Thailand</h2>
                                         <h3>City of Bangkok</h3>
-
-        - image:                        # image 11
+        # image 11
+        - image:
           file:                         luca-bravo_b.jpg
+          width:                        1920
+          height:                       1280
           caption_text:                 Taiwan &middot; Sunset over City of Taipei
           description: >
                                         <h2>Taiwan</h2>
                                         <h3>Sunset over City of Taipei</h3>
-
-        - image:                        # image 12
+        # image 12
+        - image:
           file:                         ethan-brooke_b.jpg
+          width:                        1920
+          height:                       1686
           caption_text:                 South Korea &middot; Lotte World Tower Seoul
           description: >
                                         <h2>South Korea</h2>

@@ -1,9 +1,9 @@
 ---
 title:                                  Image
-title_extention:                        J1 Image Apps
-tagline:                                J1 Image Apps
+title_extention:                        Embed images
+tagline:                                Embed Images
 
-date:                                   2026-05-07
+date:                                   2026-05-26
 #last_modified:                         2026-01-01
 
 description: >
@@ -36,6 +36,8 @@ resource_options:
   - toccer:
       collapseDepth:                    3
   - attic:
+      opacity:                          .7
+      padding_top:                      600
       slides:
         - url:                          /assets/image/module/attic/1920x1280/modern-dance.jpg
           alt:                          Photo Gemini AI
@@ -319,54 +321,61 @@ swiper::swiper_image_panorama[role="mt-4 mb-5"]
 [role="mt-5"]
 == J1 Galleries
 
-A *J1 Gallery* is a collection of images (or videos) shown together.
+A *Gallery* is a collection of images (or videos) shown together.
 Galleries are perfect for product photos, portfolios, and event
 pictures. Visitors can scroll through the gallery, click a single
 image to enlarge it, or swipe through them on a touchscreen.
 
-The J1 Template offers two gallery styles:
+The J1 Template offers two gallery types:
 
-* *Grid-styled* galleries
-* *Masonry-styled* galleries
+* *Grid* galleries
+* *Justified* galleries
 
-The two styles differ in *how images are arranged*. A *grid* gives
-every image the same height, like squares on a chessboard, even if it
-has to crop pictures to do so. A *masonry* gallery keeps every image
-in its natural shape and arranges them like bricks in a wall, with
-shorter images filling the gaps left by taller ones.
+The two types differ in *how images* are *arranged*. A *grid* places
+indivudual images in optimal sizes in a so-called grid. All grid elements
+are placed dynamically in rows. When the bowser is resized, the grid (rows)
+are rearranged to make the images fit again.
+
+[NOTE]
+====
+The Galleries for J1 Template combines both types with a (configurable) 
+lightbox so visitors can click any photo to view it in a larger size.
+====
+
+A *Justified* gallery keeps every image in its natural shape and arranges
+them in a block element that looks like ricks in a wall, with shorter images
+filling the gaps left by taller ones.
+
+[role="mt-3 mb-4"]
+[TIP]
+====
+The galleries below are fully *responsive* -- they change the layout
+to fit the size (width) of your browser window. Try it yourselves:
+resize your window, or rotate your device, and watch the columns
+rearrange.
+====
 
 // .Old times
 // gallery::jg_old_times[role="mt-4 mb-4"]
 
 [role="mt-4"]
-=== Grid-styled Gallery
+=== Grid Gallery
 
-*Masonry* is the library that powers grid-styled galleries in the J1
-Template. It places images in evenly aligned columns and fills the
-vertical space efficiently, even when the pictures have different
-heights.
-
-[role="mt-3 mb-4"]
-[TIP]
-====
-The gallery below is *responsive* -- it changes its layout to fit the
-size of your browser window. Try it: resize your window, or rotate
-your device, and watch the columns rearrange.
-
-For more about Masonry, visit the
-link:{url-j1-masonry-previewer}[Masonry Preview, {browser-window--new}] page.
-====
+*Masonry* is a library that powers grid-styled galleries in the J1 Template.
+It places images in evenly aligned columns and efficiently fills the vertical
+space, even when the images have different heights.
 
 Masonry stacks images like *bricks*: it slots each image into the
 first place it fits, so the columns can have different heights but
 no big empty gaps. The result is a balanced layout that uses the
-available space well.
+available space well. For more about Masonry, visit the
+link:{url-j1-masonry-previewer}[Masonry Preview, {browser-window--new}] page.
 
-.Grid-styled Image Gallery
+.Grid Image Gallery
 masonry::image_fixed_height_lb[role="mt-4 mb-5"]
 
 [role="mt-4"]
-=== Masonry-styled Gallery
+=== Justified Gallery
 
 The link:{url-justified-gallery--home}[JustifiedGallery, {browser-window--new}]
 plugin arranges images in *evenly aligned rows*. Each row has the
@@ -383,7 +392,7 @@ The J1 Template combines JustifiedGallery with the lightbox so
 visitors can click any photo for an enlarged view. You will recognise
 this layout from many websites across the Internet.
 
-.Masonry-styled Image Gallery
+.Justified Image Gallery
 gallery::jg_mega_cities[role="mt-4 mb-4"]
 
 

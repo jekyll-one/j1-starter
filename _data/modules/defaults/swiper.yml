@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/swiper_app.yml
-# Default settings for J1 Swiper Apps
+# ~/_data/modules/defaults/swiper.yml (1)
+# Default settings for J1 Swiper
 #
 # Product/Info:
 # https://jekyll.one
@@ -16,8 +16,8 @@
 #
 description:
   title:                                SwiperJS
-  scope:                                Default App settings
-  location:                             _data/modules/defaults/swiper_app.yml
+  scope:                                Default settings
+  location:                             _data/modules/defaults/swiper.yml
 
 # ------------------------------------------------------------------------------
 # Default settings
@@ -63,10 +63,22 @@ defaults:
   # ----------------------------------------------------------------------------
   #
   enabled:                              false
-  xhr_data_path:                        /assets/data/swiper_app
+  xhr_data_path:                        /assets/data/swiper
   layout:                               image_base
+
+  # ----------------------------------------------------------------------------
+  # split J1 Swiper data #1
+  # Per-swiper "noise" defaults pulled up from swiper_player.yml. Most
+  # swipers declared `swiper_classes: false`, `container_classes: false`
+  # and `wrapper_styles: false` verbatim — those entries have been removed
+  # from each swiper and live here. Note: the original defaults key
+  # `wrapper_classes` was a typo (swiper.html references `wrapper_styles`)
+  # and has been renamed accordingly.
+  # ----------------------------------------------------------------------------
+  #
+  swiper_classes:                       false
   container_classes:                    false
-  wrapper_classes:                      false
+  wrapper_styles:                       false
 
   # ----------------------------------------------------------------------------
   # THEME options
@@ -75,8 +87,15 @@ defaults:
 
   # ----------------------------------------------------------------------------
   # CAPTION options
+  # split J1 Swiper data #1
+  # The original file had this block declared twice with identical content.
+  # The duplicate has been removed. Per-swiper caption blocks in
+  # swiper_player.yml that match these defaults verbatim have been removed
+  # as well; per-swiper config only overrides `enabled` where the swiper
+  # actually shows captions.
   # ----------------------------------------------------------------------------
-  captions:                             
+  #
+  captions:
     enabled:                            false
     css_class:                          swp-caption-content
 
@@ -90,15 +109,8 @@ defaults:
     brightness:                         1
 
   # ----------------------------------------------------------------------------
-  # SWIPER Caption settings
-  #
-  captions:                             
-    enabled:                            false
-    css_class:                          swp-caption-content
-
-  # ----------------------------------------------------------------------------
   # SWIPER Core Settings
-  #      
+  #
   parameters:
     autoHeight:                         false
     loop:                               false
@@ -106,48 +118,59 @@ defaults:
     slidesPerView:                      1
     slidesPerGroup:                     1
     spaceBetween:                       1
-    
-# ------------------------------------------------------------------------------
-# LIGHTBOX options
-#
-lightbox:
-  enabled:                              false
 
   # ----------------------------------------------------------------------------
-  # LIGHTBOX caption settings
+  # LIGHTBOX options
+  # split J1 Swiper data #1
+  # The lightbox block used to live at the top level of this file (outside
+  # `defaults:`) which made it unreachable via deep_merge per swiper. It
+  # has been moved inside `defaults:` so swiper.html can deep_merge it
+  # into every swiper, ID-wise. All per-swiper lightbox `captions`,
+  # `parameters`, `ui_controls` and `kbd_controls` blocks in
+  # swiper_player.yml were verbatim copies of these defaults and have
+  # been removed; per-swiper config now only carries `lightbox.enabled`
+  # (and `lightbox.captions.enabled: true` where the lightbox shows a
+  # description).
+  # ----------------------------------------------------------------------------
   #
-  captions:
+  lightbox:
     enabled:                            false
-    css_class:                          pswp-caption-content
 
-  # ----------------------------------------------------------------------------
-  # LIGHTBOX Core Parameters
-  #
-  parameters:
-    children:                           a
-    bgOpacity:                          1
-    showHideOpacity:                    true
-    loop:                               true
-    wheelToZoom:                        true
-    showHideAnimationType:              zoom
-    imageClickAction:                   next
-    tapAction:                          next
-    padding:                            { top: 0, bottom: 0, left: 80, right: 80 }
+    # --------------------------------------------------------------------------
+    # LIGHTBOX caption settings
+    #
+    captions:
+      enabled:                          false
+      css_class:                        pswp-caption-content
 
-  # ----------------------------------------------------------------------------
-  # LIGHTBOX User Interface controls
-  #
-  ui_controls:
-    zoom:                               false
-    close:                              true
-    counter:                            true
-    arrowKeys:                          false
+    # --------------------------------------------------------------------------
+    # LIGHTBOX Core Parameters
+    #
+    parameters:
+      children:                         a
+      bgOpacity:                        1
+      showHideOpacity:                  true
+      loop:                             true
+      wheelToZoom:                      true
+      showHideAnimationType:            zoom
+      imageClickAction:                 next
+      tapAction:                        next
+      padding:                          { top: 0, bottom: 0, left: 80, right: 80 }
 
-  # ----------------------------------------------------------------------------
-  # LIGHTBOX Keyboard controls
-  #
-  kbd_controls:
-    escKey:                             true
+    # --------------------------------------------------------------------------
+    # LIGHTBOX User Interface controls
+    #
+    ui_controls:
+      zoom:                             false
+      close:                            true
+      counter:                          true
+      arrowKeys:                        false
+
+    # --------------------------------------------------------------------------
+    # LIGHTBOX Keyboard controls
+    #
+    kbd_controls:
+      escKey:                           true
 
 # ------------------------------------------------------------------------------
 # END config

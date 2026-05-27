@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/swiper_app.yml
-# Application settings for the J1 Swiper App
+# ~/_data/modules/swiper_control.yml (0)
+# Application (control) settings for the J1 Swiper
 #
 # Product/Info:
 # https://jekyll.one
@@ -17,8 +17,8 @@
 #
 description:
   title:                                J1 Swiper
-  scope:                                User App configuration
-  location:                             _data/modules/swiper_app.yml
+  scope:                                User settings (control)
+  location:                             _data/modules/swiper_control.yml
 
 # ==============================================================================
 # APP configuration

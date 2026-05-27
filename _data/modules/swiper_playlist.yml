@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/swiper_playlists.yml
-# Playlist settings for the J1 Swiper App
+# ~/_data/modules/swiper_playlist.yml (0)
+# Playlist settings for the J1 Swiper
 #
 # Product/Info:
 # https://jekyll.one
@@ -15,9 +15,9 @@
 # Description
 #
 description:
-  title:                                J1 Swiper App
+  title:                                J1 Swiper
   scope:                                User Playlist settings
-  location:                             _data/modules/swiper_playlists.yml
+  location:                             _data/modules/swiper_playlist.yml
 
 # ------------------------------------------------------------------------------
 # User Playlist configuration settings

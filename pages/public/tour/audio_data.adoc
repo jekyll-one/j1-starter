@@ -1,7 +1,7 @@
 ---
 title:                                  Audio
-title_extention:                        Player elements
-tagline:                                Player elements
+title_extention:                        Audio players
+tagline:                                Playback Audio Files
 
 date:                                   2026-05-07
 # last_modified:                        2026-01-01
@@ -35,8 +35,8 @@ resource_options:
   - toccer:
       collapseDepth:                    2
   - attic:
-      opacity:                          1
-      padding_top:                      600  
+      opacity:                          .7
+      padding_top:                      600
       slides:
         - url:                          /assets/image/module/attic/1920x1280/alexey-ruban.jpg
           alt:                          Photo by Alexey Ruban on Unsplash

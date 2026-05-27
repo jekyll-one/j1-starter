@@ -1,7 +1,7 @@
 ---
 title:                                  Video
-title_extention:                        J1 Video Apps
-tagline:                                J1 Video Apps
+title_extention:                        Video players
+tagline:                                J1 Video
 
 date:                                   2026-05-07
 #last_modified:                         2026-01-01
@@ -30,19 +30,20 @@ personalization:                        true
 regenerate:                             false
 permalink:                              /pages/public/tour/video_data/
 
-resources:                              [ gallery, lightgallery, videojs ]
+resources:                              [ gallery, lightgallery, masonry, videojs ]
 resource_options:
   - toccer:
       collapseDepth:                    3
   - attic:
-      slides:
+      opacity:                          .7
+      padding_top:                      600
+      slides:      
         - url:                          /assets/video/headers/present_videos/modern-dance.mp4
           alt:                          AI generated video
           title:                        Video Player
-          tagline:                      Playback Video
+          tagline:                      Playback Video Files
           isVideo:                      true
-          mute:                         false
-#         loop:                         false
+          mute:                         true
 ---
 
 // Page Initializer
@@ -100,6 +101,7 @@ own website and from online sources like YouTube.
 // See: https://docs.asciidoctor.org/asciidoc/latest/macros/audio-and-video/
 // -----------------------------------------------------------------------------
 [role="mt-5"]
+[[video-html]]
 == HTML 5 Video
 HTML5 video lets you place video files directly on your website. The
 browser does the rest: it loads the file, plays it, and shows the
@@ -131,6 +133,7 @@ video::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/html5
 // video::RvRhUHTV_8k/PLDitloyBcHOm49bxNhvGgg0f9NRZ5lSaP[youtube]
 
 [role="mt-5"]
+[[videojs]]
 == VideoJS
 
 *VideoJS* is a free, open-source video player for the web. The J1
@@ -142,6 +145,7 @@ same player can show videos from many different sources, all with the
 same look and feel -- a much better experience for your visitors.
 
 [role="mt-5"]
+[[videojs--local]]
 === Local Video
 
 With VideoJS, you can play *local MP4 video files* in a customizable
@@ -154,6 +158,7 @@ videojs::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/htm
 // videojs::/assets/video//html5/rolling_wild.mp4[poster="/assets/video/poster/html5/rolling_wild.jpg", opts="" role="mb-5"]
 
 [role="mt-5"]
+[[videojs--youtube]]
 === YouTube
 
 The J1 Template can also embed videos straight from YouTube. Just give
@@ -168,6 +173,7 @@ youtube::brEXrQBIj68[poster="//img.youtube.com/vi/brEXrQBIj68/maxresdefault.jpg"
 
 
 [role="mt-5"]
+[[gallery-video]]
 == Galleries of Video
 
 A *video gallery* is a collection of videos shown together, often around
@@ -195,7 +201,7 @@ Below you will find two examples: a gallery of *local MP4 videos* and a
 gallery of *YouTube videos*.
 
 [role="mt-4"]
-[[justified-gllery-local-video]]
+[[gallery-video--local]]
 === Local Video
 
 Have videos you took with your phone or camera? You can show them on
@@ -211,12 +217,12 @@ modern MP4 encoder you can fit:
 * up to *10 minutes* of HD 720p video (1280 x 720 pixels).
 ====
 
-.Local MP4 Video · Justified Gallery + LightGallery
+.Justified Gallery
 gallery::jg_video_html5[role="mb-4"]
 
 
 [role="mt-5"]
-[[justified-gllery-youtube]]
+[[gallery-video--youtube]]
 === YouTube
 
 link:{url-youtube--home}[YouTube, {browser-window--new}] is the largest
@@ -224,8 +230,11 @@ video platform on the Internet. With the J1 Template, you can pick a
 selection of YouTube videos and show them as a single gallery on your
 page -- great for music collections, tutorials, or interviews.
 
-.YouTube Video · justifiedGallery + LightGallery
-gallery::jg_video_youtube_james_and_adele[role="mb-4"]
+.Masonry Gallery
+masonry::youtube[role="mb-4"]
+
+// .Justified Gallery
+// gallery::jg_video_youtube_james_and_adele[role="mb-4"]
 
 
 [role="mt-5"]

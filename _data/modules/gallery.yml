@@ -146,7 +146,7 @@ settings:
       #
       lightbox:
         enabled:                        true
-        type:                           lg                                      # ps | lb | lg
+        type:                           ps                                      # ps | lb | lg
 
       lightGallery:
         plugins:                        lgFullscreen, lgRotate, lgThumbnail, lgZoom

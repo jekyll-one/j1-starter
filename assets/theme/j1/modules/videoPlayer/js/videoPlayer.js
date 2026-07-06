@@ -4645,7 +4645,7 @@
 
               setTimeout(() => {
                 player.currentTime(savedPositionYT);
-                logger.info('\n' + `resumed YouTube video id: ${videoId} at last position ${savedPositionYT}s`);
+                isDev && logger.info('\n' + `resumed YouTube video id: ${videoId} at last position ${savedPositionYT}s`);
               }, 250);
             };
             player.on('playing', onFirstPlayingYT);
@@ -4776,7 +4776,7 @@
 
               setTimeout(() => {
                 player.currentTime(savedPosition);
-                logger.info('\n' + `resumed video with id: ${videoId} at last position ${savedPosition}s`);
+                isDev && logger.info('\n' + `resumed video with id: ${videoId} at last position ${savedPosition}s`);
               }, 250);
             };
 

@@ -81,7 +81,6 @@ parts of your design on your own.
 </div>
 ++++
 
-
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------
 [role="mt-5"]

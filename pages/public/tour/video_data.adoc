@@ -1,7 +1,7 @@
 ---
 title:                                  Video
 title_extention:                        Video players
-tagline:                                J1 Video
+tagline:                                Playback Video and Playlists
 
 date:                                   2026-05-07
 #last_modified:                         2026-01-01
@@ -30,7 +30,10 @@ personalization:                        true
 regenerate:                             false
 permalink:                              /pages/public/tour/video_data/
 
-resources:                              [ gallery, lightgallery, masonry, videojs ]
+resources:                              [
+                                          gallery, lightgallery, masonry,
+                                          videoPlayer, videojs
+                                        ]
 resource_options:
   - toccer:
       collapseDepth:                    3
@@ -40,8 +43,8 @@ resource_options:
       slides:      
         - url:                          /assets/video/headers/present_videos/modern-dance.mp4
           alt:                          AI generated video
-          title:                        Video Player
-          tagline:                      Playback Video Files
+          title:                        Video Players
+          tagline:                      Playback Video and Playlists
           isVideo:                      true
           mute:                         true
 ---
@@ -96,13 +99,18 @@ own website and from online sources like YouTube.
 </div>
 ++++
 
-
 // Include sub-documents (if any)
 // See: https://docs.asciidoctor.org/asciidoc/latest/macros/audio-and-video/
 // -----------------------------------------------------------------------------
 [role="mt-5"]
+== Standalone Players
+
+lorem:sentences[5]
+
+[role="mt-4"]
 [[video-html]]
-== HTML 5 Video
+=== HTML Player
+
 HTML5 video lets you place video files directly on your website. The
 browser does the rest: it loads the file, plays it, and shows the
 standard playback controls.
@@ -134,7 +142,7 @@ video::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/html5
 
 [role="mt-5"]
 [[videojs]]
-== VideoJS
+=== VideoJS Player
 
 *VideoJS* is a free, open-source video player for the web. The J1
 Template uses VideoJS to play your own video files *and* video from
@@ -144,9 +152,9 @@ VideoJS supports *plugins* that add new features. With plugins, the
 same player can show videos from many different sources, all with the
 same look and feel -- a much better experience for your visitors.
 
-[role="mt-5"]
+[role="mt-4"]
 [[videojs--local]]
-=== Local Video
+==== Local Video
 
 With VideoJS, you can play *local MP4 video files* in a customizable
 player that matches your site design.
@@ -157,9 +165,9 @@ videojs::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/htm
 // .Rolling Wild · MP4 Video (over VideoJS)
 // videojs::/assets/video//html5/rolling_wild.mp4[poster="/assets/video/poster/html5/rolling_wild.jpg", opts="" role="mb-5"]
 
-[role="mt-5"]
+[role="mt-4"]
 [[videojs--youtube]]
-=== YouTube
+==== YouTube
 
 The J1 Template can also embed videos straight from YouTube. Just give
 the YouTube video ID and the player appears on your page.
@@ -170,6 +178,19 @@ hard to forget.
 
 .Sky Elements · AGT 2024 
 youtube::brEXrQBIj68[poster="//img.youtube.com/vi/brEXrQBIj68/maxresdefault.jpg" role="mb-4"]
+
+
+[role="mt-5"]
+[[j1-video]]
+== J1 VideoPlayer
+
+VideoPlayer is a playlist-friendly player built using VideoJS. It lets every
+video use the same attractive, customizable player and adds a full playlist
+feature. Viewers can search, sort, play, rate videos, and pick up right where
+they left off.
+
+.Tiny Desk Concerts
+videoPlayer::player_tiny_desk_concerts[role="mb-5"]
 
 
 [role="mt-5"]

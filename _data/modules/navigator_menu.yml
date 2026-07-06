@@ -26,9 +26,11 @@
     - title:                            Image
       href:                             /pages/public/tour/image_data/
       icon:                             image
+
     - title:                            Audio
       href:                             /pages/public/tour/audio_data/
       icon:                             volume-high
+
     - title:                            Video
       href:                             /pages/public/tour/video_data/
       icon:                             video
@@ -36,15 +38,19 @@
     - title:                            Typography
       href:                             /pages/public/tour/typography/
       icon:                             format-text
+
     - title:                            Icons
       href:                             /pages/public/tour/mdi_icon_font/
       icon:                             fan
+
     - title:                            Extensions
       href:                             /pages/public/tour/asciidoc_extensions/
       icon:                             format-annotation-plus
+
     - title:                            Modals
       href:                             /pages/public/tour/modals/
       icon:                             image
+
     - title:                            Tables
       href:                             /pages/public/tour/responsive_tables/
       icon:                             table
@@ -52,9 +58,11 @@
     - title:                            Themes
       href:                             /pages/public/tour/themes/
       icon:                             theme-light-dark
+
     - title:                            Highligher
       href:                             /pages/public/tour/rouge/
       icon:                             code-parentheses
+
     - title:                            Search
       href:                             /pages/public/tour/site_search/
       icon:                             magnify
@@ -68,14 +76,6 @@
     - title:                            Where to go
       href:                             /pages/public/learn/where_to_go/
       icon:                             foot-print
-
-#   - title:                            Core Web Vitals
-#     href:                             /pages/public/learn/core_web_vitals/
-#     icon:                             quadcopter
-#
-#   - title:                            BS Sass Variables
-#     href:                             /pages/public/learn/bs_sass_variables/
-#     icon:                             code-tags
 
     # --------------------------------------------------------------------------
     # Collections
@@ -118,9 +118,9 @@
           target:                       _blank
 
 
-      # - title:                        Site Development
-      #   href:                         //jekyll.one/pages/public/learn/devstart/
-      #   icon:                         launch
+        - title:                        Site Development
+          href:                         //jekyll.one/pages/public/learn/devstart/
+          icon:                         launch
 
         - title:                        Jekyll In A Day
           icon:                         alpha-j-box
@@ -384,13 +384,17 @@
 - item:                                 About
   sublevel:
 
-    - title:                            Starter Web
+    - title:                            This Site
       icon:                             home-variant-outline
       href:                             /pages/public/about/starter/
 
     - title:                            Privacy
       icon:                             heart
       href:                             /pages/public/legal/en/privacy/      
+
+    - title:                            Features
+      icon:                             wrench
+      href:                             /pages/public/about/features/
 
     - title:                            Issues
       icon:                             bug

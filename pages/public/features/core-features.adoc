@@ -319,7 +319,7 @@ J1 sites are highly optimised. They aim for the best Google Lighthouse
 scores in performance, accessibility, best practices, and SEO — all in
 the green range.
 
-.Google Lighthouse Scores - Starter Web of version 2026.0.15
+.Google Lighthouse Scores - Starter Web of version 2026.0.16
 lightbox::images--google-lighthouse[ 1024, {data-images--google-lighthouse} ]
 
 [role="mt-5 mb-8"]

@@ -1421,7 +1421,6 @@ resources:
                                           modules/lightGallery/js/plugins/lg-share,
                                           modules/lightGallery/js/plugins/lg-thumbnail,
                                           modules/lightGallery/js/plugins/lg-video,
-#                                         modules/lightGallery/js/plugins/lg-vimeo-thumbnail,
                                           modules/lightGallery/js/plugins/lg-zoom,
                                           modules/lightGallery/js/lightgallery
                                         ]
@@ -1451,138 +1450,23 @@ resources:
                                           modules/videojs/css/themes/forest,
                                           modules/videojs/css/themes/sea,
                                           modules/videojs/css/themes/uno,
-#                                         modules/videojs/plugins/controls/aspect-ratio-panel/css/aspect-ratio-panel,
                                           modules/videojs/plugins/controls/skipbuttons/css/skipbuttons,
+                                          modules/videojs/plugins/controls/nextprevbuttons/css/nextprevbuttons,
                                           modules/videojs/plugins/controls/zoom/css/zoom
                                         ]
         files:                          [ adapter/js/videojs.js ]
         js:                             [
-                                          modules/videojs/js/video,
-#                                         modules/videojs/plugins/controls/aspect-ratio-panel/js/aspect-ratio-panel,
+                                          modules/videojs/js/video,                                       
                                           modules/videojs/plugins/controls/hotkeys/js/hotkeys,
                                           modules/videojs/plugins/controls/skipbuttons/js/skipbuttons,
-#                                         modules/videojs/plugins/controls/persist-settings/js/videojs-persist,
-#                                         modules/videojs/plugins/controls/playbackrate-adjuster/js/playbackrate-adjuster,
+                                          modules/videojs/plugins/controls/nextprevbuttons/js/nextprevbuttons,
                                           modules/videojs/plugins/controls/zoom/js/zoom,
-#                                         modules/videojs/plugins/players/dm/js/dailymotion,
-#                                         modules/videojs/plugins/players/vm/js/vimeo,
-#                                         modules/videojs/plugins/players/wt/js/wistia,
+                                          modules/videojs/plugins/players/playlist/js/core,
+                                          modules/videojs/plugins/players/playlist/js/ui,                                         
                                           modules/videojs/plugins/players/native/js/native,
                                           modules/videojs/plugins/players/yt/js/youtube
                                         ]
         init_function:                  [ j1.adapter.videojs.init ]
-
-  # ----------------------------------------------------------------------------
-  # TikToc Player, Version v1.0.11
-  #
-  # - name:                               TikToc Player
-  #   resource:
-  #     enabled:                          true
-
-  #     id:                               tiktoc-player
-  #     comment:                          Module TikToc Player
-  #     region:                           head
-  #     layout:                           [ home, page, post ]
-  #     required:                         ondemand
-  #     script_load:                      defer
-  #     dependencies:                     false
-  #     pass_init_data:                   false
-
-  #     data:
-  #       css:                            []
-  #       files:                          [ modules/videoPlayer/tiktoc/js/player.min.js ]
-  #       js:                             []
-  #       init_function:                  []
-
-  # ----------------------------------------------------------------------------
-  # Dailymotion Player, Version v-0.0.3524-rc1 (may required by lightGallery)
-  #
-  # - name:                               Dailymotion Player
-  #   resource:
-  #     enabled:                          true
-
-  #     id:                               dailymotion-player
-  #     comment:                          Module Dailymotion Player
-  #     region:                           head
-  #     layout:                           [ home, page, post ]
-  #     required:                         ondemand
-  #     script_load:                      defer
-  #     dependencies:                     false
-  #     pass_init_data:                   false
-
-  #     data:
-  #       css:                            []
-  #       files:                          [ modules/videoPlayer/dailymotion/js/player.min.js ]
-  #       js:                             []
-  #       init_function:                  []
-
-  # ----------------------------------------------------------------------------
-  # Vimeo Player, Version v2.22.0  (may required by lightGallery)
-  #
-  # - name:                               Vimeo Player
-  #   resource:
-  #     enabled:                          true
-
-  #     id:                               vimeo-player
-  #     comment:                          Module Vimeo Player
-  #     region:                           head
-  #     layout:                           [ home, page, post ]
-  #     required:                         ondemand
-  #     script_load:                      defer
-  #     dependencies:                     false
-  #     pass_init_data:                   false
-
-  #     data:
-  #       css:                            []
-  #       files:                          [ modules/videoPlayer/vimeo/js/player.min.js ]
-  #       js:                             []
-  #       init_function:                  []
-
-  # ----------------------------------------------------------------------------
-  # Wistia Player, Version E-v1 (may required by lightGallery)
-  #
-  # - name:                               Wistia Player
-  #   resource:
-  #     enabled:                          true
-
-  #     id:                               wistia-player
-  #     comment:                          Module Wistia Player
-  #     region:                           head
-  #     layout:                           [ home, page, post ]
-  #     required:                         ondemand
-  #     script_load:                      defer
-  #     dependencies:                     false
-  #     pass_init_data:                   false
-
-  #     data:
-  #       css:                            []
-  #       files:                          [ modules/videoPlayer/wistia/js/player.min.js ]
-  #       js:                             []
-  #       init_function:                  []
-
-  # ----------------------------------------------------------------------------
-  # Range Slider, based on the JS implementation of the noUiSlider API
-  #
-  # See: https://github.com/leongersen/noUiSlider
-  #
-  # - name:                               J1 Range Slider
-  #   resource:
-  #     enabled:                          true
-
-  #     id:                               range-slider
-  #     comment:                          Module Range Slider
-  #     region:                           head
-  #     layout:                           [ home, page, post ]
-  #     required:                         ondemand
-  #     script_load:                      defer
-  #     dependencies:                     false
-  #     pass_init_data:                   false
-
-  #     data:
-  #       css:                            [ modules/rangeSlider/css/theme/uno/nouislider ]
-  #       files:                          [ adapter/js/rangeSlider.js ]
-  #       js:                             [ modules/rangeSlider/js/nouislider ]
-  #       init_function:                  [ j1.adapter.rangeSlider.init ]
 
   # ----------------------------------------------------------------------------
   # Scroller, JS API to implement infinite scroll
@@ -2192,7 +2076,10 @@ resources:
       data: 
         css:                            [ modules/videoPlayer/css/videoPlayer ]
         js:                             [ modules/videoPlayer/js/videoPlayer ]
-        files:                          [ adapter/js/videoPlayer.js ]
+        files:                          [ 
+                                          modules/videoPlayer/js/playlistCards.mjs,
+                                          adapter/js/videoPlayer.js
+                                        ]
         init_function:                  [ j1.adapter.videoPlayer.init ]
 
 # ------------------------------------------------------------------------------

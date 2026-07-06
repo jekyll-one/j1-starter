@@ -33,7 +33,7 @@ permalink:                              /pages/public/tour/audio_data/
 resources:                              [ amplitudejs ]
 resource_options:
   - toccer:
-      collapseDepth:                    2
+      collapseDepth:                    3
   - attic:
       opacity:                          .7
       padding_top:                      600
@@ -72,6 +72,8 @@ resource_options:
 // See: https://docs.asciidoctor.org/asciidoc/latest/macros/audio-and-video/
 //
 
+// Page content
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [role="dropcap"]
 HTML5 makes it easy to add *audio* to a web page. Every modern browser
 has a *built-in audio player* with the standard play, pause, and volume
@@ -150,7 +152,7 @@ when you want music or sound to play in the background while your
 visitor focuses on something else on the page.
 
 .Emancipator · From Dusk To Dawn
-amplitude::emancipator_mini[role="mb-4"]
+amplitude::emancipator_mini[]
 
 You will see mini players on music streaming services, podcast pages,
 and any website that wants to play audio without taking over the whole
@@ -166,7 +168,7 @@ choice when you want visitors to control the audio easily, but you do
 not want the player to take over the page.
 
 .Emancipator · From Dusk To Dawn
-amplitude::emancipator_compact[role="mb-4"]
+amplitude::emancipator_compact[]
 
 You can even place several compact players side by side on the same
 page, for example to offer a few sample tracks.
@@ -180,7 +182,7 @@ window. It looks like a complete audio app: play, pause, skip, volume,
 playlist, track info, and more -- all visible at the same time.
 
 .Emancipator · From Dusk To Dawn
-amplitude::emancipator_large[role="mb-4"]
+amplitude::emancipator_large[]
 
 The large player works the same way as the compact one, but you do not
 have to open extra panels to reach the additional controls. This is the
@@ -212,7 +214,7 @@ life, feelings, and growing up. Many people enjoy her music because it
 is honest, funny, and authentic.
 
 .Bea and her Business · YouTube 2025
-amplitude::bea_yt_large[role="mb-5"]
+amplitude::bea_yt_large[]
 
 [role="mt-4"]
 ==== Diana Krall
@@ -224,7 +226,7 @@ which earned her a Grammy for Best Jazz Vocal. Her style mixes classic jazz
 standards with her deep voice and strong piano skills.
 
 .Diana Krall · YouTube
-amplitude::diana_krall_yt_large[role="mb-4"]
+amplitude::diana_krall_yt_large[]
 
 
 [role="mt-5"]

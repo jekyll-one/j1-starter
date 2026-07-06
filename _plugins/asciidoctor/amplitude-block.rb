@@ -34,7 +34,7 @@ Asciidoctor::Extensions.register do
 
     named :amplitude
     name_positional_attributes 'role'
-    default_attrs 'role' => 'mt-3 mb-3'
+    default_attrs 'role' => 'mb-4'
 
     def process parent, target, attributes
 

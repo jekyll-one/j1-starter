@@ -1,11 +1,11 @@
 # ------------------------------------------------------------------------------
 # ~/_data/modules/swiper_control.yml (0)
-# Application (control) settings for the J1 Swiper
+# Application (control) settings for the module J1 Swiper
 #
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023-2026 Juergen Adams
+# Copyright (C) 2026 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -17,7 +17,7 @@
 #
 description:
   title:                                J1 Swiper
-  scope:                                User settings (control)
+  scope:                                User control settings
   location:                             _data/modules/swiper_control.yml
 
 # ==============================================================================
@@ -33,11 +33,10 @@ settings:
 
     # --------------------------------------------------------------------------
     # TEXT Swipers
-    # ==========================================================================
+    # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
     # TEXT Swiper|Layout Base
-    # --------------------------------------------------------------------------
     #    
     - swiper:
 
@@ -48,7 +47,7 @@ settings:
       enabled:                          true
       id:                               swiper_text_base
       layout:                           text/base
-      playlist:                         text_playlist
+      media_set:                        j1_headlines
       swiper_classes:                   false
       container_classes:                swiper-text-base
       wrapper_styles:                   false
@@ -90,7 +89,6 @@ settings:
 
     # --------------------------------------------------------------------------
     # TEXT Swiper|Layout Parallax
-    # --------------------------------------------------------------------------
     #    
     - swiper:
 
@@ -104,7 +102,7 @@ settings:
       gridify:                          true
       # background-image:               /assets/image/quote/default.jpg
       # quote-text-color:               rgba(255, 255, 255, .75)
-      playlist:                         text_playlist
+      media_set:                        j1_headlines
       swiper_classes:                   false
       container_classes:                swiper-text-parallax
       wrapper_styles:                   false
@@ -144,81 +142,13 @@ settings:
                                           console.log ('\n' + 'Entered event: afterInit');
                                         }
 
-    # --------------------------------------------------------------------------
-    # IMAGE Swiper|Layout Base, Tester
-    # --------------------------------------------------------------------------
-    #
-    - swiper:
-
-      # ------------------------------------------------------------------------
-      # GENERAL Options
-      # ------------------------------------------------------------------------
-      #
-      enabled:                          true
-      id:                               attic_swiper
-      layout:                           image/base
-      playlist:                         attic_swiper_base
-      swiper_classes:                   false
-      container_classes:                false
-      wrapper_styles:                   false
-
-      # ------------------------------------------------------------------------
-      # CAPTION Options
-      # ------------------------------------------------------------------------
-      #
-      captions:                             
-        enabled:                        false
-        css_class:                      swp-caption-content
-
-      # ------------------------------------------------------------------------
-      # CORE Options
-      # ------------------------------------------------------------------------
-      #
-      parameters:
-        grabCursor:                     false
-        loop:                           false
-
-      # ------------------------------------------------------------------------
-      # MODULE Options
-      # ------------------------------------------------------------------------
-      #
-      module_settings:
-        # navigation:
-        #   nextEl:                       .swiper-button-next
-        #   prevEl:                       .swiper-button-prev
-        # pagination:
-        #   el:                           .swiper-pagination-outer
-        #   clickable:                    true
-        # renderBullet:                 function (index, className) { return `<span class="${className}"> ${++index} </span>`; }
-
-      # ------------------------------------------------------------------------
-      # EVENT Options
-      # ------------------------------------------------------------------------
-      #
-      events:
-        enabled:                        false
-        init: >
-                                        function (swiper) { var slideHeight = 300; swiper.slides.forEach(slide => { slide.style.height = `${slideHeight}px`; }); }
-
-      # ------------------------------------------------------------------------
-      # LIGHTBOX Options
-      # ------------------------------------------------------------------------
-      #
-      lightbox:
-
-        # ----------------------------------------------------------------------
-        # GENERAL Options
-        # ----------------------------------------------------------------------
-        #
-        enabled:                        false
 
     # --------------------------------------------------------------------------
-    # IMAGE Swiper
-    # ==========================================================================
+    # IMAGE Swipers
+    # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
     # IMAGE Swiper|Layout Base, Full-width
-    # --------------------------------------------------------------------------
     #
     - swiper:
 
@@ -229,7 +159,7 @@ settings:
       enabled:                          true
       id:                               swiper_image_base_full_width_pagination
       layout:                           image/base
-      playlist:                         free_animal
+      media_set:                        free_animal
       swiper_classes:                   false
       container_classes:                false
       wrapper_styles:                   false
@@ -297,7 +227,7 @@ settings:
       enabled:                          true
       id:                               swiper_image_base_navigation_pagination
       layout:                           image/base
-      playlist:                         free_animal
+      media_set:                         free_animal
       swiper_classes:                   false
       container_classes:                false
       wrapper_styles:                   false
@@ -414,7 +344,7 @@ settings:
       enabled:                          true
       id:                               swiper_image_base_captions
       layout:                           image/base
-      playlist:                         mega_cities_1
+      media_set:                         mega_cities_1
       swiper_classes:                   false
       container_classes:                false
       wrapper_styles:                   false
@@ -523,7 +453,7 @@ settings:
       enabled:                          true
       id:                               thumb_slider_top
       layout:                           image/thumbs
-      playlist:                         free_animal
+      media_set:                         free_animal
       swiper_classes:                   false
       container_classes:                false
       wrapper_styles:                   false
@@ -637,7 +567,7 @@ settings:
       enabled:                          true
       id:                               neighbor_slider
       layout:                           image/neighbor
-      playlist:                         neighbor
+      media_set:                         neighbor
       swiper_classes:                   neighbor-slider
       container_classes:                false
       wrapper_styles:                   false
@@ -743,7 +673,7 @@ settings:
       enabled:                          true
       id:                               swiper_image_panorama
       layout:                           image/panorama
-      playlist:                         panorama
+      media_set:                         panorama
       swiper_classes:                   panorama-slider
       container_classes:                false
       wrapper_styles:                   "height: 240px; padding: 14px 0;"
@@ -886,7 +816,7 @@ settings:
       enabled:                          false
       id:                               swiper_image_stacked
       layout:                           image/stacked
-      playlist:                         game_posters
+      media_set:                         game_posters
       swiper_classes:                   stacked-slider
       container_classes:                false
       wrapper_styles:                   false
@@ -973,7 +903,7 @@ settings:
       enabled:                          true
       id:                               swiper_image_stacked
       layout:                           image/stacked
-      playlist:                         game_posters
+      media_set:                         game_posters
       swiper_classes:                   stacked-slider
       container_classes:                false
       wrapper_styles:                   false
@@ -1064,7 +994,7 @@ settings:
       enabled:                          false
       id:                               swiper_audio_pop
       layout:                           audio/default
-      playlist:                         free_pop
+      media_set:                         free_pop
       swiper_classes:                   false
       container_classes:                false
       wrapper_styles:                   false

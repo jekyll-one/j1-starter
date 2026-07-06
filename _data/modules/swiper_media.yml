@@ -1,11 +1,11 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/swiper_playlist.yml (0)
-# Playlist settings for the J1 Swiper
+# ~/_data/modules/swiper_media.yml (0)
+# User (media) configuration settings for the module J1 Swiper
 #
 # Product/Info:
 # https://jekyll.one
 #
-# Copyright (C) 2023-2026 Juergen Adams
+# Copyright (C) 2026 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
@@ -16,27 +16,30 @@
 #
 description:
   title:                                J1 Swiper
-  scope:                                User Playlist settings
-  location:                             _data/modules/swiper_playlist.yml
+  scope:                                User media settings
+  location:                             _data/modules/swiper_media.yml
 
 # ------------------------------------------------------------------------------
 # User Playlist configuration settings
 #
 settings:
 
-  # ============================================================================
-  # PLAYLIST configurations
   # ----------------------------------------------------------------------------
-  playlists:
+  # MEDIA configuration
+  #
+  media_sets:
 
     # --------------------------------------------------------------------------
-    # TEXT Playlists
+    # TEXT media
     # --------------------------------------------------------------------------
+
+    # --------------------------------------------------------------------------
+    # J!_HEADLINES
     #
-    - playlist:
+    - media:
       enabled:                          true
 
-      name:                             text_playlist
+      name:                             j1_headlines
       type:                             text/html
 
       # ------------------------------------------------------------------------
@@ -86,40 +89,13 @@ settings:
 
 
     # --------------------------------------------------------------------------
-    # IMAGE Playlists
-    # ==========================================================================
-
+    # IMAGE media
     # --------------------------------------------------------------------------
-    # ATTIC SWIPER
-    # --------------------------------------------------------------------------
-    #
-    - playlist:
-      enabled:                          true
-
-      name:                             attic_swiper_base
-      type:                             image/jpg
-
-      image_defaults:
-        base_folder:                    //kj.de/images/media
-
-      # ------------------------------------------------------------------------
-      # SLIDE settings
-      # ------------------------------------------------------------------------
-      #
-      items:
-
-        # slide 01
-        - item:
-          enabled:                      true
-          image:                        "6078_20579"                            # diana_krall
-          # caption_text:               Diana Krall
-          # description:                Diana Krall
 
     # --------------------------------------------------------------------------
     # FREE ANIMALS
-    # --------------------------------------------------------------------------
     #
-    - playlist:
+    - media:
       enabled:                          true
 
       name:                             free_animal
@@ -186,9 +162,8 @@ settings:
 
     # --------------------------------------------------------------------------
     # MEGA CITIES 1
-    # --------------------------------------------------------------------------
     #
-    - playlist:
+    - media:
       enabled:                          true
 
       name:                             mega_cities_1
@@ -268,7 +243,7 @@ settings:
     # --------------------------------------------------------------------------
     # MEGA CITIES 2
     #
-    - playlist:
+    - media:
       enabled:                          true
 
       name:                             mega_cities_2
@@ -335,9 +310,8 @@ settings:
 
     # --------------------------------------------------------------------------
     # PANORAMA
-    # --------------------------------------------------------------------------
     #
-    - playlist:
+    - media:
       enabled:                          true
 
       name:                             panorama
@@ -450,10 +424,9 @@ settings:
                                         Lightbox Caption
 
     # --------------------------------------------------------------------------
-    # STACKED Game Posters
-    # --------------------------------------------------------------------------
+    # GAME_POSTERS
     #
-    - playlist:
+    - media:
       enabled:                          true
 
       name:                             game_posters
@@ -500,9 +473,8 @@ settings:
 
     # --------------------------------------------------------------------------
     # NEIGHBOR
-    # --------------------------------------------------------------------------
     #
-    - playlist:
+    - media:
       enabled:                          true
 
       name:                             neighbor
@@ -569,13 +541,12 @@ settings:
 
 
     # --------------------------------------------------------------------------
-    # AUDIO Playlists
-    # ==========================================================================
-
+    # AUDIO media
+    # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
-    # VIDER Playlists
-    # ==========================================================================
+    # VIDER media
+    # --------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
 # END config

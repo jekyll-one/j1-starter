@@ -1,11 +1,11 @@
 # ------------------------------------------------------------------------------
 # ~/_data/modules/masonry_control.yml (1)
-# User configuration (control) settings for J1 Masonry module
+# User (control) configuration settings for the module J1 Masonry
 #
 # Product/Info:
 # //jekyll.one
 #
-# Copyright (C) 2023-2026 Juergen Adams
+# Copyright (C) 2026 Juergen Adams
 #
 # J1 Template is licensed under the MIT License.
 # See: //github.com/jekyll-one/J1 Theme/blob/master/LICENSE
@@ -16,7 +16,7 @@
 #
 description:
   caption:                              J1 Masonry
-  scope:                                User settings (control)
+  scope:                                User control settings
   location:                             _data/modules/masonry_control.yml
 
 # ------------------------------------------------------------------------------
@@ -205,12 +205,6 @@ settings:
           appendThumbnailsTo:           .lg-outer                                 # required for customized thumbnails
           animateThumb:                 false                                     # required for customized thumbnails
           allowMediaOverlap:            true                                      # required for customized thumbnails
-
-        # options:
-        #   licenseKey:                       0000-0000-000-0000
-        #   download:                         false
-        #   alignThumbnails:                  left
-        #   animateThumb:                     true
 
       # ------------------------------------------------------------------------
       # split J1 Masonry data #2

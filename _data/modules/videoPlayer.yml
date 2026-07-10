@@ -28,9 +28,6 @@ settings:
   #
   enabled:                              true
 
-  toolbox:
-    enabled:                            false
-
   playlist:
     cards:
       perRow:                           2

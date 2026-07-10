@@ -189,6 +189,34 @@ video use the same attractive, customizable player and adds a full playlist
 feature. Viewers can search, sort, play, rate videos, and pick up right where
 they left off.
 
+[role="mt-4"]
+=== The Playlist Panel
+
+When opened (click on button *Show playlist*/the *header bar*), the
+playlist panel shows:
+
+* a *search box* to filter the list as you type
+* a *sort* control to reorder the list
+* a *list / cards* switch to change the layout
+* a *merge* switch that decides whether importing adds to or replaces the list
+* a *loop* switch to repeat the playlist
+* the videos themselves, each with its poster, title, author, and a star rating
+
+[NOTE]
+====
+Which elements appear in the playlist panel depends on the configuration
+options set for the *playlist* block.
+====
+
+[role="mt-4"]
+=== The Player
+
+Tiny Desk Concerts is a popular, award-winning video series featuring live
+music performances at an actual office desk, hosted by NPR Music. Started
+in 2008 by radio host Bob Boilen and producer Stephen Thompson. The show has
+grown from a small platform for folk and indie artists into a worldwide
+pop-culture hit.
+
 .Tiny Desk Concerts
 videoPlayer::player_tiny_desk_concerts[role="mb-5"]
 

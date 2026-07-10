@@ -35,8 +35,8 @@ settings:
       # GENERAL options
       #   
       id:                               player_1
-      description:                      NPR Tiny Desk Concerts
-#     description:                      VideoJS Multi-Player
+#     description:                      NPR Tiny Desk Concerts
+      description:                      VideoJS Multi-Player 1
 
       # All videoJS settings below are per-instance overrides; missing keys
       # fall through to the top-level 'defaults' section.
@@ -65,7 +65,8 @@ settings:
       # GENERAL options
       #   
       id:                               player_2
-      description:                      Carpool Karaoke
+#     description:                      Carpool Karaoke
+      description:                      VideoJS Multi-Player 2
 
       videoJS:
         autoStart:                      true
@@ -75,8 +76,8 @@ settings:
 
       playlist:
 
-#       preload:                        []
-        preload:                        [ carpool-karaoke.json ]
+        preload:                        []
+#       preload:                        [ carpool-karaoke.json ]
 
         cards:
           perRow:                       3
@@ -92,14 +93,24 @@ settings:
       id:                               player_tiny_desk_concerts
       description:                      NPR Tiny Desk Concerts
 
+      ui_elements:
+        edit_playlist_button:           false
+
       videoJS:
         autoStart:                      true
 
-      toolbox:
-        enabled:                        false
+        playbackRates:
+          enabled:                      true
+          values:                       [ 0.5, 1, 1.5, 2 ]
+
+        # PLUGIN options
+        # 
+        plugins:
+
+          playlist:
+            enabled:                    true
 
       playlist:
-#       preload:                        []
         preload:                        [ tinydesk-concerts.json ]
 
         cards:

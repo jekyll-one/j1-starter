@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/videoPlayer.yml (1)
+# ~/_data/modules/defaults/videoPlayer.yml
 # Default configuration settings for J1 VideoPlayer module
 #
 # Product/Info:
@@ -80,20 +80,69 @@ defaults:
   ui_elements:
     edit_playlist_button:               true
     show_playlist_button:               true
+
+    playlist_rate_button:               true
+    playlist_edit_button:               true
+    playlist_delete_button:             true
+
     modeSwitch:                         true
     mergeSwitch:                        true
-    loop:                               false
+
+    loop:                               true
     search:                             true
     sort:                               true
 
+  # ----------------------------------------------------------------------------
+  # PLAYLIST options
+  # ============================================================================
+  #
+  #   playlist.cards.perRow
+  #   --------------------------------------------------------------------------
+  #   claude - Modify J1 VideoPlayer #51
+  #   Number of playlist cards rendered per row while the playlist is in CARD
+  #   mode (toggled by the switch div#playlistModeSwitch_<player.id>).
+  #
+  #   The value is resolved per player instance (defaults <- settings <-
+  #   per-player control) and written by videoPlayer.js onto that player's
+  #   container div#videoplayer_playlist_parent_<player.id> as the custom
+  #   property --playlist-cards-per-row plus the matching inline
+  #   grid-template-columns. It overrides the stylesheet default of 2 columns.
+  #
+  #   Values outside the supported range, or non-numeric values, fall back to 2.
+  #   On screens narrower than 992px videoPlayer.css forces a single column,
+  #   regardless of this setting.
+  #
+  #   values:                           integer (1 .. 6)
+  #   default:                          2
+  #
+  # ----------------------------------------------------------------------------
+  #
   playlist:
     enabled:                            true
+
+    preload:                            []
+    preload_attempts:                   2
+
     close_on_play:                      false
     pip:                                false
     type:                               list                                    # list | cards
-    cards:
-      perRow:                           2
 
+    cards:
+      perRow:                           2                                       # 1..6, cards per row in card mode
+  
+  # ----------------------------------------------------------------------------
+  # VIDEOJS options
+  # ============================================================================
+  #
+  #   autoStart
+  #   --------------------------------------------------------------------------
+  #
+  #
+  #   values:                           boolean
+  #   default:                          true
+  #
+  # ----------------------------------------------------------------------------
+  #
   videoJS:
 
     autoStart:                          true
@@ -106,7 +155,7 @@ defaults:
     poster:
       autoGenerate:
         enabled:                        true
-        capturePosition:                5                                      # default: 5,    start position (seconds), when ≤ 0 captureFraction is used
+        capturePosition:                5                                       # default: 5,    start position (seconds), when ≤ 0 captureFraction is used
         captureFraction:                10                                      # default: 10,   start position (percent from duration)
         maxWidth:                       540                                     # default: 320,  pixel (4/3 ratio)
         mimeType:                       webp                                    # default: webp, image type (jpeg|png|webp)
@@ -144,7 +193,7 @@ defaults:
     #   quality          0..1 encoder quality (jpeg/webp only)
     #
     # --------------------------------------------------------------------------
-    #    
+    #
     players:
 
       native:

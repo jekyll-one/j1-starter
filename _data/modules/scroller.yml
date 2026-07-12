@@ -105,7 +105,7 @@ settings:
         dataSelector:                   data-preview-content
         elementScroll:                  true
         scrollOffset:                   200
-        lastPage:                       2                                       # 1 page "equals" 2 posts
+        lastPage:                       3                                       # 1 page "equals" 2 posts
         infoLastPage:                   false
 
         lastPageInfo_en:                ""

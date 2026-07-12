@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/j1_navigator_menu.yml (development)
+# ~/_data/modules/j1_navigator_menu.yml
 # Configuration of the J1 NAV Module for the main navigation bar
 #
 # Product/Info:
@@ -167,18 +167,6 @@
               href:                     //jekyll.one/pages/public/learn/kickstart/learning_seo/content_optimization/
               icon:                     calculator-variant-outline
               target:                   _blank
-
-# ------------------------------------------------------------------------------
-# TopLevel item FEATURES
-#
-# - item:                                 Features
-#   href:                                 /#panel_home_intro
-
-# ------------------------------------------------------------------------------
-# TopLevel item BLOG
-#
-# - item:                                 Blog
-#   href:                                 /#home_news_panel
 
 # ------------------------------------------------------------------------------
 # Menu BLOG

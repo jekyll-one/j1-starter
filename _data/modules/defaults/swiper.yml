@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/swiper.yml (1)
+# ~/_data/modules/defaults/swiper.yml (2)
 # Default settings for J1 Swiper
 #
 # Product/Info:
@@ -64,40 +64,7 @@ defaults:
   #
   enabled:                              false
   xhr_data_path:                        /assets/data/swiper
-  layout:                               image_base
-
-  # ----------------------------------------------------------------------------
-  # split J1 Swiper data #1
-  # Per-swiper "noise" defaults pulled up from swiper_player.yml. Most
-  # swipers declared `swiper_classes: false`, `container_classes: false`
-  # and `wrapper_styles: false` verbatim — those entries have been removed
-  # from each swiper and live here. Note: the original defaults key
-  # `wrapper_classes` was a typo (swiper.html references `wrapper_styles`)
-  # and has been renamed accordingly.
-  # ----------------------------------------------------------------------------
-  #
-  swiper_classes:                       false
-  container_classes:                    false
-  wrapper_styles:                       false
-
-  # ----------------------------------------------------------------------------
-  # THEME options
-  # ----------------------------------------------------------------------------
   theme:                                uno
-
-  # ----------------------------------------------------------------------------
-  # CAPTION options
-  # split J1 Swiper data #1
-  # The original file had this block declared twice with identical content.
-  # The duplicate has been removed. Per-swiper caption blocks in
-  # swiper_player.yml that match these defaults verbatim have been removed
-  # as well; per-swiper config only overrides `enabled` where the swiper
-  # actually shows captions.
-  # ----------------------------------------------------------------------------
-  #
-  captions:
-    enabled:                            false
-    css_class:                          swp-caption-content
 
   # ----------------------------------------------------------------------------
   # CSS filter options
@@ -109,68 +76,107 @@ defaults:
     brightness:                         1
 
   # ----------------------------------------------------------------------------
-  # SWIPER Core Settings
-  #
-  parameters:
-    autoHeight:                         false
-    loop:                               false
-    speed:                              600
-    slidesPerView:                      1
-    slidesPerGroup:                     1
-    spaceBetween:                       1
-
+  # SWIPER options
   # ----------------------------------------------------------------------------
-  # LIGHTBOX options
-  # split J1 Swiper data #1
-  # The lightbox block used to live at the top level of this file (outside
-  # `defaults:`) which made it unreachable via deep_merge per swiper. It
-  # has been moved inside `defaults:` so swiper.html can deep_merge it
-  # into every swiper, ID-wise. All per-swiper lightbox `captions`,
-  # `parameters`, `ui_controls` and `kbd_controls` blocks in
-  # swiper_player.yml were verbatim copies of these defaults and have
-  # been removed; per-swiper config now only carries `lightbox.enabled`
-  # (and `lightbox.captions.enabled: true` where the lightbox shows a
-  # description).
-  # ----------------------------------------------------------------------------
-  #
-  lightbox:
-    enabled:                            false
+  swiper:
 
     # --------------------------------------------------------------------------
-    # LIGHTBOX caption settings
+    # GENERAL options
+    # --------------------------------------------------------------------------
     #
-    captions:
-      enabled:                          false
-      css_class:                        pswp-caption-content
+    enabled:                          false
+    swiper_classes:                   false
+    container_classes:                false
+    wrapper_styles:                   false
 
     # --------------------------------------------------------------------------
-    # LIGHTBOX Core Parameters
+    # CORE Options
+    # --------------------------------------------------------------------------
     #
     parameters:
-      children:                         a
-      bgOpacity:                        1
-      showHideOpacity:                  true
-      loop:                             true
-      wheelToZoom:                      true
-      showHideAnimationType:            zoom
-      imageClickAction:                 next
-      tapAction:                        next
-      padding:                          { top: 0, bottom: 0, left: 80, right: 80 }
+      autoHeight:                         false
+      loop:                               false
+      speed:                              600
+      slidesPerView:                      1
+      slidesPerGroup:                     1
+      spaceBetween:                       1
 
     # --------------------------------------------------------------------------
-    # LIGHTBOX User Interface controls
+    # MODULE Options
+    # --------------------------------------------------------------------------
     #
-    ui_controls:
-      zoom:                             false
-      close:                            true
-      counter:                          true
-      arrowKeys:                        false
+    module_settings:
+      navigation:
+        enabled:                      false
+        nextEl:                       .swiper-button-next
+        prevEl:                       .swiper-button-prev
+
+      pagination:
+        enabled:                      false
+        clickable:                    true
+        nunbered:                     false
+        el:                           .swiper-pagination-outer
 
     # --------------------------------------------------------------------------
-    # LIGHTBOX Keyboard controls
+    # CAPTION options
+    # --------------------------------------------------------------------------
     #
-    kbd_controls:
-      escKey:                           true
+    captions:                             
+      enabled:                        true
+      css_class:                      swp-caption-content
+
+    # --------------------------------------------------------------------------
+    # EVENT Options
+    # --------------------------------------------------------------------------
+    #
+    events:
+      enabled:                        false
+
+    # --------------------------------------------------------------------------
+    # LIGHTBOX options
+    # --------------------------------------------------------------------------
+    #
+    lightbox:
+      enabled:                          false
+
+      # ------------------------------------------------------------------------
+      # LIGHTBOX (Core) Parameters
+      #
+      parameters:
+        enabled:                        false
+        children:                       a
+        bgOpacity:                      1
+        showHideOpacity:                true
+        loop:                           true
+        wheelToZoom:                    true
+        showHideAnimationType:          zoom
+        imageClickAction:               next
+        tapAction:                      next
+        padding:                        { top: 0, bottom: 0, left: 80, right: 80 }
+
+      # ------------------------------------------------------------------------
+      # LIGHTBOX caption settings
+      #
+      captions:
+        enabled:                        false
+        css_class:                      pswp-caption-content
+
+      # ------------------------------------------------------------------------
+      # LIGHTBOX User Interface controls
+      #
+      ui_controls:
+        enabled:                        false
+        zoom:                           false
+        close:                          true
+        counter:                        true
+        arrowKeys:                      false
+
+      # ------------------------------------------------------------------------
+      # LIGHTBOX Keyboard controls
+      #
+      kbd_controls:
+        enabled:                        false
+        escKey:                         true
 
 # ------------------------------------------------------------------------------
 # END config

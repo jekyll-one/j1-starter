@@ -34,17 +34,13 @@ resources:                              [
                                         ]
 resource_options:
   - toccer:
-      collapseDepth:                    3
+      collapseDepth:                    4
   - attic:
       opacity:                          .7
       padding_top:                      600
       slides:
         - url:                          /assets/image/module/attic/1920x1280/modern-dance.jpg
           alt:                          Photo Gemini AI
-#          badge:
-#            type:                       unsplash
-#            author:                     Quino Al Angel
-#            href:                       //unsplash.com/@quinoal
 ---
 
 // Page Initializer
@@ -211,47 +207,57 @@ introduces your site, your products, or any visual story you want to
 tell.
 
 [role="mt-4"]
-==== One Slide Slider + Pagination
+==== Multi Slide Slider
+
+You can also combine a slider with a *lightbox*. The result is a very
+compact image gallery: visitors browse the slides, and when they want
+a closer look, they click an image to enlarge it in the lightbox.
+
+[NOTE]
+====
+The J1 *lightbox* module also supports *image groups*. Once one image
+is open in the lightbox, visitors can step through the rest of the
+group with simple arrow buttons.
+====
+
+.Slider + Pagination + Lightbox
+swiper::swiper_image_base_captions[role="mt-4 mb-4"]
+
+
+[role="mt-4"]
+==== One Slide Slider
 
 SwiperJS supports both *single-image* and *multi-image* slideshows.
 The example below shows a single image at a time, with arrow buttons
 to step back and forth and a row of dots ("pagination") that shows
 how many slides there are.
 
-.Image Slider · Full-width + Pagination
+.Slider + Navigation + Pagination (numbered)
 swiper::swiper_image_base_full_width_pagination[role="mt-3 mb-4"]
-
-[role="mt-4"]
-==== Image Slider + Lightbox
-
-You can also combine a slider with a *lightbox*. The result is a very
-compact image gallery: visitors browse the slides, and when they want
-a closer look, they click an image to enlarge it in the lightbox.
-
-.Image Slider + Lightbox
-swiper::swiper_image_base_captions[role="mt-4 mb-4"]
-
-The J1 *lightbox* module also supports *image groups*. Once one image
-is open in the lightbox, visitors can step through the rest of the
-group with simple arrow buttons.
 
 
 [role="mt-5"]
-=== Extendend Image Slider
+=== Slider Layouts
 
 A *layout* changes how a slider looks and behaves -- not the slides
 themselves, but the way they are arranged on screen. Layouts can make
-a slideshow easier to navigate or more visually striking. The next
-sections show three layout options.
+a slideshow easier to navigate or more visually striking:
+
+* Layout Thumb
+* Layout Neighbor
+* Layout Panorama
+
+The following examples show the layout options in action.
+
 
 [role="mt-4"]
 [[image_thumbs_top_bottom]]
-==== Layout Thumb Top|Bottom
+==== Layout Thumb
 
 The *thumb* layout adds a row of small preview images (called
 *thumbnails*) above or below the main slider. Visitors can click a
-thumbnail to jump to that slide, or use the arrow buttons to step
-through them.
+thumbnail to jump to that slide, or use the pagination buttons to
+step through them.
 
 [role="mt-4 mb-4"]
 [TIP]
@@ -264,9 +270,8 @@ This example places thumbnails *above* the main slider. The layout
 uses *two rows* (one for the big image and one for the thumbnails),
 which takes more space but shows the images at their best.
 
-.Extendend Swiper · Layout Thumb Top
+.Thumb Top + Pagination
 swiper::thumb_slider_top[role="mb-5"]
-
 
 // [role="mt-5"]
 // [[image_thumbs_right_left]]
@@ -284,41 +289,39 @@ swiper::thumb_slider_top[role="mb-5"]
 // presented *images*.
 // ====
 
-
 [role="mt-5"]
 ==== Layout Neighbor
 
-The *neighbor* layout shows the active slide with a *preview* of the
+The *Neighbor* layout shows the active slide with a *preview* of the
 slide before it on the left and a preview of the next slide on the
 right. Clicking the left preview goes *back* a slide, and clicking
-the right preview goes *forward*.
+the right preview goes *forward* for navigation.
 
 [role="mb-5"]
 [TIP]
 ====
-With the neighbor layout, the slider feels compact and self-contained -- you
-do not need extra navigation buttons or arrows.
+With the Neighbor layout, the slider feels compact and self-contained -- no
+need for extra navigation buttons.
 ====
 
-.Extendend Swiper · Layout Neighbor
+.Layout Neighbor
 swiper::neighbor_slider[role="mb-5"]
-
 
 [role="mt-5"]
 ==== Layout Panorama
 
-The *panorama* layout adds a 3D-like curved effect to a slider. As
+The *Panorama* layout adds a 3D-like curved effect to a slider. As
 you move from one slide to the next, the slides appear to flow along
 a curved surface, like looking through the window of a moving train.
 This works best for wide images such as landscapes or panoramic
 photos.
 
-.Extendend Swiper · Layout Panorama
+.Layout Panorama
 swiper::swiper_image_panorama[role="mt-4 mb-5"]
 
 
 [role="mt-5"]
-== J1 Galleries
+== J1 Gallery
 
 A *Gallery* is a collection of images (or videos) shown together.
 Galleries are perfect for product photos, portfolios, and event
@@ -327,8 +330,8 @@ image to enlarge it, or swipe through them on a touchscreen.
 
 The J1 Template offers two gallery types:
 
-* *Grid* galleries
-* *Justified* galleries
+* *Grid* gallery
+* *Block* gallery
 
 The two types differ in *how images* are *arranged*. A *grid* places
 indivudual images in optimal sizes in a so-called grid. All grid elements
@@ -341,7 +344,7 @@ The Galleries for J1 Template combines both types with a (configurable)
 lightbox so visitors can click any photo to view it in a larger size.
 ====
 
-A *Justified* gallery keeps every image in its natural shape and arranges
+A *block* gallery keeps every image in its natural shape and arranges
 them in a block element that looks like ricks in a wall, with shorter images
 filling the gaps left by taller ones.
 
@@ -354,32 +357,31 @@ resize your window, or rotate your device, and watch the columns
 rearrange.
 ====
 
-// .Old times
-// gallery::jg_old_times[role="mt-4 mb-4"]
 
-[role="mt-4"]
+[role="mt-5"]
 === Grid Gallery
 
-*Masonry* is a library that powers grid-styled galleries in the J1 Template.
-It places images in evenly aligned columns and efficiently fills the vertical
-space, even when the images have different heights.
+The link:{url-masonry--home}[Masonry, {browser-window--new}] module is a
+library that powers grid-styled galleries in the J1 Template. It places
+images in evenly aligned columns and efficiently fills the vertical space,
+even when the images have different heights.
 
 Masonry stacks images like *bricks*: it slots each image into the
 first place it fits, so the columns can have different heights but
 no big empty gaps. The result is a balanced layout that uses the
-available space well. For more about Masonry, visit the
-link:{url-j1-masonry-previewer}[Masonry Preview, {browser-window--new}] page.
+available space well.
 
 .Grid Image Gallery
-masonry::image_fixed_height_lb[role="mt-4 mb-5"]
+masonry::image_fixed_height_lb[]
 
-[role="mt-4"]
-=== Justified Gallery
+
+[role="mt-5"]
+=== Block Gallery
 
 The link:{url-justified-gallery--home}[JustifiedGallery, {browser-window--new}]
-plugin arranges images in *evenly aligned rows*. Each row has the
-same height, but the images inside it can have different widths.
-This is the layout style you see on photo sites like *Flickr* or
+module arranges images in *evenly aligned rows* as a block. Each row in
+such a block has the same height, but the images inside it can have different
+widths. This is the layout style you see on photo sites like *Flickr* or
 *Google Photos*.
 
 The photos you take are usually a mix of *landscape* and *portrait*
@@ -387,27 +389,24 @@ orientations. A simple grid would have to crop them or leave gaps.
 JustifiedGallery solves this by keeping each image in its original
 shape and adjusting the widths so every row fills the page neatly.
 
-The J1 Template combines JustifiedGallery with the lightbox so
-visitors can click any photo for an enlarged view. You will recognise
-this layout from many websites across the Internet.
+The J1 Template combines JustifiedGallery with the lightbox so visitors
+can click any photo for an enlarged view. You will recognise this layout
+from many websites across the Internet.
 
-.Justified Image Gallery
-gallery::jg_mega_cities[role="mt-4 mb-4"]
+.Block Image Gallery
+gallery::jg_mega_cities[]
 
 
 [role="mt-5"]
 == What next
 
 We hope you enjoyed exploring what the J1 Template can do with images.
-But there is much more  -- next up is *audio*.
-
-The J1 Template plays both *audio* and *video* on web pages using
-*HTML5*, the modern web standard. HTML5 plays audio and video right
-in the browser, so visitors do not need any extra software.
-
-Older players such as *Flash Player*, *QuickTime*, and *Silverlight*
-are no longer needed. The J1 Template plays media files from your own
-website *and* from online sources on the Internet.
+But there is much more -- next up is *audio*. The J1 Template plays both
+*audio* and *video* on web pages using *HTML5*, the modern web standard.
+HTML5 plays audio and video right in the browser, so visitors do not need
+any extra software. Older players such as *Flash Player*, *QuickTime*,
+and *Silverlight* are no longer needed. The J1 Template plays media files
+from your own website *and* from online sources on the Internet.
 
 Curious? Have a look at the link:{url-tour--audio_data}[Audio Player]
 page next.

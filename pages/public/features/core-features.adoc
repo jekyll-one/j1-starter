@@ -90,7 +90,7 @@ operating system, including Windows, Linux, and macOS.
 [role="mt-4"]
 === Ruby
 
-For the latest versions of J1 Template (>= *2026.0.x*), we recommend
+For the latest versions of J1 Template (>= *2026.1.x*), we recommend
 Ruby V3. The newest Ruby versions are much faster than older ones —
 Ruby 3 can be up to three times faster than Ruby 2.0. That clearly
 speeds up the work of building your new website.
@@ -319,7 +319,7 @@ J1 sites are highly optimised. They aim for the best Google Lighthouse
 scores in performance, accessibility, best practices, and SEO — all in
 the green range.
 
-.Google Lighthouse Scores - Starter Web of version 2026.0.18
+.Google Lighthouse Scores - Starter Web of version 2026.1.0
 lightbox::images--google-lighthouse[ 1024, {data-images--google-lighthouse} ]
 
 [role="mt-5 mb-8"]

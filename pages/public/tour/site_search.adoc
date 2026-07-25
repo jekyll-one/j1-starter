@@ -481,19 +481,13 @@ prefix every word with a plus sign:
 [role="mt-5"]
 == What next
 
-You have reached the end of the tour through J1 Template. We hope you
-enjoyed it and got a good first impression of what the J1 Template can
-do for your website.
-
-If you want to learn more, the next step is *J1 in a Day* -- a *tutorial*
-that teaches you how to build a modern website with the J1 Template. The
-tutorial covers the basics of both *Jekyll* and *J1* that every site owner
-should know.
-
-Jekyll (and J1) work differently from a classic Content Management
-System (CMS) like WordPress or Drupal. If you have used a CMS before,
-some of your knowledge will help -- but a static site generator like
-Jekyll has its own way of doing things.
+You have completed the J1 Template tour. We hope you found it informative
+and gained a clear understanding of the template’s capabilities. To learn
+more, try the next step: *J1 in a Day*, a tutorial guiding you through
+building a modern website with the J1 Template. It covers essential basics
+of both *Jekyll* and *J1* for site owners. Jekyll and J1 operate differently
+from traditional Content Management Systems (CMS) like WordPress. While prior
+CMS experience helps, static site generators like Jekyll have unique workflows.
 
 The *J1 in a Day* tutorial covers:
 
@@ -503,10 +497,6 @@ The *J1 in a Day* tutorial covers:
 * Project management for a static website,
 * Creating content for J1-based static websites.
 
-A whole day sounds like a lot. But it is well worth it: by the end you
-will have a complete picture of what modern static websites can do for
-you.
-
-It is a promise: you will have a pleasant journey learning what
-modern static websites can offer. Start your journey here:
-link:{url-j1-kickstarter--web-in-a-day}[J1 in a Day, {browser-window--new}].
+The tutorial takes a full day but is a valuable investment. By the end,
+you will understand the potential of modern static websites and enjoy
+the learning process. Begin here: link:{url-j1-kickstarter--web-in-a-day}[J1 in a Day, {browser-window--new}].

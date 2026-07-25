@@ -310,15 +310,13 @@ Post's front matter by specifying a new date/time in the format
 [role="mt-5"]
 == What next
 
-The J1 Template offers many features that other Jekyll templates do not.
-*Themes* are one of them. A *theme* is a set of styles -- a *skin* -
-that changes the look of your whole website at once.
-
-J1 themes are based on *Bootstrap* (version 5). Using a theme makes sure
-your site looks consistent across every page and every modern browser:
-the same fonts, colors, table styles, and form elements everywhere. You
-can also use the built-in Bootstrap CSS classes to fine-tune the design
-on your own.
+The J1 Template offers many features other Jekyll templates do not. *Themes*
+are one of them. A *theme* is a set of styles -- a *skin* -- that changes
+the look of your whole website at once. J1 themes are based on *Bootstrap*
+(version 5). Using a theme ensures your site looks consistent across every
+page and modern browser: the same fonts, colors, table styles, and form
+elements everywhere. You can also use the built-in Bootstrap CSS classes
+to fine-tune the design yourself.
 
 Want to see what themes can do for a modern static website? Try the
 preview page link:{url-tour--themes}[Bootstrap Themes].

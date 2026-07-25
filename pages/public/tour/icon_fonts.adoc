@@ -733,15 +733,12 @@ iconify:medical-icon:i-ear-nose-throat[5x md-red-900]
 [role="mt-5"]
 == What next
 
-We hope you enjoyed seeing what icons can do. With *MDI*, *FA*, and
-*Iconify* together, you have access to tens of thousands of icons --
-something for almost every topic.
-
-The J1 Template adds a number of *AsciiDoc extensions* that make
-writing pages easier. With these extensions you can place icons,
-lightboxes, sliders, and galleries on a page using simple AsciiDoc
-markup -- no need for raw HTML. The result is less code to write and
-more readable pages.
+Hopefully, you enjoyed seeing what icons can do. With *MDI*, *FA*, and
+*Iconify* together, you have access to tens of thousands of icons -- something
+for almost every topic. The J1 Template adds a number of *AsciiDoc extensions*
+that make writing pages easier. With these extensions, you can place icons,
+lightboxes, sliders, and galleries on a page using simple AsciiDoc markup;
+no need for raw HTML. The result is less code to write and more readable pages.
 
 Want to see them all? Continue with
 link:{url-tour--asciidoc-extensions}[Asciidoc Extensions].

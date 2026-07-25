@@ -789,13 +789,11 @@ include::{documentdir}/100_gistblock.asciidoc[]
 [role="mt-5"]
 == What next
 
-Bootstrap gives you a complete set of styles for responsive layouts,
-including tables. But standard Bootstrap tables can still be hard to
-read on small screens.
-
-J1 Template builds on top of Bootstrap and adds extra CSS styles for
-*responsive tables*. The result is a table layout that stays readable
-on phones and tablets without losing portability.
+Bootstrap provides a complete set of styles for responsive layouts, including
+tables. But standard Bootstrap tables can be hard to read on small screens.
+J1 Template builds on Bootstrap and adds extra CSS styles for *responsive tables*.
+The result is a table layout that remains readable on phones and tablets without
+losing portability.
 
 See what
 link:{url-tour--responsive-tables}[Responsive Tables] can do.

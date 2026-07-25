@@ -115,14 +115,12 @@ include::{documentdir}/410_table_bs_modal_examples.asciidoc[]
 [role="mt-5"]
 == What next
 
-Bootstrap is a powerful framework for building responsive websites. But
-even Bootstrap can be improved. One example is the way *tables* are
-shown on small screens like phones and tablets.
-
-The J1 Template adds a new design for *responsive tables*, built on top
-of Bootstrap. The design uses simple CSS styles to make tables easy to
-read on every device and browser. This is especially helpful for
-visitors using mobile phones, where space is limited and standard
+Bootstrap is a powerful framework for building responsive websites. But even
+Bootstrap can be improved. One example is how *tables* appear on small screens
+like phones and tablets. The J1 Template adds a new design for *responsive tables*
+built on Bootstrap. It uses simple CSS and a small piece of JavaScript to
+make tables easy to read on every device and browser. This is especially
+helpful for visitors using mobile phones, where space is limited and standard
 tables can be hard to read.
 
 See for yourself what J1

@@ -33,7 +33,7 @@ permalink:                              /pages/public/tour/audio_data/
 resources:                              [ amplitudejs ]
 resource_options:
   - toccer:
-      collapseDepth:                    3
+      collapseDepth:                    4
   - attic:
       opacity:                          .7
       padding_top:                      600
@@ -207,41 +207,53 @@ a playlist of normal MP3 files.
 ====
 
 [role="mt-4"]
-==== Bea and her Business
+==== Olivia Dean
 
-Bea (Wheeler) is a young British pop singer. Her songs are about real
-life, feelings, and growing up. Many people enjoy her music because it
-is honest, funny, and authentic.
+[role="mb-4"]
+Olivia Dean was born on March 14, 1999, in London. She grew up in the north
+of the city, in Walthamstow and Haringey. Her mother is from Jamaica and
+her father is English. Olivia is a neo-soul and pop singer who became known
+in 2019 for her own songs. In 2023, she released her first album, "Messy."
+Her international career started in 2026 with the album "The Art of Loving."
 
-.Bea and her Business · YouTube 2025
-amplitude::bea_yt_large[]
+[TIP]
+====
+If you want to see the video version of the album *The Art of Loving*,
+you can watch all the videos on the page:
+link:/pages/public/tour/video_data/#olivia-dean[Video Players].
+====
 
 [role="mt-4"]
-==== Diana Krall
+.Olivia Dean · The Art Of Loving (2026)
+amplitude::olivia_dean_yt_large[]
 
-Diana Krall is a famous Canadian jazz singer and pianist. She was born on
-November 16, 1964, in Nanaimo, British Columbia. She became a star with
-albums such as Stepping Out (1993) and When I Look in Your Eyes (1999),
-which earned her a Grammy for Best Jazz Vocal. Her style mixes classic jazz
-standards with her deep voice and strong piano skills.
 
-.Diana Krall · YouTube
-amplitude::diana_krall_yt_large[]
+// [role="mt-4"]
+// ==== Ludovico Einaudi
+
+// Ludovico Einaudi is an Italian composer and pianist who writes simple,
+// emotive music for piano and other instruments. He often uses the piano
+// together with strings, light electronics, or percussion. His pieces can
+// sound like a mix of classical, folk, and modern ambient styles.
+
+// Many people recognize his songs like *Nuvole Bianche* (White Clauds) and
+// *I Giorni* (The Days), which often used in films, TV, and on the internet.
+
+// .Ludovico Einaudi · YouTube
+// amplitude::einaudi_yt_large[]
 
 
 [role="mt-5"]
 == What next
 
-We hope you enjoyed exploring the J1 audio features. The J1 Template
+We hope you enjoyed exploring the J1 Audio features. The J1 Template
 can do much more with multimedia, of course -- starting with *video*.
-
 The J1 Template supports playing video on web pages with *HTML5 video*,
-the modern web standard. Every modern browser supports the HTML5 video
-tag `<video>` out of the box, so you no longer need older plugins like
-*Flash Player*, *QuickTime*, or *Silverlight*.
+the modern web standard and using VideoJS a free, open-source video player
+for the web. The Template system provides VideoJS to play your own video
+files and video from several online platforms such as YouTube. VideoJS
+supports plugins that add new features. With plugins, the same player
+can show videos from many different sources, all with the same look and
+feel -- a much better experience for your visitors.
 
-The J1 Template plays videos from your own website *and* from online
-sources on the Internet (such as YouTube).
-
-Curious? Have a look at the next page:
-link:{url-tour--video_data}[Video Player].
+Curious? Have a look at the following page: link:{url-tour--video_data}[Video Player].

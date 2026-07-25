@@ -99,68 +99,68 @@ settings:
     # VIDEO PLAYERS
     # --------------------------------------------------------------------------
 
-    # --------------------------------------------------------------------------
-    # YouTube Videos
-    #
-    - grid:
-      enabled:                          true
+    # # --------------------------------------------------------------------------
+    # # YouTube Videos
+    # #
+    # - grid:
+    #   enabled:                          true
 
-      id:                               youtube
+    #   id:                               youtube
 
-      # ------------------------------------------------------------------------
-      # videos
-      #
-      videos:
+    #   # ------------------------------------------------------------------------
+    #   # videos
+    #   #
+    #   videos:
 
-#       video 1
-        - video:
-          name:                         Carpool Karaoke James and Adele
-          type:                         youtube
-          api:                          videojs
-          size:                         1280-720
-          source:                       //youtube.com/Nck6BZga7TQ
-          pinterest_prefix:             Pin video
-          tweet_prefix:                 Try video
-          description: >
-                                        <h2>Carpool Karaoke 2015</h2>
-                                        <h3>
-                                          James is on holidays in London and picks up
-                                          Adele for a ride through the city.
-                                          On the way, they sing some of their biggest hits.
-                                        </h3>
-          poster:
-            style:                      img-responsive
-            source:                     //img.youtube.com/vi/Nck6BZga7TQ/mqdefault.jpg
+    #     # video 1
+    #     - video:
+    #       name:                         Carpool Karaoke James and Adele
+    #       type:                         youtube
+    #       api:                          videojs
+    #       size:                         1280-720
+    #       source:                       //youtube.com/Nck6BZga7TQ
+    #       pinterest_prefix:             Pin video
+    #       tweet_prefix:                 Try video
+    #       description: >
+    #                                     <h2>Carpool Karaoke 2015</h2>
+    #                                     <h3>
+    #                                       James is on holidays in London and picks up
+    #                                       Adele for a ride through the city.
+    #                                       On the way, they sing some of their biggest hits.
+    #                                     </h3>
+    #       poster:
+    #         style:                      img-responsive
+    #         source:                     //img.youtube.com/vi/Nck6BZga7TQ/mqdefault.jpg
 
-          caption:
-            enabled:                    true
-            position:                   bottom
-            text:                       YouTube Video &middot; Carpool Karaoke James and Adele
+    #       caption:
+    #         enabled:                    true
+    #         position:                   bottom
+    #         text:                       YouTube Video &middot; Carpool Karaoke James and Adele
 
-#       video 2
-        - video:
-          name:                         Last Carpool Karaoke
-          type:                         youtube
-          api:                          videojs
-          size:                         1280-720
-          source:                       //youtube.com/nV8UZJNBY6Y
-          pinterest_prefix:             Pin video
-          tweet_prefix:                 Try video
-          description: >
-                                        <h2>Carpool Karaoke 2023</h2>
-                                        <h3>
-                                          Adele wakeups James at home for the very
-                                          last Late Late Night Show and for the
-                                          final Carpool Caraoke Tour.
-                                        </h3>
-          poster:
-            style:                      img-responsive
-            source:                     //img.youtube.com/vi/nV8UZJNBY6Y/maxresdefault.jpg
+    #     # video 2
+    #     - video:
+    #       name:                         Last Carpool Karaoke
+    #       type:                         youtube
+    #       api:                          videojs
+    #       size:                         1280-720
+    #       source:                       //youtube.com/nV8UZJNBY6Y
+    #       pinterest_prefix:             Pin video
+    #       tweet_prefix:                 Try video
+    #       description: >
+    #                                     <h2>Carpool Karaoke 2023</h2>
+    #                                     <h3>
+    #                                       Adele wakeups James at home for the very
+    #                                       last Late Late Night Show and for the
+    #                                       final Carpool Caraoke Tour.
+    #                                     </h3>
+    #       poster:
+    #         style:                      img-responsive
+    #         source:                     //img.youtube.com/vi/nV8UZJNBY6Y/maxresdefault.jpg
 
-          caption:
-            enabled:                    true
-            position:                   bottom
-            text:                       YouTube Video &middot; Last Carpool Karaoke
+    #       caption:
+    #         enabled:                    true
+    #         position:                   bottom
+    #         text:                       YouTube Video &middot; Last Carpool Karaoke
 
 # ------------------------------------------------------------------------------
 # END config

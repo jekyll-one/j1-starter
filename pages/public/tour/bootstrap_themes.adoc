@@ -140,18 +140,15 @@ applied automatically to every page of your website.
 [role="mt-5"]
 == What next
 
-The J1 Template is a great starting point for many kinds of websites.
-One handy feature it offers is *code highlighting*. Code highlighting
-adds colors to source code so it is easier to read and understand.
-
-Each programming language has its own keywords and rules. Code highlighting
-uses different colors for different parts of the code. For example, in
-JavaScript, keywords like *if*, *for*, or *function* get one color, while
-text strings and variables get another.
+The J1 Template is a great starting point for many kinds of websites. One handy
+feature it offers is *code highlighting*. Code highlighting adds color to
+source code to make it easier to read and understand. Each programming
+language has its own keywords and rules. It uses different colors for
+different parts of the code. For example, in JavaScript, keywords like
+*if*, *for*, or *function* get one color, while text strings and variables
+get another.
 
 The J1 Template uses a code highlighter called *Rouge*. Rouge is written in
-Ruby and supports more than 100 programming languages. It produces colored
-HTML output that works in every modern web browser.
-
-To see what Rouge can do, go to the
-link:{url-tour--rouge-hightlighter}[Code Highlighter] page.
+Ruby and supports over 100 programming languages. It produces colored HTML
+output that works in all modern web browsers. To see what Rouge can do,
+go to the link:{url-tour--rouge-hightlighter}[Code Highlighter] page.

@@ -36,7 +36,7 @@ resources:                              [
                                         ]
 resource_options:
   - toccer:
-      collapseDepth:                    3
+      collapseDepth:                    4
   - attic:
       opacity:                          .7
       padding_top:                      600
@@ -211,6 +211,37 @@ options set for the *playlist* block.
 [role="mt-4"]
 === The Player
 
+You can place as many players on a page as you like. Every player has its
+own id (a short name such as player_1), its own playlist, and its own settings.
+Nothing leaks from one player to another: a video you add to player_1 never
+shows up in player_2, and a setting you change for one player never changes
+another. Internally each player is a separate instance of the module, created
+through a factory function — exactly the same idea VideoJS uses.
+
+[role="mt-4"]
+==== Olivia Dean
+
+[role="mb-4"]
+Olivia Dean was born on March 14, 1999, in London. She grew up in the north
+of the city, in Walthamstow and Haringey. Her mother is from Jamaica and
+her father is English. Olivia is a neo-soul and pop singer who became known
+in 2019 for her own songs. In 2023, she released her first album, "Messy."
+Her international career started in 2026 with the album "The Art of Loving."
+
+[TIP]
+====
+If you want a plain audio version of the album *The Art of Loving*, you can
+play all the audio on the page: 
+link:/pages/public/tour/audio_data/#olivia-dean[Audio Players].
+====
+
+[role="mt-4"]
+.The Art Of Loving (2026)
+videoPlayer::player_olivia_dean[role="mb-5"]
+
+[role="mt-4"]
+==== Tiny Desk Concerts
+
 Tiny Desk Concerts is a popular, award-winning video series featuring live
 music performances at an actual office desk, hosted by NPR Music. Started
 in 2008 by radio host Bob Boilen and producer Stephen Thompson. The show has
@@ -289,17 +320,13 @@ masonry::youtube[role="mb-4"]
 [role="mt-5"]
 == What next
 
-Images and videos can be powerful, but on most websites the *most
-important* element is still the text -- and how that text looks.
+Images and videos are powerful visual tools, but on most websites, the most
+important element is still the text and how it looks. Many website templates
+have trouble making text work well on different screen sizes. They might
+resize boxes and images, but the text size often stays the same. The J1 Template 
+fixes this with responsive text, which automatically changes its size and
+line height so it is always easy to read on any device. In the J1 Template,
+typography is seen as a key part of your website’s branding.
 
-Many website templates do not handle text well on different screen
-sizes. They resize boxes and images, but the text size stays the same.
-The J1 Template fixes this with *responsive text*: text that
-automatically scales in size and line height to stay easy to read on
-every device.
-
-In the J1 Template, *typography* -- the way text looks -- is treated as
-one of the most important branding elements of your website. Good
-typography gives your site a clear character, almost like a logo.
-
+Good typography gives your site a clear character, almost like a logo.
 Want to see how it works? Move on to link:{url-tour--typography}[Typography].

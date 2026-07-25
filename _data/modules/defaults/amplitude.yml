@@ -38,7 +38,7 @@ defaults:
 
     # --------------------------------------------------------------------------
     # ALBUM settings (no defaults)
-    # --------------------------------------------------------------------------
+    #
     album:
 
     # --------------------------------------------------------------------------
@@ -141,7 +141,7 @@ defaults:
 
   # ----------------------------------------------------------------------------
   # PLAYER defaults
-  # ----------------------------------------------------------------------------
+  #
   player:
 
     # --------------------------------------------------------------------------
@@ -260,45 +260,44 @@ defaults:
     enabled:                            false
 
     # --------------------------------------------------------------------------
-    # GENERAL settings
+    # PRIVACY settings
+    #
+    privacy_enhanced:                   true                                    # enable|disable privacy-enhanced host 'youtube-nocookie.com'
+
     # --------------------------------------------------------------------------
+    # GENERAL settings
     #
     type:                               compact                                 # default type   (mini|compact|large)
     source:                             audio                                   # default source (audio|video)
 
     # --------------------------------------------------------------------------
     # PLUGIN settings
-    # --------------------------------------------------------------------------
     #
     plugin_manager:
       enabled:                          false                                   # true|false, load plugins
       plugins:                          []                                      # [ ytp ], prepared as an array to support multiple plugins (NOT supported yet)
 
-  # waveforms:
-  #   enabled:                          false                                   # Amplitude plugin, currently NOT supported
-  #   sample_rate:                      0.25
-
-  # visualization:
-  #   enabled:                          false                                   # Amplitude plugin, currently NOT supported
-  #   name:                             [ bar ]                                 # prepared as an array to support multiple visualizations (NOT supported yet)
+    # visualization:
+    #   enabled:                        false                                   # Amplitude plugin, currently NOT supported
+    #   name:                           [ bar ]                                 # prepared as an array to support multiple visualizations (NOT supported yet)
 
     # --------------------------------------------------------------------------
     # TIME settings
-    # --------------------------------------------------------------------------
     #
     display_hours:                      false                                   # display hour in timestamps
 
     # --------------------------------------------------------------------------
     # PLAYER settings
-    # --------------------------------------------------------------------------
     #
     loop:                               false                                   # true|false, start playing on first item on end
 
     player_repeat:                      false                                   # enable|disable repeating the playlist on end (loop)
     player_shuffle:                     false                                   # enable|disable random play (playlist)
 
-    player_playback_rate:               small                                   # YT video resolution
-    player_fade_audio:                  true                                    # enable|disable audio faden in|out
+    player_playback_rate:               small   
+    player_fade_audio_speed:            slow                                    # speed for fading in|out (default|slow|slower|slowest)
+    player_fade_audio_in:               true                                    # enable|disable audio fade in
+    player_fade_audio_out:              false                                   # enable|disable audio fade out
     player_scroll_control:              false                                   # additional control on scrolling player song items
     player_auto_scroll_song_element:    true                                    # auto scroll of active player song items 
     player_scroller_song_element_min:   5                                       # number of player song items a scrollbat is added
@@ -331,6 +330,7 @@ defaults:
       fade_out_speed:                   fast                                    # transition speed fast|slow|slower
 
     yt_player:
+      privacy_enhanced:                 true                                    # enable|disable privacy-enhanced host 'youtube-nocookie.com'
       autoplay:                         0                                       # start playing using the AJS player START button
       height:                           0                                       # display player 'minimited'
       width:                            0                                       # display player 'minimized'
@@ -360,6 +360,9 @@ defaults:
     volume_slider:                                                              # defaults only
       enabled:                          true                                    # true|false, enable volume slider in player
       preset_value:                     50                                      # default volume level (percent)
+      min_value:                        0
+      max_value:                        100
+      slider_step:                      1
 
     # --------------------------------------------------------------------------
     # PLAYER LEFT (playlist view)

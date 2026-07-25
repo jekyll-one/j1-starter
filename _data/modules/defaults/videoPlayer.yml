@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/videoPlayer.yml
+# ~/_data/modules/defaults/videoPlayer.yml (1)
 # Default configuration settings for J1 VideoPlayer module
 #
 # Product/Info:
@@ -125,6 +125,7 @@ defaults:
 
     close_on_play:                      false
     pip:                                false
+
     type:                               list                                    # list | cards
 
     cards:
@@ -231,6 +232,13 @@ defaults:
       # ------------------------------------------------------------------------
       #
       youtube:
+
+        # privacy settings
+        #
+        privacy_enhanced:               true                                    # enable|disable privacy-enhanced host 'youtube-nocookie.com'
+
+        # core settings
+        #
         autoplay:                       true                                    # true|false, play video after load
         cc_load_policy:                 0                                       # 0|1, captions initially hidden
         controls:                       1                                       # 0|1, disable|enable (vjs) controlbar

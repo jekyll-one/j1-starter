@@ -305,8 +305,12 @@
           href:                         //freeformatter.com/
           target:                       _blank
           icon:                         cached
-        - title:                        AppDevTools
-          href:                         //appdevtools.com/
+      # - title:                        AppDevTools
+      #   href:                         //appdevtools.com/
+      #   target:                       _blank
+      #   icon:                         cached
+        - title:                        Minify CSS Online
+          href:                         //minify-css.com/
           target:                       _blank
           icon:                         cached
         - title:                        Minify JS Online

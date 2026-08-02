@@ -561,7 +561,7 @@ resources:
       data:
         css:                            []
         files:                          [ adapter/js/navigator.js ]
-        js:                             []
+        js:                             [ modules/navigator/js/navigator ]
         init_function:                  [ j1.adapter.navigator.init ]
 
   # ----------------------------------------------------------------------------
@@ -574,7 +574,7 @@ resources:
       enabled:                          true
 
       id:                               mmenu
-      comment:                          Module Mobile Menu
+      comment:                          Module MMenu
       region:                           head
       layout:                           [ all ]
       required:                         always
@@ -584,11 +584,14 @@ resources:
 
       data:
         css:                            [
-                                          modules/mmenuLight/css/mmenu-light,
-                                          modules/mmenuLight/css/theme/uno/mmenu
+                                          modules/mmenu/css/mmenu-light,
+                                          modules/mmenu/css/theme/uno/mmenu
                                         ]
-        files:                          [ adapter/js/mmenu.js ]
-        js:                             [ modules/mmenuLight/js/mmenu ]
+        files:                          [
+                                          modules/mmenu/js/mmenu-light.mjs,
+                                          adapter/js/mmenu.js
+                                        ]
+        js:                             []
         init_function:                  [ j1.adapter.mmenu.init ]
 
   # ----------------------------------------------------------------------------

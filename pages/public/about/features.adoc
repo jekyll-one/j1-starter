@@ -28,9 +28,15 @@ permalink:                              /pages/public/about/features/
 resources:                              [ lightbox ]
 resource_options:
   - attic:
+      opacity:                          .7
+      padding_top:                      600
       slides:
         - url:                          /assets/image/module/attic/1920x1280/j1-launch.jpg
-          alt:                          J1 Template Mockup
+          alt:                          AI Generated
+          badge:
+            type:                       ai
+            author:                     AI Generated
+            href:                       //digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence
 ---
 
 // Page Initializer

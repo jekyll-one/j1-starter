@@ -31,10 +31,15 @@ permalink:                              /pages/public/legal/en/privacy/
 resources:                              []
 resource_options:
   - attic:
-      padding_top:                      630
+      opacity:                          .7
+      padding_top:                      600
       slides:
         - url:                          /assets/image/module/attic/1920x1280/j1-launch.jpg
-          alt:                          J1 Template Mockup
+          alt:                          AI Generated
+          badge:
+            type:                       ai
+            author:                     AI Generated
+            href:                       //digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence
 ---
 
 // Page Initializer

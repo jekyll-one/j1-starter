@@ -25,26 +25,26 @@ image:
 
 fab_menu_id:                            default
 regenerate:                             false
-permalink:                              /pages/public/about/reporting_issues/
+permalink:                              /pages/public/about/issues/
 
 resources:                              []
 resource_options:
   - attic:
+      opacity:                          .7
+      padding_top:                      600
       slides:
         - url:                          /assets/image/module/attic/1920x1280/j1-launch.jpg
-          alt:                          J1 Template Mockup
+          alt:                          AI Generated
+          badge:
+            type:                       ai
+            author:                     AI Generated
+            href:                       //digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence
 ---
 
 // Page Initializer
 // =============================================================================
 // Enable the Liquid Preprocessor
 :page-liquid:
-
-// Attribute settings for page content control (e.g includes)
-//
-:includedir:                            _includes
-:tabledir:                              _includes/tables
-:documentdir:                           _includes/documents
 
 // Set (local) page attributes here
 // -----------------------------------------------------------------------------
@@ -69,12 +69,13 @@ endif::[]
 
 
 // Page content
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
 [role="dropcap"]
 Please report failures. Although I endeavor to keep this site as up-to-date
 as possible, even the best sites will have some bugs. If you spot any typos,
 factually outdated or incorrect information, formatting errors, or similar
 problems, please report issues so I can correct them.
+
 
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------
@@ -89,6 +90,6 @@ A link:{url-github--join}[free account, {browser-window--new}]
 at GitHub_ is required in order to open new issues.
 ====
 
-[role="mb-7"]
+[role="mt-4"]
 To report issues, please go on _Github_ for the repo
 link:{url-j1--reporting-issues}[J1 Template, {browser-window--new}].

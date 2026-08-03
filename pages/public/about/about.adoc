@@ -27,15 +27,20 @@ scrollbar:                              false
 comments:                               false
 
 regenerate:                             false
-permalink:                              /pages/public/about/starter/
+permalink:                              /pages/public/about/site/
 
 resources:                              []
 resource_options:
   - attic:
+      opacity:                          .7
       padding_top:                      600
       slides:
         - url:                          /assets/image/module/attic/1920x1280/j1-launch.jpg
-          alt:                          J1 Template Mockup
+          alt:                          AI Generated
+          badge:
+            type:                       ai
+            author:                     AI Generated
+            href:                       //digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence
 ---
 
 // Page Initializer
@@ -46,7 +51,6 @@ resource_options:
 // Attribute settings for page content control (e.g includes)
 //
 :includedir:                            _includes
-:tabledir:                              _includes/tables
 :documentdir:                           _includes/documents
 
 // Set (local) page attributes here

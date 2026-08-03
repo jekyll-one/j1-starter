@@ -77,33 +77,33 @@
       href:                             /pages/public/learn/where_to_go/
       icon:                             foot-print
 
-    # --------------------------------------------------------------------------
-    # Collections
-    #
-    - title:                            Collections
-      icon:                             application
-      dropdown:
+    # # --------------------------------------------------------------------------
+    # # Collections
+    # #
+    # - title:                            Collections
+    #   icon:                             application
+    #   dropdown:
 
-        - title:                        Jekyll Collections
-          href:                         /pages/public/learn/bookshelf/jekyll_collections/
-          icon:                         head-question
+    #     - title:                        Jekyll Collections
+    #       href:                         /pages/public/learn/bookshelf/jekyll_collections/
+    #       icon:                         head-question
 
-        - title:                        Bookshelf
-          href:                         /pages/public/learn/bookshelf/viewer_all_books/
-          icon:                         book-marker
+    #     - title:                        Bookshelf
+    #       href:                         /pages/public/learn/bookshelf/viewer_all_books/
+    #       icon:                         book-marker
 
-        - title:                        Bookshelf Collection
-          icon:                         eye
-          dropdown:
-            - title:                    Biography
-              href:                     /pages/public/learn/bookshelf/article_previewer/biography/
-              icon:                     book-marker
-            - title:                    Fantasy
-              href:                     /pages/public/learn/bookshelf/article_previewer/fantasy/
-              icon:                     book-marker
-            - title:                    Romance
-              href:                     /pages/public/learn/bookshelf/article_previewer/romance/
-              icon:                     book-marker
+    #     - title:                        Bookshelf Collection
+    #       icon:                         eye
+    #       dropdown:
+    #         - title:                    Biography
+    #           href:                     /pages/public/learn/bookshelf/article_previewer/biography/
+    #           icon:                     book-marker
+    #         - title:                    Fantasy
+    #           href:                     /pages/public/learn/bookshelf/article_previewer/fantasy/
+    #           icon:                     book-marker
+    #         - title:                    Romance
+    #           href:                     /pages/public/learn/bookshelf/article_previewer/romance/
+    #           icon:                     book-marker
 
     # --------------------------------------------------------------------------
     # Tutorials
@@ -301,14 +301,10 @@
       icon:                             wrench
       column:
 
-        - title:                        FreeFormatter
-          href:                         //freeformatter.com/
+        - title:                        AppDevTools
+          href:                         //appdevtools.com/
           target:                       _blank
           icon:                         cached
-      # - title:                        AppDevTools
-      #   href:                         //appdevtools.com/
-      #   target:                       _blank
-      #   icon:                         cached
         - title:                        Minify CSS Online
           href:                         //minify-css.com/
           target:                       _blank
@@ -317,6 +313,7 @@
           href:                         //minify-js.com/
           target:                       _blank
           icon:                         cached
+
         - title:                        W3C Validator
           href:                         //validator.w3.org/
           target:                       _blank
@@ -325,6 +322,7 @@
           href:                         //aliciaramirez.com/closing-tags-checker/
           target:                       _blank
           icon:                         language-html5
+
         - title:                        Convert CSS to Sass
           href:                         //cssportal.com/css-to-scss/
           target:                       _blank
@@ -344,7 +342,8 @@
         - title:                        Character Codes
           href:                         //html.spec.whatwg.org/multipage/named-characters.html
           target:                       _blank
-          icon:                         alpha-a-box-outline
+          icon:                         alpha-a-box-outline#
+
         - title:                        RegEx 101
           href:                         //regex101.com/
           target:                       _blank

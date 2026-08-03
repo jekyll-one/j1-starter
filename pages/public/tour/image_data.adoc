@@ -40,7 +40,11 @@ resource_options:
       padding_top:                      600
       slides:
         - url:                          /assets/image/module/attic/1920x1280/modern-dance.jpg
-          alt:                          Photo Gemini AI
+          alt:                          AI Generated
+          badge:
+            type:                       ai
+            author:                     AI Generated
+            href:                       //digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence
 ---
 
 // Page Initializer

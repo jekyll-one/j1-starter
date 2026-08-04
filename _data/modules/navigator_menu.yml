@@ -377,7 +377,7 @@
 
     - title:                            This Site
       icon:                             home-variant-outline
-      href:                             /pages/public/about/starter/
+      href:                             /pages/public/about/site/
 
     - title:                            Privacy
       icon:                             heart
@@ -389,7 +389,7 @@
 
     - title:                            Issues
       icon:                             bug
-      href:                             /pages/public/about/reporting_issues/
+      href:                             /pages/public/about/issues/
 
 # ------------------------------------------------------------------------------
 # END config

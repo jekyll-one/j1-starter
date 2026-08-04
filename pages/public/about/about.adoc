@@ -40,7 +40,7 @@ resource_options:
           badge:
             type:                       ai
             author:                     AI Generated
-            href:                       //digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence
+            href:                       //digital-strategy.ec.europa.eu/en/policies/artificial-intelligence
 ---
 
 // Page Initializer

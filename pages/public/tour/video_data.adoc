@@ -50,6 +50,7 @@ resource_options:
           badge:
             type:                       ai
             author:                     AI Generated
+            author_info:                Video
             href:                       //digital-strategy.ec.europa.eu/en/policies/artificial-intelligence          
 ---
 

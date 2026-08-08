@@ -286,7 +286,7 @@ Asciidoctor::Extensions.register do
 
                 });
 
-                // scroll page to player top position
+                // scroll page to player top position (disabled)
                 // -------------------------------------------------------------
                 var vjs_player = document.getElementById("#{video_id}");
 
@@ -297,7 +297,7 @@ Asciidoctor::Extensions.register do
 
                   // scroll page to the players top position
                   // ------------------------------------------------------------
-                  window.scrollTo(0, targetDivPosition + scrollOffset);
+                  // window.scrollTo(0, targetDivPosition + scrollOffset);
 
                 }); // END EventListener 'click'
 

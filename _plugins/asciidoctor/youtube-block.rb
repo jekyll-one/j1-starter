@@ -191,7 +191,7 @@ Asciidoctor::Extensions.register do
                   addCaptionAfterImage('#{poster_image}');
                 }
 
-                // scroll page to the players top position
+                // scroll page to the players top position (disabled)
                 // -------------------------------------------------------------
                 vjs_player.addEventListener('click', function(event) {
                   const targetDiv         = document.getElementById("#{video_id}");
@@ -199,7 +199,7 @@ Asciidoctor::Extensions.register do
                   var scrollOffset        = (window.innerWidth >= 720) ? -130 : -110;
 
                   // scroll player to top position
-                  window.scrollTo(0, targetDivPosition + scrollOffset);
+                  // window.scrollTo(0, targetDivPosition + scrollOffset);
                 }); // END EventListener 'click'
 
                 clearInterval(dependencies_met_page_ready);

@@ -36,7 +36,7 @@ resources:                              [
                                         ]
 resource_options:
   - toccer:
-      collapseDepth:                    4
+      collapseDepth:                    3
   - attic:
       opacity:                          .7
       padding_top:                      600
@@ -51,7 +51,7 @@ resource_options:
             type:                       ai
             author:                     AI Generated
             author_info:                Video
-            href:                       //digital-strategy.ec.europa.eu/en/policies/artificial-intelligence          
+            href:                       //digital-strategy.ec.europa.eu/en/policies/artificial-intelligence
 ---
 
 // Page Initializer
@@ -151,11 +151,10 @@ video::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/html5
 
 *VideoJS* is a free, open-source video player for the web. The J1
 Template uses VideoJS to play your own video files *and* video from
-several online platforms such as YouTube.
-
-VideoJS supports *plugins* that add new features. With plugins, the
-same player can show videos from many different sources, all with the
-same look and feel -- a much better experience for your visitors.
+several online platforms such as YouTube. VideoJS supports *plugins* that
+add new features. With plugins, the same player can show videos from many
+different sources, all with the same look and feel -- a much better experience
+for your visitors.
 
 [role="mt-4"]
 [[videojs--local]]
@@ -164,25 +163,20 @@ same look and feel -- a much better experience for your visitors.
 With VideoJS, you can play *local MP4 video files* in a customizable
 player that matches your site design.
 
-.Peck Pocketed · Local Video over VideoJS
-videojs::/assets/video//html5/peck_pocketed.mp4[poster="/assets/video/poster/html5/peck_pocketed.jpg", opts="" role="mb-5"]
-
-// .Rolling Wild · MP4 Video (over VideoJS)
-// videojs::/assets/video//html5/rolling_wild.mp4[poster="/assets/video/poster/html5/rolling_wild.jpg", opts="" role="mb-5"]
+.Rolling Wild · MP4 Video (over VideoJS)
+videojs::/assets/video//html5/rolling_wild.mp4[poster="/assets/video/poster/html5/rolling_wild.jpg", opts="" role="mb-5"]
 
 [role="mt-4"]
 [[videojs--youtube]]
 ==== YouTube
 
 The J1 Template can also embed videos straight from YouTube. Just give
-the YouTube video ID and the player appears on your page.
-
-Sky Elements uses the night sky as its canvas. A large group of drones
-fly in formation to paint pictures of light, telling stories that are
-hard to forget.
+the YouTube video ID and the player appears on your page. Sky Elements
+uses the night sky as its canvas. A large group of drones fly in formation
+to paint pictures of light, telling stories that are hard to forget.
 
 .Sky Elements · AGT 2024 
-youtube::brEXrQBIj68[poster="//img.youtube.com/vi/brEXrQBIj68/maxresdefault.jpg" role="mb-4"]
+youtube::brEXrQBIj68[poster="//img.youtube.com/vi/brEXrQBIj68/mqdefault.jpg" role="mb-4"]
 
 
 [role="mt-5"]
@@ -194,37 +188,27 @@ video use the same attractive, customizable player and adds a full playlist
 feature. Viewers can search, sort, play, rate videos, and pick up right where
 they left off.
 
-[role="mt-4"]
-=== The Playlist Panel
-
 When opened (click on button *Show playlist*/the *header bar*), the
 playlist panel shows:
 
 * a *search box* to filter the list as you type
 * a *sort* control to reorder the list
 * a *list / cards* switch to change the layout
-* a *merge* switch that decides whether importing adds to or replaces the list
-* a *loop* switch to repeat the playlist
-* the videos themselves, each with its poster, title, author, and a star rating
+* the videos themselves, each with its poster, title, author,
+  and a star rating
 
 [NOTE]
 ====
-Which elements appear in the playlist panel depends on the configuration
-options set for the *playlist* block.
-====
-
-[role="mt-4"]
-=== The Player
-
 You can place as many players on a page as you like. Every player has its
 own id (a short name such as player_1), its own playlist, and its own settings.
 Nothing leaks from one player to another: a video you add to player_1 never
 shows up in player_2, and a setting you change for one player never changes
 another. Internally each player is a separate instance of the module, created
 through a factory function — exactly the same idea VideoJS uses.
+====
 
 [role="mt-4"]
-==== Olivia Dean
+=== Olivia Dean
 
 [role="mb-4"]
 Olivia Dean was born on March 14, 1999, in London. She grew up in the north
@@ -233,28 +217,16 @@ her father is English. Olivia is a neo-soul and pop singer who became known
 in 2019 for her own songs. In 2023, she released her first album, "Messy."
 Her international career started in 2026 with the album "The Art of Loving."
 
+[role="mt-4"]
+.The Art Of Loving (2026)
+videoPlayer::player_olivia_dean[role="mb-4"]
+
 [TIP]
 ====
 If you want a plain audio version of the album *The Art of Loving*, you can
 play all the audio on the page: 
 link:/pages/public/tour/audio_data/#olivia-dean[Audio Players].
 ====
-
-[role="mt-4"]
-.The Art Of Loving (2026)
-videoPlayer::player_olivia_dean[role="mb-5"]
-
-[role="mt-4"]
-==== Tiny Desk Concerts
-
-Tiny Desk Concerts is a popular, award-winning video series featuring live
-music performances at an actual office desk, hosted by NPR Music. Started
-in 2008 by radio host Bob Boilen and producer Stephen Thompson. The show has
-grown from a small platform for folk and indie artists into a worldwide
-pop-culture hit.
-
-.Tiny Desk Concerts
-videoPlayer::player_tiny_desk_concerts[role="mb-5"]
 
 
 [role="mt-5"]
@@ -317,9 +289,6 @@ page -- great for music collections, tutorials, or interviews.
 
 .Masonry Gallery
 masonry::youtube[role="mb-4"]
-
-// .Justified Gallery
-// gallery::jg_video_youtube_james_and_adele[role="mb-4"]
 
 
 [role="mt-5"]

@@ -201,10 +201,11 @@ settings:
           # split J1 Masonry data #2
           # `download` and `alignThumbnails` removed — already defined with
           # identical values in masonry.yml defaults.lightGallery.options.
-          addClass:                     lg-uno-thumbnails                         # customized thumbnails
-          appendThumbnailsTo:           .lg-outer                                 # required for customized thumbnails
-          animateThumb:                 false                                     # required for customized thumbnails
-          allowMediaOverlap:            true                                      # required for customized thumbnails
+          #
+          # addClass:                     lg-uno-thumbnails                         # customized thumbnails
+          # appendThumbnailsTo:           .lg-outer                                 # required for customized thumbnails
+          # animateThumb:                 false                                     # required for customized thumbnails
+          # allowMediaOverlap:            true                                      # required for customized thumbnails
 
       # ------------------------------------------------------------------------
       # split J1 Masonry data #2

@@ -30,7 +30,7 @@ regenerate:                             false
 personalization:                        true
 permalink:                              /pages/public/tour/audio_data/
 
-resources:                              [ amplitudejs ]
+resources:                              [ amplitude, amplitudejs ]
 resource_options:
   - toccer:
       collapseDepth:                    4
@@ -216,31 +216,16 @@ her father is English. Olivia is a neo-soul and pop singer who became known
 in 2019 for her own songs. In 2023, she released her first album, "Messy."
 Her international career started in 2026 with the album "The Art of Loving."
 
+[role="mt-4"]
+.Olivia Dean · The Art Of Loving (2026)
+amplitude::olivia_dean_yt_large[role="mb-4"]
+
 [TIP]
 ====
 If you want to see the video version of the album *The Art of Loving*,
 you can watch all the videos on the page:
 link:/pages/public/tour/video_data/#olivia-dean[Video Players].
 ====
-
-[role="mt-4"]
-.Olivia Dean · The Art Of Loving (2026)
-amplitude::olivia_dean_yt_large[]
-
-
-// [role="mt-4"]
-// ==== Ludovico Einaudi
-
-// Ludovico Einaudi is an Italian composer and pianist who writes simple,
-// emotive music for piano and other instruments. He often uses the piano
-// together with strings, light electronics, or percussion. His pieces can
-// sound like a mix of classical, folk, and modern ambient styles.
-
-// Many people recognize his songs like *Nuvole Bianche* (White Clauds) and
-// *I Giorni* (The Days), which often used in films, TV, and on the internet.
-
-// .Ludovico Einaudi · YouTube
-// amplitude::einaudi_yt_large[]
 
 
 [role="mt-5"]

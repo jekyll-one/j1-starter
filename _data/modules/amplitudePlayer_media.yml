@@ -1,0 +1,533 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/amplitudePlayer_media.yml
+# User (media) configuration settings for the module amplitudePlayer
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2026 Juergen Adams
+#
+# J1 Template is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                amplitudePlayer
+  scope:                                User media settings
+  location:                             _data/modules/amplitudePlayer_media.yml
+
+# ------------------------------------------------------------------------------
+# MEDIA REFERENCES (key 'audio')
+#
+# The URL of a title is assembled from the album key 'audio_base' and the
+# item key 'audio'. For LOCAL media files, the reference is the file name:
+#
+#   audio_base:   /assets/audio/album/emancipator
+#   audio:        02_valhalla.mp3
+#
+# For YouTube titles, the reference is the video ID. BOTH formats below are
+# supported, the SIMPLE format is recommended:
+#
+#   audio_base:   //youtube.com
+#   audio:        HPWmY4am2oQ                 # SIMPLE format (recommended)
+#   audio:        watch?v=HPWmY4am2oQ         # LEGACY format (still valid)
+#
+# A YouTube video ID consists of EXACTLY 11 characters out of the alphabet
+# [A-Za-z0-9_-]. Note that an ID may START with a hyphen (e.g. -CQBzanq7dY);
+# a lost leading hyphen makes the YouTube API answer with error 101|150,
+# 'video not allowed'.
+#
+# An ABSOLUTE reference is taken as-is (the audio base is NOT prepended):
+#
+#   audio:        //youtube.com/watch?v=HPWmY4am2oQ
+#
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# User settings
+#
+settings:
+
+  # ----------------------------------------------------------------------------
+  # MEDIA configuration
+  #
+  playlists:
+
+    # --------------------------------------------------------------------------
+    # Emancipator - Dusk to Dawn
+    #
+    - playlist:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # PLAYLIST settings
+      #
+      name:                             emancipator
+
+      # ------------------------------------------------------------------------
+      # ALBUM settings
+      # ------------------------------------------------------------------------
+      album:                            &album_dusk_to_dawn
+
+        playlist:                       emancipator
+        name:                           Dusk to Dawn
+        artist:                         Emancipator
+        audio_base:                     /assets/audio/album/emancipator
+        cover_image:                    /assets/audio/cover/emancipator/dusk_to_dawn.jpg
+        audio_info:                     //emancipatormusic.com/
+        audio_fade_in:                  true
+        audio_fade_out:                 true
+        repeat:                         false
+        shuffle:                        false        
+
+      # ------------------------------------------------------------------------
+      # Playlist Items (Songs)
+      #
+      items:
+
+        # title 01
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        Valhalla
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio:                        02_valhalla.mp3
+          duration:                     "05:07"
+
+        # title 02
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        Merlion
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio:                        03_merlion.mp3
+          duration:                     "04:04"
+
+        # title 03
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        Outlaw
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio:                        04_outlaw.mp3
+          duration:                     "03:38"
+
+        # title 04
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        Dusk to Dawn
+          rating:                       3
+          start:                        false
+          end:                          false 
+          audio:                        05_dusk_to_dawn.mp3
+          duration:                     "05:25"
+
+        # title 05
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        The Way
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio:                        06_the_way.mp3
+          duration:                     "04:50"
+
+        # title 06
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        Afterglow
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio:                        07_afterglow.mp3
+          duration:                     "05:31"
+
+        # title 07
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        Eve II
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio:                        08_eve2.mp3
+          duration:                     "03:12"
+
+        # title 08
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        Natural Cause
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio:                        09_natural_cause.mp3
+          duration:                     "05:15"
+
+        # title 09
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn
+          title:                        Galapagos
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio:                        10 _galapagos.mp3
+          duration:                     "01:57"
+
+    # --------------------------------------------------------------------------
+    # Emancipator - Dusk to Dawn
+    # https://youtube.com/watch?v=eotOxW5QU8Y&list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+    #
+    - playlist:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # PLAYLIST settings
+      #
+      name:                             dusk_to_dawn_yt
+
+      # ------------------------------------------------------------------------
+      # ALBUM settings
+      #
+      album:                            &album_dusk_to_dawn_yt
+
+        playlist:                       dusk_to_dawn_yt
+        name:                           Dusk to Dawn
+        artist:                         Emancipator
+        audio_base:                     //youtube.com
+        cover_image:                    //img.youtube.com/vi/t2RshUUwGK8/maxresdefault.jpg
+        audio_fade:                     false
+        audio_single:                   false
+        repeat:                         false
+        shuffle:                        false
+
+      # ------------------------------------------------------------------------
+      # TITLE settings (songs)
+      #
+      items:
+
+        # title 01
+        # Claude - Modify Amplitude comfig #1
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        Valhalla
+          audio:                        watch?v=HPWmY4am2oQ  # deprecated format
+#         audio:                        HPWmY4am2oQ          # new format  
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "05:08"
+
+        # title 02
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        Merlion
+          audio:                        frW-hytn9Gw
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "04:04"
+
+        # title 03
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        Outlaw
+          audio:                        lw9FPq1d_-g
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "03:38"
+
+        # title 04
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        Dusk to Dawn
+          audio:                        -CQBzanq7dY
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "05:24"
+
+        # title 05
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        The Way
+          audio:                        t2RshUUwGK8
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "04:50"
+
+        # title 06
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        Afterglow
+          audio:                        2arhQ8tcbS8
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "05:31"
+
+        # title 07
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        Eve II
+          audio:                        9yROGU01Lhw
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "03:12"
+
+        # title 08
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        Natural Cause
+          audio:                        pKoILO-9UW8
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "05:15"
+
+        # title 09
+        - item:
+          enabled:                      true
+          <<:                           *album_dusk_to_dawn_yt
+          title:                        Galapagos
+          audio:                        X3F1-kXg83U
+          rating:                       3
+          start:                        ""
+          end:                          ""
+          audio_info:                   //youtube.com/playlist?list=OLAK5uy_m0ZUHQpr0w3WHDZFOdTn1lPaJmMVoUg2E
+          duration:                     "01:57"
+
+    # --------------------------------------------------------------------------
+    # Olivia Dean
+    # https://youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+    #
+    - playlist:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # PLAYLIST settings
+      #
+      name:                             olivia_dean_yt
+
+      # ------------------------------------------------------------------------
+      # ALBUM settings
+      #
+      album:                            &album_olivia_dean_yt
+
+        playlist:                       olivia_dean_yt
+        name:                           The Art Of Loving
+        artist:                         Olivia Dean
+        audio_base:                     //youtube.com
+        cover_image:                    /assets/audio/cover/default/placeholder-blue.jpg
+        audio_fade:                     false
+        audio_single:                   false
+        repeat:                         false
+        shuffle:                        false
+
+      # ------------------------------------------------------------------------
+      # TITLE settings (songs)
+      #
+      items:
+
+        # title 01
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Nice To Each Other
+          audio:                        VI0NDsh2b8k
+          rating:                       3
+          start:                        "00:00:01"                              # false | timestamp
+          end:                          "00:03:30"                              # false | timestamp
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/VI0NDsh2b8k/maxresdefault.jpg
+          duration:                     "00:03:44"
+
+        # title 02
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Lady Lady
+          audio:                        JN_Vyg_wURY
+          rating:                       3
+          start:                        "00:00:01"
+          end:                          "00:03:29"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/JN_Vyg_wURY/maxresdefault.jpg
+          duration:                     "00:03:42"
+
+        # title 03
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Close Up
+          audio:                        YFSEc_cANhw
+          rating:                       3
+          start:                        "00:00:01"
+          end:                          "00:03:10"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/YFSEc_cANhw/maxresdefault.jpg
+          duration:                     "00:03:15"
+
+        # title 04
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        So Easy (To Fall In Love)
+          audio:                        3sur4BmjQt8
+          rating:                       3
+          start:                        "00:00:10"
+          end:                          "00:02:58"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/3sur4BmjQt8/maxresdefault.jpg
+          duration:                     "00:03:16"
+
+        # title 05
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Let Alone The One You Love
+          audio:                        uxIjDwmc3uU
+          rating:                       3
+          start:                        "00:00:1"
+          end:                          "00:03:30"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/uxIjDwmc3uU/maxresdefault.jpg
+          duration:                     "00:03:05"
+
+        # title 06
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Man I Need
+          audio:                        oIv_Y2RPQ_A
+          rating:                       3
+          start:                        "00:00:02"
+          end:                          "00:03:06"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/oIv_Y2RPQ_A/maxresdefault.jpg
+          duration:                     "00:03:21"
+
+        # title 07
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Something Inbetween
+          audio:                        DXt6EGHFkWc
+          rating:                       3
+          start:                        "00:00:03"
+          end:                          "00:03:30"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/DXt6EGHFkWc/maxresdefault.jpg
+          duration:                     "00:02:31"
+
+        # title 08
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Loud
+          audio:                        paKBrvjuemo
+          rating:                       3
+          start:                        "00:00:01"
+          end:                          "00:03:01"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/paKBrvjuemo/maxresdefault.jpg
+          duration:                     "00:03:04"
+
+        # title 09
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Baby Steps
+          audio:                        6kLEQi0u5rA
+          rating:                       3
+          start:                        "00:00:02"
+          end:                          "00:03:14"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/6kLEQi0u5rA/maxresdefault.jpg
+          duration:                     "00:03:17"
+
+        # title 10
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        A Couple Minutes
+          audio:                        lrS1LC2cu-U
+          rating:                       3
+          start:                        false
+          end:                          false
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/lrS1LC2cu-U/maxresdefault.jpg
+          duration:                     "00:03:32"
+
+        # title 11
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        I've Seen It
+          audio:                        _hgu16lRfbQ
+          rating:                       3
+          start:                        "00:00:01"
+          end:                          "00:02:04"
+          audio_info:                   //youtube.com/playlist?list=PL1dfVf_Yq5rGGTKx4Fi5PwX5TfPBXNP8p
+          cover_image:                  //img.youtube.com/vi/_hgu16lRfbQ/maxresdefault.jpg
+          duration:                     "00:02:06"
+
+        # title 12
+        - item:
+          enabled:                      true
+          <<:                           *album_olivia_dean_yt
+          title:                        Man I Need (Live)
+          audio:                        JUGCQK8dUhc
+          rating:                       3
+          start:                        "00:00:01"
+          end:                          "00:02:03"
+          audio_info:                   //youtu.be/JUGCQK8dUhc
+          cover_image:                  //img.youtube.com/vi/JUGCQK8dUhc/maxresdefault.jpg
+          duration:                     "00:02:05"
+
+# ------------------------------------------------------------------------------
+# END config

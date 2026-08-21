@@ -331,6 +331,7 @@
           href:                         //www.cssmatic.com
           target:                       _blank
           icon:                         language-css3
+
         - title:                        JSON Editor
           href:                         //jsoneditoronline.org/
           target:                       _blank
@@ -342,8 +343,7 @@
         - title:                        Character Codes
           href:                         //html.spec.whatwg.org/multipage/named-characters.html
           target:                       _blank
-          icon:                         alpha-a-box-outline#
-
+          icon:                         alpha-a-box-outline
         - title:                        RegEx 101
           href:                         //regex101.com/
           target:                       _blank
@@ -377,7 +377,7 @@
 
     - title:                            This Site
       icon:                             home-variant-outline
-      href:                             /pages/public/about/site/
+      href:                             /pages/public/about/starter/
 
     - title:                            Privacy
       icon:                             heart
@@ -389,7 +389,7 @@
 
     - title:                            Issues
       icon:                             bug
-      href:                             /pages/public/about/issues/
+      href:                             /pages/public/about/reporting_issues/
 
 # ------------------------------------------------------------------------------
 # END config

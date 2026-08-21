@@ -1,18 +1,18 @@
 ---
 title:                                  Video
-title_extention:                        Video players
-tagline:                                Playback Video and Playlists
+title_extention:                        Availabe player
+tagline:                                Availabe player
 
 date:                                   2026-05-07
-#last_modified:                         2026-01-01
+last_modified:                          2026-08-16
 
 description: >
-                                        J1 Template provides playing video on web pages
-                                        by HTML5 Video and supports custom players created
-                                        by VidoeJS to playback video individually.
+                                        J1 Template provides playing video on web
+                                        pages by HTML5 Video and supports custom player
+                                        created by VidoeJS to playback video individually.
 keywords: >
-                                        open source, free, template, jekyll, jekyllone, web,
-                                        sites, static, jamstack, bootstrap,
+                                        open source, free, template, jekyll, jekyllone,
+                                        web, sites, static, jamstack, bootstrap,
                                         html, html5, video, support, flash player,
                                         quicktime, silverlight, videojs,
                                         vimeo, dailymotion, wistia, youtube
@@ -32,7 +32,7 @@ permalink:                              /pages/public/tour/video_data/
 
 resources:                              [
                                           gallery, lightgallery, masonry,
-                                          videoPlayer, videojs
+                                          multiPlayer, videojs
                                         ]
 resource_options:
   - toccer:
@@ -42,9 +42,9 @@ resource_options:
       padding_top:                      600
       slides:      
         - url:                          /assets/video/headers/present_videos/modern-dance.mp4
-          alt:                          AI generated video
-          title:                        Video Players
-          tagline:                      Playback Video and Playlists
+          alt:                          AI Generated
+          title:                        Video
+          tagline:                      Availabe player
           isVideo:                      true
           mute:                         true
           badge:
@@ -84,7 +84,7 @@ resource_options:
 
 
 // Page content
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
 [role="dropcap"]
 The J1 Template plays *video* on web pages using *HTML5 video* -- the
 modern web standard. Every up-to-date browser already knows how to play
@@ -108,9 +108,23 @@ own website and from online sources like YouTube.
 // See: https://docs.asciidoctor.org/asciidoc/latest/macros/audio-and-video/
 // -----------------------------------------------------------------------------
 [role="mt-5"]
-== Standalone Players
+== Standalone Player
 
-lorem:sentences[5]
+A *standalone player* plays one single video. There is no playlist and no
+title list beside it -- the player simply shows the video you placed on
+the page. This is the right choice for a short clip inside an article, a
+product demo, or a welcome video on a landing page.
+
+The J1 Template offers two standalone player:
+
+* the *HTML Player* -- the player that is already built into every
+  modern browser, and
+* the *VideoJS Player* -- a player with a look you can change, that also
+  plays videos from YouTube.
+
+Both players are placed with a single line of AsciiDoc markup. If you
+need a *list* of videos instead of just one, have a look at the section
+<<J1 Multi Player>> further below.
 
 [role="mt-4"]
 [[video-html]]
@@ -128,8 +142,6 @@ The J1 Template supports two kinds of video sources:
 An *embedded video player* shows the video right inside the page,
 without sending visitors to another site. This makes a smoother
 experience for your audience and keeps them on your website.
-
-[role="mb-4"]
 The video tag `<video>` is built into every modern browser. You do not
 have to load any *external player* to make it work.
 
@@ -181,9 +193,9 @@ youtube::brEXrQBIj68[poster="//img.youtube.com/vi/brEXrQBIj68/mqdefault.jpg" rol
 
 [role="mt-5"]
 [[j1-video]]
-== J1 VideoPlayer
+== J1 Multi Player
 
-VideoPlayer is a playlist-friendly player built using VideoJS. It lets every
+MultiPlayer is a playlist-friendly player built using VideoJS. It lets every
 video use the same attractive, customizable player and adds a full playlist
 feature. Viewers can search, sort, play, rate videos, and pick up right where
 they left off.
@@ -219,14 +231,7 @@ Her international career started in 2026 with the album "The Art of Loving."
 
 [role="mt-4"]
 .The Art Of Loving (2026)
-videoPlayer::player_olivia_dean[role="mb-4"]
-
-[TIP]
-====
-If you want a plain audio version of the album *The Art of Loving*, you can
-play all the audio on the page: 
-link:/pages/public/tour/audio_data/#olivia-dean[Audio Players].
-====
+multiplayer::player_olivia_dean_video[role="mb-4"]
 
 
 [role="mt-5"]

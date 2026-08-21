@@ -1,18 +1,19 @@
 ---
 title:                                  Responsive Tables
-title_extention:                        Tables on every screen size
-tagline:                                Present tables at its best
+title_extention:                        Data tables on every screen size
+tagline:                                Present data tables at its best
 
 date:                                   2026-05-07
-#last_modified:                         2026-01-01
+last_modified:                          2026-08-14
 description: >
-                                        J1 Template supports a new design for responsive tables
-                                        based on Bootstrap. The approach used is using pure CSS
-                                        styles on top of the classic Bootstrap styles for simplicity
-                                        and portability to be viewed best  on all devices and browsers.
+                                        J1 Template supports a new design for responsive
+                                        tables based on Bootstrap. The approach used is
+                                        using pure CSS styles on top of the classic
+                                        Bootstrap styles for simplicity and portability
+                                        to be viewed best on all devices and browsers.
 keywords: >
-                                        open source, free, template, jekyll, jekyllone, web,
-                                        sites, static, jamstack, bootstrap,
+                                        open source, free, template, jekyll, jekyllone,
+                                        web, sites, static, jamstack, bootstrap,
                                         tables, responsive, css styles
 
 categories:                             [ Roundtrip ]
@@ -62,7 +63,7 @@ resource_options:
 
 
 // Page content
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
 //
 [role="dropcap"]
 A *responsive* table is a table that looks good on every screen size --
@@ -130,7 +131,7 @@ two-column tables below show some Jekyll variables you can use to
 build your content pages.
 
 [role="mt-4"]
-[bs-table-2-column-fixed]
+[[bs-table-2-column-fixed]]
 === Fixed font size
 
 On small screens, a Bootstrap table can scroll *sideways* so all
@@ -178,7 +179,7 @@ Post's front matter by specifying a new date/time in the format
 |===
 
 [role="mt-4"]
-[bs-table-2-column-responsive]
+[[bs-table-2-column-responsive]]
 === Responsive font size
 
 .Bootstrap using responsive text size

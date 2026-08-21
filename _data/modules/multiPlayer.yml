@@ -1,0 +1,126 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/multiPlayer.yml
+# User configuration settings for J1 MultiPlayer module
+# to setup global player configuration options
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2026 Juergen Adams
+#
+# J1 Template is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                J1 MultiPlayer
+  scope:                                User settings
+  location:                             _data/modules/multiPlayer.yml
+
+# ------------------------------------------------------------------------------
+# User configuration settings (all players)
+#
+settings:
+
+  # GENERAL settings
+  #
+  enabled:                              true
+
+  # Fix multiPlayer new select audio only #1
+  # AUDIO ONLY playback (all players)
+  #
+  # Applies to YOUTUBE entries only; native .mp3/.mp4 sources are never
+  # affected. When active, the module follows the strategy of the Amplitude
+  # module's ytp plugin (yt_player: height|width 0, quality small): the
+  # video is not shown and the amount of video data loaded is reduced to
+  # the minimum — only the audio plays.
+  #
+  # The key seeds the INITIAL state of the per-player title-bar switch
+  # (div#audioOnlySwitch_<player_id>, placed after the playlistModeSwitch);
+  # a user toggle is persisted per player (localStorage 'audioOnly_<id>')
+  # and, once present, wins over this seed. A per-player 'audio_only' entry
+  # in multiPlayer_control.yml overloads this global value.
+  #
+  audio_only:                           false
+
+  # claude - Fix multiPlayer new select audio only 4
+  # FIXED AUDIO ONLY playback for players WITHOUT the title-bar switch
+  #
+  # Companion of 'audio_only' above. Where 'audio_only' SEEDS the switch (and
+  # is overruled by the first user toggle), 'set_audio_only' STATES the mode
+  # for players that show no switch at all, so a viewer who cannot toggle is
+  # never governed by a stale toggle left in localStorage.
+  #
+  # The key is read ONLY when the switch is not shown or is unavailable:
+  #
+  #   - ui_elements.audioOnlySwitch is false (the documented case), or
+  #   - the player is disabled, or the playlist is disabled, or the rendered
+  #     markup carries no playlist title bar the switch could be built into
+  #
+  # While the control is reachable it owns the state and this key is ignored
+  # completely — the switch precedence (localStorage <- audio_only <- false)
+  # then applies unchanged.
+  #
+  #   true      YouTube entries always play audio only
+  #   false     YouTube entries always play with video
+  #   (absent)  no opinion — behaviour identical to before this fix
+  #
+  # Same three-layer inheritance as every other key: defaults <- user
+  # settings <- per-player entries in multiPlayer_control.yml.
+  #
+  set_audio_only:                       false
+
+  # Per-media value edited in the player's Edit Media Settings dialog
+  # (fields "Start At"/"End At") or shipped in a preloaded playlist JSON,
+  # then the YAML chain: defaults <- user settings <- per-player entries
+  #
+  # startAt:                            ""
+  # endAt:                              ""
+
+  # PLAYLIST settings
+  #
+  playlist:
+    enabled:                            true
+
+    cards:
+      perRow:                           2
+
+  # Modify J1 VideoPlayerfor export #1
+  # UI interface settings (all players)
+  #
+  # MEDIA EXPORT switches. Both default to TRUE when the keys are absent, so
+  # existing configurations need no change. The controls are additionally
+  # SELF-HIDING: they only ever appear for playlist items that resolve to a
+  # plain .mp3 or .mp4 file, so a YouTube-only player shows no export UI even
+  # with both switches on. Set a key to false to suppress the control for ALL
+  # players; a per-player entry in videoPlayer_control.yml always wins.
+  #
+  #   playlist_download_button      - the per-item button in the playlist row
+  #                                   (div.playlist-row-content) and card
+  #                                   (div.playlist-card-actions)
+  #   playlist_download_all_button  - the playlist-level button in the title
+  #                                   bar (div.playlist-block-title); exports
+  #                                   every downloadable item of the ACTIVE
+  #                                   playlist (a running search narrows the
+  #                                   set to the visible result)
+  #
+  ui_elements:
+    playlist_download_button:           true
+    playlist_download_all_button:       true
+
+    # Fix multiPlayer new select audio only #1
+    # AUDIO ONLY switch visibility (all players). Defaults to TRUE when the
+    # key is absent, so existing configurations need no change. The control
+    # is additionally SELF-HIDING: it only ever appears when the playlist
+    # holds at least one YouTube entry, so a native-only (.mp3/.mp4) player
+    # shows no audio-only UI even with the switch on — the exact inverse of
+    # the export controls above. Set to false to suppress the control for
+    # ALL players; a per-player entry in multiPlayer_control.yml always wins.
+    #
+    audioOnlySwitch:                    true
+
+# ------------------------------------------------------------------------------
+# END config

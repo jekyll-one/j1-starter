@@ -160,7 +160,7 @@ defaults:
     dropdown_border_top:                0                                       # px
     dropdown_border_radius:             2                                       # px
     dropdown_background_color_hover:    var(--md-gray-300)
-    dropdown_background_color_active:   var(--md-gray-500)
+    dropdown_background_color_active:   var(--bs-yellow)
 
   # ----------------------------------------------------------------------------
   # NavQuicklinks
@@ -225,7 +225,7 @@ defaults:
     translate_action:                   translate
     translate_label:                    Google Translate
 
-    speak2me_icon:                      speaker
+    speak2me_icon:                      read
     speak2me_action:                    speak
     speak2me_label:                     Speak2Me
 

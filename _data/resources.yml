@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # ~/_data/resources/resources.yml
-# Configuration data to specify ALL the resources used by a site|layout
+# Configuration data to specify ALL the resources used by a site
 #
 # Product/Info:
 # https://jekyll.one
@@ -379,7 +379,7 @@ resources:
   #       init_function:                  [ j1.adapter.customFunctions.init ]
 
   # ----------------------------------------------------------------------------
-  # J1 Core
+  # Core
   # Main CSS styles and JS API for J1 Theme
   # NOTE Theme CSS loaded via module 'themes'
   # NOTE: load always 'unolight' as a 'bese' (e.g. for unodark, but should be removed)
@@ -440,15 +440,15 @@ resources:
         init_function:                  []
 
   # ----------------------------------------------------------------------------
-  # J1 Test/Manual
-  # Additional CSS for test/manual
+  # Test
+  # Additional CSS for test
   #
   - name:                               J1 Tester 
     resource:
       enabled:                          true
 
       id:                               test-css
-      comment:                          Additional CSS for test/manual
+      comment:                          Additional CSS for test
       region:                           head
       layout:                           [ all ]
       required:                         always
@@ -490,7 +490,7 @@ resources:
         init_function:                  []
 
   # ----------------------------------------------------------------------------
-  # J1 Logger
+  # Logger
   # JS API for all logs used by J1 Theme based on the
   # log4j implementation for JS (log4javascript)
   # See: http://log4javascript.org
@@ -515,7 +515,7 @@ resources:
         init_function:                  [ j1.adapter.logger.init ]
 
   # ----------------------------------------------------------------------------
-  # Backstretch/Attic (Top Header)
+  # Attic
   # JS API to add responsive image|video content to J1 Top Headers
   # based on the JS API jQuery Backstretch
   # See: https://github.com/jquery-backstretch/jquery-backstretch
@@ -676,7 +676,7 @@ resources:
         init_function:                  [ j1.adapter.cookieConsent.init ]
 
   # ----------------------------------------------------------------------------
-  # Lunr search engine
+  # Lunr
   # JS API used for the site_search feature
   # of J1 Theme based on the Lunr JS API
   # See: https://lunrjs.com/
@@ -904,7 +904,7 @@ resources:
         init_function:                  [ j1.adapter.analytics.init ]
 
   # ----------------------------------------------------------------------------
-  # Rouge,
+  # Rouge
   # Pure Ruby themeable code highlighter
   # See: http://rouge.jneen.net/
   #
@@ -1056,7 +1056,7 @@ resources:
         init_function:                  [ j1.adapter.clipboard.init ]
 
   # ----------------------------------------------------------------------------
-  # J1 Gallery
+  # Gallery
   # JS implementation for full-featured image galleries
   # based on the Justified Gallery API
   # See: https://miromannino.github.io/Justified-Gallery/
@@ -1402,14 +1402,35 @@ resources:
         init_function:                  [ j1.adapter.slimSelect.init ]
 
   # ----------------------------------------------------------------------------
-  # AmplitudeJS
+  # Amplitude (Library only)
   #
-  - name:                               J1 AmplitudeJS
+  - name:                               AmplitudeJS
     resource:
       enabled:                          true
 
       id:                               amplitudejs
       comment:                          Module AmplitudeJS
+      region:                           head
+      layout:                           [ all ]
+      required:                         ondemand
+      script_load:                      defer
+      pass_init_data:                   false
+
+      data:
+        css:                            []
+        files:                          []
+        js:                             [ modules/amplitudeJS/js/amplitude ]
+        init_function:                  []
+
+  # ----------------------------------------------------------------------------
+  # amplitudePlayer
+  #
+  - name:                               J1 amplitudePlayer
+    resource:
+      enabled:                          true
+
+      id:                               amplitudePlayer
+      comment:                          Module amplitudePlayer
       region:                           head
       layout:                           [ home, page, post ]
       required:                         ondemand
@@ -1418,14 +1439,14 @@ resources:
 
       data:
         css:                            [
-                                          modules/amplitudejs/css/theme/uno/dark/amplitude,
-                                          modules/amplitudejs/css/theme/uno/dark/player/compact,
-                                          modules/amplitudejs/css/theme/uno/dark/player/large,
-                                          modules/amplitudejs/css/theme/uno/dark/player/mini
+                                          modules/amplitudePlayer/css/theme/uno/dark/amplitude,
+                                          modules/amplitudePlayer/css/theme/uno/dark/player/mini,                                          
+                                          modules/amplitudePlayer/css/theme/uno/dark/player/compact,
+                                          modules/amplitudePlayer/css/theme/uno/dark/player/large
                                         ]
-        files:                          [ adapter/js/amplitude.js ]
-        js:                             [ modules/amplitudejs/js/amplitude ]
-        init_function:                  [ j1.adapter.amplitude.init ]
+        files:                          [ adapter/js/amplitudePlayer.js ]
+        js:                             [ modules/amplitudePlayer/js/player ]
+        init_function:                  [ j1.adapter.amplitudePlayer.init ]
 
   # ----------------------------------------------------------------------------
   # SwiperJS
@@ -1586,14 +1607,35 @@ resources:
         init_function:                  []
 
   # ----------------------------------------------------------------------------
-  # J1 VideoPlayer
+  # AudioPlayer
   #
-  - name:                               J1 VideoPlayer
+  # - name:                               J1 AudioPlayer
+  #   resource:
+  #     enabled:                          false
+
+  #     id:                               audioPlayer
+  #     comment:                          Module audioPlayer
+  #     region:                           head
+  #     layout:                           [ home, page, post ]
+  #     required:                         ondemand
+  #     script_load:                      defer
+  #     pass_init_data:                   false
+
+  #     data:
+  #       css:                            []
+  #       files:                          [ adapter/js/audioPlayer.js ]
+  #       js:                             []
+  #       init_function:                  [ j1.adapter.audioPlayer.init ]
+
+  # ----------------------------------------------------------------------------
+  # MultiPlayer
+  #
+  - name:                               J1 multiPlayer
     resource:
       enabled:                          true
 
-      id:                               videoPlayer
-      comment:                          Module videoPlayer
+      id:                               multiPlayer
+      comment:                          Module multiPlayer
       region:                           head
       layout:                           [ page ]
       required:                         ondemand
@@ -1601,14 +1643,14 @@ resources:
       dependencies:                     false
       pass_init_data:                   false
 
-      data: 
-        css:                            [ modules/videoPlayer/css/videoPlayer ]
-        js:                             [ modules/videoPlayer/js/videoPlayer ]
-        files:                          [ 
-                                          modules/videoPlayer/js/playlistCards.mjs,
-                                          adapter/js/videoPlayer.js
+      data:
+        css:                            [ modules/multiPlayer/css/player ]
+        js:                             [ modules/multiPlayer/js/player ]
+        files:                          [
+                                          adapter/js/multiPlayer.js,
+                                          modules/multiPlayer/js/playlistCards.mjs
                                         ]
-        init_function:                  [ j1.adapter.videoPlayer.init ]
+        init_function:                  [ j1.adapter.multiPlayer.init ]
 
   # ----------------------------------------------------------------------------
   # Speak2Me

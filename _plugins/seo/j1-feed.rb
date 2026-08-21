@@ -3,7 +3,7 @@
 # Generate RSS feeds for all posts of a site
 #
 # Product/Info:
-# http://jekyll.one
+# https://jekyll.one
 #
 # Copyright (C) 2022 Ben Balter and Contributors
 # Copyright (C) 2023-2026 Juergen Adams

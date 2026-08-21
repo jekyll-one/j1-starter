@@ -1,0 +1,193 @@
+# ------------------------------------------------------------------------------
+# ~/_data/modules/amplitudePlayer_control.yml
+# User (control) configuration settings for the module amplitudePlayer
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2026 Juergen Adams
+#
+# J1 Template is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Description
+#
+description:
+  title:                                amplitudePlayer
+  scope:                                User control settings
+  location:                             _data/modules/amplitudePlayer_control.yml
+
+# ------------------------------------------------------------------------------
+# User settings
+#
+settings:
+
+  # ----------------------------------------------------------------------------
+  # PAGE-GLOBAL settings (overload the module defaults for this site)
+  # ----------------------------------------------------------------------------
+  # sync_active_song: mirror the active song (marker, YouTube cue, native
+  # engine) across all players of a page. The tour page 'audio_data' shows
+  # the same album in native and YouTube players, so the default 'true' is
+  # kept. See defaults/amplitudePlayer.yml, key player.sync_active_song.
+  #
+  # player:
+  #   sync_active_song:                 true                                    # default: true
+
+  # ----------------------------------------------------------------------------
+  # PLAYER settings
+  # ----------------------------------------------------------------------------
+  #
+  players:
+
+    # --------------------------------------------------------------------------
+    # MINI player, Emancipator
+    # --------------------------------------------------------------------------
+    #
+    - player:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #       
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # PLAYER settings
+      #  
+      id:                               emancipator_mini
+      type:                             mini
+
+      # PLAYLIST settings
+      #
+      playlist:
+        name:                           emancipator
+
+    # --------------------------------------------------------------------------
+    # COMPACT player, Emancipator
+    # --------------------------------------------------------------------------
+    #
+    - player:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #       
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # PLAYER settings
+      #  
+      id:                               emancipator_compact
+      type:                             compact
+
+      # ------------------------------------------------------------------------
+      # PLAYLIST settings
+      #
+      playlist:
+        name:                           emancipator
+
+      # ------------------------------------------------------------------------
+      # CONTROL settings
+      #
+      # skip_forward_backward_button:     true                                  # default: true
+      # song_progress_bar:              false                                   # currently dont work om player level
+      # forward_backward_skip_seconds:  30                                      # currently dont work on player level
+
+    # --------------------------------------------------------------------------
+    # LARGE player, Emancipator
+    # --------------------------------------------------------------------------
+    #
+    - player:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #     
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # PLAYER settings
+      #
+      id:                               emancipator_large
+      type:                             large
+
+      # ------------------------------------------------------------------------
+      # PLAYLIST settings
+      #
+      playlist:
+        name:                           emancipator
+
+    # --------------------------------------------------------------------------
+    # LARGE player, Emancipator - Dusk to Dawn
+    # --------------------------------------------------------------------------
+    #
+    - player:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #    
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # PLAYER settings
+      #
+      id:                               emancipator_yt_large
+      type:                             large
+      source:                           video
+
+      # ------------------------------------------------------------------------
+      # PRIVACY settings
+      #
+      privacy_enhanced:                 true                                    # enable|disable privacy-enhanced host 'youtube-nocookie.com'
+
+      # ------------------------------------------------------------------------
+      # PLAYLIST settings
+      #      
+      playlist:
+        name:                           dusk_to_dawn_yt
+
+      # ------------------------------------------------------------------------
+      # PLUGIN settings
+      #
+      plugin_manager:
+        enabled:                        true
+        plugins:                        [ ytp ]
+
+
+    # --------------------------------------------------------------------------
+    # LARGE player, Olivia Dean
+    # --------------------------------------------------------------------------
+    #
+    - player:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #    
+      enabled:                          true
+
+      # ------------------------------------------------------------------------
+      # PLAYER settings
+      #
+      id:                               olivia_dean_yt_large
+      type:                             large
+      source:                           video
+
+      # ------------------------------------------------------------------------
+      # PRIVACY settings
+      #
+      privacy_enhanced:                 true                                    # enable|disable privacy-enhanced host 'youtube-nocookie.com'
+
+      # ------------------------------------------------------------------------
+      # PLAYLIST settings
+      #      
+      playlist:
+        name:                           olivia_dean_yt
+
+      # ------------------------------------------------------------------------
+      # PLUGIN settings
+      #
+      plugin_manager:
+        enabled:                        true
+        plugins:                        [ ytp ]
+
+# ------------------------------------------------------------------------------
+# END config

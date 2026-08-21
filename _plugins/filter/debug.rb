@@ -3,7 +3,7 @@
 # Helper to inspect liquid template variables for Jekyll
 #
 # Product/Info:
-# http://jekyll.one
+# https://jekyll.one
 #
 # Copyright (C) 2023-2026 Juergen Adams
 #

@@ -3,7 +3,7 @@
 # Liquid filter for J1 Theme to Base64 encode a JSON string
 #
 # Product/Info:
-# http://jekyll.one
+# https://jekyll.one
 #
 # Copyright (C) 2023-2026 Juergen Adams
 #

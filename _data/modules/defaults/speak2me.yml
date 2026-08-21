@@ -36,7 +36,7 @@ defaults:
   browsersDisabled:                     [Firefox, Opera, Avast, Safari]
 
   modal:
-    title:                              Text-2-Speech Control
+    title:                              Screen Reader Control
 
     settings:
       voice_settings_title:             Voice Settings

@@ -31,12 +31,12 @@ settings:
   enabled:                              true
 
   # ----------------------------------------------------------------------------
-  # All players available
+  # All playlists available
   # ----------------------------------------------------------------------------
   players:
 
     # --------------------------------------------------------------------------
-    # IMAGE PLAYERS
+    # IMAGE
     # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
@@ -96,11 +96,11 @@ settings:
 
 
     # --------------------------------------------------------------------------
-    # VIDEO PLAYERS
+    # VIDEO
     # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
-    # YouTube Videos
+    # YouTube
     #
     - grid:
       enabled:                          true
@@ -115,53 +115,50 @@ settings:
         # video 1
         # ----------------------------------------------------------------------
         - video:
-          name:                         Carpool Karaoke P!nk
+          name:                         Tiny Desk Concert - Dua Lipa
           type:                         youtube
           api:                          videojs
           size:                         1280-720
-          source:                       //youtube.com/sottGW1p5os
+          source:                       //youtube.com/y38qQRg3UDI
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
-                                        <h2>Carpool Karaoke - P!nk<h2>
+                                        <h2>Tiny Desk Concert - Dua Lipa<h2>
                                         <h3>
-                                          James enlists some commuting help from P!nk, driving around
-                                          Los Angeles singing her classics, and the two end upside down 
-                                          to prove once and for all you can sing better inverted.
+                                          Tiny Desk Concert at the NPR Headquarters, Washingtom DC (2021-01-28)
                                         </h3>
           poster:
             style:                      img-responsive
-            source:                     //img.youtube.com/vi/sottGW1p5os/mqdefault.jpg
+            source:                     //img.youtube.com/vi/y38qQRg3UDI/maxresdefault.jpg
 
           caption:
             enabled:                    true
             position:                   bottom
-            text:                       YouTube Video &middot; Pink
+            text:                       Tiny Desk Concert &middot; Dua Lipa
 
         # video 2
         # ----------------------------------------------------------------------
         - video:
-          name:                         Carpool Karaoke Gwen Stefani
+          name:                         Tiny Desk Concert - Sabrina Carpenter
           type:                         youtube
           api:                          videojs
           size:                         1280-720
-          source:                       //youtube.com/F2SXmzk8ve4
+          source:                       //youtube.com/BEoGvTlJMyY
           pinterest_prefix:             Pin video
           tweet_prefix:                 Try video
           description: >
-                                        <h2>Carpool Karaoke - Gwen Stefani</h2>
+                                        <h2>Tiny Desk Concert - Sabrina Carpenter</h2>
                                         <h3>
-                                          Gwen Stefani, Carpool Karaoke with George
-                                          Clooney and Julia Roberts
+                                          Tiny Desk Concert at the NPR Headquarters, Washingtom DC (2024-12-20)
                                         </h3>
           poster:
             style:                      img-responsive
-            source:                     //img.youtube.com/vi/F2SXmzk8ve4/mqdefault.jpg
+            source:                     //img.youtube.com/vi/BEoGvTlJMyY/maxresdefault.jpg
 
           caption:
             enabled:                    true
             position:                   bottom
-            text:                       YouTube Video &middot; Gwen Stefani
+            text:                       Tiny Desk Concert &middot; Sabrina Carpenter
 
 # ------------------------------------------------------------------------------
 # END config

@@ -4,16 +4,16 @@ title_extention:                        Enhanced Asciidoc Markups for J1 Templat
 tagline:                                Enhanced Asciidoc Markups
 
 date:                                   2026-05-07
-#last_modified:                         2026-01-01
+last_modified:                          2026-08-14
 
 description: >
-                                        J1 Template implements some handy Ruby-based enhancements
-                                        for the markup language Asciidoc. Markup extensions for
-                                        is a unique feature of Jekyll One compared to other Jekyll
-                                        themes and templates.
+                                        J1 Template implements some handy Ruby-based
+                                        enhancements for the markup language Asciidoc.
+                                        Markup extensions is a unique feature of Jekyll One
+                                        compared to other Jekyll themes and Templates.
 keywords: >
-                                        open source, free, template, jekyll, jekyllone, web,
-                                        sites, static, jamstack, bootstrap,
+                                        open source, free, template, jekyll, jekyllone,
+                                        web, sites, static, jamstack, bootstrap,
                                         asciidoc, asciidoctor, ruby, extensions
 
 categories:                             [ Roundtrip ]
@@ -72,7 +72,7 @@ resource_options:
 
 
 // Page content
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
 [role="dropcap"]
 J1 Template adds a few extra features on top of the Asciidoc markup
 language. These extras are called *extensions*. They give you new
@@ -143,7 +143,7 @@ box.
 [role="mt-5"]
 == Asciidoc Admonitions
 
-[role="mb-5]
+[role="mb-5"]
 An *admonition* is a colored, labeled box that calls attention to a piece
 of information — for example a tip, a warning, or an important note.
 The Asciidoc markup language provides five types of admonition, shown
@@ -155,24 +155,24 @@ in the table below.
 |Name |Description
 
 |`NOTE`
-|Additional details on the currently discussed topic that may help the
-reader to understand the following content better.
+|Extra information about the current topic. It helps the reader to
+understand what comes next.
 
 |`TIP`
-|Provides facts that may help the reader *to go further* or points to
-additional *options* available that can be used.
+|A helpful hint. It shows the reader an easier way to do something, or
+points to an option that is also available.
 
 |`IMPORTANT`
-|Emphasis on what is currently being discussed and provide facts that
-should be remembered.
+|Something the reader should remember. Use it for facts that really
+matter for the current topic.
 
 |`WARNING`
-|instructs readers of potential danger, harm, or consequences for the
-wrong usage.
+|A danger sign. Use it when something can go wrong, break, or cause
+damage if it is used the wrong way.
 
 |`CAUTION`
-|Advise the reader to act carefully and point to potential risks or
-trippings.
+|A "please be careful" sign. Use it to point to risks or to steps that
+are easy to get wrong.
 
 |===
 
@@ -182,7 +182,7 @@ Each admonition type has its own default color. The colors used by J1
 are shown in the example boxes further below.
 ====
 
-[role="mr-4]
+[role="mr-4"]
 To highlight a *single* paragraph, start it with the admonition label in
 uppercase, followed by a colon `:`.
 

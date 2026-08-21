@@ -4,18 +4,20 @@ title_extention:                        Integrated full-text search for J1 Templ
 tagline:                                Integrated full-text search
 
 date:                                   2026-05-07
-#last_modified:                         2026-01-01
+last_modified:                          2026-08-14
 
 description: >
-                                        The search option for the J1 Template is based on the
-                                        search engine Lunr and is fully integrated with the template.
-                                        Lunr is designed to be lightweight yet full-featured to provide great search experience. Using Lunr for a Jekyll
-                                        website, there is no need to integrate complex external,
-                                        server-sided search engines like Google or Bing.
+                                        The search option for the J1 Template is based
+                                        on the search engine Lunr and is fully integrated
+                                        with the template Lunr is designed to be lightweight
+                                        yet full-featured to provide great search experience.
+                                        Using Lunr for a Jekyll website, there is no need to
+                                        integrate complex external, server-sided search
+                                        engines like Google or Bing.
 
 keywords: >
-                                        open source, free, template, jekyll, jekyllone, web,
-                                        sites, static, jamstack, bootstrap,
+                                        open source, free, template, jekyll, jekyllone,
+                                        web, sites, static, jamstack, bootstrap,
                                         lunr, site search, quick search, find,
                                         google, bing
 
@@ -62,7 +64,7 @@ resource_options:
 
 
 // Page content
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
 [role="dropcap"]
 The J1 Template comes with a built-in *site search*. Site search lets
 your visitors quickly find pages and posts on your website by typing a
@@ -71,7 +73,7 @@ browser* -- you do not have to set up a separate server.
 
 The search engine behind it is called *Lunr* (spoken: Lunar). Lunr is small
 and fast, written in JavaScript by
-http://lunrjs.com[Oliver Nightingale, {browser-window--new}], and is
+https://lunrjs.com[Oliver Nightingale, {browser-window--new}], and is
 fully integrated with the J1 Template.
 
 [subs=attributes]
@@ -259,8 +261,8 @@ more precise searches, which we will cover next.
 [role="mt-4"]
 === Simple searches
 
-The simplest way to run a search is to pass the words on which you want to
-search on.
+The simplest search is just the word you are looking for. Type it into
+the search box and press Enter.
 
 [source, text]
 ----
@@ -307,7 +309,7 @@ can put it anywhere in a search word.
 For example, the query below matches every page that contains a word
 beginning with *jek*:
 
-[source, text role="noclip"]
+[source, text]
 ----
 jek*
 ----
@@ -352,7 +354,7 @@ document:
 
 [source, text]
 ----
-+title:jek* +coll*
++title:jek* +Template
 ----
 
 Below is a list of the fields you can search in.
@@ -369,7 +371,7 @@ Below is a list of the fields you can search in.
 Example: site_search
 [source, text]
 ----
-title:site_search
+title:Search
 ----
 
 |`tagline`
@@ -462,11 +464,11 @@ results and which words *must not*:
   absent".
 
 The query below matches pages that *must* contain the word *jekyll*
-*and* must *not* contain the word *collection*:
+*and* must *not* contain the word *Generators*:
 
 [source, text]
 ----
-+jekyll -collection
++jekyll -Generators
 ----
 
 To get the equivalent of a logical *AND* (every word must be present),
@@ -474,7 +476,7 @@ prefix every word with a plus sign:
 
 [source, text]
 ----
-+jekyll +collection
++jekyll +Generators
 ----
 
 

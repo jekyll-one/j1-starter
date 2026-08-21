@@ -1,17 +1,20 @@
 ---
 title:                                  Themes
 title_extention:                        Bootstrap V5 Themes
-tagline:                                Individual Style
+tagline:                                Individual Styles
 
 date:                                   2026-05-07
-#last_modified:                         2026-01-01
+last_modified:                          2026-08-14
 
 description: >
-                                        J1 Template offers various unique functionalities compared to other Jekyll themes and templates. Bootstrap themes for the J1 Template are based on the free and Open Source CSS front-end framework Bootstrap of version V5. The
-                                        Bootstrap themes for the J1 enable the presentation of different versions (skins) of the same site using already prepared Bootstrap CSS templates.
+                                        J1 Template offers various unique functionalities
+                                        compared to other Jekyll themes and templates.
+                                        Bootstrap themes for the J1 Template are based
+                                        on the free and Open Source CSS front-end
+                                        framework Bootstrap of version V5.
 keywords: >
-                                        open source, free, template, jekyll, jekyllone, web,
-                                        sites, static, jamstack, bootstrap,
+                                        open source, free, template, jekyll, jekyllone,
+                                        web, sites, static, jamstack, bootstrap,
                                         css, style, theme, skin
 
 categories:                             [ Roundtrip ]
@@ -61,7 +64,7 @@ resource_options:
 
 
 // Page content
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
 [role="dropcap"]
 Themes for the J1 Template are based on the Open Source CSS framework
 *Bootstrap* (version 5). A theme is like a *skin* for your website -- it
@@ -76,7 +79,7 @@ parts of your design on your own.
 [subs=attributes]
 ++++
 <div class="video-title">
-  <i class="mdi mdi-gray mdi-clock-time-five-outline mdi-24px mr-2"></i>
+  <i class="mdib mdib-clock-outline mdib-24px mr-2"></i>
   {time-num--string} {time-en--string} {time-en--description}.
 </div>
 ++++

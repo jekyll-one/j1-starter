@@ -3,7 +3,7 @@
 # Generate SEO tags for posts and pages of a site
 #
 # Product/Info:
-# http://jekyll.one
+# https://jekyll.one
 #
 # Copyright (C) 2022 Ben Balter and Contributors
 # Copyright (C) 2023-2026 Juergen Adams

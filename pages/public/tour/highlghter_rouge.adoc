@@ -4,16 +4,17 @@ title_extention:                        Code Highlighter
 tagline:                                Code highlighter
 
 date:                                   2026-05-07
-#last_modified:                         2026-01-01
+last_modified:                          2026-08-14
 
 description: >
-                                        Rouge is a native Ruby themeable syntax highlighter fully
-                                        integrated with J1 Template. The highlighter supports 100+
-                                        different languages and generates HTML output using standard
-                                        ANSI 256-colors displayed by all current browsers.
+                                        Rouge is a native Ruby themeable syntax highlighter
+                                        fully integrated with J1 Template. The highlighter
+                                        supports 100+ different languages and generates
+                                        HTML output using standard ANSI 256-colors displayed
+                                        by all current browsers.
 keywords: >
-                                        open source, free, template, jekyll, jekyllone, web,
-                                        sites, static, jamstack, bootstrap,
+                                        open source, free, template, jekyll, jekyllone,
+                                        web, sites, static, jamstack, bootstrap,
                                         highlighter, rouge
 
 categories:                             [ Roundtrip ]
@@ -63,7 +64,7 @@ resource_options:
 
 
 // Page content
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
 [role="dropcap"]
 *Rouge* is a code highlighter built into the J1 Template. *Code highlighting*
 adds colors to source code so it is easier to read. Different parts of the
@@ -156,6 +157,7 @@ To preview *all* themes supported by *J1 Template*, click the button
 [role="mt-4"]
 === Liquid code
 
+{% raw %}
 [source, liquid, role="noclip"]
 ----
 Hello {{ 'now' | date: "%Y %h" }}
@@ -165,6 +167,8 @@ Hello {{ 'now' | date: "%Y %h" }}
   {{ i }}
 {% endfor %}
 ----
+{% endraw %}
+
 
 [role="mt-4"]
 === Javascript code
@@ -214,15 +218,17 @@ end
 [role="mt-5"]
 == What next
 
-The J1 Template includes a built-in *site search* feature, allowing visitors
-to find pages and posts by entering keywords in a search box. This search
-operates *within the browser*, so there is no need for external search
-engines like Google or Bing. The search engine, *Lunr*, is a small and fast
-JavaScript solution developed by link://lunrjs.com[Oliver Nightingale, {browser-window--new}].
-J1 automatically creates a search index for your entire site, enabling search
-functionality immediately.
+The J1 Template also comes with a built-in *site search*. Your visitors
+type a few words into a search box and get a list of the pages and posts
+that match. The search runs *inside the browser*, so you do not need an
+external search service like Google or Bing.
 
-An effective search box enhances user experience by helping visitors quickly
-find what they need, encouraging them to return. For more information on
-searching a J1-based website, visit the link:{url-tour--site_search}[Search Engine]
-page.
+The search engine is called *Lunr*. It is small, fast, and written in
+JavaScript by
+link://lunrjs.com[Oliver Nightingale, {browser-window--new}]. J1
+builds the search index for your whole website automatically, so search
+works right from the start.
+
+A good search box makes a website much more pleasant to use: visitors
+find what they are looking for quickly, and they come back. To see how
+it works, visit the link:{url-tour--site_search}[Search Engine] page.

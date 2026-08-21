@@ -28,9 +28,9 @@ settings:
   # GENERAL options
   # ----------------------------------------------------------------------------
   #
-  enabled:                              true
+  enabled:                              false
   skipAllHosts:                         localhost, 127.0.0.1
-  trackingID:                           G-299QGW5RJH
+  trackingID:                           <your-tracking-id>
 
   # ----------------------------------------------------------------------------
   # Provider settings

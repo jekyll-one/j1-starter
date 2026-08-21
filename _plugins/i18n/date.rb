@@ -5,7 +5,7 @@
 # Plugin for DateTime Localization in Jekyll
 #
 # Product/Info:
-# http://jekyll.one
+# https://jekyll.one
 #
 # Copyright (C) 2023-2026 Juergen Adams
 # Copyright (c) 2018 Ulrich Wolf

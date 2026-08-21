@@ -3,7 +3,7 @@ title:                                  Theme Features
 tagline:                                Modules, Extensions and Integrations
 
 date:                                   2026-05-07
-# last_modified:                        2026-01-01
+last_modified:                          2026-08-16
 
 description: >
                                         Jekyll One Template (J1) is a free Jekyll theme that gives
@@ -32,9 +32,10 @@ regenerate:                             false
 permalink:                              /pages/public/features/theme_features/
 
 resources:                              [
-                                          amplitudejs, lightbox3, lightgallery,
-                                          masonry, gallery, photoswipejs,
-                                          swiperjs, videojs, vimeo-player
+                                          amplitudePlayer, amplitudejs,
+                                          multiPlayer, videojs,                                          
+                                          lightbox3, lightgallery, masonry,
+                                          gallery, photoswipejs, swiperjs
                                         ]
 resource_options:
   - attic:
@@ -70,7 +71,7 @@ resource_options:
 
 
 // Page content
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// -----------------------------------------------------------------------------
 [role="dropcap"]
 There are many themes for Jekyll, and they cover most common types of
 websites. The downside is that most of them ask you to write code and
@@ -94,8 +95,10 @@ mdi:mouse-move-down[24px, md-blue ml-3 mr-2]
 <<Infinite scroll>> +
 mdi:speaker[24px, md-blue ml-3 mr-2]
 <<Audio Player>> +
-mdi:speaker[24px, md-blue ml-3 mr-2]
-<<Screen reader>> +
+mdi:video[24px, md-blue ml-3 mr-2]
+<<Video Player>> +
+mdi:read[24px, md-blue ml-3 mr-2]
+<<Screen Reader>> +
 mdi:mouse-move-down[24px, md-blue ml-3 mr-2]
 <<Animate on Scroll>> +
 mdi:animation[24px, md-blue ml-3 mr-2]
@@ -113,7 +116,7 @@ mdi:clipboard[24px, md-blue ml-3 mr-2]
 mdi:forwardburger[24px, md-blue mdi-rotate-90 ml-3 mr-2]
 <<Smooth Scroll>> +
 mdi:near-me[24px, md-blue ml-3 mr-2]
-<<Enhanced Navigation>> +
+<<Advanced Navigation>> +
 mdi:lightbulb-on[24px, md-blue ml-3 mr-2]
 <<Lightboxes>> +
 mdi:view-carousel[24px, md-blue ml-3 mr-2]
@@ -131,7 +134,7 @@ reading without clicking to load extra pages.
 J1 Template supports infinite scroll. We use it, for example, to load
 previews of blog articles.
 
-[role="mt-4"]
+[role="mt-5"]
 === Audio Player
 
 J1 Template can play audio on web pages with the built-in HTML5 player.
@@ -143,17 +146,30 @@ amplitude::emancipator_large[role="mb-4"]
 
 
 [role="mt-5"]
-=== Screen reader
+=== Video Player
+
+J1 MultiPlayer is a playlist-friendly player built using VideoJS. It lets
+every video use the same attractive, customizable player and adds a full
+playlist feature. Viewers can search, sort, play, rate videos, and pick up
+right where they left off.
+
+[role="mt-4"]
+.The Art Of Loving (2026)
+multiplayer::player_olivia_dean_video[role="mb-4"]
+
+
+[role="mt-5"]
+=== Screen Reader
 
 Speak2Me is a text-to-speech (TTS) module for J1 Template. It works
 like a screen reader: visitors can sit back and listen as the browser
 reads the main content of the page out loud.
 
-.TTS Control
+.Screen Reader Control
 lightbox::images--tts[ 1920, {data-images--tts} ]
 
-To start the *screen reader* on a J1 site, click the *speaker* icon
-mdi:speaker[24px, md-blue] in the top-right of the *menu bar*.
+To start the *screen reader* on a J1 site, click the *read* icon
+mdi:read[24px, md-blue] in the top-right of the *menu bar*.
 
 [role="mt-5"]
 === Animate on Scroll
@@ -212,7 +228,7 @@ is the *consent* of your visitors to the use of cookies.
 The template comes with a configurable, GDPR-compatible module that
 lets you manage how visitors give or withdraw their consent.
 
-[role="mt-6"]
+[role="mt-5"]
 === Translator
 
 A website translation feature is useful in many situations. The world
@@ -307,7 +323,7 @@ the content on the page.
 .Master Header (image-based)
 lightbox::images--master-header[ 1920, {data-images--master-header} ]
 
-[role="mt-4"]
+[role="mt-5"]
 === Clipboard
 
 The clipboard is a feature in your operating system, on both desktop
@@ -344,7 +360,7 @@ J1 lets you use your system clipboard to copy and paste examples or
 code from a page. It makes it much easier for readers to use the code
 snippets you share.
 
-[role="mt-4"]
+[role="mt-5"]
 === Smooth Scroll
 
 Smooth Scroll (SSR) is a J1 feature that improves how the page jumps
@@ -352,8 +368,8 @@ to anchor links. When SSR is on, the browser slides smoothly to the
 target heading instead of jumping there suddenly, and it lines up the
 heading at exactly the right spot.
 
-[role="mt-4"]
-=== Enhanced Navigation
+[role="mt-5"]
+=== Advanced Navigation
 
 When it comes to usability, your visitors notice one thing first: the
 navigation system. The navigation system in J1 Template is a flexible
@@ -394,7 +410,7 @@ You can set up every feature through configuration. No code is needed.
             icon:                         format-color-fill
 ----
 
-[role="mt-4"]
+[role="mt-5"]
 === Lightboxes
 
 A *lightbox* is a small overlay that pops up when a visitor clicks an
@@ -438,7 +454,7 @@ gallery::jg_old_times[ role="mb-4 wm-800" ]
 gallery::jg_old_times[ role="mb-4 wm-800" ]
 
 
-[role="mt-4"]
+[role="mt-5"]
 === Sliders
 
 SwiperJS is a JavaScript library that creates modern slide shows.
@@ -504,7 +520,7 @@ their attention.
 swiper::swiper_image_base_navigation_pagination[role="mt-3 mb-3"]
 
 
-[role="mt-4"]
+[role="mt-5"]
 === Galleries
 
 Image and video galleries let you arrange groups of images or videos

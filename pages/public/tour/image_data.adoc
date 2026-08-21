@@ -4,12 +4,14 @@ title_extention:                        Embed images
 tagline:                                Embed Images
 
 date:                                   2026-05-26
-#last_modified:                         2026-01-01
+last_modified:                          2026-08-14
 
 description: >
-                                        The image modules supported by J1 Template offer valuable
-                                        features based on powerful Open Source libraries like
-                                        Masterslider, lightGallery, or Justified Gallery for high-end, masonry-styled preview maps.
+                                        The image modules supported by J1 Template
+                                        offer valuable  features based on powerful
+                                        Open Source libraries like Masterslider,
+                                        lightGallery, or Justified Gallery for high-end,
+                                        masonry-styled preview maps.
 keywords: >
                                         open source, free, template, jekyll, jekyllone, web,
                                         sites, static, jamstack, bootstrap,
@@ -296,10 +298,10 @@ swiper::thumb_slider_top[role="mb-5"]
 [role="mt-5"]
 ==== Layout Neighbor
 
-The *Neighbor* layout shows the active slide with a *preview* of the
-slide before it on the left and a preview of the next slide on the
-right. Clicking the left preview goes *back* a slide, and clicking
-the right preview goes *forward* for navigation.
+The *Neighbor* layout shows the current slide in the middle, with a
+small *preview* of the slide before it on the left and a preview of the
+next slide on the right. Click the left preview to go one slide *back*,
+or the right preview to go one slide *forward*.
 
 [role="mb-5"]
 [TIP]
@@ -337,28 +339,28 @@ The J1 Template offers two gallery types:
 * *Grid* gallery
 * *Block* gallery
 
-The two types differ in *how images* are *arranged*. A *grid* places
-indivudual images in optimal sizes in a so-called grid. All grid elements
-are placed dynamically in rows. When the bowser is resized, the grid (rows)
-are rearranged to make the images fit again.
+The two types differ in *how the images are arranged*. A *grid* gallery
+places the images in rows and gives each one the size that fits best.
+When the browser window changes its width, the rows are rearranged so
+the images always fill the space.
 
 [NOTE]
 ====
-The Galleries for J1 Template combines both types with a (configurable) 
-lightbox so visitors can click any photo to view it in a larger size.
+Both gallery types in the J1 Template can be combined with a
+(configurable) lightbox, so visitors can click any photo to see it in a
+larger size.
 ====
 
-A *block* gallery keeps every image in its natural shape and arranges
-them in a block element that looks like ricks in a wall, with shorter images
-filling the gaps left by taller ones.
+A *block* gallery keeps every image in its original shape and stacks
+them like *bricks in a wall*. Shorter images fill the gaps that taller
+ones leave behind.
 
 [role="mt-3 mb-4"]
 [TIP]
 ====
 The galleries below are fully *responsive* -- they change the layout
-to fit the size (width) of your browser window. Try it yourselves:
-resize your window, or rotate your device, and watch the columns
-rearrange.
+to fit the width of your browser window. Try it yourself: resize your
+window, or rotate your device, and watch the columns rearrange.
 ====
 
 

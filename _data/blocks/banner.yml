@@ -143,20 +143,20 @@ settings:
                     href:               /pages/public/tour/image_data/
                     target:
 
-                - name:                 Rocketstart
-                  button:
-                    enabled:            true
-                    id:                 rocketstart
-                    translate:          notranslate                             # translate|notranslate
-                    title:              Rocketstart
-                    tagline:            ready in minutes
-                    class:              btn btn-raised btn-xl btn-primary text-uppercase fw-bold text-left mr-2 mb-2
-                    style:              "min-width: 270px"
-                    icon:               rocket-launch
-                    icon_color:
-                    icon_size:          3x
-                    href:               https://jekyll.one/pages/public/learn/rocketstart/
-                    target:             blank
+                # - name:                 Rocketstart
+                #   button:
+                #     enabled:            true
+                #     id:                 rocketstart
+                #     translate:          notranslate                             # translate|notranslate
+                #     title:              Rocketstart
+                #     tagline:            ready in minutes
+                #     class:              btn btn-raised btn-xl btn-primary text-uppercase fw-bold text-left mr-2 mb-2
+                #     style:              "min-width: 270px"
+                #     icon:               rocket-launch
+                #     icon_color:
+                #     icon_size:          3x
+                #     href:               https://jekyll.one/pages/public/learn/rocketstart/
+                #     target:             blank
 
                 - name:                 Download
                   button:

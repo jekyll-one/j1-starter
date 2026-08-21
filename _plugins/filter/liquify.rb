@@ -3,7 +3,7 @@
 # Liquid filter to expand nested liquid-variables in the front matter
 #
 # Product/Info:
-# http://jekyll.one
+# https://jekyll.one
 #
 # Copyright (C) 2023-2026 Juergen Adams
 #

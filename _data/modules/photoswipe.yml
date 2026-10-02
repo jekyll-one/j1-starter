@@ -33,8 +33,68 @@ settings:
   # ----------------------------------------------------------------------------
   # Lightbox options
   # ----------------------------------------------------------------------------
-  # backdrop:
-  #   click:                              keep
+  #
+  backdrop:
+    click:                              close
+
+  # ----------------------------------------------------------------------------
+  # Plugin options
+  # ----------------------------------------------------------------------------
+  #
+  plugin:
+    caption:                            true
+    fullscreen:                         true
+#   video:                              true
+
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeFullscreen plugin #6
+  # ----------------------------------------------------------------------------
+  # CHECKED: this file sets NO `doubleTapAction`. The #5 caveat -- a
+  # site-wide `doubleTapAction: false` switches off PhotoSwipe's double-tap
+  # detection, so `fullscreenOnDoubleTap: true` does nothing on touch
+  # devices -- does not apply to this site. Keep it that way if galleries
+  # use the double-tap gesture. The plugin now warns once in the console
+  # if the two are ever combined (e.g. per page via `data-pswp-options`).
+  #
+  # `fullscreen: true` above is level 3 of the resolution order, reached
+  # only by galleries that state no `photoswipe.plugin.fullscreen` of their
+  # own. Plugin OPTIONS (`fullscreenOnDoubleTap` & co.) are set per module
+  # (`photoswipe.fullscreenOptions` in ~/_data/modules/defaults/gallery.yml)
+  # or per gallery (gallery_control.yml), not here.
+  # ----------------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------------
+  # Caption plugin options
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeCaption plugin Fix #3
+  #
+  # Options handed to the Dynamic Caption plugin. They apply to the
+  # galleries built by autoInit() (the ones a visitor opens) and to
+  # hand-rolled [data-lightbox] markup alike.
+  #
+  #   type              Where the caption is placed. J1 uses 'below' for
+  #                     BOTH orientations (see Fix #2). Set 'aside'
+  #                     for the caption to the right of the image, or
+  #                     'auto' together with autoAllowAside: true for the
+  #                     upstream, orientation-dependent behavior.
+  #
+  #   portraitPadding   Extra space, in pixels, added ABOVE and BELOW
+  #                     images in PORTRAIT orientation. A portrait image
+  #                     fills the lightbox height, so image and caption
+  #                     together would otherwise touch the top and bottom
+  #                     edge of the viewport, while landscape images in
+  #                     the same gallery sit comfortably centered.
+  #                     `portraitPadding` accepts 25, 25px
+  #
+  #                     25       same gap above and below (shipped default)
+  #                     0        switch the extra space off
+  #                     { top: 40, bottom: 20 }, asymmetric gap
+  #
+  #                     Landscape and square images are not affected.
+  #
+  # captionOptions:
+  #   type:                               below
+  #   portraitPadding:                    50px
 
 # ------------------------------------------------------------------------------
 # END config

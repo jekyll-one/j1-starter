@@ -57,6 +57,16 @@ settings:
       # then the YAML chain: defaults <- user settings <- per-player entries
       #
       # startAt:                        ""
+      # Extend multiPlayer for new startAtDarkCheck param #1 - endAt added to complete the pair
+      # endAt:                          ""
+
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
 
       # UI interface settings
       #
@@ -96,6 +106,29 @@ settings:
           playlist:
             enabled:                    true
 
+          # Fix videoFilters plugin für VideoJS #1
+          # --------------------------------------------------------------------
+          # VIDEO FILTERS for THIS player (brightness, contrast, saturation).
+          # Only the keys that differ from the plugin defaults are declared;
+          # the full list with all defaults is in videojs.yml
+          # (settings.plugins.videoFilters). The values a viewer chooses are
+          # stored per player in the browser (persist, default: on).
+          #
+          # PREREQUISITE: the MultiPlayer core (player.js) must hand this
+          # block to vjsPlayer.videoFilters(), the way it does for
+          # zoomButtons. Until then the block is read by nobody -- see the
+          # session notes for the call.
+          #
+          videoFilters:
+            enabled:                    true
+
+            position:                   bottom-left
+            techs:                      [ html5 ]
+
+            persist:
+              prefix:                   filters
+              scope:                    player
+
     # --------------------------------------------------------------------------
     # Player 2
     #
@@ -122,6 +155,14 @@ settings:
       #
       startAt:                          ''
       endAt:                            ''
+
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
 
       ui_elements:
         playlist_download_button:       true
@@ -184,6 +225,14 @@ settings:
       #
       startAt:                          ''
       endAt:                            ''
+
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
 
       # UI interface settings
       #
@@ -256,6 +305,14 @@ settings:
       #
       # startAt:                        ""
       # endAt:                          ""
+
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
 
       # UI interface settings
       #
@@ -332,6 +389,14 @@ settings:
       # startAt:                        ""
       # endAt:                          ""
 
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
+
       # UI interface settings
       #
       ui_elements:
@@ -406,6 +471,14 @@ settings:
       startAt:                          ''
       endAt:                            ''
 
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
+
       # UI interface settings
       #
       ui_elements:
@@ -479,6 +552,14 @@ settings:
       #
       startAt:                          ''
       endAt:                            ''
+
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
 
       # UI interface settings
       #
@@ -559,6 +640,14 @@ settings:
       # startAt:                        ""
       # endAt:                          ""
 
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
+
       # UI interface settings
       #
       ui_elements:
@@ -590,6 +679,105 @@ settings:
 
           playlist:
             enabled:                    true
+
+    # --------------------------------------------------------------------------
+    # Player 9
+    #
+    - player:
+
+      # GENERAL settings
+      #
+      enabled:                          true      
+      id:                               multi_player
+      description:                      VideoJS Multi-Player
+
+      # Fix multiPlayer new select audio only #1
+      # AUDIO ONLY playback (YouTube entries only, see multiPlayer.yml for
+      # the full note). Seeds the initial state of the title-bar switch of
+      # THIS player; a persisted user toggle wins.
+      #
+      audio_only:                       false
+      # claude - Fix multiPlayer new select audio only 4
+      # FIXED AUDIO ONLY playback for a player WITHOUT the title-bar switch
+      # (see multiPlayer.yml for the full note). INACTIVE for this player:
+      # the switch is shown, so the control owns the state and this key is
+      # ignored. Declared to keep the value correct should the switch ever be
+      # suppressed via ui_elements.audioOnlySwitch: false.
+      #
+      set_audio_only:                   false
+
+      # Per-media value edited in the player's Edit Media Settings dialog
+      # (fields "Start At"/"End At") or shipped in a preloaded playlist JSON,
+      # then the YAML chain: defaults <- user settings <- per-player entries
+      #
+      # startAt:                        ""
+
+      # Extend multiPlayer for new startAtDarkCheck param #1 - endAt added to complete the pair
+      # endAt:                          ""
+
+      # Extend multiPlayer for new startAtDarkCheck param #1
+      # DARK START of the playback window (see multiPlayer.yml for the full
+      # note). Overloads the global startAtDarkCheck for THIS player. Left
+      # commented: the player inherits the global value (default: false).
+      # Uncomment and set to true to keep the video dark until startAt.
+      #
+      # startAtDarkCheck:               false
+
+      # Modify J1 VideoPlayerfor export #1
+      # UI interface settings
+      #
+      # MEDIA EXPORT switches (see videoPlayer.yml for the full note). Only
+      # the two export keys are declared here; the rate/edit/delete switches
+      # of #52/#53 stay absent and keep their defaults.
+      #
+      ui_elements:
+        playlist_download_button:       true
+        playlist_download_all_button:   true
+
+        audioOnlySwitch:                true
+
+      # PLAYLIST settings
+      #
+      playlist:
+        preload:                        []
+
+        cards:
+          perRow:                       3
+
+      # VIDEOJS settings
+      #
+      videoJS:
+
+        playbackRates:
+          enabled:                      true
+          values:                       [ 0.25, 0.5, 1, 1.5, 2 ]
+
+        # PLUGIN settings
+        #
+        plugins:
+          enabled:                      true
+
+          hotKeys:
+            enabled:                    true
+
+          playlist:
+            enabled:                    true
+
+          # Fix videoFilters plugin für VideoJS #1
+          # --------------------------------------------------------------------
+          # VIDEO FILTERS for THIS player (brightness, contrast, saturation).
+          # Only the keys that differ from the plugin defaults are declared;
+          # the full list with all defaults is in videojs.yml
+          #
+          videoFilters:
+            enabled:                    true
+
+            position:                   bottom-left
+            techs:                      [ html5 ]
+
+            persist:
+              prefix:                   filters
+              scope:                    player
 
 # ------------------------------------------------------------------------------
 # END config

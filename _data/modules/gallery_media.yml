@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/gallery_media.yml (0)
+# ~/_data/modules/gallery_media.yml
 # User (media) configuration for the module J1 Justified Gallery
 #
 # Product/Info:
@@ -9,17 +9,6 @@
 #
 # J1 Template is licensed under the MIT License.
 # See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
-# ------------------------------------------------------------------------------
-# claude - split J1 Gallery data #1
-# The single data file (gallery.yml) has been split into two files:
-#
-#   - gallery_control.yml per-gallery configuration (this file: galleries)
-#   - gallery_media.yml   per-gallery media content (images / videos)
-#
-# Both files use the same `- gallery:` list structure, keyed by `id`, modeled
-# on the Masonry scaffold (masonry_player.yml / masonry_playlist.yml). The
-# control config and the playlist content are merged ID-wise (deep_merge) in
-# galleries.html and gallery.js. See those files for the merge|sort logic.
 # ------------------------------------------------------------------------------
 
 # ==============================================================================
@@ -349,58 +338,6 @@ settings:
       enabled:                          false
       id:                               jg_video_youtube_james_and_adele
 
-      # ------------------------------------------------------------------------
-      # Video settings
-      # ------------------------------------------------------------------------
-      #
-      videos:
-
-        # - video:                        # video 1
-        #   enabled:                      true
-
-        #   name:                         Carpool Karaoke James and Adele
-        #   type:                         youtube
-        #   api:                          videojs                                 # jadams !!!
-        #   size:                         1280-720
-        #   source:                       //youtube.com/watch?v=Nck6BZga7TQ
-        #   poster_image:                 Nck6BZga7TQ/mqdefault.jpg
-        #   pinterest_prefix:             Pin video
-        #   tweet_prefix:                 Try video
-        #   caption_text:                 Carpool Karaoke 2015 &middot; James and Adele
-        #   description: >
-        #                                 <h2>Carpool Karaoke 2015</h2>
-        #                                 <h3>
-        #                                   James is on holidays in London and picks up
-        #                                   Adele for a ride through the city.
-        #                                   On the way, they sing some of their biggest hits.
-        #                                 </h3>
-
-        #   tracks:                       []                                      # jadams !!!
-        #   # playerParams:
-        #   #   start:                    50                                      # seconds to start
-
-        # - video:                        # video 2
-        #   enabled:                      true
-
-        #   name:                         Last Carpool Karaoke
-        #   type:                         youtube
-        #   api:                          videojs                                 # jadams !!!
-        #   size:                         1280-720
-        #   source:                       //youtube.com/watch?v=nV8UZJNBY6Y
-        #   poster_image:                 nV8UZJNBY6Y/mqdefault.jpg
-        #   pinterest_prefix:             Pin video
-        #   tweet_prefix:                 Try video
-        #   caption_text:                 Carpool Karaoke 2023 &middot; Last Carpool Karaoke Tour
-        #   description: >
-        #                                 <h2>Carpool Karaoke 2023</h2>
-        #                                 <h3>
-        #                                   Adele wakeups James at home for the very
-        #                                   last Late Late Night Show and for the
-        #                                   final Carpool Caraoke Tour.
-        #                                 </h3>
-
-        #   tracks:                       []                                      # jadams !!!
-
     # --------------------------------------------------------------------------
     # TinyDesk Concerts, Latin (YouTube)
     #
@@ -448,6 +385,162 @@ settings:
           description: >
                                         <h2> S02 Roberto Fonsecas </h2>
                                         <h3>At NPR 2025           </h3>
+
+    # --------------------------------------------------------------------------
+    # HTML5 VIDEO (over PhotoSwipe)
+    #
+    - gallery:
+
+      enabled:                          true
+      id:                               jg_video_html5_pswp
+
+      # ------------------------------------------------------------------------
+      # Video settings
+      # ------------------------------------------------------------------------
+      #
+      videos:
+
+        - video:                        # video 1
+          enabled:                      true
+
+          name:                         Peck Pocketed
+          type:                         html5
+          api:                          videojs
+          size:                         1280-720
+          source:                       peck_pocketed.mp4
+          poster_image:                 peck_pocketed.jpg
+          pinterest_prefix:             Pin video
+          tweet_prefix:                 Try video
+          caption_text:                 Peck Pocketed &middot; Student Academy Award winning Cartoon Clip
+          description: >
+                                        <h2>Peck Pocketed by Kevin Herron | Disney Favorite</h2>
+                                        <h3>Student Academy Award winning Cartoon Clip</h3>
+
+          tracks:
+            - track:
+              default:                  true
+              kind:                     captions
+              srclang:                  en
+              label:                    English
+              src:                      /assets/video/tracks/html5/peck_pocketed/captions/video.vtt
+
+            - track:
+              default:                  true
+              kind:                     chapters
+              srclang:                  en
+              label:                    Chapters
+              src:                      /assets/video/tracks/html5/peck_pocketed/chapters/video.vtt
+
+        - video:                        # video 2
+          enabled:                      true
+
+          name:                         Rollin Wild
+          type:                         html5
+          api:                          videojs
+          size:                         1280-720
+          source:                       rolling_wild.mp4
+          poster_image:                 rolling_wild.jpg
+          pinterest_prefix:             Pin video
+          tweet_prefix:                 Try video
+          caption_text:                 Rollin` Wild &middot; Short Funny animated video clip created at the Film Academy
+          description: >
+                                        <h2>Rollin` Wild</h2>
+                                        <h3>Short Funny Animated Clip created at the Film Academy</h3>
+
+    # --------------------------------------------------------------------------
+    # TinyDesk Concerts, Latin (YouTube, over PhotoSwipe)
+    #
+    - gallery:
+
+      enabled:                          true
+      id:                               tdc_latin_pswp
+
+      # ------------------------------------------------------------------------
+      # Video settings
+      # ------------------------------------------------------------------------
+      #
+      videos:
+
+        # video 01
+        - video:
+          enabled:                      true
+
+          name:                         S01BeckyG
+          type:                         youtube
+          api:                          videojs
+          size:                         1280-720
+          source:                       //youtube.com/watch?v=FftvVi42U4o
+          poster_image:                 FftvVi42U4o/maxresdefault.jpg
+          pinterest_prefix:             Pin video
+          tweet_prefix:                 Try video
+          caption_text:                 S01 · Becky G 2023
+          description: >
+                                        <h2> S01 Becky G </h2>
+                                        <h3>At NPR 2023  </h3>
+
+        # video 02
+        - video:
+          enabled:                      true
+
+          name:                         S02RobertoFonsecas
+          type:                         youtube
+          api:                          videojs
+          size:                         1280-720
+          source:                       //youtube.com/watch?v=vdph2l0iw74
+          poster_image:                 vdph2l0iw74/maxresdefault.jpg
+          pinterest_prefix:             Pin video
+          tweet_prefix:                 Try video
+          caption_text:                 S02 · Roberto Fonsecas 2025
+          description: >
+                                        <h2> S02 Roberto Fonsecas </h2>
+                                        <h3>At NPR 2025           </h3>
+
+    - gallery:
+
+      enabled:                          true
+      id:                               jg_video_youtube_pswp
+
+      # ------------------------------------------------------------------------
+      # Video settings
+      # ------------------------------------------------------------------------
+      #
+      videos:
+
+        - video:                        # video 1
+          enabled:                      true
+
+          name:                         Dua Lipa
+          type:                         youtube
+          api:                          videojs
+          size:                         1280-720
+          source:                       //youtube.com/watch?v=y38qQRg3UDI
+          poster_image:                 y38qQRg3UDI/maxresdefault.jpg
+          pinterest_prefix:             Pin video
+          tweet_prefix:                 Try video
+          caption_text:                 Tiny Desk Concert &middot; Dua Lipa
+          description: >
+                                        <h2>Tiny Desk Concert</h2>
+                                        <h3>
+                                          Tiny Desk Concert at the NPR Headquarters, Washingtom DC (2021-01-28)
+                                        </h3>
+
+        - video:                        # video 2
+          enabled:                      true
+
+          name:                         Sabrina Carpenter
+          type:                         youtube
+          api:                          videojs
+          size:                         1280-720
+          source:                       //youtube.com/watch?v=BEoGvTlJMyY
+          poster_image:                 BEoGvTlJMyY/maxresdefault.jpg
+          pinterest_prefix:             Pin video
+          tweet_prefix:                 Try video
+          caption_text:                 Tiny Desk Concert &middot; Sabrina Carpenter
+          description: >
+                                        <h2>Carpool Karaoke 2023</h2>
+                                        <h3>
+                                          Tiny Desk Concert at the NPR Headquarters, Washingtom DC (2024-12-20)
+                                        </h3>
 
 # ------------------------------------------------------------------------------
 # END config

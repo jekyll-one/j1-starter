@@ -37,6 +37,51 @@ settings:
     enabled:                            true
  
   # ----------------------------------------------------------------------------
+  # VideoJS Player settings (per tech)
+  # ----------------------------------------------------------------------------
+  #
+  # VideoJS - Extend plugin zoom #3
+  # Nothing below is REMOVED: the file carried no `players` block before, so
+  # every key of players.native that is not spelled out here keeps the value
+  # of the defaults (playsinline, fluid, responsive, preload, ...).
+  #
+  # VideoJS - Extend plugin zoom #4
+  # SCOPE NOTE. This file configures the J1 VideoJS module; its values end up
+  # in j1.modules.videojs.options (adapter/js/videojs.js). J1 MultiPlayer does
+  # NOT read them: a MultiPlayer takes every videoJS.* value from its own chain
+  # defaults/multiPlayer.yml <- multiPlayer.yml <- multiPlayer_control.yml.
+  # preferFullWindow below therefore has no effect on MultiPlayer pages; the
+  # MultiPlayer setting lives in multiPlayer.yml (settings.videoJS.players.
+  # native.preferFullWindow). The key is kept here unchanged.
+  #
+  players:
+
+    native:
+
+      # FULLSCREEN on iPhone.
+      #
+      # iPhone Safari (and every non-Safari browser on iOS) has no fullscreen
+      # for a page element, only for the bare <video>. VideoJS therefore
+      # hands the fullscreen button to the NATIVE player of the OS there, and
+      # nothing of the VideoJS player survives that switch: no control bar,
+      # no zoom panel, no zoom gestures. That is why "no gestures in
+      # fullscreen" is what an iPhone viewer sees while a desktop or Android
+      # viewer, whose browser takes the player element itself fullscreen,
+      # zooms and pans in fullscreen as on the page.
+      #
+      # true    VideoJS uses its FULL-WINDOW mode instead: the player is
+      #         pinned over the browser window and stays the VideoJS player,
+      #         zoom panel and gestures included. Not real fullscreen -- the
+      #         browser bars stay visible -- but the only mode on iPhone in
+      #         which the plugin exists at all.
+      # false   the VideoJS default: the native OS player, without plugin.
+      #
+      # Has no effect on browsers that support element fullscreen (desktop,
+      # Android, iPad Safari): they never reach this fallback.
+      #
+      preferFullWindow:                 true                                    # default: false
+
+  # ----------------------------------------------------------------------------
   # VideoJS Plugin settings
   # ----------------------------------------------------------------------------
   plugins:
@@ -57,6 +102,79 @@ settings:
       surroundPlayButton:               true                                    # surround buttons side-by-side the play button
 
     zoomButtons:
+      enabled:                          true
+
+      # VideoJS - Extend plugin zoom #4
+      # SCOPE NOTE. Same as for players.native above: gestureHandler and
+      # gestures below are NOT read by J1 MultiPlayer. With this block as the
+      # only place they were declared, player.js passed gestureHandler as
+      # undefined, zoom.js kept its default false and never created the
+      # ZoomGesture component. The MultiPlayer switches live in multiPlayer.yml
+      # (settings.videoJS.plugins.zoomButtons). The keys are kept here unchanged.
+      #
+
+      # VideoJS - Extend plugin zoom #1
+      # Plugin options
+      # ------------------------------------------------------------------------
+      # GESTURE support for native (mp4) video, in parallel to the existing
+      # button panel. Both write the same picture state, so a viewer may zoom
+      # with the buttons and pan with a finger in the same breath.
+      #
+      # Nothing below is REMOVED from the previous configuration: the block had
+      # only the `enabled` key, which keeps its place and its meaning.
+      #
+      # gestureHandler is the MASTER switch and keeps the meaning it always had.
+      # With it false (the shipped default of the plugin) no gesture component
+      # is created at all, no listener is bound, and the player does not touch
+      # page scrolling.
+      #
+      # gestureHandler:                   true
+
+      # VideoJS - Extend plugin zoom #5
+      # MIGRATION to the new master switch `gestures.enabled` (see below).
+      #
+      # The defaults (_data/modules/defaults/videojs.yml) now declare
+      # `gestures.enabled: false`. A declared `gestures.enabled` always wins
+      # over `gestureHandler`, so with `gestureHandler: true` as the ONLY
+      # switch in this file the gestures stayed OFF and the console warned
+      # ("gestures.enabled: false overrides the deprecated gestureHandler").
+      #
+      # `gestureHandler: true` above is kept ON PURPOSE, not only as a
+      # comment: a page script that hands over the zoomButtons options
+      # without the `gestures` subtree still switches the gestures on through
+      # the deprecated key. Where both keys arrive, `gestures.enabled: true`
+      # decides and no warning is shown. Remove `gestureHandler` once every
+      # consumer of j1.modules.videojs.options is known to pass `gestures`.
+      #
+      gestures:
+
+        # VideoJS - Extend plugin zoom #5
+        # MASTER switch of the gesture layer (pan, pinch, wheel, double tap).
+        #
+        enabled:                        true                                    # default: false
+
+        # Double click/Double tap.
+        #
+        #   'zoom'  toggles between minZoom and doubleTapZoom, anchored at the
+        #           point that was tapped
+        #   'none'  leaves the event to VideoJS
+        #
+        # 'none' is the default ON PURPOSE: VideoJS binds its own double click
+        # to FULLSCREEN, and switching this to 'zoom' takes that shortcut away.
+        # The fullscreen BUTTON and the `f` hotkey are unaffected.
+        #      
+        doubleTap:                      none                                    # default: none
+
+    # Fix videoFilters plugin für VideoJS #1
+    # --------------------------------------------------------------------------
+    # videoFilters: brightness, contrast and saturation of the picture, set by
+    # the viewer with three sliders. A button in the control bar opens them.
+    #
+    # In every case videoFilters.js and videoFilters.css must be loaded with
+    # the `videojs` resource; registering the plugin is what makes
+    # player.videoFilters a function in the first place.
+    #
+    videoFilters:
       enabled:                          true
 
 # ------------------------------------------------------------------------------

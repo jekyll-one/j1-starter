@@ -101,8 +101,30 @@ defaults:
   # (fields "Start At"/"End At") or shipped in a preloaded playlist JSON,
   # then the YAML chain: defaults <- user settings <- per-player entries
   #
-  startAt:                              "00:00:00"
+  startAt:                              ""
   endAt:                                ""
+
+  # Extend multiPlayer for new startAtDarkCheck param #1
+  # DARK START of the playback window (all players, all source kinds)
+  #
+  # startAt is enforced by SEEKING: playback begins at 0 and the player
+  # jumps to startAt a moment later, so the first frames of the media flash
+  # up before the window starts. With the dark start enabled, the video
+  # surface is hidden and the poster is shown instead until the startAt
+  # position is reached; then the video is revealed. A safety timeout
+  # reveals the video in any case, so the player can never stay black.
+  #
+  #   true      darken the video until startAt is reached
+  #   false     show the video from the first frame (default)
+  #
+  # Only the picture is affected: the startAt seek, endAt, resume and
+  # playlist autoadvance work the same either way. Media without a startAt
+  # (or with startAt 0) are never darkened.
+  #
+  # Inheritance: defaults (this file) <- user settings (multiPlayer.yml) <-
+  # per-player entries (multiPlayer_control.yml).
+  #
+  startAtDarkCheck:                     false
 
   # AUDIO FADE-IN (module default, all players, all source kinds)
   #
@@ -305,6 +327,76 @@ defaults:
         #
         sourceOrder:                    [ mp4 ]                                 # [ mp4, webm, ogv ]
 
+        # FULLSCREEN on iPhone (the #3 setting, now in the chain that is read).
+        #
+        # iPhone Safari (and every other browser on iOS) has no fullscreen for
+        # a page element, only for the bare <video>. VideoJS then hands the
+        # fullscreen button to the NATIVE player of the OS, and the VideoJS
+        # player -- control bar, zoom panel, zoom gestures -- is gone for as
+        # long as fullscreen lasts.
+        #
+        #   true    VideoJS uses its FULL-WINDOW mode instead: the player is
+        #           pinned over the browser window and stays the VideoJS
+        #           player, zoom panel and gestures included. The browser bars
+        #           stay visible.
+        #   false   the VideoJS default: the native OS player, without plugin.
+        #
+        # No effect on browsers with element fullscreen (desktop, Android,
+        # iPad Safari): they never reach this fallback.
+        #
+        preferFullWindow:               true                                    # default: false
+
+        # VideoJS - Extend plugin zoom #5
+        # NETWORK RECOVERY for native sources (mp4, mp3, webm, ...).
+        #
+        # Large remote files are streamed in pieces (HTTP 206 Partial
+        # Content). When the media server or the network closes such a
+        # connection (console: ERR_CONNECTION_RESET, ERR_HTTP2_PROTOCOL_ERROR),
+        # the browser stops the video. Chrome then often reports the error
+        # as CODE:4 "format is not supported", although the file is fine.
+        #
+        # With recovery switched on, the player loads the file again after a
+        # short pause, jumps back to the last position and continues playing.
+        # The waiting time doubles with every attempt. After `maxRetries`
+        # failed attempts the error screen is shown with a clearer message.
+        #
+        # Every key may be left out; the values shown are the built-in
+        # defaults. YouTube videos are never affected.
+        #
+        networkRecovery:
+          enabled:                      true                                    # default: true
+          maxRetries:                   3                                       # default: 3   (0..10)
+          retryDelay:                   1000                                    # default: 1000 ms, doubled per attempt
+          progressReset:                10                                      # default: 10 s of playback restore the full budget
+
+    # VideoJS - Extend plugin zoom #7
+    # POSTER settings
+    #
+    # Playlist entries that point at a native media file (mp3/mp4/webm) and
+    # carry no poster yet get one captured off-screen: a detached <video>
+    # loads the file, seeks to a frame and stores it as a small image in the
+    # playlist record. For a REMOTE file that capture is a second, parallel
+    # download of the same file - and a media server that already serves a
+    # running playback answers such a parallel request with a dropped
+    # connection (the error the networkRecovery above then has to repair).
+    #
+    # `backfillWait` is the time such a capture waits for EVERY player of the
+    # page to stop loading before it opens its own download. Local
+    # (same-origin) files are never delayed, and an entry whose file is
+    # currently loaded in a player is left out completely: its frame is
+    # taken from the running playback instead.
+    #
+    #   10000   wait up to 10 seconds (the built-in default)
+    #   0       never wait (the behaviour before this fix)
+    #
+    # Every other key of poster.autoGenerate (enabled, capturePosition,
+    # captureFraction, maxWidth, mimeType, quality, generate_timeout) keeps
+    # the value of the MultiPlayer defaults; the chain merges recursively.
+    #
+    poster:
+      autoGenerate:
+        backfillWait:                   10000                                   # default: 10000 ms
+
       # ------------------------------------------------------------------------
       # The YouTube player used by J1 VideoPlayer now reads ALL its player 
       # parameters from the players.native key above. The players.youtube
@@ -344,7 +436,6 @@ defaults:
         #
         start:                          true                                    # set start (trim) of a video allowed
         end:                            true                                    # set end (trim) of a video allowed
-
 
     # --------------------------------------------------------------------------
     # PLUGIN options
@@ -427,6 +518,151 @@ defaults:
         moveY:                          0
         rotate:                         0
         zoom:                           1
+
+        # MASTER switch of the gesture layer (pan, pinch, wheel, double tap).
+        # false: no ZoomGesture component, no listener, page scrolling is
+        # never touched. Only effective where zoomButtons itself is enabled
+        # and the source is a native (mp4) video.
+        #
+        # VideoJS - Extend plugin zoom #5
+        # DEPRECATED. The master switch is `gestures.enabled` below; with both
+        # keys present `gestures.enabled` wins anyway, so this line had no
+        # effect of its own any more. Kept as a comment for reference. A
+        # per-player entry in multiPlayer_control.yml that still uses
+        # `gestureHandler` keeps working as long as the new key is not
+        # declared on any layer of that player's chain -- it IS declared here,
+        # so switch single players with `gestures.enabled` as well.
+        #
+        # Original (deprecated, preserved for reference):
+        # gestureHandler:                 true
+
+        # Gestures settimgs
+        #
+        gestures:
+          # VideoJS - Extend plugin zoom #5
+          # This key is now the one and only MASTER switch read by the zoom
+          # plugin (resolved in zoom.js, _resolveGestureMaster). Default: false.
+          #
+          # MASTER switch of the gesture layer (pan, pinch, wheel, double tap).
+          # If set to false: no zoom gesture enabled for native (mp4) video.
+          #
+          enabled:                      false
+
+    # Fix videoFilters plugin für VideoJS #1
+    # --------------------------------------------------------------------------
+    # videoFilters: brightness, contrast and saturation of the picture, set by
+    # the viewer with three sliders. A button in the control bar opens them.
+    #
+    # NET-NEW block. Every key below is shown with the value the plugin uses
+    # when the key is left out (videoFilters.js, DEFAULT_OPTIONS), so this
+    # block may be shortened to the keys that differ.
+    #
+    # SCOPE NOTE. Same as for zoomButtons above: these values end up in
+    # j1.modules.videojs.options and are NOT read by J1 MultiPlayer or by the
+    # PhotoSwipe video galleries. The MultiPlayer takes the block from its
+    # own chain (multiPlayer.yml <- multiPlayer_control.yml), a gallery from
+    # photoswipe.videoOptions.videojs.plugins in gallery_control.yml.
+    #
+    # Fix videoFilters plugin für VideoJS #2
+    # ACTIVATION NOTE. A VideoJS plugin is switched on by CALLING its method
+    # on the player (player.videoFilters({...})); a block in a YAML file is
+    # only data until a script does that. With this fix two callers do:
+    #
+    #   J1 MultiPlayer            player.js                   (own chain)
+    #   PhotoSwipe video gallery  photoswipe-video-plugin.js  (gallery chain)
+    #
+    # THIS block is read by neither of them (see the SCOPE NOTE). It takes
+    # effect only where the script that builds a VideoJS player from
+    # j1.modules.videojs.options calls player.videoFilters() next to
+    # player.zoomButtons(). That script was not part of this fix -- OPEN POINT.
+    #
+    # In every case videoFilters.js and videoFilters.css must be loaded with
+    # the `videojs` resource; registering the plugin is what makes
+    # player.videoFilters a function in the first place.
+    #
+    videoFilters:
+      enabled:                          false
+
+      # Plugin options
+      # ------------------------------------------------------------------------
+      # Start values. 1 leaves the picture unchanged, 1.2 = 120%. A value the
+      # viewer has chosen before (see persist) wins over these.
+      #
+      brightness:                       1                                       # default: 1
+      contrast:                         1                                       # default: 1
+      saturation:                       1                                       # default: 1  (0 = grey)
+
+      # Range of each slider. min is never below 0 (negative CSS filter
+      # values are invalid and would drop the whole filter).
+      #
+      ranges:
+
+        brightness:
+          min:                          0
+          max:                          2
+          step:                         1
+
+        contrast:
+          min:                          0
+          max:                          2
+          step:                         1
+
+        saturation:
+          min:                          0
+          max:                          3
+          step:                         1
+
+      # Where the sliders are shown.
+      #
+      #   floating      over the picture, like the zoom panel. They fade out
+      #                 and in together with the control bar.
+      #   controlBar    inside the control bar, in front of insertBefore
+      #                 (the layout of version 1.0.0)
+      #
+      placement:                        floating                                # default: floating
+      position:                         bottom-left                             # floating only: top-left|top-right|bottom-left|bottom-right
+      showTitle:                        true                                    # floating only: header line with name, reset and close button
+
+      insertBefore:                     FullscreenToggle                        # control bar child the BUTTON is placed in front of
+      icon:                             magic                                   # magic|spark|palette|gear|wand|crystal|camera|wave|leaf|star
+
+      showSliders:                      true                                    # false = API only, no button, no sliders
+      showButton:                       true                                    # false = sliders shown permanently
+      showValues:                       true                                    # percentage next to each slider
+      showReset:                        true                                    # reset button
+      open:                             false                                   # sliders initially open
+
+      # Target of the reset button (and of a double click on a slider).
+      #
+      #   neutral       the original picture (100% / 100% / 100%)
+      #   initial       the start values configured above
+      #
+      resetTo:                          neutral                                 # default: neutral
+
+      applyToPoster:                    true                                    # filter the poster as well
+
+      # Video techs the filter works for. html5 = native (mp4) video. Add
+      # youtube to filter YouTube videos as well. For any other tech the
+      # filter is switched off and the button is hidden.
+      #
+      techs:                            [ html5 ]                               # default: [ html5 ]
+
+      # The values a viewer chooses are stored in the browser (localStorage)
+      # per player and restored on the next visit.
+      #
+      #   scope   page    one record per page and player id (default)
+      #           player  one record per player id, on every page
+      #   key     a fixed record name instead of the player id
+      #   prefix  prefix of the localStorage key
+      #
+      # A viewer who resets to the start values above has no record any
+      # more, so a later change of those values reaches them again.
+      #
+      persist:
+        enabled:                        true                                    # default: true
+        scope:                          page                                    # default: page
+#       key:                            videoFilters
+        prefix:                         videoFilters                            # default: j1.videoFilters
 
 # ------------------------------------------------------------------------------
 # END config

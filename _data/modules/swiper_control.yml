@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/swiper_control.yml (2)
+# ~/_data/modules/swiper_control.yml (3)
 # Application (control) settings for the module J1 Swiper
 #
 # Product/Info:
@@ -65,11 +65,13 @@ settings:
       # ------------------------------------------------------------------------
       #
       module_settings:
+
         autoplay:
           enabled:                      true
           delay:                        3500
           pauseOnMouseEnter:            true
           disableOnInteraction:         false
+
         pagination:
           enabled:                      false
 
@@ -123,11 +125,13 @@ settings:
       # ------------------------------------------------------------------------
       #
       module_settings:
+
         autoplay:
           enabled:                      true
           delay:                        3500
           pauseOnMouseEnter:            true
           disableOnInteraction:         false
+
         pagination:
           enabled:                      false
 
@@ -191,10 +195,12 @@ settings:
       # ------------------------------------------------------------------------
       #
       module_settings:
+
         navigation:
           enabled:                      true
           nextEl:                       .swiper-button-next
           prevEl:                       .swiper-button-prev
+
         pagination:
           enabled:                      true
           numbered:                     true
@@ -225,6 +231,7 @@ settings:
       # ------------------------------------------------------------------------
       #
       enabled:                          true
+
       id:                               swiper_image_base_navigation_pagination
       layout:                           image/base
       media_set:                        free_animal
@@ -255,10 +262,12 @@ settings:
       # ------------------------------------------------------------------------
       #
       module_settings:
+
         navigation:
           enabled:                      true
           nextEl:                       .swiper-button-next
           prevEl:                       .swiper-button-prev
+
         pagination:
           enabled:                      true
           numbered:                     true
@@ -273,6 +282,7 @@ settings:
       #
       events:
         enabled:                        true
+
         init: >
                                         function (swiper) {
                                           var slideHeight = 300;
@@ -292,6 +302,7 @@ settings:
       # ------------------------------------------------------------------------
       #
       enabled:                          true
+
       id:                               swiper_image_base_captions
       layout:                           image/base
       media_set:                        mega_cities_1
@@ -322,6 +333,7 @@ settings:
       # ------------------------------------------------------------------------
       #
       module_settings:
+
         pagination:
           enabled:                      true
           type:                         bullets
@@ -335,6 +347,7 @@ settings:
       #
       events:
         enabled:                        true
+
         init: >
                                         function (swiper) {
                                           var slideHeight = 300;
@@ -378,6 +391,13 @@ settings:
         kbd_controls:
           enabled:                      true
  
+        # ----------------------------------------------------------------------------
+        # Plugin options
+        # ----------------------------------------------------------------------------
+        #
+        # plugin:
+        #   fullscreen:                   true
+
     # --------------------------------------------------------------------------
     # IMAGE Swiper|Layout Thumbs (top)
     #
@@ -388,6 +408,7 @@ settings:
       # ------------------------------------------------------------------------
       #
       enabled:                          true
+
       id:                               thumb_slider_top
       layout:                           image/thumbs
       media_set:                        free_animal
@@ -415,9 +436,11 @@ settings:
       # ------------------------------------------------------------------------
       #
       module_settings:
+
         pagination:
           enabled:                      true
           numbered:                     true
+
         thumbs:
           enabled:                      true
           swiper_id:                    thumb_slider_top
@@ -434,7 +457,8 @@ settings:
       #
       events:
         enabled:                        false
-        init: >                         
+
+        init: >
                                         function (swiper) {
                                           var slideHeight = 550;
                                           swiper.slides.forEach(slide => {
@@ -442,7 +466,7 @@ settings:
                                           });
                                         }
 
-        slideChangeTransitionStart: >    
+        slideChangeTransitionStart: >
                                         function (swiper) {
                                           thumbSlider.slideTo(swiper.activeIndex);
                                         }
@@ -457,6 +481,7 @@ settings:
       # ------------------------------------------------------------------------
       #
       enabled:                          true
+
       id:                               neighbor_slider
       layout:                           image/neighbor
       media_set:                        neighbor
@@ -485,8 +510,10 @@ settings:
       # ------------------------------------------------------------------------
       #
       module_settings:
+
         pagination:
           enabled:                      false
+
         neighbor:
           enabled:                      true
           centeredSlides:               true
@@ -512,6 +539,7 @@ settings:
       # ------------------------------------------------------------------------
       # 
       enabled:                          true
+
       id:                               swiper_image_panorama
       layout:                           image/panorama
       media_set:                        panorama
@@ -576,11 +604,13 @@ settings:
       # ------------------------------------------------------------------------
       #
       module_settings:
+
         panorama:
           enabled:                      true
           on_click:                     next                                    # false | next
           depth:                        200
           rotate:                       30
+
         pagination:
           enabled:                      false
           type:                         bullets

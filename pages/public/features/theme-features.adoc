@@ -33,8 +33,8 @@ permalink:                              /pages/public/features/theme_features/
 
 resources:                              [
                                           amplitudePlayer, amplitudejs,
-                                          multiPlayer, videojs,                                          
-                                          lightbox3, lightgallery, masonry,
+                                          multiPlayer, videojs,                           
+                                          lightbox3, masonry,
                                           gallery, photoswipejs, swiperjs
                                         ]
 resource_options:
@@ -576,12 +576,12 @@ image and video galleries.
 .Markup to place the Video Gallery
 [source, apib, role="noclip"]
 ----
-.YouTube Video · Adele and James Cordon
-gallery::jg_video_youtube_james_and_adele[]
+.Justified Gallery (PhotoSwipe lightbox)
+gallery::jg_video_html5_pswp[role="mb-4"]
 ----
 
-.YouTube Video · Adele and James Cordon
-gallery::jg_video_youtube_james_and_adele[role="mb-4"]
+.Justified Gallery (PhotoSwipe lightbox)
+gallery::jg_video_html5_pswp[role="mb-4"]
 
 
 [role="mt-5"]

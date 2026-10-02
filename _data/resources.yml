@@ -1151,16 +1151,21 @@ resources:
                                           modules/videojs/css/themes/forest,
                                           modules/videojs/css/themes/sea,
                                           modules/videojs/css/themes/uno,
-                                          modules/videojs/plugins/controls/skipbuttons/css/skipbuttons,
-                                          modules/videojs/plugins/controls/nextprevbuttons/css/nextprevbuttons,
+                                          modules/videojs/plugins/controls/skipButtons/css/skipbuttons,
+                                          modules/videojs/plugins/controls/nextprevButtons/css/nextprevbuttons,
+#                                         modules/videojs/plugins/controls/videoEffects/css/effects,
+                                          modules/videojs/plugins/controls/videoFilters/css/videoFilters,
                                           modules/videojs/plugins/controls/zoom/css/zoom
                                         ]
         files:                          [ adapter/js/videojs.js ]
         js:                             [
                                           modules/videojs/js/video,                                       
                                           modules/videojs/plugins/controls/hotkeys/js/hotkeys,
-                                          modules/videojs/plugins/controls/skipbuttons/js/skipbuttons,
-                                          modules/videojs/plugins/controls/nextprevbuttons/js/nextprevbuttons,
+                                          modules/videojs/plugins/controls/skipButtons/js/skipbuttons,
+                                          modules/videojs/plugins/controls/nextprevButtons/js/nextprevbuttons,
+#                                         modules/videojs/plugins/controls/videoEffects/js/effects,
+#                                         modules/videojs/plugins/controls/videoEffects/js/list,
+                                          modules/videojs/plugins/controls/videoFilters/js/videoFilters,
                                           modules/videojs/plugins/controls/zoom/js/zoom,
                                           modules/videojs/plugins/players/playlist/js/core,
                                           modules/videojs/plugins/players/playlist/js/ui,                                         
@@ -1489,7 +1494,7 @@ resources:
         init_function:                  [ j1.adapter.swiper.init ]
 
   # ----------------------------------------------------------------------------
-  # Photoswipe Lightbox
+  # Photoswipe Lightbox (PhotoswipeJS)
   #
   - name:                               J1 PhotoswipeJS
     resource:
@@ -1506,13 +1511,17 @@ resources:
       data:
         css:                            [
                                           modules/photoswipe/css/photoswipe,
-                                          modules/photoswipe/css/photoswipe-caption-plugin
+                                          modules/photoswipe/css/theme/uno/uno,
+                                          modules/photoswipe/css/plugin/photoswipe-caption-plugin
                                         ]
         files:                          [ adapter/js/photoswipe.js]
         js:                             [
                                           modules/photoswipe/js/photoswipe-core,
                                           modules/photoswipe/js/photoswipe-lightbox,
-                                          modules/photoswipe/js/photoswipe-caption-plugin
+                                          modules/photoswipe/js/parser/webvtt/parser,
+                                          modules/photoswipe/js/plugin/photoswipe-caption-plugin,
+                                          modules/photoswipe/js/plugin/photoswipe-fullscreen-plugin,
+                                          modules/photoswipe/js/plugin/photoswipe-video-plugin
                                         ]
         init_function:                  [ j1.adapter.photoswipe.init ]
 

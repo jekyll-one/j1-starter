@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/masonry.yml (1)
+# ~/_data/modules/defaults/masonry.yml (4)
 # Default configuration settings for J1 Masonry module
 #
 # Product/Info:
@@ -127,6 +127,7 @@ defaults:
         showinfo:                       true
         controls:                       true
 
+
   # ----------------------------------------------------------------------------
   # Lightbox settings
   # See settings for lightbox:     https://jekyll.one/pages/public/manuals/modules/lightbox/
@@ -137,19 +138,104 @@ defaults:
     enabled:                            false
     type:                               ps                                      # ps | lb | lg
 
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #13
+  #
+  # NO `photoswipe:` BLOCK IN THIS FILE -- BY DECISION, NOT BY OMISSION
+  # ----------------------------------------------------------------------------
+  # Since PhotoSwipeVideoPlugin fix #12 the video plugin is opt-in per
+  # gallery, and the per-grid switch for THIS module lives in
+  # ~/_data/modules/masonry_control.yml:
+  #
+  #   photoswipe:
+  #     videoOptions:
+  #     enabled:                    true
+  #
+  # A reader looking for the matching DEFAULT will look here and find
+  # nothing -- this comment is the answer. Restating `enabled: false` in a
+  # net-new `photoswipe:` block was considered for fix #13 and REJECTED:
+  #
+  #   * the effective default (`false`) is baked into
+  #     photoswipe-lightbox.js and documented in
+  #     ~/_data/modules/defaults/photoswipe.yml, the file that owns every
+  #     other PhotoSwipe key; a restatement here would be a second copy of
+  #     a value this module does not read itself;
+  #
+  #   * masonry.html would start merging a subtree whose only content
+  #     mirrors another module's documentation -- net-new noise with a
+  #     drift risk (two files to keep aligned) and zero behaviour change.
+  #
+  # The asymmetry to ~/_data/modules/defaults/gallery.yml is intentional:
+  # that file carries a `photoswipe:` block because the gallery module
+  # ships per-gallery RENDERER defaults (`videoOptions.videojs`, ...) of
+  # its own. The masonry module has none; its grids state only their
+  # per-grid overrides in the control file.
+  # ----------------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------------
+  # PhotoSwipe lightbox
+  #
+  photoswipe:
+
+    # Masonry, Photoswipe lightbox for videos Fix #2
+    # --------------------------------------------------------------------------
+    # `plugin.fullscreen` BELOW IS NOW READ -- FOR VIDEO GRIDS ON
+    # `lightbox.type: ps`
+    # --------------------------------------------------------------------------
+    # masonry.html emits it as `data-pswp-fullscreen` on the container of every
+    # video grid that selects the PhotoSwipe lightbox, and
+    # _autoInitResolveFullscreenEnabled() in photoswipe-lightbox.js treats a
+    # stated value as the FIRST of three levels -- ahead of the site-wide
+    # `plugin.fullscreen` key of ~/_data/modules/defaults/photoswipe.yml.
+    #
+    # CONSEQUENCE OF THE `false` BELOW, worth stating plainly: because the merge
+    # chain in masonry.html is SHALLOW (`merge`, not `deep_merge`, on an array
+    # of grids), a video grid that states no `photoswipe:` block of its own
+    # inherits this whole subtree and therefore emits
+    # `data-pswp-fullscreen="false"` -- it is opted OUT, not left to the
+    # site-wide key. That matches the site-wide value this repository ships
+    # (`plugin.fullscreen: false` in defaults/photoswipe.yml), so no rendered
+    # page changes today; it would diverge on a site that sets the site-wide
+    # key to `true` and expects masonry grids to follow.
+    #
+    # A grid opts in by stating its own block, as the `youtube` grid of
+    # ~/_data/modules/masonry_control.yml now does. Note that a per-grid
+    # `photoswipe:` block REPLACES this one wholesale under the shallow merge,
+    # so a grid that states `plugin.fullscreen` and needs a non-default
+    # `videoOptions` must state both.
+    #
+    # `caption` below is untouched and still read by nobody -- the caption
+    # plugin has no per-gallery attribute on the masonry path. It is the
+    # obvious candidate for the next fix in this series; see the delivery note.
+    # --------------------------------------------------------------------------
+    #
+    plugin:
+      caption:                          false
+      fullscreen:                       false
+
+    videoOptions:
+      enabled:                          false
+
+  # ----------------------------------------------------------------------------
+  # lightGallery lightbox
+  #
   lightGallery:
+
     plugins:                            lgFullscreen, lgRotate, lgThumbnail, lgZoom
+
     options:
       licenseKey:                       0000-0000-000-0000
       download:                         false
       alignThumbnails:                  left
       animateThumb:                     true
+
     # custom thumbnails
     # --------------------------------------------------------------------------
     # addClass:                         lg-uno-thumbnails                       # customized thumbnails
     # appendThumbnailsTo:               .lg-outer                               # required for customized thumbnails
     # animateThumb:                     false                                   # required for customized thumbnails
     # allowMediaOverlap:                true                                    # required for customized thumbnails
+
 
   # ----------------------------------------------------------------------------
   # Masonry MODULE options
@@ -173,6 +259,10 @@ defaults:
   #  default:                          true
   #
   # ----------------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------------
+  # MODULE options
+  #
   initTimeout:                          1200
   hideDisabled:                         true
 
@@ -287,6 +377,9 @@ defaults:
   #  default:                          true
   #
   # ----------------------------------------------------------------------------
+  
+  # ----------------------------------------------------------------------------
+  # API options
   #
   initLayout:                           true
   originTop:                            true

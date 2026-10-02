@@ -29,7 +29,7 @@ defaults:
   # ----------------------------------------------------------------------------
   #
   enabled:                              false
-  
+
   # ----------------------------------------------------------------------------
   # VideoJS settings
   # ----------------------------------------------------------------------------
@@ -108,6 +108,245 @@ defaults:
       moveY:                            0
       rotate:                           0
       zoom:                             1
+
+      # VideoJS - Extend plugin zoom #1
+      # Plugin options
+      # ------------------------------------------------------------------------
+      # GESTURE support for native (mp4) video, in parallel to the existing
+      # button panel. Both write the same picture state, so a viewer may zoom
+      # with the buttons and pan with a finger in the same breath.
+      #
+      # Nothing below is REMOVED from the previous configuration: the block had
+      # only the `enabled` key, which keeps its place and its meaning.
+      #
+      # gestureHandler is the MASTER switch and keeps the meaning it always had.
+      # With it false (the shipped default of the plugin) no gesture component
+      # is created at all, no listener is bound, and the player does not touch
+      # page scrolling.
+      #
+      # VideoJS - Extend plugin zoom #5
+      # DEPRECATED. The master switch moved into the `gestures` subtree as
+      # `gestures.enabled` (see below). The key is kept as a comment for
+      # reference; the plugin still honours `gestureHandler` where it is set,
+      # but `gestures.enabled` wins wherever both are declared -- and it IS
+      # declared in this defaults file. A user videojs.yml that still switches
+      # the gestures on with `gestureHandler: true` must therefore be migrated
+      # to `gestures.enabled: true`; until then the console shows a warning.
+      #
+      # Original (deprecated, preserved for reference):
+      # gestureHandler:                   false
+
+      # Detail of the gesture layer. Every key may be left out; what is not
+      # spelled out here keeps the plugin default shown in the comment.
+      #
+      gestures:
+
+        # VideoJS - Extend plugin zoom #5
+        # MASTER switch of the gesture layer (pan, pinch, wheel, double tap),
+        # replacing the deprecated `gestureHandler` above.
+        #
+        #   false   no ZoomGesture component, no listener, page scrolling is
+        #           never touched (default)
+        #   true    the gesture layer is created and armed
+        #
+        # Only effective where zoomButtons itself is enabled and the source
+        # is a native (mp4) video. All keys below only matter once this
+        # switch is on.
+        #
+        enabled:                        false                                   # default: false
+
+        # The three input paths. Each may be switched off on its own.
+        #
+        #   pan     one finger (or a held mouse button) moves the zoomed
+        #           picture. Below `tapThreshold` the press stays a tap, so
+        #           play/pause still works; at 1x nothing is panned at all.
+        #   pinch   two fingers zoom around the point between them and pan
+        #           with them at the same time.
+        #   wheel   the mouse wheel zooms around the pointer. With this off
+        #           the wheel is left completely alone and the page scrolls
+        #           under the pointer as it does anywhere else.
+        #
+        pan:                            true                                    # default: true
+        pinch:                          true                                    # default: true
+        wheel:                          true                                    # default: true
+
+        # Double click/Double tap.
+        #
+        #   'zoom'  toggles between minZoom and doubleTapZoom, anchored at the
+        #           point that was tapped
+        #   'none'  leaves the event to VideoJS
+        #
+        # 'none' is the default ON PURPOSE: VideoJS binds its own double click
+        # to FULLSCREEN, and switching this to 'zoom' takes that shortcut away.
+        #
+        # NOTE: The fullscreen BUTTON and the `f` hotkey are unaffected.
+        #
+        doubleTap:                      none                                    # default: none | zoom
+        doubleTapZoom:                  2                                       # default: 2
+
+        # Zoom range of the GESTURES. Always a subset of what the buttons can
+        # reach: minZoom can never go below 1 and maxZoom never above 9.8, the
+        # ceiling the zoom-in button has always enforced. A value outside that
+        # range is corrected, not honoured.
+        #
+        minZoom:                        1                                       # default: 1
+        maxZoom:                        4                                       # default: 4
+
+        # Zoom change per 100px of wheel movement, as a fraction. 0.15 is a
+        # step of about 15 per cent; larger values zoom faster and coarser.
+        #
+        wheelStep:                      0.15                                    # default: 0.15
+
+        # Movement in px before a press counts as a drag instead of a tap.
+        # Raise it for touch screens where a tap tends to slide; lower it for
+        # a mouse-only audience. 0 turns every press into a drag and takes
+        # play/pause on the picture away.
+        #
+        tapThreshold:                   8                                       # default: 8
+
+        # Milliseconds within which two taps count as a double tap. Only read
+        # when doubleTap is 'zoom'.
+        #
+        doubleTapDelay:                 300                                     # default: 300
+
+        # Elastic overshoot at the limits: the picture keeps following the
+        # finger past the edge of its own overflow (or past minZoom/maxZoom)
+        # and springs back when the finger is lifted -- the behaviour the
+        # PhotoSwipe lightbox shows for images. false gives a hard stop and
+        # animates nothing.
+        #
+        rubberBand:                     true                                    # default: true
+
+        # How a player INSIDE a PhotoSwipe lightbox shares the pointer with
+        # PhotoSwipe, which reads a drag as "next slide" and a pinch as "close
+        # lightbox".
+        #
+        #   auto     PhotoSwipe keeps the pointer while the picture is at 1x,
+        #            so swipe-to-next works exactly as it does on an image
+        #            slide. As soon as the picture is zoomed -- or a second
+        #            finger arrives -- the press is kept at the player and the
+        #            gesture wins.
+        #   always   the player always wins; swipe-to-next over a video is
+        #            given up.
+        #   never    PhotoSwipe always wins; the gestures are effectively off
+        #            inside a lightbox.
+        #
+        # Outside a lightbox the key has no effect in 'auto'.
+        #
+        isolate:                        auto                                    # default: auto | always | never
+
+    # Fix videoFilters plugin für VideoJS #1
+    # --------------------------------------------------------------------------
+    # videoFilters: brightness, contrast and saturation of the picture, set by
+    # the viewer with three sliders. A button in the control bar opens them.
+    #
+    # NET-NEW block. Every key below is shown with the value the plugin uses
+    # when the key is left out (videoFilters.js, DEFAULT_OPTIONS), so this
+    # block may be shortened to the keys that differ.
+    #
+    # SCOPE NOTE. Same as for zoomButtons above: these values end up in
+    # j1.modules.videojs.options and are NOT read by J1 MultiPlayer or by the
+    # PhotoSwipe video galleries. The MultiPlayer takes the block from its
+    # own chain (multiPlayer.yml <- multiPlayer_control.yml), a gallery from
+    # photoswipe.videoOptions.videojs.plugins in gallery_control.yml.
+    #
+    # Fix videoFilters plugin für VideoJS #2
+    # ACTIVATION NOTE. A VideoJS plugin is switched on by CALLING its method
+    # on the player (player.videoFilters({...})); a block in a YAML file is
+    # only data until a script does that. With this fix two callers do:
+    #
+    #   J1 MultiPlayer            player.js                   (own chain)
+    #   PhotoSwipe video gallery  photoswipe-video-plugin.js  (gallery chain)
+    #
+    # THIS block is read by neither of them (see the SCOPE NOTE). It takes
+    # effect only where the script that builds a VideoJS player from
+    # j1.modules.videojs.options calls player.videoFilters() next to
+    # player.zoomButtons(). That script was not part of this fix -- OPEN POINT.
+    #
+    # In every case videoFilters.js and videoFilters.css must be loaded with
+    # the `videojs` resource; registering the plugin is what makes
+    # player.videoFilters a function in the first place.
+    #
+    videoFilters:
+      enabled:                          false
+
+      # Plugin options
+      # ------------------------------------------------------------------------
+      # Start values. 1 leaves the picture unchanged, 1.2 = 120%. A value the
+      # viewer has chosen before (see persist) wins over these.
+      #
+      brightness:                       1                                       # default: 1
+      contrast:                         1                                       # default: 1
+      saturation:                       1                                       # default: 1  (0 = grey)
+
+      # Range of each slider. min is never below 0 (negative CSS filter
+      # values are invalid and would drop the whole filter).
+      #
+      ranges:
+        brightness:
+          min:                          0
+          max:                          2
+          step:                         1
+        contrast:
+          min:                          0
+          max:                          2
+          step:                         1
+        saturation:
+          min:                          0
+          max:                          3
+          step:                         1
+
+      # Where the sliders are shown.
+      #
+      #   floating      over the picture, like the zoom panel. They fade out
+      #                 and in together with the control bar.
+      #   controlBar    inside the control bar, in front of insertBefore
+      #                 (the layout of version 1.0.0)
+      #
+      placement:                        floating                                # default: floating
+      position:                         bottom-left                             # floating only: top-left|top-right|bottom-left|bottom-right
+      showTitle:                        true                                    # floating only: header line with name, reset and close button
+
+      insertBefore:                     FullscreenToggle                        # control bar child the BUTTON is placed in front of
+      icon:                             camera                                  # magic|spark|palette|gear|wand|crystal|camera|wave|leaf|star
+
+      showSliders:                      true                                    # false = API only, no button, no sliders
+      showButton:                       true                                    # false = sliders shown permanently
+      showValues:                       true                                    # percentage next to each slider
+      showReset:                        true                                    # reset button
+      open:                             false                                   # sliders initially open
+
+      # Target of the reset button (and of a double click on a slider).
+      #
+      #   neutral       the original picture (100% / 100% / 100%)
+      #   initial       the start values configured above
+      #
+      resetTo:                          neutral                                 # default: neutral
+
+      applyToPoster:                    true                                    # filter the poster as well
+
+      # Video techs the filter works for. html5 = native (mp4) video. Add
+      # youtube to filter YouTube videos as well. For any other tech the
+      # filter is switched off and the button is hidden.
+      #
+      techs:                            [ html5 ]                               # default: [ html5 ]
+
+      # The values a viewer chooses are stored in the browser (localStorage)
+      # per player and restored on the next visit.
+      #
+      #   scope   page    one record per page and player id (default)
+      #           player  one record per player id, on every page
+      #   key     a fixed record name instead of the player id
+      #   prefix  prefix of the localStorage key
+      #
+      # A viewer who resets to the start values above has no record any
+      # more, so a later change of those values reaches them again.
+      #
+      persist:
+        enabled:                        true                                    # default: true
+        scope:                          page                                    # default: page
+#       key:                            videoFilters
+        prefix:                         videoFilters                            # default: j1.videoFilters
 
 # ------------------------------------------------------------------------------
 # END config

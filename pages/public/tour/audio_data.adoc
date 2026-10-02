@@ -1,7 +1,7 @@
 ---
 title:                                  Audio
-title_extention:                        Availabe player
-tagline:                                Availabe player
+title_extention:                        Availabe Player
+tagline:                                Availabe Player
 
 date:                                   2026-05-07
 last_modified:                          2026-08-16
@@ -97,7 +97,7 @@ nice-looking player into any page without writing complex JavaScript.
 // Include sub-documents (if any)
 // -----------------------------------------------------------------------------
 [role="mt-5"]
-== HTML 5 player
+== HTML 5 Player
 
 The simplest way to add audio to a web page is the HTML *audio* tag
 `<audio>`. The browser handles everything: it loads the file, plays
@@ -108,25 +108,25 @@ audio::/assets/audio/sound-effects/ambient-piano.mp3[role="mt-4 mb-5"]
 
 
 [role="mt-5"]
-[[amplitude-player--native]]
-== J1 Amplitude player
+[[amplitude-Player--native]]
+== J1 Amplitude Player
 
 The J1 Template supports *native audio* files (such as MP3) and uses
 custom players built with *Amplitude*. The default look matches the
 *Uno* theme of the J1 Template, so the players blend in with the rest
 of your site.
 
-Three sizes of Amplitude player are built in:
+Three sizes of Amplitude Player are built in:
 
 * *Mini* player -- the smallest size
 * *Compact* player -- the default size
 * *Large* player -- the biggest size, with all controls visible
 
-The J1 Amplitude players work well on mobile devices. On phones and tablets,
+The J1 Amplitude Players work well on mobile devices. On phones and tablets,
 *touch* gestures replace mouse clicks, so the players feel natural to use.
 
 [role="mt-4"]
-=== Native player
+=== Native Player
 
 Native players are the built-in Amplitude players for the J1 Template.
 They do not require plugins to play audio files, such as MP3, and serve
@@ -140,7 +140,7 @@ the *audio part* of videos provided by the YouTube platform.
 ====
 
 [role="mt-5"]
-==== Mini player
+==== Mini Player
 
 A *mini player* is a small player that shows only the basic controls --
 play, pause, and volume. It uses very little space, which is perfect
@@ -156,7 +156,7 @@ screen.
 
 
 [role="mt-4"]
-==== Compact player
+==== Compact Player
 
 The *compact player* is the default. It shows more controls than the
 mini player but still fits neatly into your page layout. It is a good
@@ -171,7 +171,7 @@ page, for example to offer a few sample tracks.
 
 
 [role="mt-4"]
-==== Large player
+==== Large Player
 
 The *large player* shows the full set of audio player controls in one
 window. It looks like a complete audio app: play, pause, skip, volume,
@@ -187,12 +187,12 @@ best choice when audio is the main focus of the page.
 [role="mt-5"]
 === Player over YouTube
 
-J1 Template supports two different players to play audio over YouTube:
+J1 Template supports two players to play audio over YouTube:
 
 * J1 Amplitude Player
 * J1 Multi Player
 
-Both players take the *audio track* of a YouTube video and play it like
+Both players take the track from a YouTube video and play it like
 a normal audio file. The video picture stays hidden, so your visitors
 only hear the sound. This is useful if the music, the interview, or the
 podcast you want to offer is published on YouTube, but a video window
@@ -248,8 +248,8 @@ amplitude::emancipator_yt_large[role="mb-4"]
 [role="mt-5"]
 ==== J1 Multi Player
 
-MultiPlayer is a complete player engine built on top of VideoJS. It gives
-every audio and video the same good-looking, skinnable player, and it adds
+J1 Multi Player is a complete player engine built on top of VideoJS. It gives
+every *audio and video* the same good-looking, skinnable player, and it adds
 a full playlist on top: a searchable, sortable list of media items that the
 viewer can play, rate, and continue from where they left off. It plays native
 mp3 audio files and two kinds of video: native videos (mp4) and YouTube videos.

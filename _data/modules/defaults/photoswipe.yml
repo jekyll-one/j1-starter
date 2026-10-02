@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/lightbox.yml
+# ~/_data/modules/defaults/photoswipe.yml
 # Default configuration for J1 Photoswipe Lightbox V5
 #
 # Product/Info:
@@ -30,7 +30,6 @@ defaults:
   # JavaScript library that displays images and videos by filling the
   # screen, and dimming out the rest of the web page. Enables gallery views
   # for individual images, images sets and images are part of a carousel
-  # (e.g. Owl Carousel).
 
   # ----------------------------------------------------------------------------
   # Lightbox default settings
@@ -140,7 +139,27 @@ defaults:
   #   default:                        false
   #
   # ----------------------------------------------------------------------------
-
+  #
+  # PhotoSwipeFullscreen plugin Fix #3
+  # `zoom: false` was declared only in `autoInitDefaults` inside
+  # ~/assets/theme/j1/modules/photoswipe/js/photoswipe-lightbox.js.
+  # Because the JS defaults sit UNDERNEATH the YAML in the merge order
+  #
+  #  autoInitDefaults  <  autoInitOptions  <  data-pswp-options
+  #
+  # The baked-in value survived and the runtime behaviour was correct
+  # but this file no longer described the effective configuration.
+  # Declaring the key here is purely additive and behaviour-neutral
+  # (false merged over false), and restores the YAML as the complete
+  # source of truth for the `autoInit:` block.
+  #
+  # Set to `true` to bring back the PhotoSwipe zoom button in the top
+  # bar. Note that this also drops the `pswp--no-zoom-cursor` marker
+  # class added by the "Update Photoswipe Lightbox init zoom" fix (#1),
+  # since that class is applied only while `zoom` is false.
+  #
+  # ----------------------------------------------------------------------------
+  
   # ----------------------------------------------------------------------------
   # GENERAL options
   # ----------------------------------------------------------------------------
@@ -148,11 +167,15 @@ defaults:
   enabled:                              false
   debug:                                false
   
+  # ----------------------------------------------------------------------------
+  # Lightbox options
+  # ----------------------------------------------------------------------------
+  #
   padding:                              40
   selector:                             "[data-lightbox]"
-  
+
   backdrop:
-    click:                              close                                   # close | keep
+    click:                              keep                                    # close | keep
   
   springOpen:
     stiffness:                          260
@@ -171,12 +194,537 @@ defaults:
     showHideAnimationType:              zoom
     imageClickAction:                   next
     tapAction:                          next
-    padding:                            [
-                                          top: 0,
-                                          bottom: 0,
-                                          left: 80,
-                                          right: 80
-                                        ]
+    zoom:                               false
+
+    padding:
+      top:                              0
+      bottom:                           0
+      left:                             80
+      right:                            80
+
+  # ----------------------------------------------------------------------------
+  # Plugin options
+  # ----------------------------------------------------------------------------
+  #
+  # PhotoSwipeVideoPlugin plugin Fix #2
+  #
+  # The `video` key below already existed in this file, but nothing read
+  # it. Neither ~/assets/theme/j1/adapter/js/photoswipe.js nor the
+  # auto-init machinery in
+  # ~/assets/theme/j1/modules/photoswipe/js/photoswipe-lightbox.js knew
+  # about PhotoSwipeVideoPlugin, so the key was inert: setting it to
+  # `true` did nothing and setting it to `false` did nothing either.
+  #
+  # Both files are wired under this same fix number, so `video` now
+  # behaves exactly like `caption` and `fullscreen`:
+  #
+  #  video: false   video slides are not enabled (current default)
+  #  video: true    PhotoSwipeVideoPlugin is attached to every gallery
+  #
+  # Leaving the value at `false` is therefore behaviour-neutral against
+  # the state before the fix -- nothing that worked before changes.
+  #
+  # PREREQUISITES for `video: true`
+  # ----------------------------------------------------------------------------
+  # 1. photoswipe-video-plugin.js must be loaded before the gallery is
+  #    initialised. If it is missing, one console warning names the
+  #    problem and galleries fall back to image-only behaviour.
+  # 2. Each video entry needs `data-pswp-type="video"` plus
+  #    `data-pswp-width` / `data-pswp-height` on its <a> element. The
+  #    source defaults to the <a> href and can be overridden with
+  #    `data-pswp-video-src`, or with `data-pswp-video-sources` carrying
+  #    a JSON array of {src,type} pairs for multiple formats.
+  #
+  # PER-GALLERY OVERRIDES (attributes on the gallery container)
+  # ----------------------------------------------------------------------------
+  #   data-pswp-video="false"      disable the plugin for this gallery
+  #   data-pswp-video-options      JSON merged over the `videoOptions`
+  #                                block below
+  #
+  # PhotoSwipeVideoPlugin plugin Fix #13
+  # The two attributes above are no longer exclusive to the autoInit()
+  # galleries (`data-photoswipe-lightbox` markup). Hand-rolled
+  # `[data-lightbox]` markup is read for BOTH of them as well, by
+  # _resolveDataLightboxVideoEnabled() in the adapter
+  # ~/assets/theme/j1/adapter/js/photoswipe.js -- for the on/off SWITCH
+  # only. The options merge stays an autoInit() feature: all
+  # `[data-lightbox]` elements of a page share ONE lightbox instance, so
+  # per-element option blobs have no defensible merge order there. See the
+  # Fix #13 block further down for the exact rules.
+  # ----------------------------------------------------------------------------
+  #
+  # PhotoSwipeVideoPlugin plugin Fix #12
+  #
+  # WHAT THIS KEY MEANS NOW
+  # ----------------------------------------------------------------------------
+  # `video` is no longer the decision. It is the FALLBACK a gallery inherits
+  # when it says nothing of its own, and it stays at `false`, which means:
+  #
+  #   the video plugin is DISABLED BY DEFAULT for every lightbox on the site,
+  #   including the lightboxes placed over video elements.
+  #
+  # A gallery that needs the plugin asks for it, next to the rest of its
+  # PhotoSwipe configuration:
+  #
+  #     photoswipe:
+  #       videoOptions:
+  #         enabled:                    true
+  #
+  # in ~/_data/modules/gallery_control.yml (per gallery) or
+  # ~/_data/modules/masonry_control.yml (per grid). gallery.html and
+  # masonry.html already serialise that whole subtree into the container's
+  # `data-pswp-video-options` attribute, so the key travels to the browser
+  # with no change to either include. photoswipe-lightbox.js reads it in
+  # _autoInitResolveVideoEnabled() and removes it again before the remaining
+  # options reach the plugin -- it is an auto-init switch, not a plugin
+  # option, and the plugin has no top-level `enabled` of its own.
+  #
+  # RESOLUTION ORDER, first match wins
+  #   1. data-pswp-video="true" | "false"    per gallery, attribute
+  #   2. videoOptions.enabled: true | false  per gallery, YAML (above)
+  #   3. this key                            site-wide
+  #
+  # WHY IT MOVED
+  # ----------------------------------------------------------------------------
+  # As a single global switch this key could not express the normal case: one
+  # video gallery among a dozen image ones. `true` put the plugin's slide
+  # filters in the path of all thirteen; `false` left the video gallery
+  # opening a lightbox in which every slide fell through to the image loader
+  # and rendered as a black frame. Both control files carried a PREREQUISITE
+  # note about it. Now each gallery answers for itself.
+  #
+  # Setting `video: true` here restores the pre-#12 arrangement in one line:
+  # every gallery gets the plugin unless it vetoes with
+  # `data-pswp-video="false"` or `videoOptions.enabled: false`. Reasonable on
+  # a site whose galleries are predominantly video; the shipped default
+  # assumes the opposite.
+  #
+  # `caption` and `fullscreen` are NOT affected. They add UI to a lightbox and
+  # cost nothing on a gallery that does not need it, so they keep their
+  # "absent means enabled" reading.
+  #
+  # ----------------------------------------------------------------------------
+  #
+  # Masonry, Photoswipe lightbox for videos Fix #2
+  # ----------------------------------------------------------------------------
+  # `fullscreen` BELOW IS NOW A FALLBACK TOO, like `video`
+  # ----------------------------------------------------------------------------
+  # The paragraph above -- "`caption` and `fullscreen` are NOT affected ... they
+  # keep their 'absent means enabled' reading" -- still describes `caption`
+  # exactly. For `fullscreen` it is now half the story, and the half it states
+  # is the half that did not change:
+  #
+  #   * a gallery that says nothing about the full-screen button still gets
+  #     whatever this key says, exactly as before;
+  #   * a gallery may now also say something, in EITHER direction, and be
+  #     believed ahead of this key.
+  #
+  # RESOLUTION ORDER for the full-screen plugin, first match wins. It is the
+  # same shape Fix #12 gave the video plugin:
+  #
+  #   1. data-pswp-fullscreen="true|false"       per gallery / per grid
+  #   2. fullscreenOptions.enabled (boolean)     inside
+  #                                              data-pswp-fullscreen-options
+  #   3. plugin.fullscreen                       this key
+  #
+  # Levels 1 and 2 are emitted by masonry.html today, out of the
+  # `photoswipe.plugin.fullscreen` and `photoswipe.fullscreenOptions` keys of
+  # ~/_data/modules/masonry_control.yml. gallery.html does not emit them yet;
+  # its galleries land on level 3 and are unaffected.
+  #
+  # THE VALUE BELOW IS UNCHANGED and stays `false`. Setting it to `true` is
+  # still the one-line way to give every lightbox on the site the button; it is
+  # not needed to give ONE grid the button any more, which is what this fix is
+  # about. Unlike `video`, the cost of `true` here is cosmetic rather than
+  # functional -- the full-screen plugin adds a UI element and no slide
+  # filters -- so the choice is a matter of taste rather than of correctness.
+  #
+  # ----------------------------------------------------------------------------
+  #
+  plugin:
+    caption:                            false
+    fullscreen:                         false                                   # fallback only, see Fix #2 (masonry) above
+    video:                              false                                   # fallback only, see Fix #12 above
+
+  # ----------------------------------------------------------------------------
+  # Caption plugin options
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeCaption plugin Fix #3
+  #
+  # Options handed to the Dynamic Caption plugin. They apply to the
+  # galleries built by autoInit() (the ones a visitor opens) and to
+  # hand-rolled [data-lightbox] markup alike.
+  #
+  #   type              Where the caption is placed. J1 uses 'below' for
+  #                     BOTH orientations (see Fix #2). Set 'aside'
+  #                     for the caption to the right of the image, or
+  #                     'auto' together with autoAllowAside: true for the
+  #                     upstream, orientation-dependent behavior.
+  #
+  #   portraitPadding   Extra space, in pixels, added ABOVE and BELOW
+  #                     images in PORTRAIT orientation. A portrait image
+  #                     fills the lightbox height, so image and caption
+  #                     together would otherwise touch the top and bottom
+  #                     edge of the viewport, while landscape images in
+  #                     the same gallery sit comfortably centered.
+  #                     `portraitPadding` accepts 25, 25px
+  #
+  #                     25       same gap above and below (shipped default)
+  #                     0        switch the extra space off
+  #                     { top: 40, bottom: 20 }, asymmetric gap
+  #
+  #                     Landscape and square images are not affected.
+  #
+  # captionOptions:
+  #   type:                               below
+  #   portraitPadding:                    25px
+
+  # ----------------------------------------------------------------------------
+  # PhotoSwipe lightbox Fix #14
+  #
+  # AUTOMATIC NATURAL-SIZE DETECTION -- SITE-WIDE FALLBACK
+  # ----------------------------------------------------------------------------
+  # PhotoSwipe needs the natural size of the FULL asset BEFORE it is fetched:
+  # that is what lets the opening animation start at the thumbnail's rectangle
+  # and land exactly on the final image without a jump. The two attributes that
+  # carry it are hand-maintained:
+  #
+  #   <a href="big-1.jpg" data-pswp-width="1600" data-pswp-height="1067">
+  #
+  # In generated galleries they are routinely wrong -- a justified gallery
+  # built from a data file commonly carries one nominal size copied onto every
+  # entry, whatever the individual images are. Every slide whose real aspect
+  # ratio differs then opens stretched or squeezed until the asset has loaded
+  # and PhotoSwipe re-measures.
+  #
+  # From Fix #14 on, photoswipe-lightbox.js accepts the literal token
+  # `auto-detect` in place of either number and measures the asset itself: an
+  # image through a detached `Image`, a local video through a detached
+  # `<video preload="metadata">`. The measurement is started when the gallery
+  # is wired up, long before anything is clicked, and the open is gated on it
+  # only if a click arrives first.
+  #
+  # ----------------------------------------------------------------------------
+  # PhotoSwipe lightbox Fix #15
+  #
+  # THE TOKEN NO LONGER GOES INTO THE TWO SIZE ATTRIBUTES
+  # ----------------------------------------------------------------------------
+  # Fix #14 wrote `auto-detect` into `data-pswp-width` / `data-pswp-height`
+  # itself. That could not work, and the reason is worth stating here because
+  # this key is what switches the whole thing on:
+  #
+  #   `_domElementToItemData()` exists TWICE at runtime. photoswipe-lightbox.js
+  #   carries one copy, and that is the copy Fix #14 taught to understand the
+  #   token -- but the lightbox uses it only for the first-slide preload. The
+  #   gallery the visitor interacts with is a `PhotoSwipe` instance from the
+  #   SEPARATE core bundle (photoswipe-core.js), whose own untouched copy reads
+  #
+  #     itemData.width = linkEl.dataset.pswpWidth
+  #                    ? parseInt(linkEl.dataset.pswpWidth, 10) : 0;
+  #
+  #   `'auto-detect'` is a TRUTHY string, so the guard passes and parseInt
+  #   returns NaN -- not the 0 that means "size unknown". Every slide of an
+  #   `always` gallery was laid out from a NaN.
+  #
+  # From Fix #15 on the request rides on a SEPARATE marker attribute and the
+  # two size attributes hold numbers at all times:
+  #
+  #   <a href="big-1.jpg"
+  #      data-pswp-natural-size="auto-detect"
+  #      data-pswp-width="1600"
+  #      data-pswp-height="1067">
+  #
+  # The numbers the generator emits are a starting point -- whatever the media
+  # file states, or 0 where it states nothing. When the probe lands, the
+  # measured pair is written straight INTO those two attributes, so the core
+  # bundle reads a real number whether or not detection has finished.
+  #
+  # NOTHING IN THIS FILE CHANGES. The three values below mean exactly what they
+  # meant under Fix #14; only the markup they produce is different. One
+  # behaviour does improve: under `always` a stated size is no longer discarded
+  # at emission time, so a slide whose probe FAILS now falls back to the size
+  # its media file states instead of to 0.
+  #
+  # STALE GENERATED DATA FILES
+  # ----------------------------------------------------------------------------
+  # A page still serving the Fix #14 markup (an unregenerated
+  # xhr_data_path/index.html, say) would hit the NaN path above. The module
+  # sanitises those slides on sight -- a non-numeric `data-pswp-width` /
+  # `data-pswp-height` is rewritten to "0", so the slide opens at viewport size
+  # instead of at an undefined one. That is a safety net, NOT backward
+  # compatibility: such a slide is never measured. Regenerate the data files to
+  # get detection back.
+  # ----------------------------------------------------------------------------
+  #
+  # WHAT THIS KEY DOES
+  # ----------------------------------------------------------------------------
+  # It is LEVEL 3 -- the fallback for galleries and grids that state nothing --
+  # of the resolution performed in
+  # ~/_includes/themes/j1/modules/gallery/gallery.html:
+  #
+  #   1. the size stated on the entry itself   (~/_data/modules/gallery_media.yml)
+  #   2. `photoswipe.auto_detect_size` of the gallery
+  #                                            (~/_data/modules/gallery_control.yml)
+  #   3. this key
+  #
+  # values:                             false | missing | always (true = always)
+  # default:                            false
+  #
+  #   false     No token is emitted anywhere. Sizes come from the media files
+  #             exactly as they did before Fix #14. THE SHIPPED VALUE.
+  #   missing   The token is emitted only for entries that state no usable
+  #             size. Stated sizes are believed; gaps are measured instead of
+  #             falling back to 0 (images) or to the 1280x720 placeholder
+  #             (videos). This is the safe upgrade.
+  #   always    The token is emitted for every entry, and any stated size is
+  #             ignored. The setting for the copied-number case above.
+  #
+  # WHY IT SHIPS AS `false`
+  # ----------------------------------------------------------------------------
+  # Same reason `plugin.fullscreen` and `plugin.video` above ship as `false`:
+  # a site-wide default that changes behaviour is felt by every gallery on
+  # every page at once, and this one also starts one network probe per slide.
+  # A site that wants detection asks for it -- per gallery in
+  # gallery_control.yml, or here once it has been tried on a few galleries.
+  #
+  # NOTE `auto_detect_size` does NOT reach the hand-rolled `[data-lightbox]`
+  # markup path. There the size lives in the markup an author wrote by hand,
+  # and writing `auto-detect` into it directly is both possible and clearer
+  # than a data-file key that would have to rewrite someone else's HTML.
+  #
+  # PhotoSwipe lightbox Fix #15
+  # On that hand-rolled path, add `data-pswp-natural-size="auto-detect"` to the
+  # anchor and leave `data-pswp-width` / `data-pswp-height` as numbers (0 if
+  # unknown). Writing the token INTO those two attributes is the defect this
+  # fix removes -- see the NaN note above.
+  #
+  # THE JS MASTER SWITCH IS SEPARATE
+  # ----------------------------------------------------------------------------
+  # `PhotoSwipeLightbox.autoSizeEnabled = false` disables the detection
+  # subsystem itself, so a token that DID reach the markup resolves to 0
+  # instead of being measured. That is a kill switch for the feature, not a
+  # configuration level, and it is not driven from this file.
+  # ----------------------------------------------------------------------------
+  auto_detect_size:                   false
+  # auto_detect_size:                 true
+
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #13
+  #
+  # THE PATH FIX #12 LEFT OPEN
+  # ----------------------------------------------------------------------------
+  # Fix #12 gave every autoInit() gallery its own switch but left hand-rolled
+  # `[data-lightbox]` markup with `plugin.video` above as its ONLY control.
+  # Under the shipped `false`, a lightbox placed over VIDEO elements in that
+  # markup therefore stayed broken: no per-instance key existed to ask for
+  # the plugin, every video entry fell through to the image loader (black
+  # frame), and the one remedy -- `plugin.video: true` -- put the plugin's
+  # slide filters back into every autoInit() gallery on the site, the exact
+  # coupling Fix #12 abolished.
+  #
+  # FROM THIS FIX ON
+  # ----------------------------------------------------------------------------
+  # A `[data-lightbox]` element can ask for the plugin itself, with the same
+  # per-element order the autoInit() resolver uses:
+  #
+  #   1. data-pswp-video="true" | "" | "false"    attribute
+  #   2. enabled: true | false (real boolean)     inside data-pswp-video-options
+  #
+  # The adapter's shared instance attaches the plugin when `plugin.video` is
+  # `true` OR at least one matching element asks for it. Because that ONE
+  # instance serves every `[data-lightbox]` element of the page:
+  #
+  #   * one element's opt-in attaches the plugin for all of them -- harmless
+  #     for image entries, the plugin's filters key on
+  #     `data-pswp-type === 'video'` and fall through otherwise;
+  #   * "false" only withdraws that element's own request; it cannot veto a
+  #     sibling's opt-in or a site-wide `true` (no per-element instance
+  #     exists to detach from). Markup that needs the per-gallery veto or
+  #     per-gallery OPTIONS is autoInit() markup (`data-photoswipe-lightbox`);
+  #   * the plugin options on this path remain the site-wide `videoOptions:`
+  #     block below -- the per-element JSON is consulted for the `enabled`
+  #     switch only.
+  #
+  # This key itself is UNCHANGED in meaning and value: the fallback for
+  # markup that says nothing, on both paths, and it stays `false`.
+  # ----------------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #2
+  # Video plugin options
+  # ----------------------------------------------------------------------------
+  #
+  #   videoAttributes
+  #   --------------------------------------------------------------------------
+  #   Attributes copied onto the generated <video> element. An empty
+  #   value writes a bare (boolean) attribute, which is what `controls`
+  #   and `playsinline` need.
+  #
+  #   Add `muted:` here if `autoplay` is to have any chance of working:
+  #   every current browser refuses to start an un-muted video the
+  #   visitor has not interacted with.
+  #
+  #   values:                         mapping of attribute -> value
+  #   default:                        controls, playsinline, preload auto
+  #
+  #   autoplay
+  #   --------------------------------------------------------------------------
+  #   Start playback when a video slide becomes the active one. Blocked
+  #   playback is not an error: the poster stays visible and the visitor
+  #   can start the video from the controls. A single console warning is
+  #   emitted when the browser refuses.
+  #
+  #   values:                         boolean (false|true)
+  #   default:                        true
+  #
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #7
+  #
+  #   autoplay (continued -- TWO NEW MODES)
+  #   --------------------------------------------------------------------------
+  #   `autoplay` is no longer a plain boolean. The paragraph above describes
+  #   what `true` does, and `true` still does exactly that; what changes is the
+  #   value inherited when nothing is stated.
+  #
+  #     startOnFirst   THE NEW DEFAULT. Only the FIRST video slide that becomes
+  #                    active in a lightbox session starts by itself. Every
+  #                    other slide of the group is left PAUSED on its poster
+  #                    and starts on the visitor's own click.
+  #
+  #     startOnAll     The former `true`: every video slide starts as it
+  #                    becomes active.
+  #
+  #     true           Accepted, and identical to `startOnAll`.
+  #     false          Unchanged: nothing ever starts by itself.
+  #
+  #   WHY THE DEFAULT MOVED
+  #   `true` meant "start every slide the visitor passes over". In a gallery
+  #   that is noise: someone swiping through five videos looking for the one
+  #   they want is talked at by each of the four they cross. The only escape
+  #   was `autoplay: false`, which also gives up the one start that IS wanted
+  #   -- the slide the visitor deliberately opened. The two modes separate
+  #   those cases; `startOnAll` restores the previous default exactly.
+  #
+  #   WHAT "FIRST" MEANS
+  #   The first VIDEO slide activated in THIS session, not the lowest-numbered
+  #   slide of the gallery. A visitor who clicks the fourth thumbnail opens on
+  #   slide 4, and under a lowest-index reading nothing would start for them at
+  #   all. The start is spent once per session: returning to that slide later
+  #   does not restart it, because by then the visitor is driving playback
+  #   themselves. Closing and re-opening the lightbox is a new session and gets
+  #   a new start.
+  #
+  #   PAUSE ON SLIDE CHANGE
+  #   Independent of the mode, and true of every mode including `startOnAll`:
+  #   the video on the slide being left is PAUSED as soon as the visitor moves
+  #   to the previous or next slide. This has always held for an ordinary
+  #   prev/next step; the fix extends it to a JUMP of three slides or more,
+  #   where PhotoSwipe destroys the slide instead of deactivating it and a
+  #   playing video used to go on playing out of view.
+  #
+  #   values:                         startOnFirst | startOnAll | true | false
+  #   default:                        startOnFirst
+  #
+  # ----------------------------------------------------------------------------
+  #
+  #   preventDragOffset
+  #   --------------------------------------------------------------------------
+  #   Height in pixels of the strip along the bottom edge of the video in
+  #   which swipe/drag gestures are suppressed, so dragging the native
+  #   control bar does not move the slide instead. Set to 0 to disable.
+  #
+  #   values:                         integer (px)
+  #   default:                        40
+  #
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #7
+  #
+  #   autoplayMutedFallback
+  #   --------------------------------------------------------------------------
+  #   What to do when `autoplay: true` is refused by the browser: mute the
+  #   player and try once more, rather than leaving the slide on its poster.
+  #   This is the behaviour the VideoJS player option `autoplay: 'any'`
+  #   describes; the plugin implements it itself because it forces the
+  #   player's own `autoplay` off (PhotoSwipe decides which slide plays,
+  #   not the element).
+  #
+  #   It matters most on YouTube slides. Those play inside a cross-origin
+  #   <iframe> which applies its own autoplay policy and does NOT see the
+  #   click that opened the lightbox, so an un-muted start is refused there
+  #   however much the visitor has interacted with the page. Worse, the
+  #   refusal is silent -- the tech reports nothing back -- and the slide is
+  #   left with VideoJS's `vjs-waiting` class latched on, i.e. a loading
+  #   spinner turning over the poster for as long as the lightbox is open.
+  #
+  #   `false` restores the single-attempt behaviour. The latched spinner is
+  #   cleared either way; that part is a rendering defect, not a policy.
+  #
+  #   values:                         boolean (false|true)
+  #   default:                        true
+  #
+  #   autoplayProbeTimeout
+  #   --------------------------------------------------------------------------
+  #   How long (ms) to wait for each attempt to produce real playback before
+  #   moving on. Success is detected from the player's own `playing` event,
+  #   so a video that starts normally never waits at all; the timeout only
+  #   governs the silent-refusal case. The value has to clear the YouTube
+  #   handshake (IFrame API fetch, frame load, ready callback) on a cold
+  #   cache. Raise it on slow links.
+  #
+  #   values:                         integer (ms)
+  #   default:                        1200
+  #
+  # The block is commented out because the plugin already carries these
+  # exact values as its own defaults; uncommenting changes nothing until
+  # a value is edited. Keys omitted here keep the plugin default, so a
+  # partial block is fine.
+  #
+  videoOptions:
+
+    # PhotoSwipeVideoPlugin plugin Fix #12
+    # `enabled:` is deliberately NOT stated in this block, although it is read
+    # out of the `videoOptions` subtree of a GALLERY.
+    #
+    # The two are not the same layer. This block is handed to the auto-init
+    # machinery as PhotoSwipeLightbox.autoInitVideoDefaults, a base the
+    # per-gallery attribute is merged OVER; the switch is resolved from the
+    # per-gallery attribute alone, before that merge, so an `enabled` written
+    # here would sit in the file looking like a site-wide switch and do
+    # nothing -- the inert-key defect Fix #2 had to repair for `plugin.video`.
+    #
+    # The site-wide switch is `plugin.video` above. The per-gallery switch
+    # goes in ~/_data/modules/gallery_control.yml or
+    # ~/_data/modules/masonry_control.yml.
+    #
+    # PhotoSwipeVideoPlugin plugin Fix #7
+    # Tracks the plugin's new default so this file keeps describing the
+    # EFFECTIVE configuration. Leaving `true` here would have made the two
+    # disagree in the one direction that is invisible: the YAML sits ON TOP of
+    # the plugin defaults, so the old value would simply have won and the new
+    # mode would have looked like it did not work.
+    #
+    # Set to `startOnAll` (or `true`) to restore the pre-#7 behaviour for every
+    # gallery at once.
+    #
+    autoplay:                         startOnFirst
+
+    # PhotoSwipeVideoPlugin plugin Fix #7
+    # Both keys restate the plugin's own defaults, so declaring them here is
+    # behaviour-neutral (true merged over true, 1200 over 1200). They are
+    # declared for the same reason `zoom:` was declared under the
+    # PhotoSwipeFullscreen fix #3 above: this file is meant to describe the
+    # EFFECTIVE configuration, and a value that lives only in the JS defaults
+    # is a value nobody can find. See the documentation block above.
+    #
+    autoplayMutedFallback:            true
+    autoplayProbeTimeout:             1200
+
+    preventDragOffset:                40
+    videoAttributes:
+      controls:                       true
+      playsinline:                    true
+      preload:                        auto
+      muted:                          false
 
 # ------------------------------------------------------------------------------
 # END config

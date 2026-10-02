@@ -31,8 +31,8 @@ regenerate:                             false
 permalink:                              /pages/public/tour/image_data/
 
 resources:                              [
-                                          gallery, lightbox3, lightgallery,
-                                          masonry, photoswipejs, swiperjs
+                                          gallery, lightbox3, masonry,
+                                          photoswipejs, swiperjs
                                         ]
 resource_options:
   - toccer:
@@ -41,12 +41,12 @@ resource_options:
       opacity:                          .7
       padding_top:                      600
       slides:
-        - url:                          /assets/image/module/attic/1920x1280/modern-dance.jpg
-          alt:                          AI Generated
+        - url:                          /assets/image/module/attic/1920x1280/simona-sergi.jpg
+          alt:                          Photo by Simona Sergi on Unsplash
           badge:
-            type:                       ai
-            author:                     AI Generated
-            href:                       //digital-strategy.ec.europa.eu/en/policies/artificial-intelligence
+            type:                       unsplash
+            author:                     Simona Sergi 
+            href:                       //unsplash.com/de/@i_am_simoesse
 ---
 
 // Page Initializer

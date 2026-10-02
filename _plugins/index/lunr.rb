@@ -116,12 +116,12 @@ module Jekyll
           return
         else
           Jekyll.logger.info 'J1 Lunr:', 'enabled'
-          Jekyll.logger.info 'J1 Lunr:', 'generate search index'
+          Jekyll.logger.info 'J1 Lunr:', 'index: generate'
         end
 
         if @module_config['rebuild'] == false
           if File.exist?(index_file)
-            Jekyll.logger.info 'J1 Lunr:', 'rebuild index disabled'
+            Jekyll.logger.info 'J1 Lunr:', 'index: rebuild disabled'
             # Keep the index file from being cleaned by Jekyll
             #
             site.static_files << SearchIndexFile.new(site, site.dest, '/', @module_config['index_file'])
@@ -169,7 +169,13 @@ module Jekyll
           #
           doc['categories'] -= @strip_categories unless doc['categories'] == nil
 
-          index_js << 'this.add(' << ::JSON.generate(doc, quirks_mode: true) << ');'
+          # jadams, 2026-09-08:
+          # Ruby/Gem Updates: Since json gem version 2.0+ (and Ruby 2.4+),
+          # quirks_mode is permanently enabled by default.
+          #
+          #   index_js << 'this.add(' << ::JSON.generate(doc, quirks_mode: true) << ');'
+          #
+          index_js << 'this.add(' << ::JSON.generate(doc) << ');'
 
           # reduce the size of the doc array by deleting the body key
           #
@@ -179,22 +185,32 @@ module Jekyll
         end
         index_js << '});'
 
-
         filename  = File.join(@index_dir, "#{@index_name}")
         ctx       = ExecJS.compile(index_js)
         index     = ctx.eval('JSON.stringify(idx)')
 
+        # jadams, 2026-09-08:
+        # Ruby/Gem Updates: Since json gem version 2.0+ (and Ruby 2.4+),
+        # quirks_mode is permanently enabled by default.
+        #        
+        #   total     = {
+        #     'docs'  => @docs,
+        #     'index' => ::JSON.parse(index, {:max_nesting => false})
+        #   }
+        #
         total     = {
           'docs'  => @docs,
-          'index' => ::JSON.parse(index, {:max_nesting => false})
-        }
+          'index' => ::JSON.parse(index)
+        }  
+
         filepath  = File.join(site.dest, filename)
 
         # create data path if not already exists
         #
         FileUtils.mkdir_p(File.dirname(filepath))
         File.open(filepath, 'w') { |f| f.write(JSON.dump(total)) }
-#       Jekyll.logger.info 'J1 Lunr:', "finished, index ready."
+        Jekyll.logger.info 'J1 Lunr:', 'index: finished'
+
         added_files = [filename]
 
         # Keep the written files from being cleaned by Jekyll
@@ -252,8 +268,8 @@ module Jekyll
 
         # jadams, 2012-08-04
         # TODO: List of excludes should (alternatively) be taken from
-        #       site_search.yml configuration
-
+        # site_search.yml configuration
+        #
         items
       end
     end
@@ -394,6 +410,6 @@ end
 
 module Jekyll
   module J1LunrSearch
-    VERSION = '2027.0.0'
+    VERSION = '2027.0.1'
   end
 end

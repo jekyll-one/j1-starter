@@ -4,7 +4,7 @@ title_extention:                        Availabe player
 tagline:                                Availabe player
 
 date:                                   2026-05-07
-last_modified:                          2026-08-16
+last_modified:                          2026-08-31
 
 description: >
                                         J1 Template provides playing video on web
@@ -18,7 +18,7 @@ keywords: >
                                         vimeo, dailymotion, wistia, youtube
 
 categories:                             [ Tour ]
-tags:                                   [ Video, Module ]
+tags:                                   [ Module, Video ]
 
 image:
   path:                                 /assets/image/module/attic/1920x1280/modern-dance.jpg
@@ -31,7 +31,8 @@ regenerate:                             false
 permalink:                              /pages/public/tour/video_data/
 
 resources:                              [
-                                          gallery, lightgallery, masonry,
+                                          gallery,
+                                          masonry, photoswipejs,
                                           multiPlayer, videojs
                                         ]
 resource_options:
@@ -279,8 +280,11 @@ modern MP4 encoder you can fit:
 * up to *10 minutes* of HD 720p video (1280 x 720 pixels).
 ====
 
-.Justified Gallery
-gallery::jg_video_html5[role="mb-4"]
+// .Justified Gallery (lightGallery lightbox)
+// gallery::jg_video_html5[role="mb-4"]
+
+.Justified Gallery (PhotoSwipe lightbox)
+gallery::jg_video_html5_pswp[role="mb-4"]
 
 
 [role="mt-5"]
@@ -292,7 +296,10 @@ video platform on the Internet. With the J1 Template, you can pick a
 selection of YouTube videos and show them as a single gallery on your
 page -- great for music collections, tutorials, or interviews.
 
-.Masonry Gallery
+// .Justified Gallery (PhotoSwipe lightbox)
+// gallery::jg_video_youtube_pswp[role="mb-4"]
+
+.Masonry Gallery (PhotoSwipe lightbox)
 masonry::youtube[role="mb-4"]
 
 

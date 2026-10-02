@@ -79,6 +79,28 @@ settings:
   #
   # startAt:                            ""
   # endAt:                              ""
+  #
+  # Extend multiPlayer for new startAtDarkCheck param #1
+  # PLAYBACK WINDOW (all players). Now declared active, so the keys are
+  # available on all three layers. Values: hh:mm:ss, mm:ss or seconds;
+  # "" = no window (identical to the commented form above). A per-player
+  # entry in multiPlayer_control.yml overloads these values; a per-media
+  # value from the Edit Media Settings dialog wins over both.
+  #
+  startAt:                              ""
+  endAt:                                ""
+
+  # Extend multiPlayer for new startAtDarkCheck param #1
+  # DARK START of the playback window (all players, see
+  # defaults/multiPlayer.yml for the full note).
+  #
+  #   true      the video stays dark (poster shown) until startAt is reached
+  #   false     the video is shown from the first frame (default)
+  #
+  # A per-player 'startAtDarkCheck' entry in multiPlayer_control.yml
+  # overloads this global value.
+  #
+  startAtDarkCheck:                     false
 
   # PLAYLIST settings
   #
@@ -121,6 +143,136 @@ settings:
     # ALL players; a per-player entry in multiPlayer_control.yml always wins.
     #
     audioOnlySwitch:                    true
+
+  # VideoJS - Extend plugin zoom #4
+  # VIDEOJS settings (all players)
+  #
+  # WHY THIS BLOCK EXISTS. The zoom gestures (#1) and the iPhone full-window
+  # fallback (#3) were configured in _data/modules/videojs.yml. MultiPlayer
+  # never reads that file: videojs.yml feeds the J1 VideoJS adapter
+  # (j1.modules.videojs.options) and nothing else. Every videoJS.* value a
+  # MultiPlayer uses comes from ITS OWN chain
+  #
+  #   _data/modules/defaults/multiPlayer.yml   defaults.videoJS
+  #     <- _data/modules/multiPlayer.yml       settings.videoJS   (this file)
+  #       <- _data/modules/multiPlayer_control.yml  players[].videoJS
+  #
+  # merged per player by getInstanceOptions() in adapter/js/multiPlayer.js and
+  # read by player.js as videoPlayerOptions.videoJS. Because neither
+  # `gestureHandler` nor `preferFullWindow` exists anywhere in that chain,
+  # player.js handed `gestureHandler: undefined` to zoomButtons(), zoom.js
+  # fell back to its default `false`, and the ZoomGesture component was never
+  # added -- its constructor was never reached. The zoom BUTTONS kept working
+  # because `zoomButtons.enabled` IS declared in the MultiPlayer defaults.
+  #
+  # Nothing is REMOVED: the file carried no videoJS block before. The chain
+  # merges recursively, so every videoJS key that is not spelled out here
+  # (zoomButtons.enabled, the gesture detail keys, players.native.playsinline,
+  # fluid, ...) keeps the value of the MultiPlayer defaults resp. the plugin
+  # default. A per-player videoJS block in multiPlayer_control.yml still wins
+  # over this one, so gestures can be switched off for a single player.
+  #
+  videoJS:
+
+    # VideoJS - Extend plugin zoom #4
+    # PLAYER (tech) settings
+    #
+    players:
+
+      native:
+        # FULLSCREEN on iPhone (the #3 setting, now in the chain that is read).
+        #
+        # iPhone Safari (and every other browser on iOS) has no fullscreen for
+        # a page element, only for the bare <video>. VideoJS then hands the
+        # fullscreen button to the NATIVE player of the OS, and the VideoJS
+        # player -- control bar, zoom panel, zoom gestures -- is gone for as
+        # long as fullscreen lasts.
+        #
+        #   true    VideoJS uses its FULL-WINDOW mode instead: the player is
+        #           pinned over the browser window and stays the VideoJS
+        #           player, zoom panel and gestures included. The browser bars
+        #           stay visible.
+        #   false   the VideoJS default: the native OS player, without plugin.
+        #
+        # No effect on browsers with element fullscreen (desktop, Android,
+        # iPad Safari): they never reach this fallback.
+        #
+        preferFullWindow:               true                                    # default: false
+
+        # VideoJS - Extend plugin zoom #5
+        # NETWORK RECOVERY for native sources (mp4, mp3, webm, ...).
+        #
+        # Large remote files are streamed in pieces (HTTP 206 Partial
+        # Content). When the media server or the network closes such a
+        # connection (console: ERR_CONNECTION_RESET, ERR_HTTP2_PROTOCOL_ERROR),
+        # the browser stops the video. Chrome then often reports the error
+        # as CODE:4 "format is not supported", although the file is fine.
+        #
+        # With recovery switched on, the player loads the file again after a
+        # short pause, jumps back to the last position and continues playing.
+        # The waiting time doubles with every attempt. After `maxRetries`
+        # failed attempts the error screen is shown with a clearer message.
+        #
+        # Every key may be left out; the values shown are the built-in
+        # defaults. YouTube videos are never affected.
+        #
+        networkRecovery:
+          enabled:                      true                                    # default: true
+          maxRetries:                   3                                       # default: 3   (0..10)
+          retryDelay:                   1000                                    # default: 1000 ms, doubled per attempt
+          progressReset:                10                                      # default: 10 s of playback restore the full budget
+
+    # VideoJS - Extend plugin zoom #7
+    # POSTER settings
+    #
+    # Playlist entries that point at a native media file (mp3/mp4/webm) and
+    # carry no poster yet get one captured off-screen: a detached <video>
+    # loads the file, seeks to a frame and stores it as a small image in the
+    # playlist record. For a REMOTE file that capture is a second, parallel
+    # download of the same file - and a media server that already serves a
+    # running playback answers such a parallel request with a dropped
+    # connection (the error the networkRecovery above then has to repair).
+    #
+    # `backfillWait` is the time such a capture waits for EVERY player of the
+    # page to stop loading before it opens its own download. Local
+    # (same-origin) files are never delayed, and an entry whose file is
+    # currently loaded in a player is left out completely: its frame is
+    # taken from the running playback instead.
+    #
+    #   10000   wait up to 10 seconds (the built-in default)
+    #   0       never wait (the behaviour before this fix)
+    #
+    # Every other key of poster.autoGenerate (enabled, capturePosition,
+    # captureFraction, maxWidth, mimeType, quality, generate_timeout) keeps
+    # the value of the MultiPlayer defaults; the chain merges recursively.
+    #
+    poster:
+      autoGenerate:
+        backfillWait:                   10000                                   # default: 10000 ms
+
+    # VideoJS - Extend plugin zoom #4
+    # PLUGIN settings
+    #
+    plugins:
+
+      zoomButtons:
+
+        # Gestures settimgs
+        #
+        gestures:
+          # VideoJS - Extend plugin zoom #5
+          # This key is now the one and only MASTER switch read by the zoom
+          # plugin (resolved in zoom.js, _resolveGestureMaster). Default: false.
+          #
+          # MASTER switch of the gesture layer (pan, pinch, wheel, double tap).
+          # If set to false: no zoom gesture enabled for native (mp4) video.
+          #
+          enabled:                      true
+
+          # Gesture layer settings for pan, pinch, wheel, tap etc.
+          # be added here with the meaning documented in videojs.yml.
+          #
+          #doubleTap:                    none                                   # settings: none | zoom
 
 # ------------------------------------------------------------------------------
 # END config

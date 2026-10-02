@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/gallery.yml (1)
+# ~/_data/modules/defaults/gallery.yml (12)
 # Default configuration for the module J1 justifiedGallery
 #
 # Product/Info:
@@ -52,6 +52,100 @@ defaults:
   gallery_complete_timeout:             1000
 
   # ----------------------------------------------------------------------------
+  # JSON data store (localStorage) + manage bar
+  #
+  # Gallery, manage json data to/from localstorage #1
+  # ----------------------------------------------------------------------------
+  # Two NET-NEW subtrees. Both are handed to the library justifiedGallery.js
+  # by the adapter (gallery.js, initGallery()) as the options "storage" and
+  # "manage" of the justifiedGallery() call, resolved through the normal
+  # per-gallery chain (defaults <- control <- gallery entry, deep). Both are
+  # OFF here so no gallery changes behaviour until it opts in by name in
+  # ~/_data/modules/gallery_control.yml.
+  #
+  # The feature mirrors the J1 MultiPlayer: the player keeps its playlist as
+  # JSON records in localStorage and offers a header bar (toggle list | title
+  # | edit) plus an edit screen (paste URL, import from server, export |
+  # import | clear). The gallery gets the same for its ENTRIES.
+  #
+  # storage
+  # ----------------------------------------------------------------------------
+  #   enabled           export the gallery entries as JSON items to localStorage
+  #                     (key 'jg_gallery_<id>') on every completed layout
+  #                     ('jg.complete'). Each item carries href, thumb, alt,
+  #                     width|height, caption, classes, all data-* attributes
+  #                     and the extra inner markup (caption spans, play button)
+  #                     so lightGallery and PhotoSwipe entries round-trip.
+  #   key               localStorage key; null = 'jg_gallery_<id>'
+  #   exportOnComplete  false = never write automatically (on demand only:
+  #                     $('#id').justifiedGallery('storeExport'))
+  #   autoRestore       a store the USER changed (import|add|delete) replaces
+  #                     the static entries of the data file on the next page
+  #                     load — the persistence the MultiPlayer playlist has.
+  #                     An untouched store (meta_data.modified: false) never
+  #                     wins over the static HTML; it is simply rewritten.
+  #                     Set false to keep the data file authoritative always.
+  #   mergeMode         import: true = merge by itemId into the existing items,
+  #                     false = replace the item set
+  #   reloadOnClear     'Clear Gallery' removes the key (after a safety backup
+  #                     download) and reloads the page so the gallery is
+  #                     rebuilt from the data file
+  #   addClasses        classes given to entries ADDED BY URL through the edit
+  #                     screen; lightGallery galleries need 'lg-item' here (the
+  #                     selector the adapter binds), PhotoSwipe galleries need
+  #                     nothing (children selector 'a')
+  #
+  # manage
+  # ----------------------------------------------------------------------------
+  #   enabled           build the header bar + list screen + edit screen around
+  #                     the gallery element (runtime, inside #<id>_parent; the
+  #                     generated data file is NOT touched, no rebuild needed).
+  #                     The store is created with the UI; the automatic export
+  #                     stays governed by storage.enabled.
+  #   title             header title; null = the gallery id
+  #   showCount         append the stored item count to the title: "Title (12)"
+  #   showListButton    left header button: toggle the item list (thumbnail,
+  #                     caption, size, source, per-item delete)
+  #   editButton        right header button: toggle the editor
+  #   listDeleteButton  per-item delete button in the list screen
+  #   listUrl           index.json of server-side gallery lists for the import
+  #                     <select> of the editor, shape [{ "name", "file" }];
+  #                     null = the select stays empty
+  #   listUrlBase       base path for RELATIVE files of that index
+  #                     (null = /assets/data/apps/gallery/lists)
+  #   screenMinHeight   min height (px) of the two overlay screens
+  #   icons             override the four header icons by name
+  #                     (playlist-show, playlist-hide, playlist-edit,
+  #                     playlist-edit-close); default: the MultiPlayer set
+  #                     /assets/theme/j1/modules/multiPlayer/icons/player/dark
+  #
+  #   values:                           see above
+  #   default:                          storage.enabled false, manage.enabled false
+  #
+  # ----------------------------------------------------------------------------
+  #
+  storage:
+    enabled:                            false
+    key:                                null
+    exportOnComplete:                   true
+    autoRestore:                        true
+    mergeMode:                          false
+    reloadOnClear:                      true
+    addClasses:                         []
+
+  manage:
+    enabled:                            false
+    title:                              null
+    showCount:                          true
+    showListButton:                     true
+    editButton:                         true
+    listDeleteButton:                   true
+    listUrl:                            null
+    listUrlBase:                        null
+    screenMinHeight:                    320
+    icons:                              {}
+
+  # ----------------------------------------------------------------------------
   # CSSFilter settings
   #
   filters:
@@ -89,6 +183,490 @@ defaults:
   lightbox:
     enabled:                            true
     type:                               lg                                      # ps | lb | lg
+
+  # ----------------------------------------------------------------------------
+  # PhotoSwipe settings
+  #
+  # PhotoSwipeVideoPlugin plugin Fix #2
+  # ----------------------------------------------------------------------------
+  # NET-NEW block. Until now `lightbox.type: ps` was only honoured by the IMAGE
+  # branch of ~/_includes/themes/j1/modules/gallery/gallery.html; a VIDEO
+  # gallery set to `ps` silently produced lightGallery markup, because the
+  # video branch emitted no `data-pswp-*` attributes at all. That branch now has
+  # a PhotoSwipe path, and this block is what configures it.
+  #
+  # WHERE THESE VALUES GO
+  # ----------------------------------------------------------------------------
+  #   gallery.html  emits  data-pswp-video-options='<this subtree, jsonify'd>'
+  #                        on the gallery container
+  #   photoswipe-lightbox.js  _autoInitAttachVideo() merges the attribute over
+  #                        PhotoSwipeLightbox.autoInitVideoDefaults
+  #   photoswipe-video-plugin.js  merges the result over its own defaultOptions
+  #
+  # The block is emitted ONLY when present, so a site that deletes it falls back
+  # to the plugin's own defaults -- which are the same values. Declaring them
+  # here makes them editable per gallery through the normal
+  # defaults <- control <- media deep_merge chain, instead of requiring an edit
+  # to the plugin source.
+  #
+  # THE MERGE AT THE PLUGIN IS SHALLOW
+  # ----------------------------------------------------------------------------
+  # photoswipe-video-plugin.js merges options with `{...defaultOptions,
+  # ...options}`, so any top-level key present here REPLACES the plugin's whole
+  # subtree for that key. That is why `videoAttributes` restates all four
+  # entries rather than only the one that differs: dropping `controls` here
+  # would produce a video with no control bar.
+  #
+  # muted
+  # ----------------------------------------------------------------------------
+  #   The key that makes `autoplay` actually work. Browsers refuse to start an
+  #   un-muted video the visitor has not interacted with; without this the
+  #   plugin's autoplay attempt is rejected and the visitor gets a poster plus
+  #   one console warning. An EMPTY STRING writes a bare boolean attribute
+  #   (<video muted>), which is the only spelling HTML accepts.
+  #
+  #   Remove it (or set `autoplay: false`) if videos should wait for a click.
+  #
+  # videojs
+  # ----------------------------------------------------------------------------
+  #   Selects the VideoJS renderer for slides marked
+  #   `data-pswp-video-api="videojs"`, which gallery.html derives from the
+  #   per-video `api:` key in gallery_media.yml. Required for YouTube sources:
+  #   a bare <video> element cannot load a YouTube URL.
+  #
+  #   `theme` is appended to the generated <video class="video-js ...">, and
+  #   matches the theme the Asciidoctor extension videojs-block.rb defaults to.
+  #
+  #   values:                           enabled: boolean, theme: CSS class
+  #   default:                          true / vjs-theme-uno
+  #
+  # ----------------------------------------------------------------------------
+  #
+  # tracks
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #3
+  #   Master switch for text tracks (subtitles, captions, chapters) on the
+  #   PhotoSwipe path, the counterpart of `videojsOptions.tracks` on the
+  #   lightGallery path. gallery.html hands the per-video `tracks:` list of
+  #   gallery_media.yml to the slide as `data-pswp-video-tracks` (JSON);
+  #   the plugin attaches them as <track> children (bare <video>) or via
+  #   addRemoteTextTrack() (VideoJS). `false` ignores the attribute.
+  #
+  #   values:                           boolean (false|true)
+  #   default:                          true
+  #
+  # videojs.options / videojs.plugins / videojs.customProgressBar
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #6
+  #   Three NET-NEW subtrees that close the last configuration gap between the
+  #   two lightboxes. Until now this file described the PhotoSwipe renderer
+  #   with two keys -- `enabled` and `theme` -- while the lightGallery path
+  #   next to it carried a full `lightGallery.videojsOptions` block. A video
+  #   opened through `lightbox.type: ps` therefore had a plain VideoJS control
+  #   bar, and its lightGallery twin on the SAME PAGE, built from the SAME
+  #   entry of ~/_data/modules/gallery_media.yml, had skip buttons, zoom
+  #   buttons, a playback-rate menu and keyboard control.
+  #
+  #   options
+  #   --------------------------------------------------------------------------
+  #   Handed to videojs(el, options) as-is. This is the map VideoJS reads at
+  #   construction time, so everything here shapes the player before its first
+  #   frame. `autoplay` is deliberately ABSENT and would be ignored anyway:
+  #   initVideoJsPlayer() forces it to false because playback is driven by
+  #   PhotoSwipe's contentActivate/contentDeactivate events, not by the element.
+  #
+  #     values:                         VideoJS player options
+  #     default:                        see below
+  #
+  #   plugins
+  #   --------------------------------------------------------------------------
+  #   The EXTENDED controls, which are not options at all: each is activated by
+  #   calling a method on the finished player
+  #   (`player.hotKeys()`, `player.skipButtons()`, `player.zoomButtons()`).
+  #   That is why they need a block of their own and why nothing in `options`
+  #   could ever have switched them on. The counterpart on the lightGallery
+  #   path is `lightGallery.videojsOptions.hotKeysPlugin` /
+  #   `.controlBar.skipButtonsPlugin` / `.controlBar.zoomPlugin`, applied by
+  #   vjsProcessExtendedButtonsAndPlugins() in
+  #   ~/assets/theme/j1/modules/lightGallery/js/plugins/lg-video.js.
+  #
+  #   Each entry is `{ enabled, options }`, so a plugin can be switched off
+  #   without losing its settings. The plugin scripts themselves ship with the
+  #   `videojs` resource; a page without that resource has no player to
+  #   decorate either, and every activation step is skipped silently.
+  #
+  #   NOTE on the hotkey values. `alwaysCaptureHotkeys` and
+  #   `captureDocumentHotkeys` are OFF here, unlike on the lightGallery path.
+  #   PhotoSwipe owns the keyboard while its lightbox is open -- Escape closes
+  #   it, the arrow keys move between slides -- and document-level capture would
+  #   hand the arrow keys to the seek bar, leaving no way to reach the next
+  #   video. Focusing the player still gives the full hotkey set.
+  #
+  #   NOTE on `zoomButtons`. Skipped for YouTube slides whatever this switch
+  #   says: the YouTube tech renders into an <iframe> the plugin cannot
+  #   transform. lg-video.js forces the same for the lightGallery path.
+  #
+  #     values:                         mapping of plugin -> {enabled, options}
+  #     default:                        all three enabled
+  #
+  #   customProgressBar
+  #   --------------------------------------------------------------------------
+  #   Rebuilds the control bar in the uno layout: current time, progress
+  #   control and duration are moved into a
+  #   `.vjs-theme-uno.custom-progressbar-container` row, which is the hook the
+  #   uno VideoJS stylesheet is written against. lg-video.js builds the same
+  #   container for every lightGallery video, so leaving it out was why the two
+  #   lightboxes showed a differently-shaped bar for one and the same file.
+  #
+  #     values:                         boolean (false|true)
+  #     default:                        true
+  #
+  # autoplayMutedFallback / autoplayProbeTimeout
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #7
+  #   Two NET-NEW keys that make `autoplay: true` keep its promise on the
+  #   YouTube renderer.
+  #
+  #   THE DEFECT THEY REPAIR
+  #     A gallery on `lightbox.type: ps` with a YouTube source, `autoplay: true`
+  #     and `videoAttributes.muted: false` opened, showed its poster correctly,
+  #     started nothing, and left a `vjs-loading-spinner` turning over the
+  #     poster for as long as the lightbox stayed open. Pressing play worked.
+  #     Three things stacked up:
+  #
+  #       1. The start is REFUSED. `muted: false` on the YouTube path asks for
+  #          an un-muted autoplay inside a CROSS-ORIGIN <iframe>. The embedded
+  #          player applies its own autoplay policy in that frame and does not
+  #          see the click that opened the lightbox, so the note on
+  #          `jg_video_html5_pswp` in ~/_data/modules/gallery_control.yml --
+  #          "user activation is sticky" -- holds for a same-document <video>
+  #          and not for this tech.
+  #       2. The refusal is SILENT. videojs-youtube drives the IFrame API, not
+  #          an HTMLMediaElement; its play() returns no promise, so there is no
+  #          NotAllowedError for the plugin to catch and warn about.
+  #       3. The spinner LATCHES. The attempt takes the tech through BUFFERING,
+  #          on which VideoJS adds `vjs-waiting` -- the class the stylesheet
+  #          shows the spinner on -- and removes it only once currentTime has
+  #          advanced. On a refused start it never does.
+  #
+  #   autoplayMutedFallback
+  #   --------------------------------------------------------------------------
+  #   Mute and retry once when the first attempt produced no playback, instead
+  #   of leaving the slide on its poster. This is the behaviour of the VideoJS
+  #   player option `autoplay: 'any'`; the plugin implements it itself because
+  #   initVideoJsPlayer() forces the player's own `autoplay` to false so that
+  #   PhotoSwipe -- not the element -- decides which slide plays.
+  #
+  #   The configured value is honoured FIRST and restored if even the muted
+  #   attempt fails, so `videoAttributes.muted: false` keeps its meaning
+  #   wherever it can be kept. `false` restores the single-attempt behaviour;
+  #   the latched spinner is cleared either way, because a spinner over a
+  #   stopped video is a defect under either policy.
+  #
+  #     values:                         boolean (false|true)
+  #     default:                        true
+  #
+  #   autoplayProbeTimeout
+  #   --------------------------------------------------------------------------
+  #   How long (ms) to wait for each attempt to produce real playback before
+  #   moving on. Success is read from the player's own `playing` event, so a
+  #   video that starts normally never waits at all and pays nothing; the
+  #   timeout governs only the silent-refusal case above. The value has to
+  #   clear the YouTube handshake (IFrame API fetch, frame load, ready
+  #   callback) on a cold cache, or the fallback fires while the first attempt
+  #   is still legitimately in flight. Raise it on slow links.
+  #
+  #     values:                         integer (ms)
+  #     default:                        1200
+  #
+  # autoplay -- TWO NEW MODES
+  # ----------------------------------------------------------------------------
+  # PhotoSwipeVideoPlugin plugin Fix #7
+  #   `autoplay` stops being a plain boolean. `true` still means what it always
+  #   meant; what changes is the value inherited when nothing is stated.
+  #
+  #     startOnFirst   THE NEW DEFAULT. Only the FIRST video slide that becomes
+  #                    active in a lightbox session starts by itself; every
+  #                    other slide of the group is left paused on its poster.
+  #     startOnAll     The former `true` -- every video slide starts as it
+  #                    becomes active.
+  #     true           Accepted, identical to `startOnAll`.
+  #     false          Unchanged: nothing starts by itself.
+  #
+  #   "First" is the first VIDEO slide activated in THIS session, not the
+  #   lowest-numbered slide of the gallery: a visitor who clicks the fourth
+  #   thumbnail opens on slide 4, and the option is about the slide they chose.
+  #   The start is spent once per session, so coming back to that slide does
+  #   not restart it; closing and re-opening the lightbox does.
+  #
+  #   The pairing with `videoAttributes.muted` is unchanged and still matters.
+  #   `startOnFirst` reduces HOW MANY slides try to start, not WHETHER the
+  #   browser permits the one that does -- an un-muted start is still subject to
+  #   the autoplay policy and still falls through to the muted retry described
+  #   above.
+  #
+  #   Independent of the mode: the video on the slide being LEFT is paused when
+  #   the visitor moves on. That now holds for a jump of three slides or more as
+  #   well, where PhotoSwipe destroys the slide rather than deactivating it.
+  #
+  #     values:                         startOnFirst | startOnAll | true | false
+  #     default:                        startOnFirst
+  #
+  # ----------------------------------------------------------------------------
+  #
+  photoswipe:
+
+    # PhotoSwipe lightbox Fix #14
+    # --------------------------------------------------------------------------
+    # AUTOMATIC NATURAL-SIZE DETECTION IS SWITCHABLE PER GALLERY
+    # --------------------------------------------------------------------------
+    # ~/_includes/themes/j1/modules/gallery/gallery.html resolves one new key
+    # for every gallery, in three levels:
+    #
+    #   1. the size stated on the entry in ~/_data/modules/gallery_media.yml
+    #      (an entry may write `auto-detect` as its own size)
+    #   2. `photoswipe.auto_detect_size` of the gallery
+    #      (~/_data/modules/gallery_control.yml)
+    #   3. `auto_detect_size` of ~/_data/modules/defaults/photoswipe.yml
+    #      (site-wide fallback, shipped as `false`)
+    #
+    # Where the result is `always`, or `missing` for an entry that states no
+    # usable size, the include emits the token `auto-detect` in place of the
+    # number and photoswipe-lightbox.js measures the asset instead of trusting
+    # the declared size. See the block in photoswipe.yml for the full
+    # vocabulary (false | missing | true | always).
+    #
+    # PhotoSwipe lightbox Fix #15
+    # --------------------------------------------------------------------------
+    # The token is NO LONGER emitted "in place of the number". It now rides on
+    # a separate marker attribute, and the two size attributes stay numeric:
+    #
+    #   data-pswp-natural-size="auto-detect"
+    #   data-pswp-width="1600"
+    #   data-pswp-height="1067"
+    #
+    # Fix #14 put `auto-detect` into `data-pswp-width` itself, which the
+    # SEPARATE photoswipe-core.js bundle -- the one that actually lays out the
+    # slides -- read with `parseInt('auto-detect', 10)` and turned into NaN.
+    # See the long note in photoswipe.yml for the full account.
+    #
+    # The vocabulary of this key is unchanged. The only behavioural difference
+    # is an improvement: under `always` a stated size now survives as the
+    # pre-measurement placeholder, so a slide whose probe fails falls back to
+    # it rather than to 0.
+    # --------------------------------------------------------------------------
+    #
+    # NO KEY IS STATED HERE, ON PURPOSE
+    # --------------------------------------------------------------------------
+    # For exactly the reason recorded for `plugin.fullscreen` above: the
+    # per-gallery chain in gallery.html is a DEEP merge
+    # (gallery_defaults <- control <- media), so an `auto_detect_size` key in
+    # THIS file would be inherited by every gallery of the module. Every
+    # gallery would then carry this file's answer, opted IN or OUT, never
+    # falling through -- and level 3 would be unreachable for this module, the
+    # site-wide key in photoswipe.yml becoming dead weight.
+    #
+    # A gallery that wants to decide for itself says so by name in
+    # ~/_data/modules/gallery_control.yml.
+    #
+    # TO SET A MODULE-WIDE DEFAULT ANYWAY, uncomment the line below. Read the
+    # paragraph above first.
+    #
+    # auto_detect_size:             missing
+    # --------------------------------------------------------------------------
+    #
+    # PhotoSwipe lightbox Fix #15 -- OBSERVATION, NOT CHANGED HERE
+    # --------------------------------------------------------------------------
+    # The key below IS stated, which contradicts the four paragraphs above. As
+    # a live key it is deep-merged into every gallery of the module, so
+    # `gallery.photoswipe.auto_detect_size` is never nil in gallery.html and
+    # LEVEL 3 -- `auto_detect_size` in ~/_data/modules/defaults/photoswipe.yml
+    # -- can never be reached from this module. Setting the site-wide key has
+    # no effect on galleries; only a per-gallery entry in
+    # ~/_data/modules/gallery_control.yml does anything.
+    #
+    # This is the same inert-configuration shape recorded for
+    # `plugin.fullscreen` in Gallery Fix #2, and the remedy is the same:
+    # comment the line out. It is left ALONE under this fix because removing
+    # it is a behavioural change to every gallery on the site and belongs in
+    # its own numbered fix, not in a markup correction.
+    # --------------------------------------------------------------------------
+    auto_detect_size:               false
+
+    # Gallery, Photoswipe lightbox for videos Fix #2
+    # --------------------------------------------------------------------------
+    # PhotoSwipeFullscreen plugin #8
+    # The heading and the first sentence of this note were written when only
+    # VIDEO galleries carried the two attributes. Fix #7 of the full-screen
+    # series gave the IMAGE container the same pair, and fix #8 gave both
+    # containers the same gate (`lightbox.enabled` AND `lightbox.type: ps`).
+    # The text is updated to match. Comment-only change: no key of this file
+    # is touched.
+    #
+    # Original (deprecated, preserved for reference):
+    #
+    # THE FULL-SCREEN PLUGIN IS NOW SWITCHABLE PER VIDEO GALLERY
+    # --------------------------------------------------------------------------
+    # ~/_includes/themes/j1/modules/gallery/gallery.html emits two new
+    # attributes on the container of every VIDEO gallery that selects
+    # `lightbox.type: ps`:
+    # --------------------------------------------------------------------------
+    # THE FULL-SCREEN PLUGIN IS NOW SWITCHABLE PER GALLERY (IMAGE AND VIDEO)
+    # --------------------------------------------------------------------------
+    # ~/_includes/themes/j1/modules/gallery/gallery.html emits two attributes
+    # on the container of every IMAGE and every VIDEO gallery that selects
+    # `lightbox.type: ps` (with `lightbox.enabled` on, the module default):
+    #
+    #   data-pswp-fullscreen           from  photoswipe.plugin.fullscreen
+    #   data-pswp-fullscreen-options   from  photoswipe.fullscreenOptions
+    #
+    # Both are read by _autoInitResolveFullscreenEnabled() in
+    # photoswipe-lightbox.js, which resolves the switch in three levels --
+    # the same shape the video plugin got in PhotoSwipeVideoPlugin fix #12:
+    #
+    #   1. `plugin.fullscreen` of the gallery      (data-pswp-fullscreen)
+    #   2. `fullscreenOptions.enabled` of the gallery
+    #   3. `plugin.fullscreen` of ~/_data/modules/defaults/photoswipe.yml
+    #      (site-wide fallback)
+    #
+    # NO KEY IS STATED HERE, ON PURPOSE
+    # --------------------------------------------------------------------------
+    # A `plugin: {fullscreen: ...}` block in THIS file would be inherited by
+    # every gallery through the per-gallery deep_merge
+    # (gallery_defaults <- control <- media), so every video gallery on
+    # `lightbox.type: ps` would emit `data-pswp-fullscreen` whether it wanted
+    # to or not -- opted IN or OUT by this file, never falling through to the
+    # site-wide key. Level 3 above would be unreachable for this module.
+    #
+    # PhotoSwipeFullscreen plugin #8
+    # Since fix #7 of the full-screen series the paragraph above applies to
+    # IMAGE galleries on `lightbox.type: ps` as well: read "every video
+    # gallery" as "every image and video gallery". Kept as written.
+    #
+    # That is the same reason `videoOptions.enabled` is absent from the
+    # subtree below although the plugin reads it (see fix #12): the module
+    # default is "say nothing, let the site decide", and a gallery that wants
+    # to decide for itself says so by name in
+    # ~/_data/modules/gallery_control.yml. The three PhotoSwipe video
+    # galleries there now do.
+    #
+    # NOTE the asymmetry to ~/_data/modules/defaults/masonry.yml, which DOES
+    # state `plugin.fullscreen: false`. The merge chain in masonry.html is
+    # SHALLOW, so a grid that states any `photoswipe:` block of its own
+    # replaces that one wholesale and the inherited value reaches only the
+    # grids that state nothing at all. Here the merge is DEEP and the
+    # inherited value would reach everything -- the same line would not mean
+    # the same thing.
+    #
+    # TO SET A MODULE-WIDE DEFAULT ANYWAY, uncomment the block below. Read the
+    # paragraph above first: it turns the site-wide key into dead weight for
+    # every gallery of this module.
+    #
+    # plugin:
+    #   fullscreen:                     false
+    #
+    # A MODULE-WIDE SET OF PLUGIN OPTIONS is a different matter and is safe:
+    # `fullscreenOptions` carries no switch of its own unless `enabled` is
+    # stated in it, and the plugin's option set is flat ({ fullscreenTitle }),
+    # so there is no nested subtree for the SHALLOW Object.assign at the
+    # attach site to drop.
+    #
+    # fullscreenOptions:
+    #   fullscreenTitle:                Toggle fullscreen
+    # --------------------------------------------------------------------------
+    #
+    videoOptions:
+
+      # PhotoSwipeVideoPlugin plugin Fix #7
+      # Tracks the plugin's new default. This subtree sits ON TOP of the plugin
+      # defaults, so leaving `true` here would have kept every gallery on the
+      # old mode while the JS default said otherwise -- the failure that looks
+      # like "the new option does nothing".
+      #
+      # Original (deprecated, preserved for reference):
+      #       autoplay:                         true
+      autoplay:                         startOnFirst
+      preventDragOffset:                40
+      tracks:                           true
+
+      # PhotoSwipeVideoPlugin plugin Fix #7
+      # Both restate the plugin's own defaults, so stating them here is
+      # behaviour-neutral. They are stated all the same, for the reason the
+      # header of this block gives: a value that lives only in the JS defaults
+      # cannot be edited through the normal
+      # defaults <- control <- media deep_merge chain, and the whole point of
+      # this subtree is that it can. A per-gallery override in
+      # ~/_data/modules/gallery_control.yml now reaches them, e.g.
+      #
+      #     photoswipe:
+      #       videoOptions:
+      #         autoplayMutedFallback:  false
+      #
+      autoplayMutedFallback:            true
+      autoplayProbeTimeout:             1200
+
+      videoAttributes:
+        controls:                       ''
+        playsinline:                    ''
+        preload:                        auto
+        muted:                          ''
+
+      # PhotoSwipeVideoPlugin plugin Fix #6
+      # `enabled` and `theme` are unchanged; everything below them is net-new.
+      #
+      # Original (deprecated, preserved for reference):
+      #     videojs:
+      #       enabled:                        true
+      #       theme:                          vjs-theme-uno
+      #
+      videojs:
+        enabled:                        true
+        theme:                          vjs-theme-uno
+        customProgressBar:              true
+
+        options:
+          controls:                     true
+          preload:                      auto
+          fluid:                        false
+          responsive:                   false
+          playbackRates:                [0.25, 0.5, 1, 1.5, 2]
+
+          controlBar:
+            remainingTimeDisplay:       true
+            pictureInPictureToggle:     false
+
+            volumePanel:
+              inline:                   false
+
+        plugins:
+          hotKeys:
+            enabled:                    true
+            options:
+              volumeStep:               0.2
+              seekStep:                 15
+              enableMute:               true
+              enableFullscreen:         true
+              enableNumbers:            true
+              enableVolumeScroll:       true
+              enableHoverScroll:        true
+              alwaysCaptureHotkeys:     false                                   # see NOTE above
+              captureDocumentHotkeys:   false                                   # see NOTE above
+
+          skipButtons:
+            enabled:                    true
+            options:
+              forward:                  15
+              backward:                 15
+              backwardIndex:            0
+              forwardIndex:             1
+
+          zoomButtons:
+            enabled:                    true                                    # ignored for YouTube
+            options:
+              moveX:                    0
+              moveY:                    0
+              rotate:                   0
+              zoom:                     1
 
   # ----------------------------------------------------------------------------
   # lightGallery settings

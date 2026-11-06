@@ -1,0 +1,149 @@
+<!--
+# -----------------------------------------------------------------------------
+# ~/assets/custom/content/static/hero.html
+# Hero panel
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023-2026 Juergen Adams
+#
+# J1 Template is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+# -----------------------------------------------------------------------------
+-->
+
+<!-- CSS styles -->
+<style>
+
+  .hero {
+    background: linear-gradient(165deg, #0A1F3C 0%, #123256 58%, #1A4675 100%);
+    color: var(--md-gray-50);
+    position: relative;
+    overflow: hidden
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1
+  }
+
+  .lede {
+    color: var(--md-blue-100);
+    font-size: 1.12rem;
+    line-height: 1.72;
+    max-width: 50ch
+  }
+
+  .btn-azure {
+    background: var(--md-blue-500) !important;
+    color: var(--md-gray-50) !important;
+    border-radius: 10px;
+    padding: .82rem 1.7rem;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(47, 125, 246, .35)
+  }
+
+  .btn-azure:hover {
+    background: rgba(255, 255, 255, .12) !important;
+    color: var(--md-gray-50)
+  }
+
+  .btn-md-blue {
+    background: var(--md-blue-500) !important;
+    color: var(--md-gray-50) !important;
+    border-radius: 10px;
+    padding: .82rem 1.7rem;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(47, 125, 246, .35)
+  }
+
+  .btn-md-blue:hover {
+    background: rgba(255, 255, 255, .12) !important;
+    color: var(--md-gray-50)
+  }
+
+  .btn-ghost-w {
+    border: 1px solid rgba(255, 255, 255, .35);
+    color: var(--md-gray-50) !important;
+    border-radius: 10px;
+    padding: .82rem 1.7rem;
+    font-weight: 600
+  }
+
+  .btn-ghost-w:hover {
+    background: rgba(255, 255, 255, .12);
+    color: var(--md-gray-50)
+  }
+
+  /* Fix Wave element for Hero panel #1: remove inline gap below the SVG */
+  .wave svg {
+    display: block;
+    width: 100%;
+    height: 70px;
+  }
+
+  /* Fix Wave element for Hero panel #1: fill color controlled via CSS */
+  .wave svg path {
+    fill: var(--bs-body-bg);
+  }
+
+</style>
+
+<!-- HERO container -->
+<section id="hero" class="hero">
+
+  <div class="container pt-8 pb-5">
+    <div class="row g-4 g-lg-5 align-items-center">
+
+      <div class="col-lg-7">
+
+        <h2 class="fs-1">
+          Make a site look designed, not generated
+        </h2>
+
+        <p class="lede mt-4">
+          J1, the <b>Bootstrap V5</b> Theme, made for <b>Jekyll</b>.
+          With the fiddly parts already finished: media modules,
+          internationalization, search, consent, and a build chain that runs.
+          <br><br>
+          <b>Open-Source</b> and <b>free</b> for <b>Professional</b> and <b>Private</b> use.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-5">
+          <a href="#" class="btn btn-primary">Roundtrip</a>
+          <a href="#" class="btn btn-secondary">Home</a>
+        </div>
+
+      </div>
+
+      <div class="col-lg-5">
+
+        <svg viewBox="0 0 520 420" width="120%" role="img" aria-label="Overlapping printed shapes">
+          <g class="overprint" opacity=".88">
+            <circle cx="200" cy="170" r="140" fill="#1E88E5"></circle>
+            <circle cx="320" cy="230" r="140" fill="#F44336"></circle>
+            <rect x="120" y="260" width="300" height="110" rx="26" fill="#FFC107"></rect>
+          </g>
+          <g fill="#FAFAFA" font-family="Roboto, sans-serif">
+            <text x="150" y="160" font-size="54" font-weight="700">Simple</text>
+            <text x="150" y="212" font-size="44" font-weight="700">by Design</text>
+          </g>
+          <g fill="#212121" font-family="Roboto, sans-serif" font-size="18" font-weight="500">
+            <text x="165" y="325">Jekyll · Bootstrap · YAML</text>
+          </g>
+        </svg>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Fix Wave element for Hero banner #1: fill attribute removed, set via CSS (.wave svg path) -->
+  <div class="wave">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 34 C 260 74 420 4 720 30 C 1010 56 1220 74 1440 28 L1440 70 L0 70 Z"/>
+    </svg>
+  </div>
+
+</section>

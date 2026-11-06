@@ -1,0 +1,365 @@
+{
+  "meta_data": {
+    "source": "store",
+    "galleryId": "galleryManager",
+    "version": 1,
+    "exportDate": "2026-11-05T17:18:47.719Z",
+    "modified": true
+  },
+  "items": [
+    {
+      "itemId": "jg_136f37d7",
+      "index": 0,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/banter-snaps_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/banter-snaps_b.jpg",
+      "alt": "Japan · City of Osaka",
+      "width": 1280,
+      "height": 1920,
+      "caption": "Japan · City of Osaka",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1280",
+        "data-pswp-height": "1920",
+        "data-jg-item-id": "jg_136f37d7"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.718Z",
+      "title": "Japan · City of Osaka",
+      "category": "Travel",
+      "tags": [
+        "Japan",
+        "Osaka"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_d3249837",
+      "index": 1,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/denys-nevozhai-1_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/denys-nevozhai-1_b.jpg",
+      "alt": "China · Man posing at the rooftop of Jin Mao Tower Shanghai",
+      "width": 1920,
+      "height": 1280,
+      "caption": "China · Man posing at the rooftop of Jin Mao Tower Shanghai",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1280",
+        "data-jg-item-id": "jg_d3249837"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.718Z",
+      "title": "China · Man posing at the rooftop of Jin Mao Tower Shanghai",
+      "category": "Travel",
+      "tags": [
+        "China",
+        "Shanghai",
+        "Jin Mao Tower"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_528c6738",
+      "index": 2,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/gints-gailis_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/gints-gailis_b.jpg",
+      "alt": "Indonesia · Shangri-La Hotel Jakarta",
+      "width": 1468,
+      "height": 1920,
+      "caption": "Indonesia · Shangri-La Hotel Jakarta",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1468",
+        "data-pswp-height": "1920",
+        "data-jg-item-id": "jg_528c6738"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.718Z",
+      "title": "Indonesia · Shangri-La Hotel Jakarta",
+      "category": "Travel",
+      "tags": [
+        "Indonesia",
+        "Jakarta",
+        "Shangri-La Hotel"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_dcb0192f",
+      "index": 3,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/steven-diaz_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/steven-diaz_b.jpg",
+      "alt": "Japan · Tokyo seen from World Trade Center Observation Deck",
+      "width": 1920,
+      "height": 1123,
+      "caption": "Japan · Tokyo seen from World Trade Center Observation Deck",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1123",
+        "data-jg-item-id": "jg_dcb0192f"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "Japan · Tokyo seen from World Trade Center Observation Deck",
+      "category": "Travel",
+      "tags": [
+        "Japan",
+        "Tokyo",
+        "World Trade Center"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_16e27b74",
+      "index": 4,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/denys-nevozhai-2_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/denys-nevozhai-2_b.jpg",
+      "alt": "China · Young couple over Shenzhen",
+      "width": 1920,
+      "height": 1300,
+      "caption": "China · Young couple over Shenzhen",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1300",
+        "data-jg-item-id": "jg_16e27b74"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "China · Young couple over Shenzhen",
+      "category": "Travel",
+      "tags": [
+        "China",
+        "Shenzhen"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_c7d146c9",
+      "index": 5,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/johan-mouchet_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/johan-mouchet_b.jpg",
+      "alt": "Australia · The Queen Bee at the Eureka Tower of Melbourne",
+      "width": 872,
+      "height": 1280,
+      "caption": "Australia · The Queen Bee at the Eureka Tower of Melbourne",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "872",
+        "data-pswp-height": "1280",
+        "data-jg-item-id": "jg_c7d146c9"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "Australia · The Queen Bee at the Eureka Tower of Melbourne",
+      "category": "Travel",
+      "tags": [
+        "Australia",
+        "Melbourne",
+        "Eureka Tower",
+        "Queen Bee"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_669c3bb4",
+      "index": 6,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/thomas-tucker_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/thomas-tucker_b.jpg",
+      "alt": "Taiwan · Sunset over City of Taipei",
+      "width": 1600,
+      "height": 1050,
+      "caption": "Taiwan · Sunset over City of Taipei",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1600",
+        "data-pswp-height": "1050",
+        "data-jg-item-id": "jg_669c3bb4"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "Taiwan · Sunset over City of Taipei",
+      "category": "Travel",
+      "tags": [
+        "Taiwan",
+        "Taipei"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_bc42b1a2",
+      "index": 7,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/emmad-mazhari_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/emmad-mazhari_b.jpg",
+      "alt": "United States · City of Chicago",
+      "width": 1920,
+      "height": 1822,
+      "caption": "United States · City of Chicago",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1822",
+        "data-jg-item-id": "jg_bc42b1a2"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "United States · City of Chicago",
+      "category": "Travel",
+      "tags": [
+        "USA",
+        "Chicago"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_83a4bd17",
+      "index": 8,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/federico-rizzarelli_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/federico-rizzarelli_b.jpg",
+      "alt": "China · City of Shanghai",
+      "width": 1920,
+      "height": 2880,
+      "caption": "China · City of Shanghai",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "2880",
+        "data-jg-item-id": "jg_83a4bd17"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "China · City of Shanghai",
+      "category": "Travel",
+      "tags": [
+        "China",
+        "Shanghai"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_49f5fdf2",
+      "index": 9,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/andreas-brucker_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/andreas-brucker_b.jpg",
+      "alt": "Thailand · City of Bangkok",
+      "width": 1920,
+      "height": 1280,
+      "caption": "Thailand · City of Bangkok",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1280",
+        "data-jg-item-id": "jg_49f5fdf2"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "Thailand · City of Bangkok",
+      "category": "Travel",
+      "tags": [
+        "Thailand",
+        "Bangkok"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_45568f15",
+      "index": 10,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/luca-bravo_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/luca-bravo_b.jpg",
+      "alt": "Taiwan · Sunset over City of Taipei",
+      "width": 1920,
+      "height": 1280,
+      "caption": "Taiwan · Sunset over City of Taipei",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1280",
+        "data-jg-item-id": "jg_45568f15"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "Taiwan · Sunset over City of Taipei",
+      "category": "Travel",
+      "tags": [
+        "Taiwan",
+        "Taipei"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_c38d69ae",
+      "index": 11,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/ethan-brooke_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/ethan-brooke_b.jpg",
+      "alt": "South Korea · Lotte World Tower Seoul",
+      "width": 1920,
+      "height": 1686,
+      "caption": "South Korea · Lotte World Tower Seoul",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1686",
+        "data-jg-item-id": "jg_c38d69ae"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T17:18:47.719Z",
+      "title": "South Korea · Lotte World Tower Seoul",
+      "category": "Travel",
+      "tags": [
+        "South Korea",
+        "Seoul",
+        "Lotte World Tower"
+      ],
+      "rating": 0,
+      "description": "",
+      "infoLink": "",
+      "issueDate": ""
+    }
+  ]
+}

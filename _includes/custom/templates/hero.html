@@ -1,0 +1,257 @@
+<!--
+# -----------------------------------------------------------------------------
+# ~/assets/custom/content/static/hero.html
+# Hero container
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023-2026 Juergen Adams
+#
+# J1 Template is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+# -----------------------------------------------------------------------------
+-->
+
+<!-- CSS styles -->
+<style>
+
+  :root {
+    --navy: #0A1F3C;
+    --navy-2: #123256;
+    --azure: #2F7DF6;
+    --sky: #8FC5FF;
+    --sand: #F6F8FB;
+    --txt: #12243B;
+    --dim: #5E7391;
+    --line: #DDE5EF;
+    --copyright-background: #020a16;
+  }
+
+  .hero {
+    background: linear-gradient(165deg, var(--navy) 0%, var(--navy-2) 58%, #1A4675 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 46rem;
+    height: 46rem;
+    border-radius: 50%;
+    right: -16rem;
+    top: -18rem;
+    background: radial-gradient(circle, rgba(47, 125, 246, .45), transparent 62%)
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1
+  }
+
+  .lede {
+    color: #BDD2EA;
+    font-size: 1.12rem;
+    line-height: 1.72;
+    max-width: 50ch
+  }
+
+  .btn-azure {
+    background: var(--azure) !important;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: .82rem 1.7rem;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(47, 125, 246, .35)
+  }
+
+  .btn-azure:hover {
+    background: rgba(255, 255, 255, .12) !important;
+    color: #fff
+  }
+
+  .btn-md-blue {
+    background: var(--azure) !important;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: .82rem 1.7rem;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(47, 125, 246, .35)
+  }
+
+  .btn-md-blue:hover {
+    background: rgba(255, 255, 255, .12) !important;
+    color: #fff
+  }
+
+  .btn-ghost-w {
+    border: 1px solid rgba(255, 255, 255, .35);
+    color: #fff !important;
+    border-radius: 10px;
+    padding: .82rem 1.7rem;
+    font-weight: 600
+  }
+
+  .btn-ghost-w:hover {
+    background: rgba(255, 255, 255, .12);
+    color: #fff
+  }
+
+  .panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(16, 41, 74, .12);
+    overflow: hidden
+  }
+
+  .panel-head {
+    background: #F1F5FA;
+    border-bottom: 1px solid var(--line);
+    padding: .7rem 1rem;
+    font-size: .84rem;
+    color: var(--dim)
+  }
+
+  .panel pre {
+    margin: 0;
+    padding: 1.1rem;
+    font-family: ui-monospace, monospace;
+    font-size: .84rem;
+    line-height: 1.85;
+    color: #2A3F5C
+  }
+
+  .c-b {
+    color: var(--azure)
+  }
+
+  .c-g {
+    color: #1F9D6E
+  }
+
+  .c-m {
+    color: #93A6BF
+  }
+
+  .card-h {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: box-shadow .18s ease, border-color .18s ease
+  }
+
+  .card-h:hover {
+    box-shadow: 0 16px 36px rgba(16, 41, 74, .12);
+    border-color: #C6D8EE
+  }
+
+  .ico {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    background: #E8F1FE;
+    display: grid;
+    place-items: center;
+    margin-bottom: .9rem
+  }
+
+  .ico svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--azure);
+    fill: none;
+    stroke-width: 1.8
+  }
+
+  .card-h h3 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: .4rem
+  }
+
+  .card-h p {
+    color: var(--dim);
+    font-size: .94rem;
+    line-height: 1.6;
+    margin: 0
+  }
+
+  .cta {
+    background: linear-gradient(140deg, var(--navy), #1A4675);
+    border-radius: 20px;
+    color: #fff;
+    padding: 3rem 2.5rem
+  }
+
+  /* Fix Wave element for Hero banner #1: remove inline gap below the SVG */
+  .wave svg {
+    display: block;
+    width: 100%;
+    height: 70px;
+  }
+
+  /* Fix Wave element for Hero banner #1: fill color controlled via CSS */
+  .wave svg path {
+    fill: var(--bs-body-bg);
+  }
+
+</style>
+
+<!-- HERO container settings -->
+<section id="hero" class="hero">
+
+  <div class="container pt-8 pb-5">
+    <div class="row g-4 g-lg-5 align-items-center">
+
+      <div class="col-lg-7">
+
+        <h2 style="font-size: 2.5rem">
+          Make a site look designed, not generated
+        </h2>
+
+        <p class="lede mt-4">
+          J1, the <b>Bootstrap V5</b> Theme, made for <b>Jekyll</b>.
+          With the fiddly parts finished: media modules, internationalization,
+          search, consent, and a build chain that runs.
+          <br><br>
+          <b>Open-Source</b> and <b>free</b> for <b>Professional</b> and <b>Private</b> use.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-5">
+          <a href="#" class="btn btn-md-blue">Preview</a>
+          <a href="#" class="btn btn-ghost-w">Home</a>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <svg viewBox="0 0 520 420" width="130%" role="img" aria-label="Overlapping printed shapes">
+          <g class="overprint" opacity=".88">
+            <circle cx="200" cy="170" r="140" fill="#2F7DF6"></circle>
+            <circle cx="320" cy="230" r="140" fill="#FF4D8D"></circle>
+            <rect x="120" y="260" width="300" height="110" rx="26" fill="#FFC107"></rect>
+          </g>
+          <g fill="#FBF6EC" font-family="Roboto, sans-serif">
+            <text x="150" y="160" font-size="54" font-weight="700">Simple</text>
+            <text x="150" y="212" font-size="44" font-weight="700">by Design</text>
+          </g>
+          <g fill="#171433" font-family="Roboto, sans-serif" font-size="18" font-weight="500">
+            <text x="165" y="325">Jekyll · Bootstrap · YAML</text>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+<!-- Fix Wave element for Hero banner #1: fill attribute removed, set via CSS (.wave svg path) -->
+<div class="wave">
+  <svg viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 34 C 260 74 420 4 720 30 C 1010 56 1220 74 1440 28 L1440 70 L0 70 Z"/>
+  </svg>
+</div>
+
+</section>

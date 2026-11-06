@@ -66,9 +66,10 @@ resource_options:
 :twitter:                               false
 :instagram:                             false
 :youtube:                               true
-:vimeo:                                 true
-:dailymotion:                           true
+:vimeo:                                 false
+:dailymotion:                           false
 
+,
 //  Load Liquid procedures
 // -----------------------------------------------------------------------------
 {% capture load_attributes %}themes/{{site.template.name}}/procedures/global/attributes_loader.proc{%endcapture%}
@@ -339,7 +340,7 @@ that record how you use the service. The information from these cookies
 is sent to Hyvor and stored on Hyvor's servers.
 
 For more details, see the
-https://hyvor.com/privacy-policy[Hyvor Privacy Settings, {browser-window--new}].
+https://hyvor.com/privacy[Hyvor Privacy Settings, {browser-window--new}].
 
 [NOTE]
 ====

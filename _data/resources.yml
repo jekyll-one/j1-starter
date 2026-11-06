@@ -1153,7 +1153,6 @@ resources:
                                           modules/videojs/css/themes/uno,
                                           modules/videojs/plugins/controls/skipButtons/css/skipbuttons,
                                           modules/videojs/plugins/controls/nextprevButtons/css/nextprevbuttons,
-#                                         modules/videojs/plugins/controls/videoEffects/css/effects,
                                           modules/videojs/plugins/controls/videoFilters/css/videoFilters,
                                           modules/videojs/plugins/controls/zoom/css/zoom
                                         ]
@@ -1163,8 +1162,7 @@ resources:
                                           modules/videojs/plugins/controls/hotkeys/js/hotkeys,
                                           modules/videojs/plugins/controls/skipButtons/js/skipbuttons,
                                           modules/videojs/plugins/controls/nextprevButtons/js/nextprevbuttons,
-#                                         modules/videojs/plugins/controls/videoEffects/js/effects,
-#                                         modules/videojs/plugins/controls/videoEffects/js/list,
+                                          modules/videojs/plugins/controls/snapshotButton/js/snapshot,
                                           modules/videojs/plugins/controls/videoFilters/js/videoFilters,
                                           modules/videojs/plugins/controls/zoom/js/zoom,
                                           modules/videojs/plugins/players/playlist/js/core,

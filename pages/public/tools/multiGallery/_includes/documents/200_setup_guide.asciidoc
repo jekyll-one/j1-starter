@@ -1,0 +1,724 @@
+== Setup Guide
+
+This section helps beginners set up and configure image and video galleries
+with the J1 Multi Gallery module by using YAML configuration files.
+
+[NOTE]
+====
+You do not need any programming experience or have to write JavaScript.
+====
+
+
+[role="mt-5"]
+=== How a gallery is built
+
+The gallery below is the *Gallery Viewer*: a classic MultiGallery named
+`jgMegaCities` that shows ten photos of large cities. It is the opposite
+of the manager above. Its images are *listed in a YAML file*, their
+addresses are written into the page when the site is *built*, and a
+visitor only *views* them. Click a tile to open the image in the
+PhotoSwipe lightbox; the other images of the gallery are reachable from
+there.
+
+This gallery is the example used on the following pages. Everything a
+static gallery needs -- its settings, its list of images, and the place on
+the page -- is explained step by step, and you can compare each step with
+the shipped files of `jgMegaCities`.
+
+.MultiGallery (Viewer)
+gallery::jgMegaCities[]
+
+
+[role="mt-5"]
+==== The YAML config files
+
+A J1 gallery is described in *three* YAML files. They are read one after the
+other, and a later file wins over an earlier one:
+
+[cols="5,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|File |What it contains
+
+|`_data/modules/defaults/gallery.yml`
+|The *default* settings for all galleries. You normally do *not* edit this
+file.
+
+|`_data/modules/gallery_control.yml`
+|*Your* settings, one entry per gallery: _how_ the gallery looks and behaves
+(id, type, row height, lightbox, ...).
+
+|`_data/modules/gallery_media.yml`
+|The *content* of each gallery: _what_ it shows (the list of images or
+videos).
+
+|===
+
+You only write a setting in `gallery_control.yml` when it should be
+*different* from the default. Everything you leave out is taken from
+`gallery.yml`. The files are merged *key by key*: if you only set
+`lightbox.type`, the default `lightbox.enabled: true` is still used.
+
+The control entry and the media entry of one gallery belong together because
+they have the *same* `id`.
+
+[role="mt-4"]
+==== What happens when the site is built
+
+. *At build time*, J1 merges the three files and writes the HTML of *all*
+  enabled galleries into one data file:
+  `/assets/data/gallery/index.html`.
+. *On the page*, the macro `gallery::<id>[]` only places an empty
+  placeholder.
+. *When the page is opened*, the J1 Gallery adapter loads the HTML of that
+  gallery from the data file, starts the gallery, and connects the lightbox.
+
+[IMPORTANT]
+====
+The gallery HTML is created when the site is *built*. After every change to
+`gallery_control.yml` or `gallery_media.yml` you must *rebuild* the site.
+Otherwise the browser still shows the old gallery.
+====
+
+
+[role="mt-5"]
+=== Your first static image gallery
+
+A *static* image gallery is the classic form of a gallery: its images are
+listed in `gallery_media.yml`, and that list is fixed when the site is
+built. Visitors see the images you configured -- no more, no less. (The
+manager at the top of this page is different: it starts empty and gets its
+items in the browser.)
+
+Creating a static gallery is a *three* step process:
+
+* *Register* the gallery *by id* in `gallery_control.yml`,
+* *list* the *images* of the gallery in `gallery_media.yml`,
+* *place* the gallery *on a page* with the gallery macro.
+
+The next sections walk through these steps with a small gallery named
+`myGallery`. Copy the examples, change the id, the folder and the file
+names, and you have your own gallery. The gallery `jgMegaCities` above was
+made exactly this way; its entries in the shipped files are a good second
+example.
+
+[role="mt-4"]
+==== Step 1: Register the gallery
+
+The control file tells J1 that the gallery exists and how it should look.
+The smallest useful entry has an `id`, the `type: image`, and the folder
+of the images (`image_base_url`). The example also sets the row height,
+the space between the images, and the lightbox; all other settings are
+taken from the defaults.
+
+Add a new entry to the list `settings.galleries` in
+`_data/modules/gallery_control.yml`:
+
+[source, yaml]
+----
+  settings:
+    galleries:
+
+      # myGallery, static image gallery
+      - gallery:
+        enabled:                  true
+        id:                       myGallery
+        type:                     image
+        image_base_url:           /assets/image/module/gallery/my_gallery
+
+        gallery_options:
+          rowHeight:              200
+          gutters:                3
+
+        lightbox:
+          type:                   ps
+----
+
+[role="mt-4"]
+==== Step 2: Configure the images
+
+The media file holds the list of images. Every image is one `- image:`
+entry with the file name, the real size of the image, and the texts shown
+on the tile and in the lightbox. The entry is found by the gallery `id`,
+so the id must be exactly the same as in Step 1.
+
+Add the content to `_data/modules/gallery_media.yml`, using the *same* `id`:
+
+[source, yaml]
+----
+  settings:
+    galleries:
+
+      # myGallery, static image gallery
+      - gallery:
+        id:                       myGallery
+
+        images:
+          - image:
+            file:                 photo_1.jpg
+            width:                1920
+            height:               1280
+            caption_text:         My first photo
+            description:          <h3>My first photo</h3>
+
+          - image:
+            file:                 photo_2.jpg
+            width:                1280
+            height:               1920
+            caption_text:         My second photo
+            description:          <h3>My second photo</h3>
+----
+
+Each image needs these keys:
+
+[cols="3,9a", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Description
+
+|`file`
+|The file name. The image must be in the folder `image_base_url`, here
+`/assets/image/module/gallery/my_gallery/photo_1.jpg`.
+
+|`width`, `height`
+|The real size of the image in pixels. The layout needs the shape of the
+image.
+
+|`caption_text`
+|The text shown on the tile (on mouse over).
+
+|`description`
+|The text shown in the lightbox. HTML is allowed.
+
+|===
+
+[role="mt-4"]
+==== Step 3: Place the gallery on a page
+
+Use the AsciiDoc macro with the gallery `id`, and load the needed resources
+in the front matter of the page:
+
+[source, asciidoc]
+----
+---
+resources: [ gallery, photoswipejs ]
+---
+
+.My Gallery
+gallery::myGallery[]
+----
+
+Then *rebuild* the site.
+
+[CAUTION]
+====
+*Watch the indentation.* The keys of one entry (`enabled`, `id`, `type`, ...)
+start in the *same column* as the word `gallery` after the dash. If you
+indent them further, YAML puts them *inside* `gallery:` and J1 cannot find
+the `id`. Also, every entry must start with its own `- gallery:` line. If
+the dash line is missing, the keys are mixed into the entry above it.
+====
+
+
+[role="mt-5"]
+=== Basic settings of a gallery
+
+Every gallery entry in `gallery_control.yml` starts with a few *basic*
+keys. They say *which* gallery it is, *what* it shows, and *where* the
+files are. These keys have no useful default: you write them for every
+gallery. All other settings (layout, lightbox, extra features) are blocks
+below them and can be left out.
+
+These keys belong to a gallery entry in `gallery_control.yml`.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`enabled`
+|false
+|Shows the gallery (`true`) or not (`false`). Set it to `true` for every
+gallery you want to use. Only the value in `gallery_control.yml` counts; an
+`enabled` key in `gallery_media.yml` is *ignored*.
+
+|`id`
+|-
+|The unique name of the gallery. It must be the same in both YAML files and
+in the page macro `gallery::<id>[]`.
+
+|`type`
+|-
+|`image` for photos, `video` for videos.
+
+|`image_base_url`
+|-
+|The *folder* of the images. For a video gallery: the folder of the poster
+images (the pictures on the tiles). Every address is built as
+`<image_base_url>/<file>`.
+
+|`video`
+|-
+|Video galleries only: `html5` for your own video files, `youtube` for
+YouTube videos.
+
+|`video_base_path`
+|-
+|`video: html5` only: the folder of the video files.
+
+|===
+
+[CAUTION]
+====
+Give `image_base_url` as a *full folder*, for example
+`/assets/image/my_gallery`. A server address alone, like
+`http://localhost:40000`, is wrong: every image address misses the folder,
+no image can be loaded, and the gallery stays *empty*.
+
+Older files may still use the key `image_base_path`. It still works as a
+fallback, but `image_base_url` is the key to use.
+====
+
+
+[role="mt-5"]
+=== Layout options
+
+The layout options decide how the rows are built: how tall a row should
+be, how much space there is between the images, and what happens with the
+last row when it is not full. These are the options of the Justified
+Gallery library. You rarely need more than `rowHeight` and `gutters`; the
+defaults of the other keys suit most galleries.
+
+The layout is set in the block `gallery_options`:
+
+[source, yaml]
+----
+  gallery_options:
+    rowHeight:                    200
+    gutters:                      3
+    lastRow:                      nojustify
+----
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`rowHeight`
+|150
+|The wanted height of each row in pixels. The real height can differ a
+little, because each row is stretched to fill the full width.
+
+|`gutters`
+|1
+|The space between the images in pixels. (The library calls this option
+`margins`; in J1 you write `gutters`.)
+
+|`maxRowHeight`
+|false
+|An upper limit for the row height, in pixels (`200`) or as a percentage of
+`rowHeight` (`"200%"`). Can *crop* images.
+
+|`maxRowsCount`
+|0
+|Shows at most this many rows. `0` = no limit.
+
+|`lastRow`
+|nojustify
+|What happens to a last row that is not full: `nojustify` (keep size, align
+left), `center`, `right`, `justify` (stretch it anyway) or `hide`.
+
+|`captions`
+|true
+|Shows the caption over an image on mouse over.
+
+|`randomize`
+|false
+|Shows the images in a random order.
+
+|===
+
+
+[role="mt-5"]
+=== Lightbox
+
+When a visitor clicks a tile, the image or video opens in a *lightbox*. J1
+supports three lightboxes:
+
+[cols="2,3,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|`lightbox.type` |Lightbox |Resource to load on the page
+
+|`lg` (default)
+|lightGallery
+|`lightgallery`
+
+|`ps`
+|PhotoSwipe
+|`photoswipejs`
+
+|`lb`
+|Lightbox2 (images only)
+|-
+
+|===
+
+[source, yaml]
+----
+  lightbox:
+    type:                         ps
+----
+
+[WARNING]
+====
+Leave `lightbox.enabled` at its default `true`. With `false`, an image
+gallery currently shows *no images at all*.
+====
+
+// [role="mt-5"]
+// === CSS filters
+
+// The block `filters` adds simple color effects to the images. The values only
+// work together with `enabled: true`.
+
+// [source, yaml]
+// ----
+// filters:
+//   enabled:                      true
+//   grayscale:                    0.5     # 0 = full color, 1 = all gray
+//   contrast:                     1       # 1 = unchanged
+//   brightness:                   0.9     # 1 = unchanged, smaller = darker
+// ----
+
+// The defaults are `grayscale: 1`, `contrast: 0.8` and `brightness: 0.4`. If
+// you switch filters on, set all three values you want.
+
+
+[role="mt-5"]
+=== Video galleries
+
+A video gallery uses `type: video`. Its videos open in a lightbox and play in
+a *VideoJS* player. Load the resource `videojs` on the page, plus the
+resource of the lightbox you use.
+
+[role="mt-4"]
+==== Self-hosted videos (HTML5)
+
+A self-hosted video is a video file (`.mp4`, `.webm`, ...) that lives on
+your own web server. The gallery needs *two* folders: `video_base_path`
+for the video files and `image_base_url` for the *poster* images, the
+still pictures shown on the tiles. The example uses PhotoSwipe; the block
+`photoswipe.videoOptions` with `enabled: true` is what makes the lightbox
+play a video instead of showing a picture.
+
+In `gallery_control.yml`:
+
+[source, yaml]
+----
+  - gallery:
+    enabled:                  true
+    id:                       myVideos
+    type:                     video
+    video:                    html5
+    video_base_path:          /assets/video/html5
+    image_base_url:           /assets/video/poster/html5
+
+    gallery_options:
+      rowHeight:              250
+      gutters:                3
+
+    lightbox:
+      type:                   ps
+
+    photoswipe:
+      videoOptions:
+        enabled:              true
+----
+
+In `gallery_media.yml`:
+
+[source, yaml]
+----
+  - gallery:
+    id:                       myVideos
+
+    videos:
+      - video:
+        enabled:              true
+        name:                 Peck Pocketed
+        type:                 html5
+        api:                  videojs
+        size:                 1280-720
+        source:               peck_pocketed.mp4
+        poster_image:         peck_pocketed.jpg
+        caption_text:         Peck Pocketed
+        description:          <h3>Peck Pocketed</h3>
+----
+
+[role="mt-4"]
+==== YouTube videos
+
+For YouTube, set `video: youtube` and use the YouTube image server for the
+posters. No `video_base_path` is needed.
+
+[source, yaml]
+----
+# gallery_control.yml
+  - gallery:
+    enabled:                  true
+    id:                       myYouTube
+    type:                     video
+    video:                    youtube
+    image_base_url:           //img.youtube.com/vi
+
+    lightbox:
+      type:                   ps
+
+    photoswipe:
+      videoOptions:
+        enabled:              true
+----
+
+[source, yaml]
+----
+# gallery_media.yml
+  - gallery:
+    id:                       myYouTube
+
+    videos:
+      - video:
+        enabled:              true
+        name:                 Dua Lipa
+        type:                 youtube
+        api:                  videojs
+        size:                 1280-720
+        source:               //youtube.com/watch?v=y38qQRg3UDI
+        poster_image:         y38qQRg3UDI/maxresdefault.jpg
+        caption_text:         Tiny Desk Concert · Dua Lipa
+        description:          <h3>Tiny Desk Concert</h3>
+----
+
+For YouTube, the page also needs the YouTube support of VideoJS
+(`videojs-youtube`). Without it, the slide only shows the poster.
+
+[role="mt-4"]
+==== The keys of a video
+
+A video entry in `gallery_media.yml` has a few more keys than an image
+entry. Besides the texts, it names the *kind* of video (`type`), the
+*player* (`api`), the *size* of the picture, the video *file or address*
+(`source`), and the *poster* shown on the tile. The keys are the same for
+both lightboxes, so a gallery can be switched between lightGallery and
+PhotoSwipe by changing `lightbox.type` only.
+
+[cols="3,9", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Description
+
+|`type`
+|`html5` or `youtube`.
+
+|`api`
+|Use `videojs`. *Required* for YouTube on PhotoSwipe.
+
+|`size`
+|The video size as `width-height`, for example `1280-720`. If it is
+missing, J1 uses `1280-720`.
+
+|`source`
+|HTML5: the file name in `video_base_path`. YouTube: the full address,
+for example `//youtube.com/watch?v=<id>`.
+
+|`poster_image`
+|The picture on the tile, in the folder `image_base_url`. For YouTube:
+`<id>/maxresdefault.jpg`.
+
+|`caption_text`, `description`
+|The text on the tile and the text in the lightbox.
+
+|`tracks`
+|Optional: a list of subtitle or chapter files (`.vtt`), see below.
+
+|===
+
+[role="mt-4"]
+==== Subtitles and chapters
+
+An HTML5 video can carry text tracks:
+
+[source, yaml]
+----
+  tracks:
+    - track:
+      default:          true
+      kind:             captions        # or: chapters
+      srclang:          en
+      label:            English
+      src:              /assets/video/tracks/html5/my_video/captions/video.vtt
+----
+
+[role="mt-4"]
+==== Video settings for PhotoSwipe
+
+Video galleries on `lightbox.type: ps` are configured in the block
+`photoswipe.videoOptions`.
+
+[cols="4,2,6", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`enabled`
+|false
+|Switches the video support on. *Required* for every PhotoSwipe video
+gallery. Without it, the slides stay black.
+
+|`autoplay`
+|startOnFirst
+|`startOnFirst`: only the first video a visitor opens starts by itself.
+`startOnAll`: every video starts when it is shown. `false`: no video
+starts by itself.
+
+|`videoAttributes.muted`
+|'' (muted)
+|By default videos start *muted*. Use `false` to start with sound.
+
+|`tracks`
+|true
+|Uses the subtitle and chapter files of the videos.
+
+|`preventDragOffset`
+|40
+|The height (px) of the strip at the bottom where a swipe does not change
+the slide, so you can use the player controls. YouTube galleries use `56`.
+
+|===
+
+[NOTE]
+====
+Browsers often block videos that start *with sound* by themselves. For
+YouTube this always happens. J1 then mutes the video and tries again, so the
+video starts *silently*. The visitor can switch the sound on in the player.
+====
+
+[role="mt-4"]
+==== Video settings for lightGallery
+
+A video gallery that keeps the default lightbox (`lg`) needs VideoJS
+switched on in its `lightGallery` block:
+
+[source, yaml]
+----
+  lightGallery:
+    options:
+      videojs:              true
+      videojsTheme:         vjs-theme-uno
+
+    videojsOptions:
+      enabled:              true
+----
+
+
+[role="mt-5"]
+=== Extra features
+
+These features are *off* by default. Switch them on per gallery in
+`gallery_control.yml`. They are built in the browser and need *no* rebuild
+of the data file.
+
+[role="mt-4"]
+==== Manage bar
+
+Adds a bar above the gallery with a title, the number of items, a button to
+open a *list* of all items, and a button to open an *editor*. In the editor
+you can add images (drop area, paste a link, import from the server), and
+export, import or clear the gallery.
+
+[source, yaml]
+----
+  manage:
+    enabled:                true
+    title:                  My Photos
+    showItemTools:          true
+----
+
+With `showItemTools: true`, every tile gets small buttons to give the item
+1 to 5 *stars*, to *edit* its title, description, category and tags, or to
+*remove* it.
+
+[role="mt-4"]
+==== Save in the browser
+
+Saves the items of the gallery in the browser. Changes a visitor makes (add,
+edit, remove) are still there after a page reload.
+
+[source, yaml]
+----
+  storage:
+    enabled:                true
+----
+
+*Clear Gallery* in the editor brings back the items of `gallery_media.yml`.
+
+[TIP]
+====
+A lightGallery gallery (`lightbox.type: lg`) that uses the editor also needs
+`storage.addClasses: [lg-item]`, so that new items open in the lightbox.
+PhotoSwipe galleries need nothing.
+====
+
+[role="mt-4"]
+==== Search and sort
+
+With many items in a gallery, a visitor wants to find one quickly. The
+search looks at the title, description, category, tags and caption of every
+item and shows only the matching tiles; the sort list puts them in the
+chosen order, for example by title or by rating. Both work for every
+gallery, with or without the manage bar.
+
+Adds a search field and a sort list above the gallery.
+
+[source, yaml]
+----
+  search:
+    enabled:                true
+    sortOptions:            [ none, title, rating ]
+    defaultSort:            title
+----
+
+
+[role="mt-5"]
+=== Common Mistakes
+
+Most problems with a new gallery have one of a few simple causes: a
+missing or misspelled key, an id that is not the same in all places, a
+wrong folder, or a site that was not rebuilt after a change. The table
+lists the most common symptoms and what to check first. The browser
+console (press *F12*) often shows a warning that names the gallery and
+the reason.
+
+[cols="5,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Problem |What to check
+
+|The gallery does not appear at all
+|`enabled: true` in `gallery_control.yml`? Same `id` in both YAML files
+and in the macro? Is the `- gallery:` line there? Site rebuilt?
+
+|The gallery stays empty
+|Is `image_base_url` the *full folder* of the images? Is
+`lightbox.enabled` still `true`?
+
+|My changes are not shown
+|Rebuild the site. The gallery HTML is created at build time.
+
+|The lightbox does not open
+|Is the matching resource loaded on the page (`photoswipejs` for `ps`,
+`lightgallery` for `lg`)?
+
+|PhotoSwipe video slides are black
+|Is `photoswipe.videoOptions.enabled: true` set for the gallery? Is the
+`videojs` resource loaded?
+
+|A YouTube video shows only its poster
+|Is `api: videojs` set on the video? Is `videojs-youtube` loaded?
+
+|The filter values have no effect
+|Is `filters.enabled: true` set?
+
+|===

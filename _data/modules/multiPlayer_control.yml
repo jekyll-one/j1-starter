@@ -87,9 +87,21 @@ settings:
         cards:
           perRow:                       2
 
+      # Multiplayer add media drag-drop area #1
+      # DROP SECTION of the edit screen for THIS player (see multiPlayer.yml
+      # and defaults/multiPlayer.yml for the full note). Left commented: the
+      # player inherits the global values. Example: map dropped local files
+      # of this player below a separate media folder, or switch the section
+      # off for this player with enabled: false.
+      #
+      # drop:
+      #   enabled:                      true
+      #   base_path:                    /assets/video/player_1
+
       # VIDEOJS settings
       #
       videoJS:
+        crossOrigin:                    anonymous                               # empty/absent = not set (as before)
 
         playbackRates:
           enabled:                      true
@@ -181,7 +193,6 @@ settings:
       #
       videoJS:
         autoStart:                      true
-
 
     # --------------------------------------------------------------------------
     # Player 3 – Tiny Desk Concerts
@@ -344,7 +355,6 @@ settings:
 
           playlist:
             enabled:                    true
-
 
     # --------------------------------------------------------------------------
     # Player 5a – Olivia Dean (Audio)

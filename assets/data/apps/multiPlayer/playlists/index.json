@@ -1,0 +1,12 @@
+[
+  { "name": "Local Video files", "file": "lists/local-video.json" },
+  { "name": "Joan", "file": "lists/native-video-joan.json" },
+  { "name": "NDR - Hofgeschichten, 2021 (Series/German)", "file": "lists/hofgeschichten-2021.json" },  
+  { "name": "NPR - Tiny Desk Concerts (English)", "file": "lists/tinydesk-concerts.json" },
+  { "name": "AGT - Legendary Contestants (English)", "file": "lists/agt-legendary-auditions.json" },
+  { "name": "BGT - Legendary Contestants (English)", "file": "lists/bgt-legendary-auditions.json" },  
+  { "name": "YTP - Rick Astley (Series)", "file": "lists/ytp-rick-astley.json" },
+  { "name": "YTP - Bea and her business (Series)", "file": "lists/ytp-bea-and-her-business.json" },
+  { "name": "YTP - Olivia Dean (Series)", "file": "lists/ytp-olivia-dean--the-art-of-loving.json" },  
+  { "name": "BBC - The Next Step, Season 1 (Series/English)", "file": "lists/the-next-step-season-1.json" }
+]

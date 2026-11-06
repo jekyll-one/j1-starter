@@ -13,7 +13,6 @@
 
 # ==============================================================================
 # Description
-# ==============================================================================
 #
 description:
   title:                                Justified Gallery
@@ -22,15 +21,9 @@ description:
 
 # ==============================================================================
 # User configuration settings
-# ==============================================================================
+# ------------------------------------------------------------------------------
 #
 settings:
-
-  # ============================================================================
-  # GENERAL options
-  # ----------------------------------------------------------------------------
-  #
-  enabled:                              true
 
   # ============================================================================
   # All galleries available
@@ -43,67 +36,115 @@ settings:
     # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
-    # Old Times
+    # Gallery Manager
     #
     - gallery:
+
+      # ------------------------------------------------------------------------
+      # GENERAL settings
+      #
       enabled:                          true
 
-      id:                               jg_old_times
-      type:                             image
-      image_base_path:                  /assets/image/module/gallery/old_time/image/grand_pa
-
       # ------------------------------------------------------------------------
-      # Justified Gallery settings (override: defaults are 150 / 1)
+      # GALLERY settings
       #
-      gallery_options:
-        rowHeight:                      250
-        gutters:                        3
+      id:                               galleryManager
+      type:                             image
+      image_base_url:                   /assets/image                           # http://localhost:11000
 
       # ------------------------------------------------------------------------
-      # Lightbox settings
+      # STORAGE settings
+      #
+      storage:
+        enabled:                        true
+        preload:                        false
+
+      # ------------------------------------------------------------------------
+      # UI settings
+      #
+      manage:
+        enabled:                        true
+        title:                          Gallery Manager
+        showItemTools:                  true
+        dropSettingsMenu:               true
+        dropBasePath:                   module/gallery
+
+      # ------------------------------------------------------------------------
+      # SEARCH settings
+      #
+      search:
+        enabled:                        true
+        type:                           simpleSearch
+
+      # ------------------------------------------------------------------------
+      # LIGHTBOX settings
       #
       lightbox:
-        type:                           ps                                      # ps | lb | lg
+        enabled:                        true
+        type:                           ps                                      # ps -> photoswipe
 
-      lightGallery:
-        plugins:                        lgFullscreen, lgRotate, lgThumbnail
+      # LIGHTBOX options
+      #
+      photoswipe:
+        auto_detect_size:               true
 
     # --------------------------------------------------------------------------
     # Gallery Mega Cities
     #
     - gallery:
+
+      # ========================================================================
+      # GENERAL options
+      # ------------------------------------------------------------------------
+      #
       enabled:                          true
 
-      id:                               jg_mega_cities
+      id:                               jgMegaCities
       type:                             image
-      image_base_path:                  /assets/image/module/swiper/simple/mega_city/image
+
+      image_base_url:                   /assets/image/module/gallery/mega_city
 
       # ------------------------------------------------------------------------
-      # Lightbox settings
+      # STORAGE|UI settings
+      #
+      storage:
+        enabled:                        true                                    # opt-in (default: false)
+        preload:                        false                                   # jgMegaCities.json
+
+      manage:
+        enabled:                        false                                    # opt-in (default: false)
+        title:                          Mega Cities                             # header title (default: gallery id)
+        dropSettingsMenu:               true                                    # toggle menu (top right) to change image_base_url|dropBasePath at runtime
+        dropBasePath:                   none
+
+      # ------------------------------------------------------------------------
+      # LIGHTBOX settings
       #
       lightbox:
         type:                           ps                                      # ps | lb | lg
 
-      lightGallery:
-        plugins:                        lgFullscreen, lgRotate, lgThumbnail, lgZoom
-        options:
-          animateThumb:                 false                                     # override (default: true)
-          addClass:                     lg-uno-thumbnails                         # customized thumbnails
-          appendThumbnailsTo:           .lg-outer                                 # required for customized thumbnails
-          allowMediaOverlap:            true                                      # required for customized thumbnails
+      # lightGallery:
+      #   plugins:                        lgFullscreen, lgRotate, lgThumbnail, lgZoom
+
+      #   options:
+      #     animateThumb:                 false                                   # override (default: true)
+      #     addClass:                     lg-uno-thumbnails                       # customized thumbnails
+      #     appendThumbnailsTo:           .lg-outer                               # required for customized thumbnails
+      #     allowMediaOverlap:            true                                    # required for customized thumbnails
 
       # ------------------------------------------------------------------------
       # CSS filter options
       #
-      filters:
-        grayscale:                      0                                         # override (default: 1)
+      # filters:
+      #   grayscale:                      0                                       # override (default: 1)
+
 
     # ==========================================================================
     # Video Galleries
     # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
-    # HTML5 VIDEO
+    # HTML5 VIDEO (jg_video_html5)
     #
     - gallery:
       enabled:                          true
@@ -112,16 +153,19 @@ settings:
       type:                             video
       video:                            html5
       video_base_path:                  /assets/video/html5
-      image_base_path:                  /assets/video/poster/html5
+      image_base_url:                   /assets/video/poster/html5
       thumb_base_path:                  /assets/video/poster/html5
 
       # ------------------------------------------------------------------------
-      # Justified Gallery settings (override: defaults are 150 / 1)
+      # Justified Gallery settings
       #
       gallery_options:
-        rowHeight:                      250
-        gutters:                        3
+        rowHeight:                      250                                     # override (default: 150)
+        gutters:                        3                                       # override (default: 1)
 
+      # ------------------------------------------------------------------------
+      # Lightbox|lightGallery settings
+      #
       lightGallery:
         options:
           videojs:                      true                                    # override (default: false)
@@ -159,179 +203,7 @@ settings:
         brightness:                     1                                       # override (default: 0.4)
 
     # --------------------------------------------------------------------------
-    # Online VIDEO Carpool Karaoke (YouTube)
-    #
-    - gallery:
-      enabled:                          true
-
-      id:                               jg_video_youtube_james_and_adele
-      type:                             video
-      video:                            youtube
-      image_base_path:                  //img.youtube.com/vi
-
-      # ------------------------------------------------------------------------
-      # Justified Gallery settings (override: defaults are 150 / 1)
-      #
-      gallery_options:
-        rowHeight:                      250
-        gutters:                        3
-
-      lightGallery:
-        options:
-          videojs:                      true                                    # override (default: false)
-          videojsTheme:                 vjs-theme-uno                           # net-new (not in defaults)
-
-        videojsOptions:
-          enabled:                      true                                    # override (default: false)
-          tracks:                       false                                   # net-new (not in defaults)
-
-          hotKeysPlugin:                                                        # net-new key/placement
-            enabled:                    true
-            options:
-              volumeStep:               0.2
-
-          controlBar:
-            skipButtonsPlugin:
-              options:
-                forward:                5                                       # override (default: 15)
-                backward:               5                                       # override (default: 15)
-                backwardIndex:          0                                       # net-new
-                forwardIndex:           1                                       # net-new
-
-            zoomPlugin:
-              enabled:                  false                                   # override (default: true)
-
-        playerParams:                                                           # net-new block (not in defaults)
-          enabled:                      true
-          # start:                      ["00:00:50", "00:00:50"]                # start time video1, vido2
-          autoplay:                     1                                       # autoplay = 1 only available for YouTube when muted.
-          # controls:                   1                                       # default = 0
-          # enablejsapi:                1                                       # default = 1
-          # hl:                         en                                      # default = en
-          # loop:                       0                                       # default = 0
-          mute:                         0                                       # default = 1
-          # playsinline:                1                                       # for mobile|iOS only
-          # wmode:                      opaque                                  # default = opaque
-
-      # ------------------------------------------------------------------------
-      # CSS filter options
-      #
-      filters:
-        grayscale:                      0                                       # override (default: 1)
-        contrast:                       1                                       # override (default: 0.8)
-        brightness:                     1                                       # override (default: 0.4)
-
-    # --------------------------------------------------------------------------
-    # HTML5 VIDEO (over VideoJS)
-    #
-    - gallery:
-      enabled:                          true
-
-      id:                               jg_video_html5_videojs
-      type:                             video
-      video:                            html5
-      video_base_path:                  /assets/video/html5
-      image_base_path:                  /assets/video/poster/html5
-      thumb_base_path:                  /assets/video/poster/html5
-
-      # ------------------------------------------------------------------------
-      # Justified Gallery settings (override: defaults are 150 / 1)
-      #
-      gallery_options:
-        rowHeight:                      250
-        gutters:                        3
-
-      lightGallery:
-        options:
-          videojs:                      true                                    # override (default: false)
-          videojsTheme:                 vjs-theme-uno                           # net-new (not in defaults)
-
-        videojsOptions:
-          enabled:                      true                                    # override (default: false)
-
-          hotKeysPlugin:                                                        # net-new key/placement
-            enabled:                    true
-            options:
-              volumeStep:               0.2
-
-          controlBar:
-            skipButtonsPlugin:
-              options:
-                forward:                5                                       # override (default: 15)
-                backward:               5                                       # override (default: 15)
-                backwardIndex:          0                                       # net-new
-                forwardIndex:           1                                       # net-new
-
-      # ------------------------------------------------------------------------
-      # CSS filter options
-      #
-      filters:
-        grayscale:                      0                                       # override (default: 1)
-        contrast:                       1                                       # override (default: 0.8)
-        brightness:                     1                                       # override (default: 0.4)
-
-    # --------------------------------------------------------------------------
-    # TinyDesk Concerts, Latin (YouTube)
-    #
-    - gallery:
-      enabled:                          true
-
-      id:                               tdc_latin
-      type:                             video
-      video:                            youtube
-      image_base_path:                  //img.youtube.com/vi
-
-      # ------------------------------------------------------------------------
-      # Justified Gallery settings (override: defaults are 150 / 1)
-      #
-      gallery_options:
-        rowHeight:                      250
-        gutters:                        3
-
-      lightGallery:
-        options:
-          videojs:                      true                                    # override (default: false)
-          videojsTheme:                 vjs-theme-uno                           # net-new (not in defaults)
-
-        videojsOptions:
-          enabled:                      true                                    # override (default: false)
-
-          hotKeysPlugin:                                                        # net-new key/placement
-            enabled:                    true
-            options:
-              volumeStep:               0.2
-
-          controlBar:
-            skipButtonsPlugin:
-              options:
-                forward:                5                                       # override (default: 15)
-                backward:               5                                       # override (default: 15)
-                backwardIndex:          0                                       # net-new
-                forwardIndex:           1                                       # net-new
-
-            zoomPlugin:
-              enabled:                  false                                   # override (default: true)
-
-        playerParams:                                                           # net-new block (not in defaults)
-          enabled:                      true
-          autoplay:                     1                                       # autoplay = 1 only available for YouTube when muted.
-          mute:                         0                                       # default = 1
-
-      # ------------------------------------------------------------------------
-      # CSS filter options
-      #
-      filters:
-        grayscale:                      0                                       # override (default: 1)
-        contrast:                       1                                       # override (default: 0.8)
-        brightness:                     1                                       # override (default: 0.4)
-
-
-    # ==========================================================================
-    # Video Galleries over PhotoSwipe
-    # --------------------------------------------------------------------------
-
-    # --------------------------------------------------------------------------
-    # HTML5 VIDEO (over PhotoSwipe)
+    # HTML5 VIDEO over PhotoSwipe (jg_video_html5_pswp)
     #
     - gallery:
       enabled:                          true
@@ -340,18 +212,36 @@ settings:
       type:                             video
       video:                            html5
       video_base_path:                  /assets/video/html5
-      image_base_path:                  /assets/video/poster/html5
+      image_base_url:                   /assets/video/poster/html5
       thumb_base_path:                  /assets/video/poster/html5
 
       # ------------------------------------------------------------------------
-      # Justified Gallery settings (override: defaults are 150 / 1)
+      # STORAGE settings
       #
-      gallery_options:
-        rowHeight:                      250
-        gutters:                        3
+      storage:
+        enabled:                        false
+        preload:                        false
 
       # ------------------------------------------------------------------------
-      # Lightbox settings is kept.
+      # UI settings
+      #
+      manage:
+        enabled:                        false
+        title:                          Local Video
+        showItemTools:                  true
+        dropSettingsMenu:               true                                    # toggle menu (top right) to change image_base_url|dropBasePath at runtime
+
+        dropBasePath:                                                           # relative to image_base_url
+
+      # ------------------------------------------------------------------------
+      # Justified Gallery settings
+      #
+      gallery_options:
+        rowHeight:                      250                                     # override (default: 150)
+        gutters:                        3                                       # override (default: 1)
+
+      # ------------------------------------------------------------------------
+      # LIGHTBOX settings
       #
       lightbox:
         type:                           ps                                      # ps | lb | lg
@@ -362,8 +252,18 @@ settings:
       photoswipe:
 
         plugin:
-          fullscreen:                   false                                   # per-gallery opt-in (site-wide default: see defaults/photoswipe.yml)
-#         caption:                      true                                    # per-gallery opt-in/out (site-wide default: see defaults/photoswipe.yml)
+          fullscreen:                   false                                   # per-gallery opt-in|out (site-wide default: defaults/photoswipe.yml)
+          caption:                      true                                    # per-gallery opt-in|out (site-wide default: defaults/photoswipe.yml)
+
+        # captionOptions:
+        #   type:                       below
+        #   portraitPadding:            50
+
+        # fullscreenOptions:
+        #   enabled:                    true
+        #   fullscreenTitle:            Toggle fullscreen
+        #   fullscreenOnDoubleTap:      false                                   # opt-in (default: false)
+        #   doubleClickDelay:           300                                     # ms, 0..2000 (default: 300)
 
         videoOptions:
           enabled:                      true                                    # opt-in (default: false)
@@ -383,91 +283,12 @@ settings:
               zoomButtons:
                 enabled:                true                                    # restated (default: true)
 
-      # ------------------------------------------------------------------------
-      # CSS filter options
-      #
-      filters:
-        grayscale:                      0                                       # override (default: 1)
-        contrast:                       1                                       # override (default: 0.8)
-        brightness:                     1                                       # override (default: 0.4)
-
-
-    # --------------------------------------------------------------------------
-    # TinyDesk Concerts, Latin (YouTube, over PhotoSwipe)
-    #
-    - gallery:
-      enabled:                          true
-
-      id:                               tdc_latin_pswp
-      type:                             video
-      video:                            youtube
-      image_base_path:                  //img.youtube.com/vi
-
-      # ------------------------------------------------------------------------
-      # Justified Gallery settings (override: defaults are 150 / 1)
-      #
-      gallery_options:
-        rowHeight:                      250
-        gutters:                        3
-
-      # ------------------------------------------------------------------------
-      # Lightbox settings
-      #
-      lightbox:
-        type:                           ps                                      # ps | lb | lg
-
-      photoswipe:
-
-        plugin:
-          fullscreen:                   true                                    # per-gallery opt-in (site-wide default: see defaults/photoswipe.yml)
-
-        videoOptions:
-          enabled:                      true                                    # opt-in (default: false)
-
-          preventDragOffset:            56                                      # override (default: 40)
-
-      # ------------------------------------------------------------------------
-      # CSS filter options
-      #
-      filters:
-        grayscale:                      0                                       # override (default: 1)
-        contrast:                       1                                       # override (default: 0.8)
-        brightness:                     1                                       # override (default: 0.4)
-
-    - gallery:
-      enabled:                          true
-
-      id:                               jg_video_youtube_pswp
-      type:                             video
-      video:                            youtube
-      image_base_path:                  //img.youtube.com/vi
-
-      # ------------------------------------------------------------------------
-      # Justified Gallery settings (override: defaults are 150 / 1)
-      #
-      gallery_options:
-        rowHeight:                      250
-        gutters:                        3
-
-      # ------------------------------------------------------------------------
-      # Lightbox settings
-      #
-      lightbox:
-        type:                           ps                                      # ps | lb | lg
-
-      photoswipe:
-
-        plugin:
-          fullscreen:                   true                                    # per-gallery opt-in (site-wide default: see defaults/photoswipe.yml)
-
-        videoOptions:
-          enabled:                      true                                    # opt-in (default: false)
-
-          autoplay:                     startOnFirst                            # restated (default: startOnFirst)
-          preventDragOffset:            56                                      # override (default: 40)
-
-          videoAttributes:
-            muted:                      false                                   # override (default: '' = muted)
+              videoFilters:
+                enabled:                true                                    # net-new (plugin not active by default)
+                options:
+                  persist:
+                    scope:              player                                  # override (default: page)
+                    key:                jg_video_html5_pswp                     # override (default: player id)
 
       # ------------------------------------------------------------------------
       # CSS filter options

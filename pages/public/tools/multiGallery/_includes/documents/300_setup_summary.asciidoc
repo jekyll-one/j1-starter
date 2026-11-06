@@ -1,0 +1,1112 @@
+[role="mt-5"]
+== Setup Summary
+
+This section is a compact *reference* of all settings a J1 gallery can have.
+It follows the defaults file `_data/modules/defaults/gallery.yml`, where
+every key is documented in detail. Use it to look up a key after you have
+read the setup guide above. The tables show the *J1 default* of each key,
+that is the value a gallery gets when you do not set the key yourself.
+
+
+[role="mt-5"]
+=== The three files and how they are merged
+
+A gallery is described in the defaults file and in *two* files of your
+site. The two site files use the *same* list structure. Every entry starts
+with `- gallery:`, and the `id` is the key that joins the entries of the
+two files:
+
+[source, yaml]
+----
+settings:
+  galleries:
+
+    - gallery:
+      id:                       <unique id>
+      ...
+----
+
+When the site is built, the settings of one gallery are put together from
+*four* layers. A later layer wins over an earlier one, but only for the
+keys it states; keys it does not state fall through from the layer above.
+This is called a _deep merge_:
+
+[cols="1,4,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|# |Layer |File
+
+|1
+|Defaults
+|`gallery.yml`, the block `defaults`
+
+|2
+|Global settings
+|`gallery_control.yml`, the keys of `settings` outside the list
+`galleries` (for example `enabled`)
+
+|3
+|Gallery settings
+|`gallery_control.yml`, the entry of the list `galleries` with the same
+`id`
+
+|4
+|Media content
+|`gallery_media.yml`, the entry of the list `galleries` with the same
+`id`
+
+|===
+
+A few rules follow from this:
+
+* *Write only what is different.* A value that is the same as the default
+  is not written in `gallery_control.yml`; it is inherited. The shipped
+  file marks the kind of every value with a short trailing comment:
++
+[cols="4,8", options="header", width="100%", role="table-striped rtable"]
+|===
+|Marker |Meaning
+
+|`# override (default: x)`
+|The value is different from the default `x`.
+
+|`# net-new`
+|The key does not exist in the defaults file.
+
+|`# restated (default: x)`
+|The value is the same as the default; it is written only to make the
+entry easier to read.
+
+|`# opt-in`
+|The key switches on a feature that is off by default.
+
+|===
+
+* *A partial block is safe.* You can write a block like `manage` with only
+  one or two keys; the rest is taken from the defaults. A merge can only
+  add or replace a value, it can never *remove* one. (This is why some keys
+  have a value with a "remove" meaning, for example
+  `videoAttributes.muted: false`, see <<setup-summary--photoswipe, PhotoSwipe settings>>.)
+* *Lists are replaced as a whole.* A list in your file (for example
+  `storage.addClasses` or `sortOptions`) replaces the list of the defaults;
+  the two lists are not joined.
+* *Only the control file switches a gallery on.* The `enabled` key is read
+  from layers 1 to 3 only. The `enabled: true` written in the media entries
+  is *ignored*; it cannot switch on a gallery that the control file switches
+  off.
+* *Media content needs a rebuild.* The images and videos of
+  `gallery_media.yml` are written into the HTML data file when the site is
+  built. After a change in the control file or the media file, rebuild the
+  site.
+
+[TIP]
+====
+To see the *final* settings of a gallery after the merge, open the browser
+console (*F12*) and type:
+
+[source, javascript]
+----
+j1.adapter.gallery.getInstanceOptions('jgMegaCities')
+----
+====
+
+
+[role="mt-5"]
+=== The keys of a gallery entry
+
+These keys sit at the top level of a gallery entry in
+`gallery_control.yml`, outside the blocks described later.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`enabled`
+|false
+|Shows the gallery (`true`) or not (`false`). Only the value in the control
+file counts.
+
+|`id`
+|-
+|The unique name of the gallery. It names the gallery element on the page,
+all elements of the manage bar, and the browser storage entries of the
+gallery. It must be the same in the control file, in the media file and in
+the page macro `gallery::<id>[]`.
+
+|`type`
+|-
+|`image` for a photo gallery, `video` for a video gallery.
+
+|`video`
+|-
+|Video galleries only: `html5` for your own video files, `youtube` for
+videos on YouTube.
+
+|`video_base_path`
+|-
+|Video galleries with `video: html5` only: the folder of the video files.
+The `source` of every video in the media file is relative to it. Not used
+for YouTube; those addresses are written in full in the media file.
+
+|`image_base_url`
+|-
+|The *folder* of the images (image galleries) or of the poster images
+(video galleries). It is used in two places: for every static image of the
+media file (`<image_base_url>/<file>`) and as the base of the drop area of
+the editor (`<image_base_url>/<dropBasePath>/<file>`). YouTube galleries
+use `//img.youtube.com/vi`. The older key `image_base_path` still works as
+a fallback.
+
+|`thumb_base_path`
+|-
+|For information only. Neither the data file nor the adapter reads this
+key; the poster folder is `image_base_url`.
+
+|===
+
+[CAUTION]
+====
+Give `image_base_url` as a *site folder* like `/assets/image/my_gallery`.
+A bare server address like `http://localhost:40000` has no folder part:
+every image address is wrong, the gallery stays empty, and the browser
+console shows a warning that names the gallery. A fixed server address
+also breaks the gallery on every other server.
+====
+
+
+[role="mt-5"]
+[[setup-summary--storage]]
+=== Storage: saving items in the browser
+
+The `storage` block saves the items of a gallery in the browser
+(_localStorage_, key `jg_gallery_<id>`). Each saved item carries everything
+the gallery needs to rebuild the tile: the image address, the thumbnail,
+the caption, the size, and the extra values the lightbox reads. So a
+saved item opens in lightGallery and in PhotoSwipe just like an item of
+the media file.
+
+The idea is the same as the playlist of the J1 *MultiPlayer*: the player
+keeps its playlist in the browser and offers a bar with a list and an
+editor. The gallery does the same for its items.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`enabled`
+|false
+|Saves the items automatically every time the layout of the gallery is
+finished. A gallery with the manage bar can save items *without* this key:
+then they are saved only when the visitor changes something.
+
+|`key`
+|null
+|The name of the browser storage entry. `null` means `jg_gallery_<id>`.
+
+|`exportOnComplete`
+|true
+|`false` = never save automatically; the items are saved only on request
+(the command `storeExport`).
+
+|`autoRestore`
+|true
+|Saved items the visitor *changed* (import, add, edit, rate, remove)
+replace the items of the media file on the next page load. `false` =
+always show the items of the media file.
+
+|`mergeMode`
+|false
+|How *Import* works: `false` replaces all items, `true` adds only the items
+that are not in the gallery yet (items are compared by their id).
+
+|`reloadOnClear`
+|true
+|*Clear Gallery* removes the saved items (after downloading a backup file)
+and reloads the page, so the gallery is built from the media file again.
+
+|`addClasses`
+|[]
+|CSS classes given to items added by *link* in the editor. A lightGallery
+gallery needs `[lg-item]` here, so the new items open in the lightbox.
+PhotoSwipe galleries need nothing.
+
+|`preload`
+|false
+|One or more JSON item files that are loaded into the gallery on every
+page load (a single name or a list). See below.
+
+|`preloadUrlBase`
+|/assets/data/apps/ +
+multiGallery/playlists/ +
+lists
+|The folder of the preload files. A name that starts with `/` or
+`http(s)://` is used as it is.
+
+|===
+
+[NOTE]
+====
+*When do saved items win over the media file?* Every gallery with
+`storage.enabled` *or* `manage.enabled` has a storage entry. Saved items
+that the visitor has *not* changed never replace the media file; they are
+simply written again. Saved items the visitor *has* changed are shown
+instead of the media file (with `autoRestore: true`). A gallery *without*
+images in the media file (an empty `images` key, like the manager above)
+always shows its saved items, and its empty layout never overwrites them.
+====
+
+==== Preloading items from JSON files
+
+`storage.preload` fills a gallery from JSON files on the server, the way
+`playlist.preload` fills a playlist of the MultiPlayer. It works only for a
+gallery whose `images` list in the media file is *empty*; a gallery with
+static images skips the preload and writes a warning to the console.
+
+The files are *merged* into the saved items on every page load: an item is
+never loaded twice and never overwrites a saved item, so the list can stay
+in the configuration for good. Items the visitor added are kept. An item
+the visitor removed comes back on the next load as long as its file is
+listed, and *Clear Gallery* loads the files again after the reload.
+
+[source, yaml]
+----
+storage:
+  preload:                  [ mega-cities.json, old-times.json ]
+----
+
+A preload file is either a plain list of items or the file that *Export
+Gallery* writes (see the section _Item file format_ of the MultiGallery
+user guide).
+
+[TIP]
+====
+The easiest way to create a preload file: build the gallery in the browser
+(paste links, import), press *Export Gallery*, and save the downloaded file
+into the preload folder.
+====
+
+
+[role="mt-5"]
+[[setup-summary--manage]]
+=== Manage bar
+
+The `manage` block builds a *bar* above the gallery with a title, the
+number of items, a button on the left that opens the *item list*, and a
+button on the right that opens the *editor*. While one of the two screens
+is open, the gallery itself is hidden. The bar is built in the browser; the
+HTML data file is not touched, so switching it on needs no rebuild of the
+data file.
+
+[source, yaml]
+----
+manage:
+  enabled:                  true
+  title:                    My Photos
+  showItemTools:            true
+----
+
+==== Bar and screens
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`enabled`
+|false
+|Builds the bar, the item list and the editor. The storage entry of the
+gallery is created with it; automatic saving still follows
+`storage.enabled`.
+
+|`title`
+|null
+|The title in the bar. `null` shows the gallery `id`.
+
+|`showCount`
+|true
+|Adds the number of items to the title: `My Photos (12)`.
+
+|`showListButton`
+|true
+|Shows the left button (open or close the item list). The list shows every
+item with thumbnail, caption, size and source.
+
+|`editButton`
+|true
+|Shows the right button (open or close the editor).
+
+|`listDeleteButton`
+|true
+|Shows a remove button in every row of the item list.
+
+|`listSource`
+|auto
+|Where the item list and the number in the title come from. `auto` = the
+saved items, or the items on the page while nothing is saved yet (so the
+list also works for galleries without `storage.enabled`, for example a
+video gallery). `store` = saved items only. `dom` = items on the page only.
+
+|`manageScreenHeight`
+|535px
+|The fixed height of the item list and the editor. A number means pixels;
+you may also write units like `px`, `rem`, `em` or `vh` (for example
+`60vh`). Percent values are not supported. Content taller than this
+scrolls inside the screen. An invalid value falls back to the default
+with a console warning.
+
+|`listUrl`
+|index.json
+|The index file of the galleries offered by the *import* list of the
+editor. A plain file name is looked up in `listUrlBase` (it is not a
+page-relative address). `false` = no import list. The index is a plain
+list of names and files, like the playlist index of the MultiPlayer:
+`[{ "name": "Mega Cities", "file": "mega-cities.json" }]`.
+
+|`listUrlBase`
+|/assets/data/apps/ +
+multiGallery/playlists/ +
+lists
+|The folder of the index file and of the gallery files it names.
+
+|`icons`
+|{}
+|Replaces the four bar icons by name: `playlist-show`, `playlist-hide`,
+`playlist-edit`, `playlist-edit-close`. By default the icons of the J1
+MultiPlayer are used.
+
+|===
+
+Choosing a gallery in the import list and pressing *Import* loads its items
+into the gallery (replace, or add with `storage.mergeMode: true`). The
+loaded items survive a reload.
+
+==== Item tools and dialogs
+
+Every item can be *rated* (1 to 5 stars), *edited* and *removed*. The
+buttons for this are shown in the rows of the item list and, with
+`showItemTools: true`, as small round buttons on every tile (on mouse over;
+always visible on touch devices).
+
+The *Edit Media Settings* dialog has the fields Category, Title,
+Description, Info Link, Image Link, Thumbnail, Issue Date and Tags. A
+title is shown as the caption of the tile; an empty title keeps the
+original caption. For a *video* item the dialog shows *Video Link* (a
+local file or a YouTube link), *Poster Image* and *Video Size* (for example
+`1280-720`) instead of the image fields; a changed value is written into
+the attributes the lightbox player reads.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`showItemTools`
+|false
+|Shows the rate, edit and remove buttons on every tile of the gallery.
+Needs `manage.enabled: true`. The buttons in the item list are not
+affected.
+
+|`itemRating`
+|true
+|Offers the *Set Media Rating* dialog (star button). The rating is saved
+with the item.
+
+|`itemEdit`
+|true
+|Offers the *Edit Media Settings* dialog (edit button).
+
+|`itemDelete`
+|true
+|Offers the remove button (trash icon) in the item tools of every tile. It
+removes the item from the page and from the saved items. The remove button
+in the item list follows `listDeleteButton`.
+
+|`itemDeleteConfirm`
+|true
+|Asks before an item is removed (dialog *Remove Media Item* with the
+thumbnail, Cancel or Remove). `false` removes at once.
+
+|`categories`
+|null
+|The choices of the *Category* list for image items. `null` = a built-in
+list (Animals, Architecture, Art, Events, Family, Food, Landscape, Nature,
+People, Sports, Technology, Travel, Vehicles).
+
+|`videoCategories`
+|null
+|The choices of the *Category* list for video items. `null` = a built-in
+list (Animation, Comedy, Concert, Documentary, Education, Events, Family,
+Gaming, Movies, Music, Nature, News, Sports, Technology, Travel).
+
+|===
+
+[NOTE]
+====
+Rating, editing or removing an item marks the saved items as *changed by
+the visitor*. From the next page load on, the saved items are shown instead
+of the media file (`storage.autoRestore`). *Clear Gallery* brings the media
+file back.
+====
+
+==== Drop area
+
+The drop area at the top of the editor adds many images at once. It takes
+image *files* (also several at once), whole *folders*, and image *links*
+dragged from another browser tab. The *browse ...* button opens a file
+picker instead.
+
+A browser never tells a web page where a dropped file lives on the disk of
+the visitor. So J1 *maps* a dropped file by its *name* to an address on the
+web server, below the image folder of the gallery, and then *checks* that
+address:
+
+----
+<image_base_url>/<dropBasePath>/<file>
+<image_base_url>/<dropBasePath>/<folder>/<file>     (a whole folder dropped)
+----
+
+Only images the server really delivers are added. Files that are not found
+are reported below the drop area. In short: copy the image files into that
+folder on the server *first*, then drop them.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`dropArea`
+|true
+|Shows the drop area as a section of its own above the *paste a link* bar
+of the editor. `false` leaves the whole drop section out.
+
+|`dropBasePath`
+|null
+|An optional *sub folder* below `image_base_url` for dropped files, for
+example `sets/summer`. `null` = the files are in `image_base_url` itself.
+`false` = local files are not mapped at all (only links can be dropped).
+A leading `/` is only a separator; the path still sits below the image
+folder. A full path that already starts with `image_base_url`, or an
+address of another server, is used as it is (with a console warning).
+Without `image_base_url`, the sub folder is used alone (relative to the
+page).
+
+|`dropKeepFolders`
+|true
+|When a folder is dropped, its name becomes part of the address:
+`<base>/<folder>/<file>`. `false` = `<base>/<file>`.
+
+|`dropMaxFiles`
+|100
+|The maximum number of image files per drop. `0` = no limit.
+
+|`dropFallback`
+|none
+|What happens to a file that is *not* found on the server. `none` = skip
+it (reported in the status line). `dataUrl` = store the image itself inside
+the saved item. Use this for small images only: the browser storage holds
+about 5 MB per site.
+
+|`dropMaxDataUrlSize`
+|100000
+|The largest file (in bytes, about 100 KB) that `dataUrl` may store.
+
+|`dropCloseOnSuccess`
+|true
+|Closes the editor after a drop that added items without errors. Otherwise
+the editor stays open and shows the result.
+
+|===
+
+[NOTE]
+====
+`image_base_url` is the image *folder*; `dropBasePath` is a sub folder
+*below* it. Do not write the image folder into both keys: the folder would
+appear twice in the address. To see the folder a gallery really uses, type
+`j1.adapter.gallery.getDropBasePath('<id>')` in the browser console.
+====
+
+==== Runtime menu of the drop area
+
+A small menu button (three dots) at the top right of the drop area opens a
+menu to *change* the two parts of the address -- the image folder and the
+sub folder -- for the current gallery *while the page is open*. The YAML
+files are not changed; *Reset* in the menu returns to their values. A
+changed folder is marked `runtime` in the info line of the drop area.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`dropSettingsMenu`
+|false
+|Shows the menu button and the menu. The shipped galleries
+`galleryManager`, `jgMegaCities` and `jg_video_html5_pswp` switch it on.
+
+|`dropSettingsPersist`
+|true
+|Remembers the changed values per gallery in the browser (storage entry
+`jg_dropbase_<id>`) and uses them again on the next visit. `false` = the
+change lasts for the current page view only.
+
+|===
+
+==== Retired keys
+
+Two keys of older versions are still in the defaults file but are *no
+longer read*; they are kept for reference only:
+
+[cols="3,9", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Replaced by
+
+|`screenMinHeight`
+|`manageScreenHeight` (the fixed height of both screens).
+
+|`tileButtons`
+|`showItemTools` (the item tools on every tile).
+
+|===
+
+
+[role="mt-5"]
+[[setup-summary--search]]
+=== Search and sort
+
+The `search` block adds a *search field* and a *sort list* above the
+gallery (below the manage bar, when there is one). The search looks at the
+title, description, category, tags, type, caption and alt text of every
+item and shows only the matching tiles. Several words must *all* match;
+words in quotes, like `"New York"`, are searched together. The search bar
+is hidden while the editor is open. It works for every gallery, also
+without the manage bar.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`enabled`
+|false
+|Shows the search bar.
+
+|`placeholder`
+|(help text)
+|The gray help text inside the empty search field.
+
+|`sort`
+|true
+|Shows the sort list.
+
+|`sortOptions`
+|null
+|Which sort choices are offered, and in which order. `null` = all of them:
+`none` (original order), `addDate`, `addDateAsc`, `issueDate`,
+`issueDateAsc`, `title`, `category`, `description`, `rating`, `type`.
+
+|`defaultSort`
+|none
+|The sort order on the first page load.
+
+|`rememberSort`
+|true
+|Remembers the chosen sort order in the browser for the next visit. The
+search text is not remembered.
+
+|`showCount`
+|true
+|Shows "n items found" while a search is active.
+
+|`debounce`
+|300
+|How long (in milliseconds) to wait after the last key press before
+searching. *Enter* searches at once, *Esc* clears the search.
+
+|===
+
+[NOTE]
+====
+The shipped manager gallery has a key `search.type: simpleSearch`. This key
+is read by nobody; the search has no types. You can leave it out.
+====
+
+
+[role="mt-5"]
+[[setup-summary--lightbox]]
+=== Lightbox settings
+
+The `lightbox` block chooses the lightbox of a gallery. Only the `type` is
+usually written; `enabled: true` is inherited from the defaults.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`lightbox.enabled`
+|true
+|Opens a lightbox when a tile is clicked. Leave it at `true` (with `false`
+an image gallery currently shows no images).
+
+|`lightbox.type`
+|lg
+|`lg` = lightGallery, `ps` = PhotoSwipe, `lb` = Lightbox2 (image galleries
+only). Load the matching resource on the page: `lightgallery` for `lg`,
+`photoswipejs` for `ps`.
+
+|===
+
+The two main lightboxes read *different* blocks of the gallery entry. The
+block of the other lightbox is merged but never used, so a gallery can
+keep both blocks and switch between the lightboxes with one line:
+
+[cols="3,9", options="header", width="100%", role="table-striped rtable"]
+|===
+|`lightbox.type` |Blocks that are read
+
+|`lg`
+|`lightGallery.plugins`, `lightGallery.options`,
+`lightGallery.videojsOptions`, `lightGallery.playerParams`
+
+|`ps`
+|`photoswipe.*` -- written by the data file into the attributes of the
+gallery element (video options, fullscreen, caption)
+
+|===
+
+Some settings exist on both sides under different names:
+
+[cols="5,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|lightGallery key |PhotoSwipe key
+
+|`playerParams.autoplay: 1`
+|`photoswipe.videoOptions.autoplay`
+
+|`playerParams.mute: 0`
+|`photoswipe.videoOptions.videoAttributes.muted: false`
+
+|`videojsOptions.enabled`
+|`photoswipe.videoOptions.videojs.enabled`
+
+|`videojsOptions.tracks`
+|`photoswipe.videoOptions.tracks`
+
+|`videojsOptions.hotKeysPlugin`, +
+`videojsOptions.controlBar.skipButtonsPlugin`, +
+`videojsOptions.controlBar.zoomPlugin`
+|`photoswipe.videoOptions.videojs.plugins.hotKeys`, +
+`... .skipButtons`, +
+`... .zoomButtons`
+
+|===
+
+==== Video galleries with lightGallery
+
+A video gallery on `lightbox.type: lg` plays its videos in VideoJS when
+these keys are set in the `lightGallery` block:
+
+[cols="4,8", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Description
+
+|`options.videojs: true`
+|Use the VideoJS player (default `false`).
+
+|`options.videojsTheme`
+|The player theme, for example `vjs-theme-uno` (not in the defaults).
+
+|`videojsOptions.enabled: true`
+|Switches the VideoJS options on (default `false`).
+
+|`videojsOptions.tracks: true`
+|Uses the subtitle and chapter files of the videos.
+
+|`videojsOptions.hotKeysPlugin`
+|Keyboard control. Written at the top level of `videojsOptions` (the
+defaults file has it under `controlBar.hotkeysPlugin`).
+
+|`videojsOptions.controlBar.skipButtonsPlugin`
+|Skip buttons; `options.forward`, `options.backward` (seconds),
+`backwardIndex` and `forwardIndex` (button positions).
+
+|`videojsOptions.controlBar.zoomPlugin`
+|Zoom buttons; `showZoom`, `showMove`, `showRotate`, `gestureHandler`.
+
+|`playerParams`
+|Parameters for YouTube embeds, for example `autoplay: 1` and `mute: 1`.
+Autoplay works only when muted.
+
+|===
+
+Customized thumbnails need three options together:
+`options.addClass: lg-uno-thumbnails`, `options.appendThumbnailsTo:
+.lg-outer` and `options.allowMediaOverlap: true`.
+
+
+[role="mt-5"]
+[[setup-summary--photoswipe]]
+=== PhotoSwipe settings
+
+A gallery with `lightbox.type: ps` is configured in the `photoswipe` block.
+The keys below are merged over the site-wide PhotoSwipe settings
+(`_data/modules/defaults/photoswipe.yml`) for this one gallery.
+
+[NOTE]
+====
+*What has to be on the page.* Video galleries need the `videojs` resource
+(and the YouTube support of VideoJS for YouTube galleries); the fullscreen
+button needs the PhotoSwipe fullscreen plugin; `videoFilters` needs the
+videoFilters plugin that ships with the `videojs` resource. Without the
+needed script the feature is left out with one console warning. The video
+plugin itself is switched on *per gallery* (`videoOptions.enabled`); a
+site-wide switch would attach it to the image galleries as well.
+====
+
+==== General keys
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`auto_detect_size`
+|false
+|Measures the real size of the images instead of trusting `width` and
+`height` of the media file. `false` = never, `missing` = only for images
+without a usable size, `always` = for every image (`true` is accepted as
+well). An image entry can also ask for a measurement itself by writing
+`auto-detect` as its size. Needed for galleries whose items are added at
+runtime, like the manager.
+
+|`plugin.fullscreen`
+|(absent)
+|The full-screen button of *this* gallery. Three states: `true` = button,
+`false` = no button, *absent* = use `fullscreenOptions.enabled`, then the
+site-wide setting. To switch the button off, write `false`; deleting the
+line is the third state, not the same thing. The button puts the whole
+lightbox into full screen; the full-screen control of the video player is
+a separate thing, and both work together.
+
+|`plugin.caption`
+|(absent)
+|The caption plugin of this gallery, with the same three states.
+
+|`captionOptions.type`
+|below
+|Where the caption is shown: `below` the image (J1 default), `aside`, or
+`auto` (with `autoAllowAside: true`).
+
+|`captionOptions.portraitPadding`
+|-
+|Extra space above and below *portrait* images: `25`, `'25px'`, or
+`{ top: 40, bottom: 20 }`. Visible only where the image fills the height.
+
+|===
+
+==== Fullscreen options
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`fullscreenOptions.enabled`
+|-
+|The same switch as `plugin.fullscreen`, one level down. Write only *one*
+of the two.
+
+|`fullscreenOptions.fullscreenTitle`
+|Toggle fullscreen
+|The tooltip of the button.
+
+|`fullscreenOptions.fullscreenOnDoubleTap`
+|false
+|A double click or double tap toggles full screen. Costs: a double tap on a
+touch screen no longer zooms (pinch still does), and every single click is
+delayed by `doubleClickDelay`. Needs an active button and the full-screen
+support of the browser.
+
+|`fullscreenOptions.doubleClickDelay`
+|300
+|The delay in milliseconds (0 to 2000).
+
+|`fullscreenOptions.doubleTapExclude`
+|(player controls, +
+buttons, links, +
+fields)
+|A CSS selector of elements where a double click does nothing. A value
+here *replaces* the default list.
+
+|===
+
+[NOTE]
+====
+The PhotoSwipe option `doubleTapAction: false` (in `photoswipe.yml`)
+switches the double-tap *detection* of the touch screen off; the touch
+gesture then does nothing, while the mouse double click keeps working.
+A gallery without a `fullscreenOptions` block inherits nothing from the
+gallery defaults (there is no such block there); the plugin defaults
+apply, with the double tap off.
+====
+
+==== Video options
+
+The block `photoswipe.videoOptions` is merged over the video defaults of
+the gallery defaults file.
+
+[cols="3,2,7", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Default |Description
+
+|`enabled`
+|false
+|Switches the video plugin on for this gallery. *Required* for every
+PhotoSwipe video gallery; without it every slide is loaded as an image
+(a black frame) and the player settings are never used.
+
+|`autoplay`
+|startOnFirst
+|`startOnFirst` = only the first video a visitor opens in a lightbox
+session starts by itself. `startOnAll` (or `true`) = every video starts
+when its slide is shown. `false` = nothing starts by itself. Writing the
+old value `true` would turn the default into an override.
+
+|`videoAttributes.muted`
+|'' (muted)
+|By default videos start muted; the empty string writes the bare attribute
+`muted`. `false` *leaves the attribute out* (the only way to remove it:
+`muted="false"` would still mute) and starts the video *with sound*. For
+your own video files this works, because the click on the tile counts as
+an interaction. A YouTube video inside its own frame refuses an un-muted
+start; see `autoplayMutedFallback`.
+
+|`autoplayMutedFallback`
+|true
+|When the first start of a video fails silently (YouTube), mute the video
+and try once more, so the slide starts without sound instead of showing
+the poster with a spinner. `false` = one attempt only.
+
+|`autoplayProbeTimeout`
+|1200
+|How long (milliseconds) to wait for a start before the muted retry. Raise
+it on slow connections.
+
+|`tracks`
+|true
+|Uses the subtitle and chapter files of the videos (`tracks` in the media
+file).
+
+|`preventDragOffset`
+|40
+|The height (px) of the strip at the bottom of a slide where a drag does
+not change the slide, so the player controls can be used. YouTube galleries
+use `56`, because the YouTube control bar sits lower.
+
+|`videojs.enabled`
+|true
+|Use the VideoJS player for videos marked `api: videojs` in the media
+file. Required for YouTube.
+
+|`videojs.theme`
+|vjs-theme-uno
+|The player theme.
+
+|`videojs.customProgressBar`
+|true
+|Builds the control bar in the *uno* layout (time, progress bar and
+duration in one row), the same bar lightGallery shows.
+
+|`videojs.options`
+|see `gallery.yml`
+|Options handed to the VideoJS player as they are (controls, preload,
+playback rates, control bar). `autoplay` is not read here; the lightbox
+decides which slide plays.
+
+|`videojs.plugins`
+|see `gallery.yml`
+|The extra controls, each with `enabled` and `options`: `hotKeys`
+(keyboard), `skipButtons` (`forward`, `backward` in seconds),
+`zoomButtons` (ignored for YouTube slides), and `videoFilters`
+(brightness, contrast, saturation; off by default). Write only the keys you
+change, for example `skipButtons.options.forward: 5`.
+
+|===
+
+[NOTE]
+====
+For `videoFilters`, set `options.persist.scope: player` and
+`options.persist.key: <gallery id>`. The players of a lightbox are created
+at runtime with changing ids; with a fixed key, one record per gallery
+keeps the filter values for every slide and every visit. YouTube slides are
+skipped by the filter plugin itself.
+====
+
+[source, yaml]
+----
+photoswipe:
+  videoOptions:
+    enabled:                  true
+    autoplay:                 startOnFirst
+
+    videoAttributes:
+      muted:                  false
+
+    videojs:
+      plugins:
+        skipButtons:
+          options:
+            forward:          5
+            backward:         5
+
+        videoFilters:
+          enabled:            true
+          options:
+            persist:
+              scope:          player
+              key:            myVideos
+----
+
+
+[role="mt-5"]
+[[setup-summary--media]]
+=== Media content
+
+The entries of `gallery_media.yml` hold the *content* of a gallery. An
+image gallery has a list `images`, a video gallery a list `videos`. The
+`enabled` key of a media entry is ignored; only the control file switches
+a gallery on.
+
+==== Images
+
+One `- image:` entry per image. The list is left *empty* on purpose for a
+gallery that gets its items from JSON files or from the browser (like the
+manager).
+
+[cols="3,9", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Description
+
+|`file`
+|The file name below `image_base_url`.
+
+|`width`, `height`
+|The real size of the image in pixels. The lightbox needs it to place the
+image. Write `auto-detect` instead of a number to let PhotoSwipe measure
+the image.
+
+|`caption_text`
+|The caption of the tile (also used as the alt text). HTML entities like
+`&middot;` are allowed.
+
+|`description`
+|The caption in the lightbox. HTML is allowed.
+
+|===
+
+==== Videos
+
+One `- video:` entry per video.
+
+[cols="3,9", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Description
+
+|`enabled`
+|Shows (`true`) or hides (`false`) this one video.
+
+|`name`
+|The name used in the share texts.
+
+|`type`
+|`html5` for your own video files, `youtube` for YouTube.
+
+|`api`
+|The player: `videojs`, `iframe` or `native`. Use `videojs`; it is
+*required* for YouTube on PhotoSwipe, because a plain video element
+cannot load a YouTube address.
+
+|`size`
+|The size of the video as `width-height`, for example `1280-720`. A
+missing or wrong value falls back to `1280-720`; `auto-detect` measures
+the video.
+
+|`source`
+|HTML5: the file name below `video_base_path`. YouTube: the address
+`//youtube.com/watch?v=<id>`.
+
+|`poster_image`
+|The picture on the tile, a file below `image_base_url`. For YouTube:
+`<id>/maxresdefault.jpg` or `<id>/mqdefault.jpg`. The lightbox shows it
+while the video loads, and the player uses it as its poster.
+
+|`pinterest_prefix`, `tweet_prefix`
+|The prefixes of the share texts.
+
+|`caption_text`, `description`
+|As for images.
+
+|`tracks`
+|A list of text tracks (subtitles, captions, chapters), see below. On
+PhotoSwipe the list is used only with `videoOptions.tracks: true`.
+
+|`playerParams.start`
+|lightGallery with YouTube only: the second to start at. PhotoSwipe has
+no equivalent.
+
+|===
+
+Every text track is one `- track:` entry:
+
+[cols="3,9", options="header", width="100%", role="table-striped rtable"]
+|===
+|Key |Description
+
+|`default`
+|`true` = switch this track on, unless the visitor's player settings choose
+another one.
+
+|`kind`
+|`captions`, `subtitles`, `chapters`, ...
+
+|`srclang`
+|The language code of the track, for example `en`.
+
+|`label`
+|The name shown in the player menu.
+
+|`src`
+|The path of the `.vtt` file.
+
+|===
+
+[TIP]
+====
+The media entries have the *same* shape for both lightboxes. To move a
+gallery from lightGallery to PhotoSwipe, change `lightbox.type` in the
+control file; the media file stays as it is.
+====
+
+
+[role="mt-5"]
+[[setup-summary--shipped]]
+=== Galleries shipped with J1
+
+The shipped configuration files contain these galleries. Their entries are
+good examples to copy from:
+
+[cols="4,8", options="header", width="100%", role="table-striped rtable"]
+|===
+|Gallery `id` |What it is
+
+|`galleryManager`
+|Image gallery, PhotoSwipe, manage bar and search, no images in the media
+file (filled from JSON files or the browser). The manager on this page.
+
+|`jgMegaCities`
+|Image gallery, PhotoSwipe, saved in the browser, ten static images. The
+viewer on this page.
+
+|`jg_video_html5`
+|Video gallery with your own video files, lightGallery with VideoJS.
+
+|`jg_video_html5_pswp`
+|Video gallery with your own video files, PhotoSwipe, starts with sound,
+video filters.
+
+|`jg_video_youtube_pswp`
+|Video gallery with YouTube videos, PhotoSwipe, falls back to a muted
+start. Present in the media file; add a control entry to use it.
+
+|===

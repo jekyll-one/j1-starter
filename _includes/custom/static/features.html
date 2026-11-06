@@ -1,0 +1,234 @@
+<!--
+# -----------------------------------------------------------------------------
+# ~/assets/custom/content/static/features.html
+# Feature container
+#
+# Product/Info:
+# https://jekyll.one
+#
+# Copyright (C) 2023-2026 Juergen Adams
+#
+# J1 Template is licensed under the MIT License.
+# See: https://github.com/jekyll-one-org/j1-template/blob/main/LICENSE
+# -----------------------------------------------------------------------------
+-->
+
+<!-- CSS styles -->
+<style>
+
+  .card-h {
+    background: var(--md-gray-100);
+    border: 1px solid var(--md-gray-300);
+    /* border-radius: 14px; */
+    padding: 1.5rem;
+    height: 100%;
+    transition: box-shadow .18s ease, border-color .18s ease
+  }
+
+  .card-h:hover {
+    box-shadow: 0 8px 8px var(--md-gray-600);
+    border-color: #C6D8EE
+  }
+
+  .ico {
+    width: 40px;
+    height: 40px;
+    /* border-radius: 11px; */
+    background: var(--md-blue-100);
+    display: grid;
+    place-items: center;
+    margin-bottom: .9rem
+  }
+
+  .ico svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--md-blue-500);
+    fill: none;
+    stroke-width: 1.8
+  }
+
+  .card-h h3 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: .4rem;
+    color: var(--md-gray-700);
+  }
+
+  /* Hero panel centered icon/header Fix #1: icon and headline side by side, centered on one line */
+  .card-h-head {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .75rem;
+    margin-bottom: .9rem
+  }
+
+  /* Hero panel centered icon/header Fix #1: vertical spacing moved to .card-h-head */
+  .card-h-head .ico {
+    flex-shrink: 0;
+    margin-bottom: 0
+  }
+
+  /* Hero panel centered icon/header Fix #1: remove bottom margin so the h3 centers against the icon */
+  .card-h-head h3 {
+    margin-bottom: 0
+  }
+
+  .card-h p {
+    color: var(--md-blue-gray-500);
+    font-size: .94rem;
+    line-height: 1.6;
+    margin: 0
+  }
+
+</style>
+
+<!-- FEATURE container settings -->
+<section id="features">
+  <div class="container mt-5">
+
+    <div class="row g-4 mb-4 align-items-end">
+
+      <div class="col-lg-7">
+        <h2 class="fs-1 fw-bold" style="letter-spacing: -.057em">
+          What most templates are missing
+        </h2>
+      </div>
+
+      <div class="col-lg-5">
+        <p class="text-muted lh-5 mb-0">
+          Go for J1. Turn one on in YAML, drop the include in a page.
+          You're done.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="row mt-4 g-4">
+
+      <!-- div class="col-md-6 col-lg-4">
+        <div class="card-h">
+          <div class="card-h-head">
+            <div class="ico">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="4" width="6" height="9" rx="1"></rect>
+                <rect x="14" y="4" width="6" height="5" rx="1"></rect>
+                <rect x="4" y="17" width="6" height="3" rx="1"></rect>
+                <rect x="14" y="13" width="6" height="7" rx="1"></rect>
+              </svg>
+            </div>
+            <h3>Image</h3>
+          </div>
+          <p>Photo galleries that fill the width evenly at every breakpoint</p>
+        </div>
+      </div -->
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-h">
+          <div class="card-h-head">
+            <div class="ico">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="4" width="6" height="9" rx="1"></rect>
+                <rect x="14" y="4" width="6" height="5" rx="1"></rect>
+                <rect x="4" y="17" width="6" height="3" rx="1"></rect>
+                <rect x="14" y="13" width="6" height="7" rx="1"></rect>
+              </svg>
+            </div>
+            <h3>Slider</h3>
+          </div>
+          <p>
+            Touch- and mouse-controlled carousel
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-h">
+          <div class="card-h-head">
+            <div class="ico">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="4" width="6" height="9" rx="1"></rect>
+                <rect x="14" y="4" width="6" height="5" rx="1"></rect>
+                <rect x="4" y="17" width="6" height="3" rx="1"></rect>
+                <rect x="14" y="13" width="6" height="7" rx="1"></rect>
+              </svg>
+            </div>
+            <h3>Gallery</h3>
+          </div>
+          <p>
+            Collection of images or videos shown together
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-h">
+          <div class="card-h-head">
+            <div class="ico">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 14v-4M9 18V6M14 16V8M19 13v-2"></path>
+              </svg>
+            </div>
+            <h3>Audio</h3>
+          </div>
+          <p>
+            Playback audio with playlists for episode and album pages
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-h">
+          <div class="card-h-head">
+            <div class="ico">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="6" width="13" height="12" rx="2"></rect>
+                <path d="M16 10l5-3v10l-5-3"></path>
+              </svg>
+            </div>
+            <h3>Video</h3>
+          </div>
+          <p>
+            Playback video with playlists, poster frames and caption tracks
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-h">
+          <div class="card-h-head">
+            <div class="ico">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6h10M4 12h14M4 18h8"></path>
+              </svg>
+            </div>
+            <h3>TOC</h3>
+          </div>
+          <p>
+            Tracks the reader's position in a page and builds a clickable TOC
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-h">
+          <div class="card-h-head">
+            <div class="ico">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="6"></circle>
+                <path d="M20 20l-4.5-4.5"></path>
+              </svg>
+            </div>
+            <h3>Search</h3>
+          </div>
+          <p>
+            Client-side fulltext index for your web
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

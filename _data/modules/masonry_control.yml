@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/masonry_control.yml (4)
+# ~/_data/modules/masonry_control.yml (5)
 # User (control) configuration settings for the module J1 Masonry
 #
 # Product/Info:
@@ -24,48 +24,37 @@ description:
 #
 settings:
 
-  # ----------------------------------------------------------------------------
-  # GENERAL options
+  # ============================================================================
+  # All galleries available
   # ----------------------------------------------------------------------------
   #
-  enabled:                              true
+  galleries:
 
-  # ----------------------------------------------------------------------------
-  # All player available
-  # ----------------------------------------------------------------------------
-  players:
-
-    # --------------------------------------------------------------------------
-    # IMAGE PLAYERS
+    # ==========================================================================
+    # IMAGE GALLERIES
     # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
-    # Images + Fixed Height + Gutters + Captions + Lightbox
+    #  Gallery Mega Cities
     #
     - grid:
+
+      # ------------------------------------------------------------------------
+      # GLOBAL settings
+      #    
       enabled:                          true
 
-      id:                               image_fixed_height_lb
+      id:                               maMegaCities
       type:                             image
       gutters:                          1
 
-      image_base_path:                  /assets/image/module/swiper/simple/mega_city/image
-    # image_styles:                     img-fluid
-    # image_height:                     300
+      image_base_path:                  /assets/image/module/gallery/mega_city
+
+      # image_styles:                   img-fluid
+      # image_height:                   300
 
       # ------------------------------------------------------------------------
-      # Bootstrap responsive options
-      #
-      # responsive:
-      #   xs:                             12
-      #   sm:                             12
-      #   md:                             6
-      #   lg:                             4
-      #   xl:                             4
-
-      # ------------------------------------------------------------------------
-      # lightbox settings
-      # ------------------------------------------------------------------------
+      # LIGHTBOX settings
       #
       lightbox:
         enabled:                        true
@@ -74,35 +63,19 @@ settings:
         plugin:
           fullscreen:                   false
 
-      # ------------------------------------------------------------------------
-      # split J1 Masonry data #2
-      # `caption` and Masonry `options` blocks removed from per-grid config.
-      # Values were identical across all grids in masonry_player.yml and
-      # have been moved to masonry.yml defaults. Each grid inherits them
-      # via deep_merge in masonry.html (defaults <- player <- playlist).
-      # For the JS layer, masonry.js already falls back to top-level
-      # defaults when `grid.options.*` is missing — no change required.
-      # ------------------------------------------------------------------------
 
-      # ------------------------------------------------------------------------
-      # lightGallery options
-      # split J1 Masonry data #2
-      # `download` and `alignThumbnails` removed — already defined with
-      # identical values in masonry.yml defaults.lightGallery.options.      
-      #
-      lightGallery:
-        plugins:                        lgFullscreen, lgThumbnail, lgZoom
-        options:
-          alignThumbnails:              left
-
-    # --------------------------------------------------------------------------
-    # VIDEO PLAYERS
+    # ==========================================================================
+    # VIDEO GALLERIES
     # --------------------------------------------------------------------------
 
     # --------------------------------------------------------------------------
-    # YouTube Videos
+    # YouTube Videos (over PhotoSwipe)
     #
     - grid:
+
+      # ------------------------------------------------------------------------
+      # GLOBAL settings
+      # 
       enabled:                          true
 
       id:                               youtube
@@ -113,268 +86,61 @@ settings:
       # Bootstrap responsive options
       #
       responsive:
-        xs:                             12
-        sm:                             12
-        md:                             6
-        lg:                             6
-        xl:                             6
+        lg:                             6                                       # 2 elements per row (desktop)
+        xl:                             6                                       # 2 elements per row (desktop)
 
       # ------------------------------------------------------------------------
       # VideoJS settings
-      # See settings: //jekyll.one/pages/public/manuals/videojs/videojs_api/
-      # ------------------------------------------------------------------------
       #
       videojs:
-        enabled:                        true
-
-        theme:                          uno
 
         # ----------------------------------------------------------------------
         # Player settings
-        # See: //jekyll.one/pages/public/manuals/videojs/lightgallery_api
-        # ----------------------------------------------------------------------
         #
         player:
-          enabled:                      true
 
-          # VideoJS
+          # VideoJS settings
           # --------------------------------------------------------------------
           videojsPlayer:
-            enabled:                    true
 
             videojsOptions:
-              controls:                 true
-              tracks:                   true
 
-            controlBar:
-              pictureInPictureToggle:   false
-              chaptersButton:           true
-              subtitlesButton:          true
-              playbackRates:            [0.25, 0.5, 1, 1.5, 2]
+              controlBar:
+                playbackRates:          [0.5, 1, 1.5]                           # currently NOT evaluated
 
               volumePanel:
-                inline:                 false
-
-              hotkeysPlugin:
-                enabled:                true
-                options:
-                  volumeStep:           0.2
+                inline:                 true                                    # currently NOT evaluated
 
               skipButtonsPlugin:
-                enabled:                true
+                enabled:                false                                   # currently NOT evaluated
                 options:
-                  forward:              15
-                  backward:             15
-
-              zoomPlugin:
-                enabled:                true
-                options:
-                  moveX:                0
-                  moveY:                0
-                  rotate:               0
-                  zoom:                 1
-
-          # Youtube
-          # --------------------------------------------------------------------
-          youTubePlayer:
-            enabled:                    true
-            api:                        videojs                                 # native|videojs
-
-            options:
-              autoPlay:                 true
-              muted:                    true
-              showinfo:                 true
-              controls:                 true
+                  forward:              10                                      # currently NOT evaluated
+                  backward:             10                                      # currently NOT evaluated
 
       # ------------------------------------------------------------------------
-      # Lightbox settings
-      # See settings for lightbox:     //jekyll.one/pages/public/manuals/modules/lightbox
-      # See settings for lightGallery: //jekyll.one/pages/public/manuals/videojs/videojs_api
-      # ------------------------------------------------------------------------
-      #
-      # Masonry, add Photoswipe lightbox for videos Fix #1
-      # ------------------------------------------------------------------------
-      # `type` switched from `lg` to `ps`.
-      #
-      # WHAT THIS SELECTS
-      #
-      #   masonry.html emits PhotoSwipe markup for this grid instead of
-      #   lightGallery markup: the container gains `data-photoswipe-lightbox`
-      #   and every entry gains `data-pswp-type="video"` plus the
-      #   `data-pswp-video-*` attributes the video plugin reads. masonry.js
-      #   already gates its lightGallery() call on `lightbox.type == 'lg'`,
-      #   so no lightGallery instance is built for this grid any more.
-      #
-      # PREREQUISITES (both outside this file)
-      #
-      #   1. ~/_data/modules/defaults/photoswipe.yml must set
-      #      `plugin.video: true`. It ships as `false`, and that key is what
-      #      the adapter maps onto PhotoSwipeLightbox.autoInitVideoEnabled.
-      #      Left at `false` the grid builds a lightbox, but every slide
-      #      falls through to the image loader and shows a black frame.
-      #   2. video.min.js plus videojs-youtube.min.js must be loaded, because
-      #      `youTubePlayer.api` below is `videojs`. The plugin warns once and
-      #      degrades if they are not.
-      #
-      # ------------------------------------------------------------------------
+      # Lightbox settings (Photoswipe/ps)
       #
       lightbox:
         enabled:                        true
         type:                           ps                                      # ps | lb | lg
 
-      # Masonry, add Photoswipe lightbox for videos Fix #1
-      # ------------------------------------------------------------------------
-      # PhotoSwipe settings for this grid. NET-NEW block.
-      #
-      # masonry.html serialises `photoswipe.videoOptions` into the container's
-      # `data-pswp-video-options` attribute, which photoswipe-lightbox.js
-      # merges over PhotoSwipeLightbox.autoInitVideoDefaults (the
-      # `videoOptions` block of ~/_data/modules/defaults/photoswipe.yml) for
-      # this one grid. Keys not stated here fall through from that layer, so
-      # the block deliberately states only what differs.
-      #
-      # autoplay
-      #   Restated rather than inherited even though `startOnFirst` is already
-      #   the plugin default, because it is the PhotoSwipe counterpart of
-      #   `youTubePlayer.options.autoPlay: true` above and the pairing is what
-      #   makes the two configurations readable side by side. Behaviour-neutral
-      #   (startOnFirst merged over startOnFirst). Use `startOnAll` to start
-      #   every slide the visitor swipes across.
-      #
-      # preventDragOffset
-      #   Raised from the default 40. The YouTube tech renders its own control
-      #   bar inside the <iframe>, lower than the native one; the wider strip
-      #   keeps a drag on that bar from swiping the slide away. Same value the
-      #   YouTube gallery of the gallery module uses.
-      #
-      # NOTE on the layer boundary: the YAML chain in masonry.html merges this
-      # block per grid, but the merge the PLUGIN then performs against its own
-      # defaultOptions is SHALLOW. That is why no partial `videoAttributes`
-      # block is stated here — a partial one would drop the sibling keys
-      # (`controls`, `playsinline`, `preload`) of the plugin default.
-      # ------------------------------------------------------------------------
-      #
-      # PhotoSwipeVideoPlugin plugin Fix #12
-      # ------------------------------------------------------------------------
-      # THE PREREQUISITE NOTE ABOVE IS SUPERSEDED. Point 1 of it -- "must set
-      # `plugin.video: true`" in ~/_data/modules/defaults/photoswipe.yml -- no
-      # longer applies and should not be acted on. That key is now only the
-      # fallback for galleries that say nothing, and it stays `false`: the
-      # video plugin is disabled by default for every lightbox on the site.
-      #
-      # Setting it to `true` would still make this grid work, but it would put
-      # the plugin's slide filters in the path of every other gallery on the
-      # site as well -- which is what this fix is about avoiding. Point 2
-      # (video.min.js plus videojs-youtube.min.js) is unchanged and still
-      # required.
-      #
-      # `videoOptions.enabled: true` below is what this grid needs instead. It
-      # is read by _autoInitResolveVideoEnabled() in photoswipe-lightbox.js out
-      # of the `data-pswp-video-options` attribute masonry.html already emits
-      # from this subtree, and it is removed again before the remaining options
-      # reach the plugin.
-      #
-      # Nothing else in this block changes meaning; the two keys below are the
-      # ones fix #1 of the masonry series added and they still do what their
-      # comment says.
-      # ------------------------------------------------------------------------
-
-      # Photoswipe lightbox
+      # Photoswipe settimgs
       # ------------------------------------------------------------------------      
       photoswipe:
 
-        # Masonry, Photoswipe lightbox for videos Fix #2
-        # ----------------------------------------------------------------------
-        # `plugin.fullscreen` IS NOW A LIVE SWITCH FOR THIS GRID
-        # ----------------------------------------------------------------------
-        # Fix #1 wrote this key for symmetry with the image grid's
-        # `lightbox.plugin.fullscreen` and nothing read it. masonry.html emitted
-        # no `data-pswp-fullscreen` attribute, and _autoInitAttachFullscreen()
-        # in photoswipe-lightbox.js accepted a per-gallery "false" only -- the
-        # value here could not switch the button on, and the `false` it stated
-        # was produced by the site-wide `plugin.fullscreen` key of
-        # ~/_data/modules/defaults/photoswipe.yml regardless.
-        #
-        # As of this fix the key is read per grid and answers in BOTH
-        # directions:
-        #
-        #   true    the full-screen button is registered for THIS grid, even
-        #           though the site-wide key ships as `false`
-        #   false   no button for this grid, even where the site-wide key is
-        #           `true`
-        #   absent  fall through to `fullscreenOptions.enabled` below, then to
-        #           the site-wide key -- the pre-fix behaviour
-        #
-        # VALUE FLIPPED TO `true`. The `false` this line carried was written
-        # while the key was inert, so it recorded no decision; leaving it would
-        # have kept the button absent from the one grid the fix exists for and
-        # left the whole chain untestable. To revert, set the value below back
-        # to `false` -- that single edit is the whole opt-out and needs no
-        # change anywhere else.
-        #
-        # PREREQUISITE: photoswipe-fullscreen-plugin.js must be loaded. The
-        # attach site warns once per page and degrades quietly if it is not.
-        #
-        # NOTE for full-screen over VIDEO: the button puts the PhotoSwipe root
-        # element into full screen, not the <video> / YouTube <iframe>. The
-        # VideoJS full-screen control inside the slide is a separate, nested
-        # affair and is governed by the `videojs:` block above.
-        #
+        # Plugin settimgs
         # ----------------------------------------------------------------------
         #
         plugin:
-          fullscreen:                   false                                   # per-grid opt-in (site-wide default: false)
+          fullscreen:                   false                                   # full-screen managed by the player (VJS)
 
-        # Masonry, Photoswipe lightbox for videos Fix #2
-        # ----------------------------------------------------------------------
-        # OPTIONS FOR THE FULL-SCREEN PLUGIN. NET-NEW, and commented out
-        # because the plugin's own defaults are the wanted ones.
-        #
-        # masonry.html serialises this subtree into the container's
-        # `data-pswp-fullscreen-options` attribute, which
-        # _autoInitAttachFullscreen() merges over
-        # PhotoSwipeLightbox.autoInitFullscreenDefaults for this one grid.
-        #
-        # fullscreenTitle
-        #   The plugin's only option: the button's tooltip / aria title.
-        #   Default 'Toggle fullscreen'.
-        #
-        # enabled
-        #   The same switch as `plugin.fullscreen` above, one level down, kept
-        #   for parity with `videoOptions.enabled`. `plugin.fullscreen` wins
-        #   when both are stated -- it is level 1 of the resolution order. State
-        #   ONE of the two, not both; two spellings of one switch in one file is
-        #   how they drift apart.
-        #
-        # NOTE on the layer boundary: the merge the attach site performs is
-        # SHALLOW (Object.assign), but the plugin's option set is flat
-        # ({ fullscreenTitle }), so there is no nested subtree here to drop --
-        # unlike `videoOptions.videoAttributes`, which the note further down
-        # warns about.
-        #
-        # fullscreenOptions:
-        #   enabled:                    true
-        #   fullscreenTitle:            Toggle fullscreen
+        # Video settimgs
         # ----------------------------------------------------------------------
         #
         videoOptions:
-          # PhotoSwipeVideoPlugin plugin Fix #12
-          # Per-grid opt-in. Without it this grid builds a PhotoSwipe lightbox
-          # in which every slide falls through to the image loader -- the
-          # lightbox opens, the slide count is right, and every frame is black.
-          #
           enabled:                      true                                    # opt-in (default: false)
-
-          autoplay:                     startOnFirst
+          autoplay:                     startOnFirst                            # tbc: start video on slide change (startOnSlideChanged)
           preventDragOffset:            56                                      # override (default: 40)
-
-      # Photoswipe lightbox
-      # ------------------------------------------------------------------------   
-      lightGallery:
-        plugins:                        lgThumbnail, lgVideo
-
-        options:
-          licenseKey:                   0000-0000-000-0000
 
 # ------------------------------------------------------------------------------
 # END config

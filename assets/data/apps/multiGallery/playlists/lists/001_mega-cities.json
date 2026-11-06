@@ -1,0 +1,277 @@
+{
+  "meta_data": {
+    "source": "store",
+    "galleryId": "galleryManager",
+    "version": 1,
+    "exportDate": "2026-11-05T18:06:00.151Z",
+    "modified": true
+  },
+  "items": [
+    {
+      "itemId": "jg_136f37d7",
+      "index": 0,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/banter-snaps_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/banter-snaps_b.jpg",
+      "alt": "Japan · City of Osaka",
+      "width": 1280,
+      "height": 1920,
+      "caption": "Japan · City of Osaka",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1280",
+        "data-pswp-height": "1920",
+        "data-jg-item-id": "jg_136f37d7"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.150Z",
+      "title": "Japan · City of Osaka",
+      "description": "Osaka is Japan’s third-largest city and the economic, cultural, and culinary heart of the Kansai region.\n\nLocated on the main island of Honshu at the mouth of the Yodo River on Osaka Bay, the city is home to roughly 2.8 million residents and anchors the massive Keihanshin metropolitan area alongside Kyoto and Kobe.",
+      "category": "Travel",
+      "tags": [
+        "Japan",
+        "Osaka"
+      ],
+      "infoLink": "https://en.wikipedia.org/wiki/Osaka",
+      "rating": 0,
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_d3249837",
+      "index": 1,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/denys-nevozhai-1_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/denys-nevozhai-1_b.jpg",
+      "alt": "China · Man posing at the rooftop of Jin Mao Tower Shanghai",
+      "width": 1920,
+      "height": 1280,
+      "caption": "China · Man posing at the rooftop of Jin Mao Tower Shanghai",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1280",
+        "data-jg-item-id": "jg_d3249837"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.150Z",
+      "title": "China · Man posing at the rooftop of Jin Mao Tower Shanghai",
+      "description": "Shanghai is China's largest city and a world-class financial center on the country's central east coast.\n\nFamous for the juxtaposition of its colonial past and its hyper-modern future, the Huangpu River runs through the city and divides it into two very different, very interesting halves: the historic Puxi to the west and the very futuristic Pudong to the east.",
+      "category": "Travel",
+      "tags": [
+        "China",
+        "Shanghai",
+        "Jin Mao Tower"
+      ],
+      "infoLink": "https://en.wikipedia.org/wiki/Shanghai",
+      "rating": 0,
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_528c6738",
+      "index": 2,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/gints-gailis_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/gints-gailis_b.jpg",
+      "alt": "Indonesia · Shangri-La Hotel Jakarta",
+      "width": 1468,
+      "height": 1920,
+      "caption": "Indonesia · Shangri-La Hotel Jakarta",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1468",
+        "data-pswp-height": "1920",
+        "data-jg-item-id": "jg_528c6738"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.150Z",
+      "title": "Indonesia · Shangri-La Hotel Jakarta",
+      "description": "Jakarta is Indonesia's capital and its economic and cultural heart. It's a coastal city in the northwest of Java with a population of 11 million within the city itself.\n\nThe Jabodetabek metropolitan area has a population of about 42 million and is one of the world's largest urban agglomerations.",
+      "category": "Travel",
+      "tags": [
+        "Indonesia",
+        "Jakarta",
+        "Shangri-La Hotel"
+      ],
+      "infoLink": "https://en.wikipedia.org/wiki/Jakarta",
+      "rating": 0,
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_dcb0192f",
+      "index": 3,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/steven-diaz_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/steven-diaz_b.jpg",
+      "alt": "Japan · Tokyo seen from World Trade Center Observation Deck",
+      "width": 1920,
+      "height": 1123,
+      "caption": "Japan · Tokyo seen from World Trade Center Observation Deck",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1123",
+        "data-jg-item-id": "jg_dcb0192f"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.150Z",
+      "title": "Japan · Tokyo seen from World Trade Center Observation Deck",
+      "description": "Tokyo is the capital of Japan. It has about 14 million residents, and nearly 40 million people live in the greater metropolitan area. The city is Japan’s political, economic, and cultural center.\n\nLocated on Tokyo Bay, the city combines old traditions like historic temples and peaceful parks with modern skyscrapers, bright neon lights, and pop culture.",
+      "category": "Travel",
+      "tags": [
+        "Japan",
+        "Tokyo",
+        "World Trade Center"
+      ],
+      "rating": 0,
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_16e27b74",
+      "index": 4,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/denys-nevozhai-2_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/denys-nevozhai-2_b.jpg",
+      "alt": "China · Young couple over Shenzhen",
+      "width": 1920,
+      "height": 1300,
+      "caption": "China · Young couple over Shenzhen",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1300",
+        "data-jg-item-id": "jg_16e27b74"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.151Z",
+      "title": "China · Young couple over Shenzhen",
+      "description": "Shenzhen is a very modern city in southern China, right on the border with Hong Kong. It's one of the country's most economically significant cities.\n\nShenzhen  is often referred to as the 'Silicon Valley of China'. It's in Guangdong province and has a population of just over 18 million.",
+      "category": "Travel",
+      "tags": [
+        "China",
+        "Shenzhen"
+      ],
+      "infoLink": "https://en.wikipedia.org/wiki/Shenzhen",
+      "rating": 0,
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_c7d146c9",
+      "index": 5,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/johan-mouchet_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/johan-mouchet_b.jpg",
+      "alt": "Australia · The Queen Bee at the Eureka Tower of Melbourne",
+      "width": 872,
+      "height": 1280,
+      "caption": "Australia · The Queen Bee at the Eureka Tower of Melbourne",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "872",
+        "data-pswp-height": "1280",
+        "data-jg-item-id": "jg_c7d146c9"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.151Z",
+      "title": "Australia · The Queen Bee at the Eureka Tower of Melbourne",
+      "description": "Melbourne, also known by its Aboriginal name Narrm, is the capital of Victoria. Many people see it as Australia’s cultural, sporting, and coffee capital.\n\nAbout 5.4 million people live in Melbourne, making it Australia’s second-largest city after Sydney. The city sits on Port Phillip Bay where the Yarra River meets the sea.",
+      "category": "Travel",
+      "tags": [
+        "Australia",
+        "Melbourne",
+        "Eureka Tower",
+        "Queen Bee"
+      ],
+      "rating": 0,
+      "infoLink": "",
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_669c3bb4",
+      "index": 6,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/thomas-tucker_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/thomas-tucker_b.jpg",
+      "alt": "Taiwan · Sunset over City of Taipei",
+      "width": 1600,
+      "height": 1050,
+      "caption": "Taiwan · Sunset over City of Taipei",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1600",
+        "data-pswp-height": "1050",
+        "data-jg-item-id": "jg_669c3bb4"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.151Z",
+      "title": "Taiwan · Sunset over City of Taipei",
+      "description": "Taipei is Taiwan's capital and its political, economic, and cultural center. \n\nThis centrally administered metropolis in the north of the island has approximately 2.5 million inhabitants (over 7 million in the metropolitan area) and combines modern skyscrapers with historic temples, colonial architecture, and a world-renowned street food culture.",
+      "category": "Travel",
+      "tags": [
+        "Taiwan",
+        "Taipei"
+      ],
+      "infoLink": "https://en.wikipedia.org/wiki/Taipei",
+      "rating": 0,
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_bc42b1a2",
+      "index": 7,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/emmad-mazhari_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/emmad-mazhari_b.jpg",
+      "alt": "United States · City of Chicago",
+      "width": 1920,
+      "height": 1822,
+      "caption": "United States · City of Chicago",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1822",
+        "data-jg-item-id": "jg_bc42b1a2"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.151Z",
+      "title": "United States · City of Chicago",
+      "description": "Chicago is the third-largest city in the United States and serves as the main economic, cultural, and transportation hub of the Midwest.\n\nThe city is in Illinois, right on the southwestern shore of Lake Michigan.",
+      "category": "Travel",
+      "tags": [
+        "USA",
+        "Chicago"
+      ],
+      "infoLink": "https://en.wikipedia.org/wiki/Chicago",
+      "rating": 0,
+      "issueDate": ""
+    },
+    {
+      "itemId": "jg_49f5fdf2",
+      "index": 8,
+      "type": "image",
+      "href": "/assets/image/module/gallery/mega_city/andreas-brucker_b.jpg",
+      "thumb": "/assets/image/module/gallery/mega_city/andreas-brucker_b.jpg",
+      "alt": "Thailand · City of Bangkok",
+      "width": 1920,
+      "height": 1280,
+      "caption": "Thailand · City of Bangkok",
+      "classes": [],
+      "attributes": {
+        "data-pswp-width": "1920",
+        "data-pswp-height": "1280",
+        "data-jg-item-id": "jg_49f5fdf2"
+      },
+      "extras": "",
+      "addDate": "2026-11-05T18:06:00.151Z",
+      "title": "Thailand · City of Bangkok",
+      "description": "Bangkok, officially called Krung Thep Maha Nakhon in Thai, is the capital and largest city of Thailand. It is also the country’s main economic, political, and cultural center.\n\nBangkok sits in the Chao Phraya River delta in central Thailand. The city mixes historic royal temples and traditional canal life with modern skyscrapers, huge shopping malls, and famous street food.",
+      "category": "Travel",
+      "tags": [
+        "Thailand",
+        "Bangkok"
+      ],
+      "infoLink": "https://en.wikipedia.org/wiki/Bangkok",
+      "rating": 0,
+      "issueDate": ""
+    }
+  ]
+}

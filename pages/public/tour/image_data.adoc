@@ -378,7 +378,7 @@ no big empty gaps. The result is a balanced layout that uses the
 available space well.
 
 .Grid Image Gallery
-masonry::image_fixed_height_lb[]
+masonry::maMegaCities[]
 
 
 [role="mt-5"]
@@ -400,7 +400,7 @@ can click any photo for an enlarged view. You will recognise this layout
 from many websites across the Internet.
 
 .Block Image Gallery
-gallery::jg_mega_cities[]
+gallery::jgMegaCities[]
 
 
 [role="mt-5"]

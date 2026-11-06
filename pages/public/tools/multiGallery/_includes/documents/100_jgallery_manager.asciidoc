@@ -1,0 +1,39 @@
+== Manager Instance
+
+The MultiGallery below is called the *Manager Instance*. It starts out
+*empty* because its entry in `gallery_media.yml` does not have any images.
+Everything you add appears *in the browser* and stays there using the
+browser's *localStorage*, not in the site's YAML files. This makes it a
+good place to try out the J1 extensions of the module without changing
+any files.
+
+The manager has the *manage bar* turned on (`manage.enabled: true`),
+shows the title *Gallery Manager*, includes the *search bar* (`search.enabled: true`),
+and displays item tools on every tile (`manage.showItemTools: true`).
+It opens its images in the *PhotoSwipe* lightbox (`lightbox.type: ps`) and
+measures the size of each image itself (`photoswipe.auto_detect_size: true`),
+since images added while running do not have `width` and `height` set.
+
+// Here are some things you can try:
+
+// * Click the *edit* button image:{playlist-button--edit}[Manage gallery, width=20]
+//   on the right side of the gallery bar to open the *editor*.
+//   You can paste an image link, drop image files, or drop a whole folder onto
+//   the drop area. You can also pick a gallery from the server's *import* list.
+
+// * Click the *list* button image:{playlist-button--show}[Manage gallery, width=20]
+//   on the left side of the bar to see all items, their caption, size, and source.
+
+// * Move your mouse over a tile. The small buttons let you *rate* the item,
+//   *edit* its title, description, category, and tags, or *remove* it.
+
+// * Type in the *search* field and choose a *sort* order above the gallery.
+
+// * *Export Gallery* lets you download all items as a (JSON) data file.
+// * *Import Gallery* loads a data file back in.
+// * *Clear Gallery* creates a backup data file first, and removes all items
+//   from the current gallery (canvas).
+
+[role="mt-4"]
+.MultiGallery (Manager)
+gallery::galleryManager[]

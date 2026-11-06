@@ -238,6 +238,94 @@ defaults:
       perRow:                           2                                       # 1..6, cards per row in card mode
   
   # ----------------------------------------------------------------------------
+  # Multiplayer add media drag-drop area #1
+  # DROP options
+  # ============================================================================
+  #
+  #   DROP SECTION of the playlist edit screen (div#playlistDropArea_<id>),
+  #   placed ABOVE the Paste | video link bar - the counterpart of the drop
+  #   area of the Gallery Manager (div#galleryDropArea_<id>). It takes media
+  #   FILES (also several at once), whole FOLDERS, media LINKS dragged from
+  #   another page (YouTube or native media URLs) and playlist JSON files;
+  #   'media files to import ...' opens a multi-select file picker.
+  #
+  #   Everything dropped is ADDED to the playlist of the player (merged by
+  #   videoId, the merge switch is not consulted). Duplicates are skipped and
+  #   reported in the status line of the section (hover: details).
+  #
+  #   Files from a LOCAL disk are not part of the web space: a browser can
+  #   neither upload them nor learn their local path. They are MAPPED by
+  #   name below a media base and the entry points to that URL:
+  #
+  #     <media_base>/<base_path>/[<folder>/]<file>
+  #
+  #     e.g. http://localhost:11000 + /assets/video + albums/x/01 Intro.mp3
+  #       -> http://localhost:11000/assets/video/albums/x/01%20Intro.mp3
+  #
+  #   The '...' toggle (top right of the section) opens a menu to change
+  #   media_base + base_path of THIS player at runtime (Reset returns to the
+  #   values below).
+  #
+  #   enabled           build the drop section
+  #                     values: true | false
+  #                     default: true
+  #   media_base        URL the mapped paths are placed below
+  #                     values: null | '' (page origin) | http(s)://host[:port] | //host | /path
+  #                     default: /assets/video
+  #   base_path         SUB path below media_base; an absolute URL is used
+  #                     as-is; false = no mapping (links + playlist files only)
+  #                     default: false
+  #   include_folder    a dropped FOLDER keeps its folder part:
+  #                     <base>/<folder>/<file> (false: <base>/<file>)
+  #                     default: true
+  #   accept            media file extensions taken from a drop
+  #                     default: [ mp3, mp4, m4a, webm, ogv, ogg, mov, m4v ]
+  #   accept_links      take links dragged from another page
+  #                     default: true
+  #   accept_json       take playlist files (*.json, export format)
+  #                     default: true
+  #   settings_menu     show the '...' toggle + runtime menu
+  #                     default: true
+  #   persist           remember a runtime change per player (localStorage
+  #                     'multiPlayer_dropbase_<player_id>'); it wins over a
+  #                     changed value below until Reset
+  #                     default: true
+  #   probe             read duration + a poster frame from the LOCAL file
+  #                     (no network traffic)
+  #                     default: true
+  #   probe_timeout     ms per file
+  #                     default: 8000
+  #   verify            check that the web server serves the MAPPED url; a
+  #                     file not served there is skipped and reported
+  #                     default: true
+  #   verify_timeout    ms per file; a timeout keeps the entry (not verified)
+  #                     default: 8000
+  #   load_first        load the first added entry PAUSED when the player is
+  #                     still empty (a running video is never replaced)
+  #                     default: true
+  #   max_files         max media files per drop (0: unlimited)
+  #                     default: 200
+  #
+  # ----------------------------------------------------------------------------
+  #
+  drop:
+    enabled:                            true
+    media_base:                         /assets/video                           # null | '' -> page origin
+    base_path:                          false                                   # false = no mapping
+    include_folder:                     true
+    accept:                             [ mp3, mp4, m4a, webm, ogv, ogg, mov, m4v ]
+    accept_links:                       true
+    accept_json:                        true
+    settings_menu:                      true
+    persist:                            true
+    probe:                              true
+    probe_timeout:                      8000
+    verify:                             true
+    verify_timeout:                     8000
+    load_first:                         true
+    max_files:                          200
+
+  # ----------------------------------------------------------------------------
   # VIDEOJS options
   # ============================================================================
   #
@@ -326,6 +414,43 @@ defaults:
         # source type priorities (tried in order)
         #
         sourceOrder:                    [ mp4 ]                                 # [ mp4, webm, ogv ]
+
+        # VideoJS - Fix plugin snapshotButton #3
+        # CORS MODE of the <video> element (native sources only).
+        #
+        # Needed for the SNAPSHOT button when the videos come from another
+        # origin than the page (e.g. page on localhost:4000, videos from an
+        # nginx on localhost:11000). The browser only honours the server's
+        # Access-Control-Allow-Origin header if the <video> element asks for
+        # CORS -- without this key the snapshot fails with "canvas is
+        # tainted", no matter how the web server is configured.
+        #
+        #   anonymous         CORS without cookies -- matches the J1 nginx
+        #                     setup (Access-Control-Allow-Origin: *)
+        #   use-credentials   CORS with cookies; the server must send the
+        #                     page origin explicitly ('*' is refused)
+        #   ''                no CORS mode (behaviour before this fix)
+        #
+        # Trade-off: with a CORS mode set, a FOREIGN video host that sends
+        # no Access-Control-Allow-Origin header can no longer be played.
+        # Videos from the same origin as the page are never affected.
+        # YouTube videos are never affected.
+        #
+        # VideoJS - CORS issue on poster images #2
+        # POSTERS are not affected either. A browser fetches the poster of a
+        # <video> in the CORS mode of this key, so a remote poster from a host
+        # without CORS headers would be blocked. J1 MultiPlayer therefore loads
+        # the poster shown by VideoJS without CORS (#1) and never writes a
+        # cross-origin poster into the <video> element itself (#2). Exception:
+        # a native AUDIO file (mp3) shows no picture while it plays if its
+        # poster comes from another origin.
+        #
+        # DESIGN DECISION (to be confirmed): shipped as `anonymous` so the
+        # snapshot button works out of the box with a CORS-enabled media
+        # server. If a site plays native files from foreign hosts WITHOUT
+        # CORS headers, set '' here (or per player in multiPlayer_control.yml).
+        #
+        crossOrigin:                    anonymous                               # anonymous | use-credentials | '' (default: '')
 
         # FULLSCREEN on iPhone (the #3 setting, now in the chain that is read).
         #
@@ -519,24 +644,12 @@ defaults:
         rotate:                         0
         zoom:                           1
 
+        # Gestures settimgs
+        #
         # MASTER switch of the gesture layer (pan, pinch, wheel, double tap).
         # false: no ZoomGesture component, no listener, page scrolling is
         # never touched. Only effective where zoomButtons itself is enabled
-        # and the source is a native (mp4) video.
-        #
-        # VideoJS - Extend plugin zoom #5
-        # DEPRECATED. The master switch is `gestures.enabled` below; with both
-        # keys present `gestures.enabled` wins anyway, so this line had no
-        # effect of its own any more. Kept as a comment for reference. A
-        # per-player entry in multiPlayer_control.yml that still uses
-        # `gestureHandler` keeps working as long as the new key is not
-        # declared on any layer of that player's chain -- it IS declared here,
-        # so switch single players with `gestures.enabled` as well.
-        #
-        # Original (deprecated, preserved for reference):
-        # gestureHandler:                 true
-
-        # Gestures settimgs
+        # and the source is a native (mp4) video.        
         #
         gestures:
           # VideoJS - Extend plugin zoom #5
@@ -546,7 +659,7 @@ defaults:
           # MASTER switch of the gesture layer (pan, pinch, wheel, double tap).
           # If set to false: no zoom gesture enabled for native (mp4) video.
           #
-          enabled:                      false
+          enabled:                      true
 
     # Fix videoFilters plugin für VideoJS #1
     # --------------------------------------------------------------------------

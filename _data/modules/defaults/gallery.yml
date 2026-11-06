@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ~/_data/modules/defaults/gallery.yml (12)
+# ~/_data/modules/defaults/gallery.yml (28)
 # Default configuration for the module J1 justifiedGallery
 #
 # Product/Info:
@@ -18,6 +18,416 @@ description:
   title:                                Justified Gallery
   scope:                                Default settings
   location:                             _data/defaults/gallery.yml
+
+# ------------------------------------------------------------------------------
+# Move/Merge comments in the default config #1
+# This file is the ONE place where the J1 Gallery configuration is documented.
+# The comments of the instance files
+#
+#   ~/_data/modules/gallery_control.yml   per-gallery configuration
+#   ~/_data/modules/gallery_media.yml     per-gallery media content
+#
+# were moved here and consolidated: see the section "INSTANCE CONFIGURATION"
+# at the end of this file. The instance files keep their data, short trailing
+# markers (# override (default: x)), disabled (commented-out) keys and the
+# deprecated values preserved for reference.
+# ------------------------------------------------------------------------------
+
+# ==============================================================================
+# INSTANCE CONFIGURATION
+# Move/Merge comments in the default config #1
+# ------------------------------------------------------------------------------
+# Consolidated documentation of the two instance files, moved here from
+#
+#   ~/_data/modules/gallery_control.yml   (I)  per-gallery CONFIGURATION
+#   ~/_data/modules/gallery_media.yml     (M)  per-gallery MEDIA CONTENT
+#
+# Statements of the moved comments that had become wrong are corrected and
+# marked "CORRECTED"; open points are listed under "OPEN POINTS" at the end.
+# ==============================================================================
+#
+# ------------------------------------------------------------------------------
+# 1. DATA FILES AND MERGE CHAIN
+# ------------------------------------------------------------------------------
+#   (split J1 Gallery data #1|#2, Fix J1 Gallery YAML data processing #1,
+#    PhotoSwipeVideoPlugin plugin #4, Gallery modify drag-drop file
+#    calculation errors #1)
+#
+#   The former single file gallery.yml was split into a control file (I) and
+#   a media file (M), modeled on the Masonry scaffold (masonry_control.yml,
+#   masonry_media.yml). Both use the same list structure
+#
+#     settings:
+#       galleries:
+#         - gallery:
+#           id:           <unique id>      key of the ID-wise merge
+#           ...
+#
+#   The include gallery.html (data file xhr_data_path/index.html) and the
+#   adapter gallery.js build the EFFECTIVE settings of one gallery as a DEEP
+#   merge (later layers overwrite PER KEY, missing keys fall through):
+#
+#     1. defaults        this file (defaults:)
+#     2. user settings   (I) GLOBAL keys of settings (w/o galleries)
+#     3. gallery         (I) settings.galleries[]        (matched by id)
+#     4. media           (M) settings.galleries[]        (matched by id)
+#
+#   Rules that follow from it:
+#
+#   • DE-DUPLICATION. (I) states per-gallery OVERRIDES and NET-NEW keys only.
+#     A value identical to the default is NOT restated: it is inherited. The
+#     trailing markers in (I) say which kind a value is:
+#       # override (default: x)   differs from this file
+#       # net-new                 key not present in this file
+#       # restated (default: x)   same as the default, kept for legibility
+#       # opt-in                  switches on a feature that is off here
+#     Removed as duplicates by the data split (fix 2): lightbox.enabled: true,
+#     lightbox.type: lg, lightGallery.plugins "lgThumbnail, lgVideo",
+#     lightGallery.options.licenseKey|download|alignThumbnails|animateThumb|
+#     autoplayFirstVideo, gallery_options 150|1, filters.enabled: false,
+#     videojsOptions.muted|preload|controls and the controlBar defaults.
+#   • A PARTIAL subtree is safe (deep merge on every layer, also inside the
+#     PhotoSwipe readers: _autoInitDeepMerge, deepMergeOptions). A YAML deep
+#     merge can only ADD or REPLACE leaves, never REMOVE one -- which is why
+#     e.g. videoAttributes.muted: false is given a deletion meaning by the
+#     video plugin (see 4.).
+#   • ARRAYS are replaced as a whole, never merged index-wise.
+#   • The per-gallery 'enabled' gate is taken from the CONTROL chain
+#     (layers 1-3) only. (M) states enabled: true on every entry; that value
+#     is IGNORED and cannot switch on a gallery that (I) disables.
+#   • (M) is not part of the option chain of the adapter: its payload
+#     (images|videos) is rendered into the HTML data file only. After a
+#     change of (I) or (M) the site has to be REBUILT (data file).
+#
+# ------------------------------------------------------------------------------
+# 2. PER-GALLERY TOP-LEVEL KEYS (I)
+# ------------------------------------------------------------------------------
+#   enabled           true|false, the render|init gate (see 1.)
+#   id                unique gallery id; the placeholder <div id="<id>">
+#                     (asciidoc gallery:: macro) and all UI element ids
+#                     <bare>_<id> and localStorage keys derive from it
+#   type              image | video
+#   video             video galleries: html5 | youtube
+#   video_base_path   video galleries, html5: folder of the local video files
+#                     (source of (M) is RELATIVE to it). Not used for youtube:
+#                     those sources are stored absolute in (M).
+#   thumb_base_path   informational only, read by neither the include nor
+#                     the adapter (the poster base is image_base_url)
+#
+#   image_base_url    folder of the STATIC images|posters of (M). It has TWO
+#                     consumers:
+#                       1. gallery.html  href|src of every static image and
+#                                        poster:  <image_base_url>/<file>
+#                       2. drop area     <image_base_url>/<dropBasePath>/<file>
+#                     RULE: image_base_url is the image FOLDER; dropBasePath
+#                     is an OPTIONAL sub folder BELOW it for dropped files
+#                     (null when they live in the same folder).
+#                     An ORIGIN without a path (http://localhost:40000) for a
+#                     gallery WITH static images renders <origin>/<file> ->
+#                     404 for every entry and an EMPTY gallery (the former
+#                     jgMegaCities defect); the adapter and the data file
+#                     report that case. A hard-wired origin also breaks on
+#                     any other host; prefer a site-rooted path.
+#                     YouTube posters: //img.youtube.com/vi
+#                     The older key image_base_path is still accepted as a
+#                     fallback by gallery.html and gallery.js. Without both,
+#                     dropped files map to dropBasePath ALONE (page-relative),
+#                     see the join table at manage.dropBasePath above.
+#
+# ------------------------------------------------------------------------------
+# 3. STORAGE | MANAGE | SEARCH PER GALLERY (I)
+# ------------------------------------------------------------------------------
+#   All keys are documented at storage|manage|search above; (I) only opts in.
+#
+#   • storage.enabled|manage.enabled are opt-in (Gallery, manage json data
+#     to/from localstorage #1). PhotoSwipe galleries need no
+#     storage.addClasses (PhotoSwipe binds all <a> children); a lightGallery
+#     gallery that opts in should state  addClasses: [lg-item]  so entries
+#     added by URL are bound.
+#   • storage.preload applies to galleries with an EMPTY images key in (M)
+#     ONLY (e.g. galleryManager). A gallery WITH static images logs
+#     "storage.preload ignored ..." -- expected behaviour, not an error.
+#     To drive such a gallery from a JSON file, empty its images key in (M).
+#     Tip: build the gallery in the browser (paste URL | import), press
+#     'Export Gallery' and save the download under the preload name.
+#   • manage.showItemTools (rate|edit|delete on every tile) is OFF by
+#     default and opted in per gallery. The delete tool and its confirmation
+#     follow itemDelete|itemDeleteConfirm (defaults true).
+#   • manage.dropSettingsMenu: the endpoint parts image_base_url and
+#     dropBasePath can be changed at RUNTIME from the drop area menu
+#     (three dots, top right); the change is kept per gallery in the browser
+#     (dropSettingsPersist) until 'Reset'. Effective base in the console:
+#       j1.adapter.gallery.getDropBasePath('<id>')
+#   • manage.dropBasePath is RELATIVE to image_base_url (Gallery modify
+#     drag-drop file calculation #1|#2; the join lives in the library). A
+#     full URL starting with image_base_url still works, with a warning.
+#     Keeping the image folder in BOTH keys doubles it in the endpoint.
+#   • manage.listSource (default auto) gives managed galleries WITHOUT
+#     storage.enabled -- e.g. the video gallery jg_video_html5_pswp -- a
+#     working list screen and header count.
+#   • manage.videoCategories offers an own Category list for VIDEO items,
+#     e.g. [Animation, Movies, Music]; the edit tool opens 'Edit Media
+#     Settings' in video mode (Video Link | Poster Image | Video Size).
+#
+# ------------------------------------------------------------------------------
+# 4. LIGHTBOX PER GALLERY (I)
+# ------------------------------------------------------------------------------
+#   lightbox.type     ps (PhotoSwipe) | lb | lg (lightGallery, default)
+#                     Only the override is stated; enabled: true inherits.
+#
+#   The PhotoSwipe and the lightGallery path read DIFFERENT subtrees. Keys of
+#   the other path are inert (merged, never serialised):
+#
+#     lightbox.type: lg   lightGallery.plugins|options|videojsOptions|
+#                         playerParams
+#     lightbox.type: ps   photoswipe.* -- serialised by gallery.html into the
+#                         container attributes data-pswp-video-options,
+#                         -fullscreen, -fullscreen-options, -caption,
+#                         -caption-options (all '| jsonify | escape', so an
+#                         apostrophe in a value is safe)
+#
+#   Mapping of the lightGallery keys to their PhotoSwipe equivalents:
+#
+#     playerParams.autoplay: 1   ->  photoswipe.videoOptions.autoplay
+#     playerParams.mute: 0       ->  videoAttributes.muted: false
+#     videojsOptions.enabled     ->  photoswipe.videoOptions.videojs.enabled
+#     videojsOptions.tracks      ->  photoswipe.videoOptions.tracks
+#     hotKeysPlugin|controlBar.skipButtonsPlugin|controlBar.zoomPlugin
+#                                ->  videojs.plugins.hotKeys|skipButtons|
+#                                    zoomButtons (keyed by the player METHOD)
+#
+#   LIGHTGALLERY VIDEO GALLERIES
+#   ----------------------------------------------------------------------------
+#   lightGallery.options.videojs: true    VideoJS renderer (default: false)
+#   lightGallery.options.videojsTheme     net-new, e.g. vjs-theme-uno
+#   lightGallery.videojsOptions:
+#     enabled: true                       switch the block on (default: false)
+#     tracks: true                        net-new
+#     hotKeysPlugin                       net-new PLACEMENT at the top level
+#                                         (this file: controlBar.hotkeysPlugin)
+#     controlBar.skipButtonsPlugin.options.backwardIndex|forwardIndex
+#                                         net-new, button positions
+#     controlBar.zoomPlugin.showZoom|showMove|showRotate|gestureHandler
+#                                         net-new
+#   lightGallery.playerParams             net-new block for YouTube embeds:
+#                                         autoplay: 1 works only when muted
+#                                         (mute default = 1)
+#   lightGallery.options.addClass: lg-uno-thumbnails with
+#   appendThumbnailsTo: .lg-outer and allowMediaOverlap: true
+#                                         customized thumbnails (all three
+#                                         are required together)
+#
+# ------------------------------------------------------------------------------
+# 5. PHOTOSWIPE PER GALLERY (I)
+# ------------------------------------------------------------------------------
+#   PREREQUISITES (outside the YAML)
+#     • video.min.js, plus videojs-youtube.min.js for YouTube galleries; the
+#       plugin warns once and degrades without them.
+#     • photoswipe-fullscreen-plugin.js for plugin.fullscreen (warns once).
+#     • videoFilters.js|.css with the videojs resource for
+#       videojs.plugins.videoFilters.
+#     • The former prerequisite "plugin.video: true in defaults/
+#       photoswipe.yml" is SUPERSEDED (PhotoSwipeVideoPlugin plugin #12):
+#       the video plugin is opted in PER GALLERY, see videoOptions.enabled.
+#       Setting the site-wide key would attach the plugin to the image
+#       galleries as well.
+#
+#   auto_detect_size                false | missing | true | always, level 2
+#                                   of the natural-size detection (see
+#                                   photoswipe.auto_detect_size above)
+#
+#   plugin.fullscreen               full-screen button for THIS gallery,
+#                                   level 1 of the resolution order. THREE
+#                                   states:
+#                                     true    button, whatever the site says
+#                                     false   no button, whatever the site says
+#                                     absent  fullscreenOptions.enabled, then
+#                                             the site-wide plugin.fullscreen
+#                                             of defaults/photoswipe.yml
+#                                   To opt out set false; deleting the line
+#                                   is the third state, not the same thing.
+#                                   The button puts the PhotoSwipe ROOT into
+#                                   full screen, not the <video>: the VideoJS
+#                                   (or YouTube iframe) full-screen control
+#                                   is separate; they nest, not conflict. A
+#                                   muted autostart is not re-decided when
+#                                   full screen is entered.
+#   plugin.caption                  same three states for the caption plugin
+#
+#   captionOptions                  merged OVER the site-wide captionOptions
+#                                   of photoswipe.yml for this gallery:
+#     type                          below (J1 default) | aside | auto (with
+#                                   autoAllowAside: true)
+#     portraitPadding               extra space above|below PORTRAIT slides:
+#                                   25 | '25px' | { top: 40, bottom: 20 } |
+#                                   0 (off). Only visible where the image
+#                                   fills the height (PhotoSwipe never scales
+#                                   a smaller image up).
+#
+#   fullscreenOptions               merged over autoInitFullscreenDefaults
+#                                   (shallow, the option set is flat):
+#     enabled                       same switch as plugin.fullscreen, one
+#                                   level down; state ONE of the two
+#     fullscreenTitle               tooltip|aria title of the button,
+#                                   default 'Toggle fullscreen'
+#     fullscreenOnDoubleTap         true|false, default false (opt-in).
+#                                   Double click|tap toggles full screen.
+#                                   Cost: a touch double tap no longer zooms
+#                                   (pinch still does); every single mouse
+#                                   click runs doubleClickDelay ms later.
+#                                   Needs an active button and the browser
+#                                   Fullscreen API.
+#     doubleClickDelay              ms, 0..2000, default 300
+#     doubleTapExclude              CSS selector; REPLACES the default list
+#                                   (VideoJS controls, buttons, links, fields)
+#                                   NOTE: the PhotoSwipe option
+#                                   doubleTapAction: false (photoswipe.yml or
+#                                   data-pswp-options) switches PhotoSwipe's
+#                                   double-tap DETECTION off, so the touch
+#                                   gesture does nothing; the mouse double
+#                                   click keeps working.
+#                                   CORRECTED: a note on jg_video_youtube_pswp
+#                                   claimed a gallery without fullscreenOptions
+#                                   "inherits the module-wide block of
+#                                   defaults/gallery.yml" with double tap ON.
+#                                   This file states NO fullscreenOptions
+#                                   block, so nothing is inherited from here;
+#                                   the plugin defaults apply (double tap off).
+#
+#   videoOptions                    merged over photoswipe.videoOptions above
+#     enabled                       true = video plugin for this gallery
+#                                   (default false). REQUIRED for every
+#                                   PhotoSwipe video gallery, else every slide
+#                                   is loaded as an IMAGE (black frame) and
+#                                   the videojs block is never reached.
+#     autoplay                      startOnFirst (default) | startOnAll |
+#                                   true (= startOnAll) | false. Restating
+#                                   the old 'true' would silently turn a
+#                                   restatement into an override.
+#     videoAttributes.muted: false  OMITS the attribute (boolean attributes
+#                                   are presence-based; muted="false" would
+#                                   still mute). Turns the gallery into an
+#                                   UN-MUTED autostart.
+#                                   html5 (same-document <video>): permitted,
+#                                   the click on the thumbnail is sticky user
+#                                   activation. A visitor who never clicked
+#                                   (deep link, test) gets the poster plus one
+#                                   console warning.
+#                                   youtube (CROSS-ORIGIN iframe): REFUSED --
+#                                   the embed applies its own policy and does
+#                                   not see the click; the refusal is silent.
+#                                   autoplayMutedFallback (default true) mutes
+#                                   and retries once, so the slide starts
+#                                   silently; read muted: false there as
+#                                   "un-muted where the browser permits it".
+#     preventDragOffset             56 for YouTube galleries (default 40):
+#                                   the YouTube control bar inside the iframe
+#                                   sits lower, a narrower strip lets a drag
+#                                   on it swipe the slide
+#     videojs.plugins               partial overrides of the plugin block
+#                                   above, e.g. skipButtons.options.forward|
+#                                   backward: 5. zoomButtons is ignored for
+#                                   YouTube slides.
+#     videojs.plugins.videoFilters  net-new: brightness|contrast|saturation
+#                                   (Fix videoFilters plugin für VideoJS #1|#2)
+#       enabled                     true = activated after zoomButtons
+#                                   (plugin default false)
+#       options                     handed to player.videoFilters() as-is,
+#                                   full list: videojs.yml,
+#                                   settings.plugins.videoFilters
+#       options.persist.scope|key   player + a FIXED key (the gallery id):
+#                                   lightbox players are created at runtime
+#                                   with unstable ids, one record per gallery
+#                                   finds its values on every slide and visit.
+#                                   A YouTube tech is skipped by the plugin
+#                                   itself (option techs).
+#
+# ------------------------------------------------------------------------------
+# 6. MEDIA CONTENT (M)
+# ------------------------------------------------------------------------------
+#   images (image galleries)        one entry per image; EMPTY on purpose for
+#                                   galleries filled from JSON|localStorage
+#     file                          file name below image_base_url
+#     width|height                  natural size -> data-pswp-width|height;
+#                                   'auto-detect' requests a measurement
+#                                   (level 1 of auto_detect_size)
+#     caption_text                  alt|aria-label|tile caption (HTML entities
+#                                   allowed, e.g. &middot;)
+#     description                   lightbox caption (HTML, data-sub-html)
+#
+#   videos (video galleries)
+#     enabled                       per video
+#     name                          used in the share texts
+#     type                          html5 | youtube
+#                                   -> data-pswp-video-provider
+#     api                           videojs | iframe | native
+#                                   -> data-pswp-video-api; videojs is
+#                                   REQUIRED for YouTube on PhotoSwipe (a bare
+#                                   <video> cannot load a YouTube URL)
+#     size                          "1280-720" -> data-pswp-width|height and
+#                                   data-lg-size; missing|malformed falls back
+#                                   to 1280x720; 'auto-detect' = measure
+#     source                        html5: file below video_base_path;
+#                                   youtube: //youtube.com/watch?v=<id>
+#                                   -> data-pswp-video-src and the anchor href
+#     poster_image                  file below image_base_url (YouTube:
+#                                   <id>/maxresdefault.jpg | mqdefault.jpg);
+#                                   PhotoSwipe reads it as msrc, the plugin
+#                                   hands it to the player as poster
+#     pinterest_prefix|tweet_prefix share text prefixes
+#     caption_text|description      as for images
+#     tracks                        text tracks (captions, chapters, ...):
+#                                   lightGallery: data-video JSON;
+#                                   PhotoSwipe: data-pswp-video-tracks (emitted
+#                                   only for a NON-EMPTY list, switched by
+#                                   photoswipe.videoOptions.tracks)
+#       - track:                    list-style marker, ignored by the readers
+#         default                   enable the track unless the user's
+#                                   preferences select another one
+#         kind                      captions | subtitles | chapters | ...
+#         srclang                   language code of the track, e.g. en
+#         label                     name shown in the player menu
+#         src                       path of the .vtt file
+#     playerParams.start            lightGallery|YouTube-iframe only, seconds
+#                                   to start at; no PhotoSwipe equivalent
+#
+#   The media SHAPE is the same for both lightboxes: switching a gallery
+#   between lg and ps is a one-line change of lightbox.type in (I).
+#
+# ------------------------------------------------------------------------------
+# 7. SHIPPED GALLERIES
+# ------------------------------------------------------------------------------
+#   galleryManager           image, ps, manage UI, empty images (JSON|store)
+#   jg_old_times             image, ps, storage + manage (disabled)
+#   jgMegaCities             image, ps, storage, 10 static images
+#   jg_video_html5           video html5, lightGallery + VideoJS
+#   jg_video_html5_videojs   video html5, lightGallery + VideoJS (disabled)
+#   tdc_latin                video youtube, lightGallery (disabled)
+#   jg_video_html5_pswp      video html5, PhotoSwipe, un-muted autostart,
+#                            manage UI, videoFilters
+#   tdc_latin_pswp           video youtube, PhotoSwipe (disabled)
+#   jg_video_youtube_pswp    video youtube, PhotoSwipe, fallback to muted
+#                            autostart (disabled)
+#   (M) also carries jg_video_youtube_james_and_adele (disabled, its two
+#   videos commented out) without a control entry: it is never rendered.
+#
+# ------------------------------------------------------------------------------
+# 8. OPEN POINTS (flagged, data NOT changed)
+# ------------------------------------------------------------------------------
+#   a) (M) jg_video_html5, video 2: 'tracks::' (double colon) is a key named
+#      "tracks:", so video.tracks is nil there. Harmless (the list is empty),
+#      but the intended spelling is 'tracks: []'.
+#   b) (I) jgMegaCities: manage.dropBasePath: none is the STRING 'none', a
+#      sub folder named none (<base>/none/<file>), not "no sub path". The
+#      moved comment asks for null. Inactive today (manage.enabled: false).
+#   c) (I) galleryManager: search.type: simpleSearch is read by nobody
+#      (the library knows no search types).
+#   d) (I) jg_video_html5_pswp: a commented-out 'playerParams' block sits
+#      below the photoswipe subtree, a lightGallery key with no effect on
+#      the PhotoSwipe path; kept as disabled content.
+#   e) jg_video_youtube_pswp (M): the description of video 2 reads
+#      "Carpool Karaoke 2023" for a Tiny Desk Concert entry.
+# ==============================================================================
 
 # ------------------------------------------------------------------------------
 # User configuration settings
@@ -54,8 +464,6 @@ defaults:
   # ----------------------------------------------------------------------------
   # JSON data store (localStorage) + manage bar
   #
-  # Gallery, manage json data to/from localstorage #1
-  # ----------------------------------------------------------------------------
   # Two NET-NEW subtrees. Both are handed to the library justifiedGallery.js
   # by the adapter (gallery.js, initGallery()) as the options "storage" and
   # "manage" of the justifiedGallery() call, resolved through the normal
@@ -85,6 +493,14 @@ defaults:
   #                     An untouched store (meta_data.modified: false) never
   #                     wins over the static HTML; it is simply rewritten.
   #                     Set false to keep the data file authoritative always.
+  #                     Fix render for empty Gallery from localstorage #1
+  #                     autoRestore applies to EVERY gallery that has a
+  #                     store, i.e. storage.enabled OR manage.enabled
+  #                     (manage-only galleries included). A gallery WITHOUT
+  #                     static entries (empty 'images' key) renders the
+  #                     stored items on load even if the store is untouched
+  #                     (modified: false), and its empty layout never
+  #                     overwrites the stored items.
   #   mergeMode         import: true = merge by itemId into the existing items,
   #                     false = replace the item set
   #   reloadOnClear     'Clear Gallery' removes the key (after a safety backup
@@ -94,6 +510,30 @@ defaults:
   #                     screen; lightGallery galleries need 'lg-item' here (the
   #                     selector the adapter binds), PhotoSwipe galleries need
   #                     nothing (children selector 'a')
+  #
+  #   preload           list of JSON item files merged into the store on every
+  #                     page load — the counterpart of `playlist.preload` of
+  #                     the J1 MultiPlayer (multiPlayer_control.yml, Player 6).
+  #                     Applies to galleries WITHOUT static entries (empty
+  #                     'images' key in gallery_media.yml) only; a gallery with
+  #                     entries skips it with a console warning. The merge is
+  #                     by itemId, never overwrites, never duplicates, so the
+  #                     list can stay in the configuration permanently. User
+  #                     additions survive; an item the user deleted returns on
+  #                     the next load while its file is still listed, and
+  #                     'Clear Gallery' re-seeds from the files after the
+  #                     reload. Accepted file shapes: a bare item array or the
+  #                     { meta_data, items } file written by 'Export Gallery'
+  #                     (build the gallery in the browser, export, drop the
+  #                     file into the preload folder).
+  #                     values: [ name.json, /abs/path.json, https://... ]
+  #                     Move/Merge comments in the default config #1
+  #                     a single name (string) is accepted as well; false
+  #                     or [] = no preload.
+  #                     default: false
+  #   preloadUrlBase    folder for RELATIVE preload names; null = manage.listUrlBase,
+  #                     then /assets/data/apps/multiGallery/playlists/lists.
+  #                     Names starting with '/' or http(s):// are used as they are.
   #
   # manage
   # ----------------------------------------------------------------------------
@@ -108,42 +548,306 @@ defaults:
   #                     caption, size, source, per-item delete)
   #   editButton        right header button: toggle the editor
   #   listDeleteButton  per-item delete button in the list screen
-  #   listUrl           index.json of server-side gallery lists for the import
-  #                     <select> of the editor, shape [{ "name", "file" }];
-  #                     null = the select stays empty
-  #   listUrlBase       base path for RELATIVE files of that index
-  #                     (null = /assets/data/apps/gallery/lists)
+  #
+  #   listUrl           index file of the server-side galleries offered by the
+  #                     import <select> of the editor (#serverGallerySelect_<id>),
+  #                     shape [{ "name": "Mega Cities", "file": "mega-cities.json" }]
+  #                     — the shape of the MultiPlayer playlist index.
+  #                     null  = <listUrlBase>/index.json
+  #                     (default; same convention as the MultiPlayer, which
+  #                     always reads <playlists>/index.json)
+  #                     false = no index, the select stays at its placeholder
+  #                     Selecting an entry and pressing 'Import' loads the
+  #                     JSON item file into the gallery (replace, or merge
+  #                     by itemId with storage.mergeMode: true); the loaded
+  #                     set survives a reload. Item files have the shapes of
+  #                     an import: a bare item array or a file written by
+  #                     'Export Gallery'.
+  #   listUrlBase       base path for RELATIVE files of that index and for the
+  #                     default index file; null = storage.preloadUrlBase,
+  #                     then /assets/data/apps/multiGallery/playlists/lists
+  #
+  #                     Load Gallery from browser select #3
+  #                     A RELATIVE listUrl (a bare file name like index.json)
+  #                     is resolved against the list base, like the 'file'
+  #                     entries of the index — it is NOT a page-relative URL.
+  #                     Names starting with '/' or http(s):// are used as
+  #                     they are. Default of both keys: null, so the select
+  #                     reads the folder of the preload files:
+  #                     /assets/data/apps/multiGallery/playlists/lists/index.json
+  #
+  #                     Move/Merge comments in the default config #1
+  #                     The SHIPPED values below are listUrl: index.json and
+  #                     listUrlBase: /assets/data/apps/multiGallery/playlists/
+  #                     lists, which resolve to the same index file as the
+  #                     null defaults of the library.
   #   screenMinHeight   min height (px) of the two overlay screens
+  #                     Gallery set heigth for manage screens #1
+  #                     superseded by manageScreenHeight; kept for reference,
+  #                     no longer read by the library
+  #
+  #   manageScreenHeight
+  #                     FIXED height of BOTH manage screens (list | edit).
+  #                     While a screen is open the gallery element itself
+  #                     (e.g. id="multiGallery") is hidden; the screen sits
+  #                     directly below the manage bar and content taller
+  #                     than this height scrolls inside the screen (y).
+  #                     A number is taken as px; a string may carry the units
+  #                     px, rem, em, vh, vw, svh, dvh, lvh. Percent values are
+  #                     NOT supported (the wrapper height is derived from the
+  #                     screen height). Invalid values fall back to the
+  #                     default with a console warning.
+  #                     Move/Merge comments in the default config #1
+  #                     The NOTE below is wrong and was corrected: the key
+  #                     read by the library (_manageScreenHeight()) is
+  #                     'manageScreenHeight', default 535px (library, CSS
+  #                     and the value below agree).
+  #                     values: 430px | 430 | 27rem | 60vh ...
+  #                     default: 535px
+  #                     Original (deprecated, preserved for reference):
+  #                     NOTE: the key name is spelled 'Heigth' as specified;
+  #                     a key 'manageScreenHeight' is NOT read.
+  #                     values: 430px | 430 | 27rem | 60vh ...
+  #                     default: 430px
   #   icons             override the four header icons by name
   #                     (playlist-show, playlist-hide, playlist-edit,
   #                     playlist-edit-close); default: the MultiPlayer set
   #                     /assets/theme/j1/modules/multiPlayer/icons/player/dark
   #
-  #   values:                           see above
-  #   default:                          storage.enabled false, manage.enabled false
+  #   itemRating        star button per gallery item (list rows + tiles):
+  #                     opens the 'Set Media Rating' dialog (1..5 stars),
+  #                     the rating is stored with the item (field 'rating')
+  #   itemEdit          edit button per gallery item (list rows + tiles):
+  #                     opens the 'Edit Media Settings' dialog (Category,
+  #                     Title, Description, Info Link, Image Link, Thumbnail,
+  #                     Issue Date, Tags). A Title is shown as the caption
+  #                     of the tile; empty = the original caption.
+  #   tileButtons       show the two buttons as an overlay on every gallery
+  #                     tile (on hover|focus, always on touch devices), so
+  #                     the dialogs work for ALL items of the gallery —
+  #                     also before the list holds any stored item
+  #                     Gallery add edit media settings dialog #2
+  #                     superseded by showItemTools; kept for reference,
+  #                     no longer read by the library
+  #
+  #   showItemTools     show the item tools (the rate|edit buttons, element
+  #                     span.jg-item-tools) as an overlay on every gallery
+  #                     tile (on hover|focus, always on touch devices).
+  #                     Set it per gallery in gallery_control.yml (manage
+  #                     subtree) to opt in. The buttons in the rows of the
+  #                     list screen are NOT affected (itemRating|itemEdit).
+  #                     Needs manage.enabled: true.
+  #                     values: true | false
+  #                     default: false (disabled)
+  #   Gallery add edit media settings dialog #5
+  #   itemDelete        delete tool ('Remove item', trash icon) in the item
+  #                     tools of every tile, next to rate|edit; removes the
+  #                     item from the gallery (store + page). Shown only
+  #                     where showItemTools is true. The delete button in
+  #                     the rows of the list screen is NOT affected
+  #                     (listDeleteButton).
+  #                     values: true | false
+  #                     default: true
+  #   itemDeleteConfirm ask before removing (dialog 'Remove Media Item' with
+  #                     thumbnail, Cancel | Remove); false = remove at once.
+  #                     Removing marks the store as user-modified, so
+  #                     (autoRestore) the item stays removed after a reload;
+  #                     'Clear Gallery' brings the data file back.
+  #                     values: true | false
+  #                     default: true
+  #
+  #   categories        options of the Category select of the edit dialog;
+  #                     null = built-in list (Animals, Architecture, Art,
+  #                     Events, Family, Food, Landscape, Nature, People,
+  #                     Sports, Technology, Travel, Vehicles)
+  #                     Both dialogs need manage.enabled: true. Saving a
+  #                     rating|setting marks the store as user-modified, so
+  #                     (autoRestore) the stored items own the gallery from
+  #                     the next page load on — like an add|delete.
+  #
+  #   Gallery add edit media settings dialog for video #1
+  #   The edit dialog serves VIDEO items as well (e.g. jg_video_html5_pswp).
+  #   For a video item it shows 'Video Link' (local file mp4|webm|ogg|mov|
+  #   m3u8 or a YouTube link), 'Poster Image' and the video-only field
+  #   'Video Size' (width-height, e.g. 1280-720) instead of 'Image Link' and
+  #   'Thumbnail'. A changed link|poster|size is written into the attributes
+  #   the lightbox players read (PhotoSwipe and lightGallery markup).
+  #
+  #   videoCategories   options of the Category select for VIDEO items;
+  #                     null = built-in list (Animation, Comedy, Concert,
+  #                     Documentary, Education, Events, Family, Gaming,
+  #                     Movies, Music, Nature, News, Sports, Technology,
+  #                     Travel). Image items keep 'categories'.
+  #                     values: null | [ list of names ]
+  #                     default: null
+  #
+  #   Gallery add edit media drag-drop area #1
+  #   DROP AREA of the edit screen: the frame around the Paste | image link
+  #   bar takes image FILES (also several at once), whole FOLDERS and image
+  #   LINKS dragged from another page; 'browse ...' opens a multi-select
+  #   file picker. Files from a LOCAL disk are not part of the web space:
+  #   they are mapped by name below the image base path of the gallery
+  #   (image_base_url in gallery_control.yml) and probed before they are
+  #   added — a file the web server does not serve there is reported.
+  #
+  #   dropArea          turn the frame into a drop area
+  #                     values: true | false
+  #                     default: true
+  #                     Move/Merge comments in the default config #1
+  #                     Since drag-drop area #2 the drop area is an OWN
+  #                     section ABOVE the Paste | image link bar; false
+  #                     omits the whole drop section.
+  #   dropBasePath      web path dropped LOCAL files are mapped to;
+  #                     null  = image_base_url of the gallery
+  #                     false = no mapping (only links, or dropFallback)
+  #                     default: null
+  #
+  #                     Gallery modify drag-drop file calculation #1
+  #                     dropBasePath is a SUB PATH below image_base_url,
+  #                     no longer an alternative to it. Endpoint:
+  #                       <image_base_url>/<dropBasePath>/[<folder>/]<file>
+  #                     e.g. http://localhost:11000 + image_sets/sisters
+  #                       -> http://localhost:11000/image_sets/sisters/<file>
+  #                     A leading '/' is a separator (still below the base).
+  #                     A full path that already starts with image_base_url,
+  #                     or an absolute URL of another host, is used as-is
+  #                     (console warning). No image_base_url: dropBasePath
+  #                     alone. Resolved by the adapter gallery.js
+  #                     (_resolveDropBasePath()).
+  #
+  #                     Gallery modify drag-drop file calculation #2
+  #                     "Resolved by the adapter" above no longer holds:
+  #                     the library justifiedGallery.js joins the two
+  #                     itself (_jgResolveDropBase(), called by
+  #                     ioHandler._dropBasePath()), so the rule also holds
+  #                     for a justifiedGallery() call made without the
+  #                     adapter. The adapter passes manage{} unchanged.
+  #                     Check: j1.adapter.gallery.getDropBasePath('<id>')
+  #   dropKeepFolders   a dropped FOLDER keeps its folder name in the path:
+  #                     <base>/<folder>/<file>; false: <base>/<file>
+  #                     default: true
+  #   dropMaxFiles      max image files per drop; 0 = unlimited
+  #                     default: 100
+  #   dropFallback      a file NOT found below the base path:
+  #                     none    = skip it (reported in the status line)
+  #                     dataUrl = embed the image itself (data: URL) in the
+  #                               stored item — localStorage holds ~5 MB
+  #                               per site, use for small images only
+  #                     default: none
+  #   dropMaxDataUrlSize
+  #                     max file size (bytes) embedded by dropFallback dataUrl
+  #                     default: 262144 (256 KB)
+  #                     Move/Merge comments in the default config #1
+  #                     262144 is the LIBRARY default; this file ships
+  #                     100000 (~100 KB), which is what every gallery inherits.
+  #   dropCloseOnSuccess
+  #                     close the editor after a drop that added items
+  #                     without failures (else it stays open and shows
+  #                     the result)
+  #                     default: true
+  #
+  #   Gallery add edit media drag-drop area #3
+  #   RUNTIME MENU of the drop section: a toggle button at the top right of
+  #   the drop area (three dots) opens a small menu to CHANGE the two parts
+  #   of the file endpoint for the current gallery while the page is open:
+  #
+  #     <image_base_url>/<dropBasePath>/[<folder>/]<file>
+  #
+  #   The values of gallery_control.yml are not changed; 'Reset' in the
+  #   menu returns to them. A changed base is marked 'runtime' in the info
+  #   line of the drop area.
+  #
+  #   dropSettingsMenu  show the toggle button and the menu
+  #                     values: true | false
+  #                     default: true
+  #                     Move/Merge comments in the default config #1
+  #                     true is the LIBRARY default; this file ships false,
+  #                     so a gallery opts in with dropSettingsMenu: true
+  #                     (galleryManager, jgMegaCities, jg_video_html5_pswp do).
+  #   dropSettingsPersist
+  #                     remember the changed values per gallery in the
+  #                     browser (localStorage 'jg_dropbase_<id>') and use
+  #                     them again on the next page load; false = the
+  #                     change lasts for the current page view only
+  #                     values: true | false
+  #                     default: true
+  #
+  #   Gallery add edit media settings dialog for video #2
+  #   LIST SCREEN for galleries WITHOUT storage.enabled (e.g. the video
+  #   gallery jg_video_html5_pswp): the list screen and the item count of the
+  #   manage bar read the store ONLY, which such a gallery fills only after a
+  #   user change -- the list toggle stayed disabled ("Local Video (0)").
+  #
+  #   listSource        source of the list screen and of the header count
+  #                     auto  = the stored items, else the gallery entries
+  #                             (DOM) -- the list works for every managed
+  #                             gallery, video galleries included
+  #                     store = the stored items only (behaviour before)
+  #                     dom   = the gallery entries only
+  #                     values: auto | store | dom
+  #                     default: auto
+  #
+  #   values:           see above
+  #   default:          storage.enabled false, manage.enabled false
   #
   # ----------------------------------------------------------------------------
   #
   storage:
     enabled:                            false
+
     key:                                null
     exportOnComplete:                   true
     autoRestore:                        true
     mergeMode:                          false
     reloadOnClear:                      true
     addClasses:                         []
+    preload:                            false
+    preloadUrlBase:                     /assets/data/apps/multiGallery/playlists/lists
 
   manage:
     enabled:                            false
+
+    autoOpenEditor:                     true                                    # open the edit screen automatically while the gallery has no items
     title:                              null
     showCount:                          true
     showListButton:                     true
     editButton:                         true
     listDeleteButton:                   true
-    listUrl:                            null
-    listUrlBase:                        null
+    listUrl:                            000_index.json
+    listUrlBase:                        /assets/data/apps/multiGallery/playlists/lists
     screenMinHeight:                    320
+    manageScreenHeight:                 535px
+    itemRating:                         true
+    itemEdit:                           true
+    showItemTools:                      false                                   # hide|show rate andedit buttons (item tools) on every gallery tile
+    itemDelete:                         true                                    # delete tool (trash) in the item tools of every tile
+    itemDeleteConfirm:                  true                                    # ask before removing an item ('Remove Media Item')
+    categories:                         null
+    videoCategories:                    null                                    # Category options for VIDEO items (null: built-in video list)
+    dropArea:                           true                                    # enable|disable the drop area
+    dropBasePath:                       null                                    # image path , default: image_base_url
+    dropKeepFolders:                    true                                    # folder drop: <base>/<folder>/<file>
+    dropMaxFiles:                       100                                     # max numer of files to import
+    dropFallback:                       none                                    # none | dataUrl
+    dropMaxDataUrlSize:                 100000
+    dropCloseOnSuccess:                 true
+    dropSettingsMenu:                   false                                   # toggle menu (top right) to change image_base_url|dropBasePath at runtime
+    dropSettingsPersist:                true                                    # keep the runtime values per gallery (localStorage)
+    listSource:                         auto                                    # auto | store | dom: source of the list screen + header count
     icons:                              {}
+
+  # ----------------------------------------------------------------------------
+  # SEARCH settings
+  #
+  search:
+    enabled:                            false
+    placeholder:                        Search the gallery for items by title, description, category, type, or tag
+    sort:                               true
+    sortOptions:                        null                                    # null = all: none, addDate, addDateAsc, issueDate, issueDateAsc, title, category, description, rating, type
+    defaultSort:                        none
+    rememberSort:                       true
+    showCount:                          true
+    debounce:                           300
 
   # ----------------------------------------------------------------------------
   # CSSFilter settings
@@ -157,25 +861,9 @@ defaults:
   # ----------------------------------------------------------------------------
   # justifiedGallery settings
   #
-  # claude - split J1 Gallery data #2
-  # ----------------------------------------------------------------------------
-  # Renamed the default key `gallerySettings` -> `gallery_options` so the
-  # default Justified Gallery layout options ACTUALLY feed the per-gallery
-  # `gallery_options` block that the adapter consumes:
-  #
-  #     gallery.js:  {% for option in gallery.gallery_options %} ... {% endfor %}
-  #
-  # The old `gallerySettings` key was never read by gallery.js / gallery.html,
-  # so its rowHeight/gutters defaults had no effect and could not be inherited
-  # by galleries that omit them. This mirrors the Masonry pattern, where the
-  # defaults file and the per-grid config share the SAME option keys, allowing
-  # a gallery that omits `rowHeight`/`gutters` to inherit these values via the
-  # per-gallery deep_merge (gallery_defaults <- control <- media).
-  # ----------------------------------------------------------------------------
-  #
   gallery_options:
-    rowHeight:                            150
-    gutters:                              1
+    rowHeight:                          150
+    gutters:                            1
 
   # ----------------------------------------------------------------------------
   # Lightbox settings
@@ -186,36 +874,6 @@ defaults:
 
   # ----------------------------------------------------------------------------
   # PhotoSwipe settings
-  #
-  # PhotoSwipeVideoPlugin plugin Fix #2
-  # ----------------------------------------------------------------------------
-  # NET-NEW block. Until now `lightbox.type: ps` was only honoured by the IMAGE
-  # branch of ~/_includes/themes/j1/modules/gallery/gallery.html; a VIDEO
-  # gallery set to `ps` silently produced lightGallery markup, because the
-  # video branch emitted no `data-pswp-*` attributes at all. That branch now has
-  # a PhotoSwipe path, and this block is what configures it.
-  #
-  # WHERE THESE VALUES GO
-  # ----------------------------------------------------------------------------
-  #   gallery.html  emits  data-pswp-video-options='<this subtree, jsonify'd>'
-  #                        on the gallery container
-  #   photoswipe-lightbox.js  _autoInitAttachVideo() merges the attribute over
-  #                        PhotoSwipeLightbox.autoInitVideoDefaults
-  #   photoswipe-video-plugin.js  merges the result over its own defaultOptions
-  #
-  # The block is emitted ONLY when present, so a site that deletes it falls back
-  # to the plugin's own defaults -- which are the same values. Declaring them
-  # here makes them editable per gallery through the normal
-  # defaults <- control <- media deep_merge chain, instead of requiring an edit
-  # to the plugin source.
-  #
-  # THE MERGE AT THE PLUGIN IS SHALLOW
-  # ----------------------------------------------------------------------------
-  # photoswipe-video-plugin.js merges options with `{...defaultOptions,
-  # ...options}`, so any top-level key present here REPLACES the plugin's whole
-  # subtree for that key. That is why `videoAttributes` restates all four
-  # entries rather than only the one that differs: dropping `controls` here
-  # would produce a video with no control bar.
   #
   # muted
   # ----------------------------------------------------------------------------
@@ -244,7 +902,6 @@ defaults:
   #
   # tracks
   # ----------------------------------------------------------------------------
-  # PhotoSwipeVideoPlugin plugin Fix #3
   #   Master switch for text tracks (subtitles, captions, chapters) on the
   #   PhotoSwipe path, the counterpart of `videojsOptions.tracks` on the
   #   lightGallery path. gallery.html hands the per-video `tracks:` list of
@@ -257,7 +914,6 @@ defaults:
   #
   # videojs.options / videojs.plugins / videojs.customProgressBar
   # ----------------------------------------------------------------------------
-  # PhotoSwipeVideoPlugin plugin Fix #6
   #   Three NET-NEW subtrees that close the last configuration gap between the
   #   two lightboxes. Until now this file described the PhotoSwipe renderer
   #   with two keys -- `enabled` and `theme` -- while the lightGallery path
@@ -323,7 +979,6 @@ defaults:
   #
   # autoplayMutedFallback / autoplayProbeTimeout
   # ----------------------------------------------------------------------------
-  # PhotoSwipeVideoPlugin plugin Fix #7
   #   Two NET-NEW keys that make `autoplay: true` keep its promise on the
   #   YouTube renderer.
   #
@@ -381,7 +1036,6 @@ defaults:
   #
   # autoplay -- TWO NEW MODES
   # ----------------------------------------------------------------------------
-  # PhotoSwipeVideoPlugin plugin Fix #7
   #   `autoplay` stops being a plain boolean. `true` still means what it always
   #   meant; what changes is the value inherited when nothing is stated.
   #
@@ -416,7 +1070,6 @@ defaults:
   #
   photoswipe:
 
-    # PhotoSwipe lightbox Fix #14
     # --------------------------------------------------------------------------
     # AUTOMATIC NATURAL-SIZE DETECTION IS SWITCHABLE PER GALLERY
     # --------------------------------------------------------------------------
@@ -436,7 +1089,6 @@ defaults:
     # the declared size. See the block in photoswipe.yml for the full
     # vocabulary (false | missing | true | always).
     #
-    # PhotoSwipe lightbox Fix #15
     # --------------------------------------------------------------------------
     # The token is NO LONGER emitted "in place of the number". It now rides on
     # a separate marker attribute, and the two size attributes stay numeric:
@@ -456,152 +1108,17 @@ defaults:
     # it rather than to 0.
     # --------------------------------------------------------------------------
     #
-    # NO KEY IS STATED HERE, ON PURPOSE
-    # --------------------------------------------------------------------------
-    # For exactly the reason recorded for `plugin.fullscreen` above: the
-    # per-gallery chain in gallery.html is a DEEP merge
-    # (gallery_defaults <- control <- media), so an `auto_detect_size` key in
-    # THIS file would be inherited by every gallery of the module. Every
-    # gallery would then carry this file's answer, opted IN or OUT, never
-    # falling through -- and level 3 would be unreachable for this module, the
-    # site-wide key in photoswipe.yml becoming dead weight.
-    #
-    # A gallery that wants to decide for itself says so by name in
-    # ~/_data/modules/gallery_control.yml.
-    #
-    # TO SET A MODULE-WIDE DEFAULT ANYWAY, uncomment the line below. Read the
-    # paragraph above first.
-    #
-    # auto_detect_size:             missing
-    # --------------------------------------------------------------------------
-    #
-    # PhotoSwipe lightbox Fix #15 -- OBSERVATION, NOT CHANGED HERE
-    # --------------------------------------------------------------------------
-    # The key below IS stated, which contradicts the four paragraphs above. As
-    # a live key it is deep-merged into every gallery of the module, so
-    # `gallery.photoswipe.auto_detect_size` is never nil in gallery.html and
-    # LEVEL 3 -- `auto_detect_size` in ~/_data/modules/defaults/photoswipe.yml
-    # -- can never be reached from this module. Setting the site-wide key has
-    # no effect on galleries; only a per-gallery entry in
-    # ~/_data/modules/gallery_control.yml does anything.
-    #
-    # This is the same inert-configuration shape recorded for
-    # `plugin.fullscreen` in Gallery Fix #2, and the remedy is the same:
-    # comment the line out. It is left ALONE under this fix because removing
-    # it is a behavioural change to every gallery on the site and belongs in
-    # its own numbered fix, not in a markup correction.
-    # --------------------------------------------------------------------------
-    auto_detect_size:               false
+    auto_detect_size:                   false
 
-    # Gallery, Photoswipe lightbox for videos Fix #2
     # --------------------------------------------------------------------------
-    # PhotoSwipeFullscreen plugin #8
-    # The heading and the first sentence of this note were written when only
-    # VIDEO galleries carried the two attributes. Fix #7 of the full-screen
-    # series gave the IMAGE container the same pair, and fix #8 gave both
-    # containers the same gate (`lightbox.enabled` AND `lightbox.type: ps`).
-    # The text is updated to match. Comment-only change: no key of this file
-    # is touched.
-    #
-    # Original (deprecated, preserved for reference):
-    #
-    # THE FULL-SCREEN PLUGIN IS NOW SWITCHABLE PER VIDEO GALLERY
-    # --------------------------------------------------------------------------
-    # ~/_includes/themes/j1/modules/gallery/gallery.html emits two new
-    # attributes on the container of every VIDEO gallery that selects
-    # `lightbox.type: ps`:
-    # --------------------------------------------------------------------------
-    # THE FULL-SCREEN PLUGIN IS NOW SWITCHABLE PER GALLERY (IMAGE AND VIDEO)
-    # --------------------------------------------------------------------------
-    # ~/_includes/themes/j1/modules/gallery/gallery.html emits two attributes
-    # on the container of every IMAGE and every VIDEO gallery that selects
-    # `lightbox.type: ps` (with `lightbox.enabled` on, the module default):
-    #
-    #   data-pswp-fullscreen           from  photoswipe.plugin.fullscreen
-    #   data-pswp-fullscreen-options   from  photoswipe.fullscreenOptions
-    #
-    # Both are read by _autoInitResolveFullscreenEnabled() in
-    # photoswipe-lightbox.js, which resolves the switch in three levels --
-    # the same shape the video plugin got in PhotoSwipeVideoPlugin fix #12:
-    #
-    #   1. `plugin.fullscreen` of the gallery      (data-pswp-fullscreen)
-    #   2. `fullscreenOptions.enabled` of the gallery
-    #   3. `plugin.fullscreen` of ~/_data/modules/defaults/photoswipe.yml
-    #      (site-wide fallback)
-    #
-    # NO KEY IS STATED HERE, ON PURPOSE
-    # --------------------------------------------------------------------------
-    # A `plugin: {fullscreen: ...}` block in THIS file would be inherited by
-    # every gallery through the per-gallery deep_merge
-    # (gallery_defaults <- control <- media), so every video gallery on
-    # `lightbox.type: ps` would emit `data-pswp-fullscreen` whether it wanted
-    # to or not -- opted IN or OUT by this file, never falling through to the
-    # site-wide key. Level 3 above would be unreachable for this module.
-    #
-    # PhotoSwipeFullscreen plugin #8
-    # Since fix #7 of the full-screen series the paragraph above applies to
-    # IMAGE galleries on `lightbox.type: ps` as well: read "every video
-    # gallery" as "every image and video gallery". Kept as written.
-    #
-    # That is the same reason `videoOptions.enabled` is absent from the
-    # subtree below although the plugin reads it (see fix #12): the module
-    # default is "say nothing, let the site decide", and a gallery that wants
-    # to decide for itself says so by name in
-    # ~/_data/modules/gallery_control.yml. The three PhotoSwipe video
-    # galleries there now do.
-    #
-    # NOTE the asymmetry to ~/_data/modules/defaults/masonry.yml, which DOES
-    # state `plugin.fullscreen: false`. The merge chain in masonry.html is
-    # SHALLOW, so a grid that states any `photoswipe:` block of its own
-    # replaces that one wholesale and the inherited value reaches only the
-    # grids that state nothing at all. Here the merge is DEEP and the
-    # inherited value would reach everything -- the same line would not mean
-    # the same thing.
-    #
-    # TO SET A MODULE-WIDE DEFAULT ANYWAY, uncomment the block below. Read the
-    # paragraph above first: it turns the site-wide key into dead weight for
-    # every gallery of this module.
-    #
-    # plugin:
-    #   fullscreen:                     false
-    #
-    # A MODULE-WIDE SET OF PLUGIN OPTIONS is a different matter and is safe:
-    # `fullscreenOptions` carries no switch of its own unless `enabled` is
-    # stated in it, and the plugin's option set is flat ({ fullscreenTitle }),
-    # so there is no nested subtree for the SHALLOW Object.assign at the
-    # attach site to drop.
-    #
-    # fullscreenOptions:
-    #   fullscreenTitle:                Toggle fullscreen
-    # --------------------------------------------------------------------------
+    # VIDEO settings
     #
     videoOptions:
 
-      # PhotoSwipeVideoPlugin plugin Fix #7
-      # Tracks the plugin's new default. This subtree sits ON TOP of the plugin
-      # defaults, so leaving `true` here would have kept every gallery on the
-      # old mode while the JS default said otherwise -- the failure that looks
-      # like "the new option does nothing".
-      #
-      # Original (deprecated, preserved for reference):
-      #       autoplay:                         true
       autoplay:                         startOnFirst
       preventDragOffset:                40
       tracks:                           true
 
-      # PhotoSwipeVideoPlugin plugin Fix #7
-      # Both restate the plugin's own defaults, so stating them here is
-      # behaviour-neutral. They are stated all the same, for the reason the
-      # header of this block gives: a value that lives only in the JS defaults
-      # cannot be edited through the normal
-      # defaults <- control <- media deep_merge chain, and the whole point of
-      # this subtree is that it can. A per-gallery override in
-      # ~/_data/modules/gallery_control.yml now reaches them, e.g.
-      #
-      #     photoswipe:
-      #       videoOptions:
-      #         autoplayMutedFallback:  false
-      #
       autoplayMutedFallback:            true
       autoplayProbeTimeout:             1200
 
@@ -611,14 +1128,6 @@ defaults:
         preload:                        auto
         muted:                          ''
 
-      # PhotoSwipeVideoPlugin plugin Fix #6
-      # `enabled` and `theme` are unchanged; everything below them is net-new.
-      #
-      # Original (deprecated, preserved for reference):
-      #     videojs:
-      #       enabled:                        true
-      #       theme:                          vjs-theme-uno
-      #
       videojs:
         enabled:                        true
         theme:                          vjs-theme-uno

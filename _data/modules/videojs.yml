@@ -97,9 +97,8 @@ settings:
     skipButtons:
       enabled:                          true
 
-      # Plugin options
-      # ------------------------------------------------------------------------      
-      surroundPlayButton:               true                                    # surround buttons side-by-side the play button
+    snapshotButton:
+      enabled:                          true
 
     zoomButtons:
       enabled:                          true

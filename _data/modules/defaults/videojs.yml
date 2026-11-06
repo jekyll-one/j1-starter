@@ -101,6 +101,48 @@ defaults:
       forward:                          10
       backward:                         10
 
+    # VideoJS - Plugin snapshotButton #1
+    # --------------------------------------------------------------------------
+    # snapshotButton: a camera button in the control bar that saves the frame
+    # currently shown as an image file (PNG, JPEG or WebP).
+    #
+    # ACTIVATION NOTE. A VideoJS plugin is switched on by CALLING its method
+    # on the player; this block is only data until a script does that. With
+    # this fix J1 MultiPlayer (player.js) does: it calls
+    # player.snapshotButton({...}) when `enabled` is true.
+    #
+    # SCOPE NOTE. Unlike zoomButtons and videoFilters, J1 MultiPlayer READS
+    # this block (defaults here <- user settings in _data/modules/videojs.yml).
+    # A MultiPlayer chain (multiPlayer.yml / multiPlayer_control.yml) may
+    # override single keys under videoJS.plugins.snapshotButton; it wins
+    # where it declares a key. The PhotoSwipe video galleries do not use the
+    # plugin (OPEN POINT).
+    #
+    # Only native (mp4) video can be captured. For YouTube the button is
+    # hidden: browsers do not hand out the pixels of an embedded iframe. A
+    # video from ANOTHER server can only be saved when that server allows it
+    # (CORS); otherwise the console shows "canvas is tainted".
+    #
+    # Every key below may be left out; it then keeps the plugin default
+    # (snapshot.js, DEFAULTS). Empty keys count as left out. Plugin default
+    # of `quality` is 0.92. In `filename`, {id} is the player id and {time}
+    # the video position; the extension (png|jpg|webp) is added from `type`.
+    #
+    snapshotButton:
+      enabled:                          false
+
+      filename:                         'snapshot-{id}-{time}'
+      controlText:                      Take snapshot
+
+      type:                             'image/jpeg'                            # image/jpeg | image/webp | image/png
+      quality:                          0.85                                    # [0..1], NOTE: jpeg/webp only
+      maxWidth:                         0                                       # 0: native video resolution
+      pauseOnCapture:                   false                                   # pause the player when the button is clicked
+      frameTimeout:                     3000                                    # ms to wait for a decoded frame
+      download:                         true                                    # true: the browser saves the file; false = event 'snapshot' only (API use)
+      button:                           true                                    # false: no button (API only)
+      insertBefore:                     FullscreenToggle                        # control bar child the button is placed in front of
+
     zoomButtons:
       enabled:                          false
 

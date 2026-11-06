@@ -77,34 +77,6 @@
       href:                             /pages/public/learn/where_to_go/
       icon:                             foot-print
 
-    # # --------------------------------------------------------------------------
-    # # Collections
-    # #
-    # - title:                            Collections
-    #   icon:                             application
-    #   dropdown:
-
-    #     - title:                        Jekyll Collections
-    #       href:                         /pages/public/learn/bookshelf/jekyll_collections/
-    #       icon:                         head-question
-
-    #     - title:                        Bookshelf
-    #       href:                         /pages/public/learn/bookshelf/viewer_all_books/
-    #       icon:                         book-marker
-
-    #     - title:                        Bookshelf Collection
-    #       icon:                         eye
-    #       dropdown:
-    #         - title:                    Biography
-    #           href:                     /pages/public/learn/bookshelf/article_previewer/biography/
-    #           icon:                     book-marker
-    #         - title:                    Fantasy
-    #           href:                     /pages/public/learn/bookshelf/article_previewer/fantasy/
-    #           icon:                     book-marker
-    #         - title:                    Romance
-    #           href:                     /pages/public/learn/bookshelf/article_previewer/romance/
-    #           icon:                     book-marker
-
     # --------------------------------------------------------------------------
     # Tutorials
     #
@@ -167,6 +139,28 @@
               href:                     //jekyll.one/pages/public/learn/kickstart/learning_seo/content_optimization/
               icon:                     calculator-variant-outline
               target:                   _blank
+
+# ------------------------------------------------------------------------------
+# Menu TOOLS
+#
+- item:                                 Tools
+  sublevel:
+
+    - title:                            Multi Gallery
+      href:                             /pages/public/tools/multiGallery/manager/
+      icon:                             view-dashboard-variant
+
+    - title:                            Multi Player
+      href:                             /pages/public/tools/multiPlayer/manager/
+      icon:                             video
+
+    - title:                            User Guide
+      icon:                             alpha-m-box
+      dropdown:
+
+        - title:                        Multi Gallery
+          href:                         /pages/public/manual/modules/gallery/multiGallery/user_guide/
+          icon:                         view-dashboard-variant
 
 # ------------------------------------------------------------------------------
 # Menu BLOG

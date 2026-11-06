@@ -1,0 +1,165 @@
+[role="mt-4"]
+== Manager Instance
+
+Below the header is the video itself. Before anything is loaded, a friendly
+placeholder (the VideoJS logo) is shown in its place.
+
+[role="mb-4"]
+You can place as many players on a page as you like. Every player has its
+own *id* (a short name such as `player_1`), its own playlist, and its own
+settings. Nothing leaks from one player to another: a video you add to
+`player_1` never shows up in `player_2`. Internally each player is a separate
+*instance* of the module, created through a factory function -- exactly the
+same idea Video.js uses.
+
+ifeval::[{multiplayer--html} == false]
+.Multi Player
+multiplayer::player_1[role="mb-5"]
+endif::[]
+
+ifeval::[{multiplayer--html} == true]
+++++
+<div id="video_title" class="video-title">
+  <i class="mdib mdib-video mdib-24px mr-2"></i>
+  <span id="video_title_text">Multi Player</span>
+</div>
+
+<div id="multi_player_parent" class="multiplayer not-spoken">
+  <div id="multi_player" class="not-spoken" style="position: relative;">
+
+    <div id="video_player_container_multi_player" class="video-player-header not-spoken">
+      <div class="video-player-header-slot">
+        <button id="toggle_playlist_multi_player" class="video-player-header-arrows" title="No playlist loaded" aria-label="Show playlist" aria-expanded="false" disabled="" style="opacity: 0.35; cursor: not-allowed;" data-playlist-open="false">
+          <img src="/assets/theme/j1/modules/multiPlayer/icons/player/dark/playlist-show.svg" alt="Show playlist">
+        </button>
+      </div>
+
+      <span class="video-player-header-title" style="cursor: pointer; user-select: none;"></span>
+
+      <div class="video-player-header-slot video-player-header-slot--right">
+        <button id="edit_playlist_multi_player" class="video-player-header-arrows" title="Manage playlists" aria-label="Manage playlists" data-edit-open="false">
+          <img src="/assets/theme/j1/modules/multiPlayer/icons/player/dark/playlist-edit.svg" alt="Manage playlists">
+        </button>
+      </div>
+    </div>
+
+    <div id="video_container_multi_player" class="video-container not-spoken mb-4">
+      <div id="emptyPlayerOverlay_multi_player" class="empty-player-overlay">
+        <div class="empty-player-content">
+          <img src="/assets/image/icon/videojs/videojs-logo.png" alt="VideoJS Player" width="500" height="200">
+        </div>
+      </div>
+    </div>
+
+    <div id="playlist_screen_multi_player" class="playlist_screen slide-out-top" style="display: none">
+      <div class="input-container">
+        <span class="search-icon-inside"><i class="fas fa-search"></i></span>
+        <input id="playlistSearchInput_multi_player" type="text" placeholder="Search the playlist for items by description, title, author, category, type, or tag" autocomplete="off" aria-label="Search playlist" style="background-color: var(--card-background)">
+        <button id="playlistSearchClear_multi_player" title="Clear search expression" aria-label="Clear search expression">
+          <i class="fas fa-times"></i>
+        </button>
+        <span id="playlistSearchResultCount_multi_player"></span>
+      </div>
+      <!-- playlist screen block -->
+      <div id="playlistBlock_multi_player" class="not-spoken mt-3" style="display: none">
+        <div class="playlist-block-title">
+          <div id="playlistModeSwitch_multi_player" class="switch not-spoken" style="display: none;">
+            <label>
+              <input id="playlistMode_multi_player" type="checkbox" name="playlistMode" checked="">
+              <span class="bmd-switch-track"></span>
+              Cards
+            </label>
+          </div>
+
+          <div id="playlistMergeSwitch_multi_player" class="switch not-spoken" style="display: none;">
+            <label>
+              <input id="mergeMode_multi_player" type="checkbox" name="mergeMode">
+              <span class="bmd-switch-track"></span>
+              Merge
+            </label>
+          </div><select id="playlistSortSelect_multi_player" class="playlist-sort-select" title="Sort playlist" aria-label="Sort playlist" style="display: none;">
+            <option value="watchDate">Date (newest)</option>
+            <option value="watchDateAsc">Date (oldest)</option>
+            <option value="issueDate">Issue Date (newest)</option>
+            <option value="issueDateAsc">Issue Date (oldest)</option>
+            <option value="duration">Duration (longest)</option>
+            <option value="durationAsc">Duration (shortest)</option>
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="category">Category</option>
+            <option value="description">Description</option>
+            <option value="rating">Rating</option>
+            <option value="episode">Episode</option>
+            <option value="type">Type</option>
+          </select>
+        </div>
+        <div id="videoplayer_playlist_parent_multi_player" class="not-spoken" data-playlist-rate-button="true" data-playlist-edit-button="true" data-playlist-delete-button="true">
+        </div>
+      </div>
+
+    </div> <!-- END playlist_screen_multi_player -->
+
+    <div id="playlist_edit_screen_multi_player" class="pt-3 pr-3 pl-3 slide-in-top" style="display: none; z-index: 1;">
+
+      <div class="input-wrapper input-section not-spoken mt-3">
+        <div class="input-container">
+          <button id="pasteButton_multi_player" class="paste-btn-inside" title="Paste from clipboard">
+            <i class="fas fa-paste"></i>
+            <span>Paste</span>
+          </button>
+          <input id="videoUrlInput_multi_player" type="text" placeholder="Paste a video link to add ..." style="background-color: var(--card-background)">
+          <button id="playlistInputClear_multi_player" title="Clear YouTube video selection" aria-label="Clear YouTube video selection" style="display: none;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="input-container input-section not-spoken mt-3 mb-4">
+        <button id="serverPlaylistLoadButton_multi_player" class="select-btn-inside" title="Select playlist">
+          <i class="fas fa-file-import"></i>
+          <span>Import</span>
+        </button>
+        <div class="input-container d-flex justify-content-start flex-wrap">
+          <select id="serverPlaylistSelect_multi_player" class="server-playlist-select" form="playlist" style="background-color: var(--card-background)">
+            <option value="" disabled="" selected="">
+              Select a playlist to import ...
+            </option>
+            <option value="lists/local-video.json">Local Video files</option>
+            <option value="lists/native-video-joan.json">Joan</option>
+            <option value="lists/hofgeschichten-2021.json">NDR - Hofgeschichten, 2021 (Series/German)</option>
+            <option value="lists/tinydesk-concerts.json">NPR - Tiny Desk Concerts (English)</option>
+            <option value="lists/agt-legendary-auditions.json">AGT - Legendary Contestants (English)</option>
+            <option value="lists/bgt-legendary-auditions.json">BGT - Legendary Contestants (English)</option>
+            <option value="lists/ytp-rick-astley.json">YTP - Rick Astley (Series)</option>
+            <option value="lists/ytp-bea-and-her-business.json">YTP - Bea and her business (Series)</option>
+            <option value="lists/the-next-step-season-1.json">BBC - The Next Step, Season 1 (Series/English)</option>
+          </select>
+          <button id="playlistSelectClear_multi_player" title="Clear selection" aria-label="Clear selection" style="display: none;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="input-container d-flex justify-content-center flex-wrap">
+        <input type="file" id="playlistImportFile_multi_player" accept=".json,application/json" style="display: none;" aria-hidden="true">
+        <button id="playlistExportButton_multi_player" class="export-playlist-btn" title="Export playlist to file">
+          <i class="fas fa-file-export mr-2"></i>
+          <span>Export Playlist</span>
+        </button>
+        <button id="playlistImportButton_multi_player" class="import-playlist-btn" title="Import playlist from file">
+          <i class="fas fa-file-import mr-2"></i>
+          <span>Import Playlist</span>
+        </button>
+        <button id="playlistClearButton_multi_player" class="delete-playlist-btn" title="Clear playlist">
+          <i class="fas fa-trash-alt mr-2"></i>
+          <span>Clear Playlist</span>
+        </button>
+      </div>
+
+    </div> <!-- END playlist_edit_screen_multi_player -->
+
+  </div> <!-- END multi_player -->
+</div> <!-- END multi_player_parent -->
+++++
+endif::[]
+

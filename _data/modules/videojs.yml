@@ -86,19 +86,17 @@ settings:
   # ----------------------------------------------------------------------------
   plugins:
 
-    hotKeys:
-      enabled:                          true
+    # hotKeys:
+    #   enabled:                          true
 
-      # Plugin options
-      # ------------------------------------------------------------------------
-      enableInactiveFocus:              false                                   # mutiple players on same page: reassign focus to the player when the control bar fades out
-#     hotkeysFocusElementFilter:        'e => e.tagName.toLowerCase() === "body"'      
+    #   # Plugin options
+    #   # ------------------------------------------------------------------------
+    #   enableInactiveFocus:              false                                   # mutiple players on same page: reassign focus to the player when the control bar fades out
+    #   hotkeysFocusElementFilter:        'e => e.tagName.toLowerCase() === "body"'      
 
     skipButtons:
-      enabled:                          true
-
-    snapshotButton:
-      enabled:                          true
+      enabled:                          true 
+      surroundPlayButton:               true                                    # surround buttons side-by-side the play button
 
     zoomButtons:
       enabled:                          true
